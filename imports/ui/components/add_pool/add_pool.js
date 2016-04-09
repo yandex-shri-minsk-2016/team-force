@@ -17,12 +17,24 @@ Template.addPool.events({
         
         let products = [];
         inputProducts.split(',').forEach((product) => {
-            products.push({shop: 'wok.by', link: product});
+            let newItem = {
+                shop: 'wok.by',
+                link: product
+            };
+            products.push(newItem);
         });
 
         // Remove `!` when authorizations will ready
         if (!Meteor.user()) {
-            Pools.add({shop: 'wok.by', time: new Date(), ownerId: 1, company: 'google', items: products, price: 200});
+            const newPool = {
+                shop: 'wok.by',
+                time: new Date(),
+                ownerId: 1,
+                company: 'google',
+                items: products,
+                price: 200
+            };
+            Pools.add(newPool);
         } else {
             //TODO: Change state to 404
         }

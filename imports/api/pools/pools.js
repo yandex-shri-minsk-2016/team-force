@@ -11,8 +11,8 @@ class PoolsCollection extends Mongo.Collection {
     
     add(data, callback=null) {
         //TODO: check data here
-        return super.insert(data, function(e, id) {
-            if (!e) {
+        return super.insert(data, function(error, id) {
+            if (!error) {
                 data.items.forEach((item) => {
                     Items.add({poolId: id, shop: item.shop, link: item.link});
                 });
@@ -22,11 +22,9 @@ class PoolsCollection extends Mongo.Collection {
 
     getCompanyPools(company) {
         let pools = this.find({company}).fetch();
-        if (pools.length > 0) {
-            pools.forEach((pool, index) => {
-                pools[index].items = Items.getPoolItems(pool._id);
-            });
-        }
+        pools.forEach((pool, index) => {
+            pools[index].items = Items.getPoolItems(pool._id);
+        });
         return pools;
     }
 
