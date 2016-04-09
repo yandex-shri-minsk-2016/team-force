@@ -19,5 +19,7 @@ import './../imports/ui/components/pool/pool.js';
 import './main.html';
 import './../imports/ui/components/login_buttons.css';
 
-import '../imports/ui/components/login/login.html';
 import '../imports/ui/components/header/header.html';
+import '../imports/ui/components/footer/footer.html';
+
+import '../imports/ui/components/login/login.html';
