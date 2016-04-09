@@ -1,0 +1,13 @@
+<template name="poolsList">
+    <div>
+        <ul>
+            {{#each pools}}
+                <li>{{time}}:
+                    {{#each items}}
+                        {{link}},
+                    {{/each}}
+                </li>
+            {{/each}}
+        </ul>
+    </div>
+</template>

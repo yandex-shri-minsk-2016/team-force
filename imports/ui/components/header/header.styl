@@ -1,21 +1,15 @@
-html
-  height: 100%
-
-body
-  min-height: calc(100% - 40px)
-  display: flex
-  flex-direction: column
-
-content
-  flex: 1 0 auto
-
 header
+  height: h = 70px
+
   .my-navbar
+    position: fixed
     background: #111
     width: 100%
-    height: 70px
+    height: h
     border: none
     border-radius: 0
+    margin-bottom: 0
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5)
 
   div
     display inline-block
@@ -25,16 +19,3 @@ header
     margin-left: 10px
     color: white
     line-height: 40px
-
-footer
-  position: absolute
-  width 100%
-  height: 40px
-  background-color: #f6f5f3
-
-  p
-    color: #8792a8
-    text-align center
-    line-height 40px
-    margin-right: 10px
-    margin-bottom: 0

@@ -1,12 +1,19 @@
+html
+  height: 100%
+
+body
+  min-height: calc(100% - 40px)
+  display: flex
+  flex-direction: column
+
+content
+  flex: 1 0 auto
+
 div, a, button
-  -webkit-transition: .2
-  s-moz-transition: .2
-  s-ms-transition: .2
-  s-o-transition: .2
   transition: .2s
 a
-&:hover
-  cursor: pointer
+  &:hover
+    cursor: pointer
 input
 &:focus
   -webkit-box-shadow: none !important
@@ -22,9 +29,6 @@ input
   box-sizing: border-box
   display: inline-block
   background-color: #eee
-  -webkit-border-radius: 6px
-  -moz-border-radius: 6px
   border-radius: 6px
   &:hover
     background-color: #ddd
-
