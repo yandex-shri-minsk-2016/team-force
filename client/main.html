@@ -3,11 +3,35 @@
 </head>
 
 <body>
-    {{>pool}}
+    {{>App}}
 </body>
 
 <template name="auth">
     <div>
         {{>loginButtons}}
     </div>
+</template>
+
+<template name="App">
+    {{> Template.dynamic template=main}}
+</template>
+
+<template name="appPools">
+     <!--@TODO appPools-->
+</template>
+
+<template name="appLogin">
+     <!--@TODO appLogin-->
+</template>
+
+<template name="appPool">
+     <!--@TODO appPool-->
+</template>
+
+<template name="appPoolAdd">
+     <!--@TODO appPoolAdd-->
+</template>
+
+<template name="appPoolEdit">
+     <!--@TODO appPoolEdit-->
 </template>
