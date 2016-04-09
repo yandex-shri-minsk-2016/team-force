@@ -11,7 +11,7 @@ Template.addPool.events({
         const time = target.time.value;
         const products = target.products.value;
 
-        if (!time || !items) {
+        if (!time || !products) {
             return;
         }
         
