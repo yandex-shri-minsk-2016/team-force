@@ -1,6 +1,4 @@
-import PoolsCollection from './../../../api/pools/pools';
-
-Pools = PoolsCollection;
+import Pools from './../../../api/pools/pools';
 
 Template.poolsList.helpers({
     pools: () => {

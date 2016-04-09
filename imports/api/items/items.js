@@ -17,6 +17,6 @@ class ItemsCollection extends Mongo.Collection {
     }
 }
 
-ItemsCollection.name = 'Pools';
+ItemsCollection.name = 'Items';
 
 export default new ItemsCollection();

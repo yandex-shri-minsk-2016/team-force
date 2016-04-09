@@ -1,7 +1,5 @@
 import {Meteor} from 'meteor/meteor';
-import PoolsCollection from './../../../api/pools/pools';
-
-Pools = PoolsCollection;
+import Pool from './../../../api/pools/pools';
 
 Template.addPool.events({
     'submit #add_pool': (event) => {
