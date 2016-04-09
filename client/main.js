@@ -23,3 +23,4 @@ import '../imports/ui/components/header/header.html';
 import '../imports/ui/components/footer/footer.html';
 
 import '../imports/ui/components/login/login.html';
+import '../imports/ui/components/pools_list/pools_list.html';
