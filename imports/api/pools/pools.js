@@ -27,13 +27,6 @@ class PoolsCollection extends Mongo.Collection {
 }
 
 PoolsCollection.name = 'Pools';
-PoolsCollection.schema = new SimpleSchema({
-    shop: {type: String},
-    time: {type: Date},
-    ownerId: {type: Number},
-    company: {type: String},
-    totalPrice: {type: Number, optional: true}
-});
 
 Pools = new PoolsCollection();
 

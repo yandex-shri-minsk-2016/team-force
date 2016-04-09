@@ -22,4 +22,3 @@ insecure                # Allow all DB writes from clients (for prototyping)
 accounts-password
 accounts-ui-unstyled
 stylus
-simple-schema
