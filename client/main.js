@@ -12,8 +12,12 @@ import './../imports/ui/components/add_pool/add_pool.js';
 import './../imports/ui/components/pools_list/pools_list.html'
 import './../imports/ui/components/pools_list/pools_list.js';
 
+
 import './../imports/ui/components/pool/pool.html'
 import './../imports/ui/components/pool/pool.js';
 
 import './main.html';
 import './../imports/ui/components/login_buttons.css';
+
+import '../imports/ui/components/login/login.html';
+import '../imports/ui/components/header/header.html';
