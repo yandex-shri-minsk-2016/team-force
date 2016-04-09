@@ -9,15 +9,12 @@ class PoolsCollection extends Mongo.Collection {
         super(PoolsCollection.name);
     }
     
-    add(shop, time, ownerId, company, items, price=0, callback=null) {
+    add(data, callback=null) {
         //TODO: check data here
-        let data = {
-            shop, time, ownerId, company, price
-        };
         return super.insert(data, function(e, id) {
             if (!e) {
-                items.forEach((item) => {
-                    Items.add(id, item.shop, item.link);
+                data.items.forEach((item) => {
+                    Items.add({poolId: id, shop: item.shop, link: item.link});
                 });
             }
         });
@@ -26,9 +23,9 @@ class PoolsCollection extends Mongo.Collection {
     getCompanyPools(company) {
         let pools = this.find({company}).fetch();
         if (pools.length > 0) {
-            for (let i in pools) {
-                pools[i].items = Items.getPoolItems(pools[i]._id);
-            }
+            pools.forEach((pool, index) => {
+                pools[index].items = Items.getPoolItems(pool._id);
+            });
         }
         return pools;
     }
@@ -41,6 +38,4 @@ class PoolsCollection extends Mongo.Collection {
 
 PoolsCollection.name = 'Pools';
 
-Pools = new PoolsCollection();
-
-export default Pools;
+export default new PoolsCollection();

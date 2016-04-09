@@ -8,21 +8,21 @@ Template.addPool.events({
         event.preventDefault();
 
         const target = event.target;
-        const time = target.time.value;
-        const products = target.products.value;
+        const inputTime = target.time.value;
+        const inputProducts = target.products.value;
 
-        if (!time || !products) {
+        if (!inputTime || !inputProducts) {
             return;
         }
         
-        let prd = [];
-        products.split(',').forEach((product) => {
-            prd.push({shop: 'wok.by', link: product});
+        let products = [];
+        inputProducts.split(',').forEach((product) => {
+            products.push({shop: 'wok.by', link: product});
         });
 
         // Remove `!` when authorizations will ready
         if (!Meteor.user()) {
-            Pools.add('wok.by', new Date(), 1, 'google', prd, 200);
+            Pools.add({shop: 'wok.by', time: new Date(), ownerId: 1, company: 'google', items: products, price: 200});
         } else {
             //TODO: Change state to 404
         }

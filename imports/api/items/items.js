@@ -8,11 +8,7 @@ class ItemsCollection extends Mongo.Collection {
         super(ItemsCollection.name);
     }
 
-    add(poolId, shop, link, price=0, callback=null) {
-        //TODO: check data here
-        let data = {
-            poolId, shop, link, price
-        };
+    add(data, callback=null) {
         return super.insert(data, callback);
     }
 
@@ -23,6 +19,4 @@ class ItemsCollection extends Mongo.Collection {
 
 ItemsCollection.name = 'Pools';
 
-Items = new ItemsCollection();
-
-export default Items;
+export default new ItemsCollection();
