@@ -73,6 +73,7 @@ spacebars-compiler@1.0.10
 srp@1.0.7
 standard-minifier-css@1.0.5
 standard-minifier-js@1.0.5
+stylus@2.511.4
 templating@1.1.8
 templating-tools@1.0.3
 tracker@1.0.12
