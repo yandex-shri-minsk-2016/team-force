@@ -20,11 +20,11 @@ ecmascript              # Enable ECMAScript2015+ syntax in app code
 autopublish             # Publish all data to the clients (for prototyping)
 insecure                # Allow all DB writes from clients (for prototyping)
 accounts-password
-accounts-ui-unstyled
 stylus
 tsega:bootstrap3-datetimepicker
 kadira:flow-router
 kadira:blaze-layout
 bootstrap
 twbs:bootstrap
-
+auth-ui-unstyled
+accounts-ui
