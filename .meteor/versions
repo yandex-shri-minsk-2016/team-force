@@ -14,7 +14,6 @@ blaze@2.1.6
 blaze-html-templates@1.0.3
 blaze-tools@1.0.7
 boilerplate-generator@1.0.7
-bootstrap@1.0.1
 caching-compiler@1.0.3
 caching-html-compiler@1.0.5
 callback-hook@1.0.7
