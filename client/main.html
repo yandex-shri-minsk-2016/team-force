@@ -4,14 +4,10 @@
   <title>Team Force</title>
 </head>
 <body>
-    {{> loginButtons}}
+    {{> header}}
+        {{> Template.dynamic template=main}}
+    {{> footer}}
 </body>
-
-<template name="auth">
-    <div>
-        {{>loginButtons}}
-    </div>
-</template>
 
 <template name="App">
     {{> Template.dynamic template=main}}
@@ -19,20 +15,25 @@
 
 <template name="appPools">
      <!--@TODO appPools-->
+    {{> poolsList}}
 </template>
 
 <template name="appLogin">
      <!--@TODO appLogin-->
+    {{> loginButtons}}
 </template>
 
 <template name="appPool">
      <!--@TODO appPool-->
+    {{> pool}}
 </template>
 
 <template name="appPoolAdd">
      <!--@TODO appPoolAdd-->
+    {{> poolAdd}}
 </template>
 
 <template name="appPoolEdit">
      <!--@TODO appPoolEdit-->
+    {{> pool}}
 </template>

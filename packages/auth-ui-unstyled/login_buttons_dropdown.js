@@ -250,7 +250,7 @@ Template._loginButtonsLoggedOutPasswordService.helpers({
         visible: function () {
           return true;
         }},
-      {fieldName: 'address', fieldLabel: 'Company', inputType: 'text',
+      {fieldName: 'address', fieldLabel: 'Address', inputType: 'text',
         visible: function () {
           return true;
         }},

@@ -7,10 +7,10 @@
                 </div>
             </div>
         </nav>
-<div id="login-buttons" class="login-buttons-dropdown-align-{{align}} header-email">
-    {{#if currentUser}}
-            {{> _loginButtonsLoggedIn}}
-    {{/if}}
-    </div>
+        <div id="login-buttons" class="login-buttons-dropdown-align-{{align}} header-email">
+            {{#if currentUser}}
+                {{> logoutButton}}
+            {{/if}}
+        </div>
     </header>
 </template>
