@@ -1,5 +1,5 @@
 import {Meteor} from 'meteor/meteor';
-import Pool from './../../../api/pools/pools';
+import Pools from './../../../api/pools/pools';
 
 Template.addPool.events({
     'submit #add_pool': (event) => {
@@ -12,29 +12,30 @@ Template.addPool.events({
         if (!inputTime || !inputProducts) {
             return;
         }
-        
         let products = [];
         inputProducts.split(',').forEach((product) => {
             let newItem = {
                 shop: 'wok.by',
-                link: product
+                link: product,
+                createdAt: new Date()
             };
             products.push(newItem);
         });
-
-        // Remove `!` when authorizations will ready
-        if (!Meteor.user()) {
+        if (Meteor.user()) {
             const newPool = {
                 shop: 'wok.by',
-                time: new Date(),
-                ownerId: 1,
-                company: 'google',
+                time: inputTime,
+                ownerId: Meteor.userId(),
+                company: Meteor.user().profile.company,
                 items: products,
-                price: 200
+                price: 200,
+                createdAt: new Date()
             };
             Pools.add(newPool);
-        } else {
-            //TODO: Change state to 404
+            // @TODO: notify success create newPool
+            FlowRouter.go('/');
+        }else{
+            FlowRouter.go('/login');
         }
     }
 });
