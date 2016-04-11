@@ -24,14 +24,5 @@ import './../imports/ui/components/footer/footer.html';
 import './main.html';
 
 Template.poolsList.helpers({
-  polls: [{
-    name: 'pool_1',
-    time: 'time_1'
-  }, {
-    name: 'pool_2',
-    time: 'time_2'
-  }, {
-    name: 'pool_3',
-    time: 'time_3'
-  }]
+  polls: Pools.getCompanyPools(Meteor.user().profile.company)
 });

@@ -28,3 +28,4 @@ bootstrap
 twbs:bootstrap
 auth-ui
 auth-ui-unstyled
+arillo:flow-router-helpers
