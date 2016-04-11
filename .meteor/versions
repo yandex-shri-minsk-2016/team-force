@@ -1,7 +1,8 @@
 accounts-base@1.2.5
 accounts-password@1.1.7
-accounts-ui-unstyled@1.1.11
 allow-deny@1.0.3
+auth-ui@1.1.8
+auth-ui-unstyled@1.1.11
 autopublish@1.0.6
 autoupdate@1.2.7
 babel-compiler@6.6.1
@@ -12,6 +13,7 @@ blaze@2.1.6
 blaze-html-templates@1.0.3
 blaze-tools@1.0.7
 boilerplate-generator@1.0.7
+bootstrap@1.0.1
 caching-compiler@1.0.3
 caching-html-compiler@1.0.5
 callback-hook@1.0.7
@@ -81,6 +83,7 @@ templating@1.1.8
 templating-tools@1.0.3
 tracker@1.0.12
 tsega:bootstrap3-datetimepicker@4.17.37_1
+twbs:bootstrap@3.3.6
 ui@1.0.10
 underscore@1.0.7
 url@1.0.8

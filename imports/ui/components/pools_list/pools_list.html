@@ -1,13 +1,13 @@
 <template name="poolsList">
-    <div>
-        <ul>
-            {{#each pools}}
-                <li>{{time}}:
-                    {{#each items}}
-                        {{link}},
-                    {{/each}}
-                </li>
-            {{/each}}
-        </ul>
-    </div>
+    <ul class="list-group col-xs-12 col-sm-8 col-sm-offset-2">
+        {{#each polls}}
+            {{> pool}}
+        {{/each}}
+    </ul>
+</template>
+
+<template name="pool">
+    <li class="list-group-item">
+        <span class="badge">{{time}}</span> {{name}}
+    </li>
 </template>

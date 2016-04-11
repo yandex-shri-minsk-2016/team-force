@@ -15,5 +15,23 @@ import './../imports/ui/components/pools_list/pools_list.js';
 import './../imports/ui/components/pool/pool.html'
 import './../imports/ui/components/pool/pool.js';
 
+import './../imports/ui/components/auth/auth.html';
+import './../imports/ui/components/auth/auth.js';
+
+import './../imports/ui/components/header/header.html';
+import './../imports/ui/components/footer/footer.html';
+
 import './main.html';
-import './../imports/ui/components/login_buttons.css';
+
+Template.poolsList.helpers({
+  polls: [{
+    name: 'pool_1',
+    time: 'time_1'
+  }, {
+    name: 'pool_2',
+    time: 'time_2'
+  }, {
+    name: 'pool_3',
+    time: 'time_3'
+  }]
+});
