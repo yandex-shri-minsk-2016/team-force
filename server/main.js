@@ -5,11 +5,4 @@ import Items from './../imports/api/items/items';
 
 Meteor.startup(() => {
 
-    Accounts.onCreateUser((options, user) => {
-        if (options) {
-            user.options = options;
-        }
-        return user;
-    });
-
 });

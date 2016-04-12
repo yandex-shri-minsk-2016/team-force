@@ -102,6 +102,14 @@ validatePassword = function (password) {
     return false;
   }
 };
+validateRequired = function (value) {
+  if (value.length >= 1) {
+    return true;
+  } else {
+    loginButtonsSession.errorMessage("Field should not be empty");
+    return false;
+  }
+};
 
 //
 // loginButtonLoggedOut template
