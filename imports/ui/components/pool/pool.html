@@ -1,9 +1,19 @@
-<template name="itemAdd">
-    <section>
-        <ul></ul>
-        <form name="addItem" id="addItem">
-            <textarea name="newItems" cols="30" rows="10"></textarea>
-            <button type="submit">Add</button>
-        </form>
-    </section>
+<template name="pool">
+    <li class="list-group-item">
+        <a href="{{pathFor 'pool' poolId=_id }}">{{_id}}</a>
+        <a href="{{pathFor 'pool_append' poolId=_id }}">+</a>
+        <span class="badge">{{time}}</span>
+        {{#if orders}}
+            <ul>
+                {{# each orders }}
+                    <li>{{usermail owner}}</li>
+                    <ul>
+                        {{# each items }}
+                            <li>{{ link }}</li>
+                        {{/each}}
+                    </ul>
+                {{/each}}
+            </ul>
+        {{/if}}
+    </li>
 </template>
