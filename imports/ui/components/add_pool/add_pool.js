@@ -12,6 +12,7 @@ Template.addPool.events({
         if (!inputTime || !inputProducts) {
             return;
         }
+        
         let products = [];
         inputProducts.split(',').forEach((product) => {
             let newItem = {
@@ -32,9 +33,10 @@ Template.addPool.events({
                 createdAt: new Date()
             };
             Pools.add(newPool);
+            
             // @TODO: notify success create newPool
             FlowRouter.go('/');
-        }else{
+        } else {
             FlowRouter.go('/login');
         }
     }
