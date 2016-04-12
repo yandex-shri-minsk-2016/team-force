@@ -1,7 +1,7 @@
 
 Accounts.onLogin(() => {
     FlowRouter.go('/');
-})
+});
 
 Template.logoutButton.events({
     'click #action-logout': () => {

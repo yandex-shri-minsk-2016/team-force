@@ -24,7 +24,7 @@ stylus
 tsega:bootstrap3-datetimepicker
 kadira:flow-router
 kadira:blaze-layout
-bootstrap
 twbs:bootstrap
 auth-ui
 auth-ui-unstyled
+arillo:flow-router-helpers
