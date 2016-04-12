@@ -14,6 +14,7 @@ Template.addPool.events({
         }
         
         let products = [];
+
         inputProducts.split(',').forEach((product) => {
             let newItem = {
                 shop: 'wok.by',
@@ -22,15 +23,22 @@ Template.addPool.events({
             };
             products.push(newItem);
         });
+
+        let newOrder = {
+            owner: Meteor.userId(),
+            items: products,
+            sum: 0,
+        };
+        
         if (Meteor.user()) {
             const newPool = {
                 shop: 'wok.by',
                 time: inputTime,
                 ownerId: Meteor.userId(),
                 company: Meteor.user().profile.company,
-                items: products,
-                price: 200,
-                createdAt: new Date()
+                orders: [newOrder],
+                price: 0,
+                createdAt: new Date(),
             };
             Pools.add(newPool);
             
