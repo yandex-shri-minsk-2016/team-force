@@ -27,11 +27,7 @@ class PoolsCollection extends Mongo.Collection {
     }
 
     getCompanyPools(company) {
-        let pools = this.find({ company }).fetch();
-        pools.forEach((pool, index) => {
-            pools[index].items = Items.getPoolItems(pool._id);
-        });
-        return pools;
+        return this.find({ company: company });
     }
 
     findOne(filter, callback) {
