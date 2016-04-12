@@ -29,23 +29,20 @@ Template.addPool.events({
             items: products,
             sum: 0,
         };
-        
-        if (Meteor.user()) {
-            const newPool = {
-                shop: 'wok.by',
-                time: inputTime,
-                ownerId: Meteor.userId(),
-                company: Meteor.user().profile.company,
-                orders: [newOrder],
-                price: 0,
-                createdAt: new Date(),
-            };
-            Pools.add(newPool);
-            
-            // @TODO: notify success create newPool
-            FlowRouter.go('/');
-        } else {
-            FlowRouter.go('/login');
-        }
+
+        const newPool = {
+            shop: 'wok.by',
+            time: inputTime,
+            ownerId: Meteor.userId(),
+            company: Meteor.user().profile.company,
+            orders: [newOrder],
+            price: 0,
+            createdAt: new Date(),
+        };
+
+        Pools.add(newPool);
+
+        // @TODO: notify success create newPool
+        FlowRouter.go('/');
     }
 });

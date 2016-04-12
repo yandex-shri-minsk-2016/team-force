@@ -18,5 +18,18 @@
         <a href="{{pathFor 'pool' poolId=_id }}">{{_id}}</a>
         <a href="{{pathFor 'pool_edit' poolId=_id }}">+</a>
         <span class="badge">{{time}}</span>
+        {{#if orders}}
+            <ul>
+                {{# each orders }}
+                    <li>{{usermail owner}}</li>
+                    <ul>
+                    {{# each items }}
+                        <li>{{ link }}</li>
+                    {{/each}}
+                    </ul>
+
+                {{/each}}
+            </ul>
+        {{/if}}
     </li>
 </template>
