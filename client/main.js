@@ -22,7 +22,3 @@ import './../imports/ui/components/header/header.html';
 import './../imports/ui/components/footer/footer.html';
 
 import './main.html';
-
-Template.poolsList.helpers({
-    polls: Pools.getCompanyPools(Meteor.user().profile.company)
-});
