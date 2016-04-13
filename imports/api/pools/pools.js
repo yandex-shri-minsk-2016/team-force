@@ -14,14 +14,14 @@ class PoolsCollection extends Mongo.Collection {
         return super.insert(data, function(error, id) {
             if (!error) {
                 data.items.forEach((item) => {
-                    Items.add({poolId: id, shop: item.shop, link: item.link});
+                    Items.add({ poolId: id, shop: item.shop, link: item.link});
                 });
             }
         });
     }
 
     getCompanyPools(company) {
-        let pools = this.find({company}).fetch();
+        let pools = this.find({ company }).fetch();
         pools.forEach((pool, index) => {
             pools[index].items = Items.getPoolItems(pool._id);
         });
