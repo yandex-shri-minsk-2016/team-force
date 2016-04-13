@@ -3,6 +3,7 @@
  **/
 import { Meteor } from 'meteor/meteor';
 import Items from './../items/items';
+import Orders from './../orders/orders';
 
 class PoolsCollection extends Mongo.Collection {
     constructor() {
@@ -13,8 +14,13 @@ class PoolsCollection extends Mongo.Collection {
         //TODO: check data here
         return super.insert(data, function(error, id) {
             if (!error) {
-                data.items.forEach((item) => {
-                    Items.add({ poolId: id, shop: item.shop, link: item.link});
+                data.orders.forEach((order) => {
+                    Orders.add({
+                        poolId: id,
+                        items: order.items,
+                        owner: Meteor.userId(),
+                        sum: 0,
+                    });
                 });
             }
         });
