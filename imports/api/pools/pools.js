@@ -3,6 +3,7 @@
  **/
 import { Meteor } from 'meteor/meteor';
 import Items from './../items/items';
+import Orders from './../orders/orders';
 
 class PoolsCollection extends Mongo.Collection {
     constructor() {
@@ -13,19 +14,20 @@ class PoolsCollection extends Mongo.Collection {
         //TODO: check data here
         return super.insert(data, function(error, id) {
             if (!error) {
-                data.items.forEach((item) => {
-                    Items.add({ poolId: id, shop: item.shop, link: item.link});
+                data.orders.forEach((order) => {
+                    Orders.add({
+                        poolId: id,
+                        items: order.items,
+                        owner: Meteor.userId(),
+                        sum: 0,
+                    });
                 });
             }
         });
     }
 
     getCompanyPools(company) {
-        let pools = this.find({ company }).fetch();
-        pools.forEach((pool, index) => {
-            pools[index].items = Items.getPoolItems(pool._id);
-        });
-        return pools;
+        return this.find({ company: company });
     }
 
     findOne(filter, callback) {
