@@ -1,12 +1,12 @@
 
 Accounts.onLogin(() => {
-    FlowRouter.go('/');
+    Router.go('/');
 });
 
 Template.logoutButton.events({
     'click #action-logout': () => {
         Meteor.logout(() => {
-            FlowRouter.go('/login');
+            Router.go('/login');
         });
     }
 });
