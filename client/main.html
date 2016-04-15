@@ -4,13 +4,16 @@
   <title>Team Force</title>
 </head>
 <body>
-    {{> header}}
-        {{> Template.dynamic template=main}}
-    {{> footer}}
 </body>
 
-<template name="App">
-    {{> Template.dynamic template=main}}
+<template name="layout">
+    {{> header}}
+    {{> yield}}
+    {{> footer}}
+</template>
+
+<template name="loading">
+    <center>loading...</center>
 </template>
 
 <template name="appPools">
