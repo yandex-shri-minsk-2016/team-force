@@ -12,7 +12,7 @@ Template.logoutButton.events({
 });
 
 Template.registerHelper('usermail', (userId) => {
-    let u = Meteor.users.findOne({ _id: userId });
+    // let u = Meteor.users.findOne({ _id: userId });
     // @TODO fix quality code
-    return u.emails[0].address;
+    return 'email for: ' + userId;
 });

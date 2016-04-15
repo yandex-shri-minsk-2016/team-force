@@ -1,16 +1,28 @@
 <template name="header">
-    <header>
-        <nav class="navbar navbar-default my-navbar">
+    <header class="container">
+        <nav class="navbar navbar-default" role="navigation">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#"><p>TeamForce</p></a>
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#navigation">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{{pathFor 'index'}}">TeamForce</a>
+                </div>
+                <div class="collapse navbar-collapse" id="navigation">
+                    {{#if currentUser}}
+                    <ul class="nav navbar-nav">
+                        <li><a href="{{pathFor 'pool_add'}}">Добавить пулл</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>{{> logoutButton}}</li>
+                    </ul>
+                    {{/if}}
                 </div>
             </div>
         </nav>
-        <div id="login-buttons" class="login-buttons-dropdown-align-{{align}} header-email">
-            {{#if currentUser}}
-                {{> logoutButton}}
-            {{/if}}
-        </div>
     </header>
 </template>

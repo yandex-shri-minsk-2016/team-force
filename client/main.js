@@ -15,6 +15,8 @@ import './../imports/ui/components/append_pool/append_pool.js';
 
 import './../imports/ui/components/pools_list/pools_list.html';
 import './../imports/ui/components/pools_list/pools_list.js';
+import './../imports/ui/components/pools_list_item/pools_list_item.html';
+import './../imports/ui/components/pools_list_item/pools_list_item.js';
 
 import './../imports/ui/components/pool/pool.html';
 import './../imports/ui/components/pool/pool.js';
@@ -26,3 +28,38 @@ import './../imports/ui/components/header/header.html';
 import './../imports/ui/components/footer/footer.html';
 
 import './main.html';
+
+// @TODO: first data, remove from after Checkpoint2
+
+if (Meteor.user() && Pools.find().count() === 0) {
+
+    let products = [];
+
+    for (i = 0; i < 5; i++) {
+        let newItem = {
+            shop: 'testshop' + i,
+            link: 'link' + i,
+            createdAt: new Date()
+        };
+        products.push(newItem);
+    }
+
+    let newOrder = {
+        owner: Meteor.userId(),
+        items: products,
+        sum: 0,
+    };
+
+    let newPool = {
+        shop: 'testshop',
+        time: '00:00',
+        ownerId: Meteor.userId(),
+        company: Meteor.user().profile.company,
+        orders: [newOrder],
+        price: 0,
+        createdAt: new Date(),
+    };
+
+    Pools.add(newPool);
+
+}

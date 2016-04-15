@@ -1,35 +1,26 @@
+// auth.styl
+
+// @TODO: delete all
+
 .login-form
   width: 300px
   margin: 0 auto
   box-sizing: border-box
   padding: 20px 20px 5px
 
-#login-email, #login-password, #login-address, #login-company, #forgot-password-email
-  width: 100%
-  box-sizing: border-box
-
 #login-buttons
   display block
 
 #login-buttons-password, #login-buttons-forgot-password
-  @extend .ya-button
   margin: 15px 0 10px
   width: 100%
 
-#login-sign-in-link
-  @extend .ya-button
-
-
 .additional-link-container
   display: inline-block
-  text-decoration: underline
   &:first-child
     float: left
   &:last-child
     float: right
-
-.login-form.login-password-form>div
-  margin-bottom: 10px
 
 .header-email
   position: absolute
@@ -49,3 +40,5 @@
 .accounts-dialog
   width auto
   margin 0 auto
+  border none
+  box-shadow none
