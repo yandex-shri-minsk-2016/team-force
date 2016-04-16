@@ -22,9 +22,7 @@ insecure                # Allow all DB writes from clients (for prototyping)
 accounts-password
 stylus
 tsega:bootstrap3-datetimepicker
-kadira:flow-router
-kadira:blaze-layout
-bootstrap
 twbs:bootstrap
 auth-ui
 auth-ui-unstyled
+iron:router

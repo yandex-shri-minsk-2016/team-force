@@ -414,6 +414,7 @@ var signup = function () {
   loginButtonsSession.resetMessages();
 
   var options = {}; // to be passed to Accounts.createUser
+  options.profile = {}; // if there is a necessity to add fields
 
   var username = trimmedElementValueById('login-username');
   if (username !== null) {
@@ -429,6 +430,22 @@ var signup = function () {
       return;
     else
       options.email = email;
+  }
+
+  var address = trimmedElementValueById('login-address');
+  if (address !== null) {
+    if (!validateRequired(address))
+      return;
+    else
+      options.profile.address = address;
+  }
+
+  var company = trimmedElementValueById('login-company');
+  if (company !== null) {
+    if (!validateRequired(company))
+      return;
+    else
+      options.profile.company = company;
   }
 
   // notably not trimmed. a password could (?) start or end with a space
@@ -448,6 +465,7 @@ var signup = function () {
       loginButtonsSession.closeDropdown();
     }
   });
+
 };
 
 var forgotPassword = function () {

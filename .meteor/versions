@@ -13,7 +13,6 @@ blaze@2.1.6
 blaze-html-templates@1.0.3
 blaze-tools@1.0.7
 boilerplate-generator@1.0.7
-bootstrap@1.0.1
 caching-compiler@1.0.3
 caching-html-compiler@1.0.5
 callback-hook@1.0.7
@@ -38,9 +37,15 @@ htmljs@1.0.8
 http@1.1.4
 id-map@1.0.6
 insecure@1.0.6
+iron:controller@1.0.12
+iron:core@1.0.11
+iron:dynamic-template@1.0.12
+iron:layout@1.0.12
+iron:location@1.0.11
+iron:middleware-stack@1.0.11
+iron:router@1.0.12
+iron:url@1.0.11
 jquery@1.11.7
-kadira:blaze-layout@2.3.0
-kadira:flow-router@2.11.0
 launch-screen@1.0.10
 less@2.5.7
 livedata@1.0.17

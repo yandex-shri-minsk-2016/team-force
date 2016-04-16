@@ -1,18 +1,17 @@
 import {Meteor} from 'meteor/meteor';
 import Pools from './../../../api/pools/pools';
 
-Template.addPool.events({
-    'submit #add_pool': (event) => {
+Template.appendPool.events({
+    'submit #append_pool': (event) => {
         event.preventDefault();
 
         const target = event.target;
-        const inputTime = target.time.value;
         const inputProducts = target.products.value;
 
-        if (!inputTime || !inputProducts) {
+        if (!inputProducts) {
             return;
         }
-        
+
         let products = [];
 
         inputProducts.split(',').forEach((product) => {
@@ -30,19 +29,15 @@ Template.addPool.events({
             sum: 0,
         };
 
-        const newPool = {
-            shop: 'wok.by',
-            time: inputTime,
-            ownerId: Meteor.userId(),
-            company: Meteor.user().profile.company,
-            orders: [newOrder],
-            price: 0,
-            createdAt: new Date(),
-        };
+        poolId = Router.current().params.poolId;
 
-        Pools.add(newPool);
+        CurrentPool = Pools.findOne({ _id: poolId });
+        currentOrders = CurrentPool.orders;
+        currentOrders.push(newOrder);
 
-        // @TODO: notify success create newPool
-        Router.go('/');
+        Pools.update(CurrentPool._id, { $set: { orders: currentOrders } });
+
+        // @TODO: notify updated Pool
+        Router.go('pool', { poolId: poolId });
     }
 });

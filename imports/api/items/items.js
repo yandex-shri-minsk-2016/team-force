@@ -13,7 +13,7 @@ class ItemsCollection extends Mongo.Collection {
     }
 
     getPoolItems(poolId) {
-        return this.find({poolId}).fetch();
+        return this.find({ poolId }).fetch();
     }
 }
 

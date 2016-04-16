@@ -2,9 +2,16 @@
   "name": "main",
   "private": true,
   "scripts": {
-    "start": "meteor run"
+    "start": "meteor run",
+    "lint": "jscs -c config.jscs.json client imports server lib"
   },
   "dependencies": {
     "meteor-node-stubs": "~0.2.0"
-  }
+  },
+  "devDependencies": {
+    "pre-commit": "^1.1.2"
+  },
+  "pre-commit": [
+    "lint"
+  ]
 }

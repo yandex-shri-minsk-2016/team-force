@@ -1,14 +1,9 @@
-<template name="addPool">
+<template name="appendPool">
+    {{>pool }}
     <div class="row">
         <div class="container">
             <div class="list-group col-xs-12 col-sm-8 col-sm-offset-2">
-                <form id="add_pool">
-                    <div class="form-group">
-                        <label class="control-label" for="time">Время заказа</label>
-                        <div class="controls">
-                            <input name="time" id="time" type="text" value="" placeholder="Введите удобное время" class="form-control"/>
-                        </div>
-                    </div>
+                <form id="append_pool">
                     <div class="form-group">
                         <label class="control-label" for="products">Ссылки на продукты <small>(вводите через запятую)</small></label>
                         <div class="controls">
@@ -16,7 +11,7 @@
                         </div>
                     </div>
                     <div class="input-group">
-                        <button class="btn btn-success">Создать</button>
+                        <button class="btn btn-success">Присоединиться</button>
                     </div>
                 </form>
             </div>
