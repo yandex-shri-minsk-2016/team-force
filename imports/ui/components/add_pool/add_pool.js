@@ -43,6 +43,6 @@ Template.addPool.events({
         Pools.add(newPool);
 
         // @TODO: notify success create newPool
-        FlowRouter.go('/');
+        Router.go('/');
     }
 });
