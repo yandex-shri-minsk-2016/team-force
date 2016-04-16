@@ -1,15 +1,17 @@
 <template name="appendPool">
-    {{>pool pollId}}
+    {{>pool }}
     <div class="row">
         <div class="container">
             <div class="list-group col-xs-12 col-sm-8 col-sm-offset-2">
                 <form id="append_pool">
-                    <div class="input-group">
-                        <label for="products">Ссылки на продукты</label>
-                        <textarea class="form-control" name="products"></textarea>
+                    <div class="form-group">
+                        <label class="control-label" for="products">Ссылки на продукты <small>(вводите через запятую)</small></label>
+                        <div class="controls">
+                            <textarea class="form-control" name="products"></textarea>
+                        </div>
                     </div>
                     <div class="input-group">
-                        <button class="btn btn-success">Append poll</button>
+                        <button class="btn btn-success">Присоединиться</button>
                     </div>
                 </form>
             </div>

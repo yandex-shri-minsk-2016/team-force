@@ -1,14 +1,9 @@
 <template name="poolsList">
     <div class="row">
-        <ul class="list-group col-xs-12 col-sm-8 col-sm-offset-2">
-            {{#each pools}}
-                {{> pool}}
-            {{/each}}
-        </ul>
-    </div>
-    <div class="row">
         <div class="list-group col-xs-12 col-sm-8 col-sm-offset-2">
-            <a href="{{pathFor 'pool_add'}}" class="btn btn-success">Добавить пулл</a>
+            {{#each pools}}
+                {{> pools_list_item}}
+            {{/each}}
         </div>
     </div>
 </template>

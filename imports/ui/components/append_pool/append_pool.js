@@ -29,7 +29,7 @@ Template.appendPool.events({
             sum: 0,
         };
 
-        poolId = FlowRouter.current().params.poolId;
+        poolId = Router.current().params.poolId;
 
         CurrentPool = Pools.findOne({ _id: poolId });
         currentOrders = CurrentPool.orders;
@@ -38,6 +38,6 @@ Template.appendPool.events({
         Pools.update(CurrentPool._id, { $set: { orders: currentOrders } });
 
         // @TODO: notify updated Pool
-        FlowRouter.go('pool', { poolId: poolId });
+        Router.go('pool', { poolId: poolId });
     }
 });
