@@ -35,7 +35,7 @@ if (Meteor.user() && Pools.find().count() === 0) {
 
     let products = [];
 
-    for (i = 0; i < 5; i++) {
+    for (let i = 0; i < 5; i++) {
         let newItem = {
             shop: 'testshop' + i,
             link: 'link' + i,
@@ -47,7 +47,7 @@ if (Meteor.user() && Pools.find().count() === 0) {
     let newOrder = {
         owner: Meteor.userId(),
         items: products,
-        sum: 0,
+        sum: 0
     };
 
     let newPool = {
@@ -57,7 +57,7 @@ if (Meteor.user() && Pools.find().count() === 0) {
         company: Meteor.user().profile.company,
         orders: [newOrder],
         price: 0,
-        createdAt: new Date(),
+        createdAt: new Date()
     };
 
     Pools.add(newPool);
