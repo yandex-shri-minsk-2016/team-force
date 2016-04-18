@@ -31,6 +31,9 @@ import './../imports/ui/components/notifications/notifications.js';
 import './../imports/ui/components/header/header.html';
 import './../imports/ui/components/footer/footer.html';
 
+import './../imports/ui/components/page403/page403.html';
+import './../imports/ui/components/page404/page404.html';
+
 import './main.html';
 
 // @TODO: first data, remove from after Checkpoint2
