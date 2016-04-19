@@ -3,14 +3,14 @@ Notifications = [];
 if (Meteor.isClient) {
     Notifications = new Meteor.Collection(null);
 
-    throwNotification = function(type, message) {
+    throwNotification = (type, message) => {
         Notifications.insert({ type: type, message: message, seen: false });
     };
 
-    clearNotification = function() {
+    clearNotification = () => {
         Notifications.remove({ seen: true });
     };
 
-};
+}
 
 export default Notifications;

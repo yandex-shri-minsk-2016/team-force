@@ -1,12 +1,12 @@
 Template.notifications.helpers({
-    notifications: function() {
+    notifications: () => {
         return Notifications.find();
     }
 });
 
-Template.notification.rendered = function() {
+Template.notification.rendered = () => {
     var notification = this.data;
-    Meteor.defer(function() {
+    Meteor.defer(() => {
         Notifications.update(notification._id, { $set: { seen: true } });
     });
 };
