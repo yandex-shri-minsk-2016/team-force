@@ -26,5 +26,6 @@ twbs:bootstrap
 auth-ui
 auth-ui-unstyled
 iron:router
-practicalmeteor:mocha
 practicalmeteor:chai
+xolvio:cleaner
+dispatch:mocha-phantomjs

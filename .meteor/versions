@@ -25,6 +25,9 @@ ddp-rate-limiter@1.0.3
 ddp-server@1.2.5
 deps@1.0.11
 diff-sequence@1.0.4
+dispatch:mocha-core@0.0.1
+dispatch:mocha-phantomjs@0.1.0
+dispatch:phantomjs-tests@0.0.4
 ecmascript@0.4.2
 ecmascript-runtime@0.2.9
 ejson@1.0.10
@@ -69,10 +72,7 @@ npm-mongo@1.4.42
 observe-sequence@1.0.10
 ordered-dict@1.0.6
 practicalmeteor:chai@2.1.0_1
-practicalmeteor:loglevel@1.2.0_2
-practicalmeteor:mocha@2.4.5_1
 practicalmeteor:mocha-core@0.1.4
-practicalmeteor:sinon@1.14.1_2
 promise@0.6.6
 random@1.0.8
 rate-limit@1.0.3
@@ -92,7 +92,6 @@ standard-minifier-js@1.0.5
 stylus@2.511.4
 templating@1.1.8
 templating-tools@1.0.3
-tmeasday:test-reporter-helpers@0.2.1
 tracker@1.0.12
 tsega:bootstrap3-datetimepicker@4.17.37_1
 twbs:bootstrap@3.3.6
@@ -101,3 +100,4 @@ underscore@1.0.7
 url@1.0.8
 webapp@1.2.7
 webapp-hashing@1.0.8
+xolvio:cleaner@0.3.0
