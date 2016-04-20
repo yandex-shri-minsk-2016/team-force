@@ -3,15 +3,19 @@
   "private": true,
   "scripts": {
     "start": "meteor run",
-    "lint": "jscs -c config.jscs.json client imports server lib"
+    "lint": "jscs -c config.jscs.json client imports server lib",
+    "tests-only": "meteor test --once --driver-package dispatch:mocha-phantomjs",
+    "test": "npm run lint && npm run tests-only"
   },
   "dependencies": {
     "meteor-node-stubs": "~0.2.0"
   },
   "devDependencies": {
+    "chai-spies": "^0.7.1",
+    "mocha": "^2.4.5",
     "pre-commit": "^1.1.2"
   },
   "pre-commit": [
-    "lint"
+    "test"
   ]
 }

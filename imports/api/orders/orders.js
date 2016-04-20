@@ -12,7 +12,7 @@ class OrdersCollection extends Mongo.Collection {
                 data.items.forEach((item) => {
                     Items.add({
                         orderId: id,
-                        link: item.link,
+                        link: item.link
                     });
                 });
             }

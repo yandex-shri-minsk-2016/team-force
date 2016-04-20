@@ -19,7 +19,7 @@ class PoolsCollection extends Mongo.Collection {
                         poolId: id,
                         items: order.items,
                         owner: Meteor.userId(),
-                        sum: 0,
+                        sum: 0
                     });
                 });
             }

@@ -26,7 +26,7 @@ Template.appendPool.events({
         let newOrder = {
             owner: Meteor.userId(),
             items: products,
-            sum: 0,
+            sum: 0
         };
 
         poolId = Router.current().params.poolId;
