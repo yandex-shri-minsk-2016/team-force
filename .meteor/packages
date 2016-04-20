@@ -26,3 +26,5 @@ twbs:bootstrap
 auth-ui
 auth-ui-unstyled
 iron:router
+practicalmeteor:mocha
+practicalmeteor:chai
