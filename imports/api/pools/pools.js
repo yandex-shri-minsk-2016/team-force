@@ -37,5 +37,8 @@ class PoolsCollection extends Mongo.Collection {
 }
 
 PoolsCollection.name = 'Pools';
+PoolsCollection.schema = new SimpleSchema({
+    //TODO: Add schema
+});
 
 export default new PoolsCollection();

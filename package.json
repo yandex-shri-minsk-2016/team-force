@@ -4,7 +4,7 @@
   "scripts": {
     "start": "meteor run",
     "lint": "jscs -c config.jscs.json client imports server lib",
-    "tests-only": "meteor test --once --driver-package dispatch:mocha-phantomjs",
+    "tests-only": "meteor test --port=3100 --once --driver-package dispatch:mocha-phantomjs",
     "test": "npm run lint && npm run tests-only"
   },
   "dependencies": {
