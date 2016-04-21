@@ -19,14 +19,8 @@ describe('ItemsCollection', () => {
     });
 
     it('method `add` should insert item into collection', () => {
-        const item = { data: 2 };
+        const item = { title: '123', link: 'http://google.com' };
         ItemsCollection.add(item);
         expect(ItemsCollection.find().fetch()[0].data).to.be.equal(item.data);
-    });
-
-    it('method `getPoolItems` should return items for pool', () => {
-        const item = { data: 3, poolId: 5 };
-        ItemsCollection.add(item);
-        expect(ItemsCollection.getPoolItems(5)[0].data).to.be.equal(item.data);
     });
 });
