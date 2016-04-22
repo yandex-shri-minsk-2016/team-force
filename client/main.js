@@ -4,10 +4,12 @@ import PoolsCollection from './../imports/api/pools/pools';
 import OrdersCollection from './../imports/api/orders/orders';
 import ItemsCollection from './../imports/api/items/items';
 import Notifications from './../imports/api/notify/notify';
+import ParserClass from './../lib/parser';
 
 Pools = PoolsCollection;
 Orders = OrdersCollection;
 Items = ItemsCollection;
+Parser = ParserClass;
 
 import './../imports/ui/components/add_pool/add_pool.html';
 import './../imports/ui/components/add_pool/add_pool.js';
