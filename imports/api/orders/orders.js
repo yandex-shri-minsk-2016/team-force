@@ -6,15 +6,15 @@ class OrdersCollection extends Mongo.Collection {
         super(OrdersCollection.name);
     }
 
-    add(data, callback=null) {
-        return super.insert(data, function(error, id) {
-            if (!error) {
-                data.items.forEach((item) => {
-                    Items.add({
-                        orderId: id,
-                        link: item.link,
-                    });
+    add(data) {
+        return new Promise((resolve, reject) => {
+            try {
+                OrdersCollection.schema.validate(data);
+                super.insert(data, (error, id) => {
+                    error ? reject(error) : resolve(error);
                 });
+            } catch (e) {
+                reject(e);
             }
         });
     }
@@ -25,5 +25,16 @@ class OrdersCollection extends Mongo.Collection {
 }
 
 OrdersCollection.name = 'Orders';
+OrdersCollection.schema = new SimpleSchema({
+    poolId: {
+        type: Number
+    },
+    items: {
+        type: [Number]
+    },
+    userId: {
+        type: String
+    }
+});
 
 export default new OrdersCollection();

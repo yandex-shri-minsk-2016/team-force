@@ -27,7 +27,7 @@ Template.addPool.events({
         let newOrder = {
             owner: Meteor.userId(),
             items: products,
-            sum: 0,
+            sum: 0
         };
 
         const newPool = {
@@ -37,7 +37,7 @@ Template.addPool.events({
             company: Meteor.user().profile.company,
             orders: [newOrder],
             price: 0,
-            createdAt: new Date(),
+            createdAt: new Date()
         };
 
         Pools.add(newPool);

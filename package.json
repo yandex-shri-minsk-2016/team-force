@@ -3,15 +3,26 @@
   "private": true,
   "scripts": {
     "start": "meteor run",
-    "lint": "jscs -c config.jscs.json client imports server lib"
+    "lint": "jscs -c config.jscs.json client imports server lib",
+    "test": "meteor test --port=3100 --once --driver-package dispatch:mocha-phantomjs"
   },
   "dependencies": {
-    "meteor-node-stubs": "~0.2.0"
+    "cheerio": "^0.20.0",
+    "cls-bluebird": "^1.0.1",
+    "continuation-local-storage": "^3.1.7",
+    "meteor-node-stubs": "~0.2.0",
+    "normalize-url": "^1.4.1",
+    "request": "^2.72.0",
+    "request-promise": "^3.0.0",
+    "url": "^0.11.0"
   },
   "devDependencies": {
+    "chai-spies": "^0.7.1",
+    "mocha": "^2.4.5",
     "pre-commit": "^1.1.2"
   },
   "pre-commit": [
-    "lint"
+    "lint",
+    "test"
   ]
 }

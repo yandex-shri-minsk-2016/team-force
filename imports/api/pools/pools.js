@@ -19,7 +19,7 @@ class PoolsCollection extends Mongo.Collection {
                         poolId: id,
                         items: order.items,
                         owner: Meteor.userId(),
-                        sum: 0,
+                        sum: 0
                     });
                 });
             }
@@ -37,5 +37,8 @@ class PoolsCollection extends Mongo.Collection {
 }
 
 PoolsCollection.name = 'Pools';
+PoolsCollection.schema = new SimpleSchema({
+    //TODO: Add schema
+});
 
 export default new PoolsCollection();

@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/yandex-shri-minsk-2016/team-force.svg?branch=master)](https://travis-ci.org/yandex-shri-minsk-2016/team-force)
+
 # Project team-force
 
 Get your food delivered right to your office or any place of your choice. Create pools and share them with your team members to order more from your favorite restaurant or cafe. Want a snack? Get it right!
