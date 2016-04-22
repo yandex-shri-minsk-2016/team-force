@@ -1,5 +1,5 @@
 <template name="loginButtons">
-  <div id="login-buttons" class="login-buttons-dropdown-align-{{align}}">
+  <div id="login-buttons" class="clearfix login-buttons-dropdown-align-{{align}}">
     {{#if currentUser}}
       {{#if loggingIn}}
         {{! We aren't actually logged in yet; we're just setting Meteor.userId
@@ -40,7 +40,9 @@
         {{#with singleService}} {{! at this point there must be only one configured services }}
           <div class="login-buttons-with-only-one-button">
             {{#if loggingIn}}
+              <div class="navbar-form">
               {{> _loginButtonsLoggingInSingleLoginButton}}
+              </div>
             {{else}}
               {{> _loginButtonsLoggedOutSingleLoginButton}}
             {{/if}}
@@ -56,10 +58,10 @@
 <!-- used in various places to display messages to user -->
 <template name="_loginButtonsMessages">
   {{#if errorMessage}}
-    <div class="message error-message">{{errorMessage}}</div>
+    <div class="alert alert-danger">{{errorMessage}}</div>
   {{/if}}
   {{#if infoMessage}}
-    <div class="message info-message">{{infoMessage}}</div>
+    <div class="alert alert-success no-margin">{{infoMessage}}</div>
   {{/if}}
 </template>
 

@@ -15,17 +15,21 @@
     <div class="hide-background"></div>
 
     <div class="accounts-dialog accounts-centered-dialog">
-      <label id="reset-password-new-password-label" for="reset-password-new-password">
-        New password
-      </label>
 
-      <div class="reset-password-new-password-wrapper">
-        <input id="reset-password-new-password" type="password" />
+      <div class="form-group">
+          <label id="reset-password-new-password-label" for="reset-password-new-password">
+            New password
+          </label>
+          <div class="controls">
+              <div class="reset-password-new-password-wrapper">
+                <input id="reset-password-new-password" type="password" class="form-control"/>
+              </div>
+          </div>
       </div>
 
       {{> _loginButtonsMessages}}
 
-      <div class="login-button login-button-form-submit" id="login-buttons-reset-password-button">
+      <div class="btn btn-primary login-button-form-submit" id="login-buttons-reset-password-button">
         Set password
       </div>
 
@@ -39,7 +43,7 @@
     <div class="accounts-dialog accounts-centered-dialog">
       Password reset.
       You are now logged in as {{displayName}}.
-      <div class="login-button" id="just-verified-dismiss-button">Dismiss</div>
+      <div class="btn btn-danger" id="just-verified-dismiss-button">Dismiss</div>
     </div>
   {{/if}}
 </template>
@@ -49,17 +53,21 @@
     <div class="hide-background"></div>
 
     <div class="accounts-dialog accounts-centered-dialog">
-      <label id="enroll-account-password-label" for="enroll-account-password">
-        Choose a password
-      </label>
 
-      <div class="enroll-account-password-wrapper">
-        <input id="enroll-account-password" type="password" />
+      <div class="form-group">
+          <label id="enroll-account-password-label" for="enroll-account-password">
+            Choose a password
+          </label>
+          <div class="controls">
+            <div class="enroll-account-password-wrapper">
+              <input id="enroll-account-password" type="password" class="form-control" />
+            </div>
+          </div>
       </div>
 
       {{> _loginButtonsMessages}}
 
-      <div class="login-button login-button-form-submit" id="login-buttons-enroll-account-button">
+      <div class="btn btn-primary" id="login-buttons-enroll-account-button">
         Create account
       </div>
 
@@ -73,7 +81,7 @@
     <div class="accounts-dialog accounts-centered-dialog">
       Email verified.
       You are now logged in as {{displayName}}.
-      <div class="login-button" id="just-verified-dismiss-button">Dismiss</div>
+      <div class="btn btn-primary" id="just-verified-dismiss-button">Dismiss</div>
     </div>
   {{/if}}
 </template>

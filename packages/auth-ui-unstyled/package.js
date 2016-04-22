@@ -35,8 +35,8 @@ Package.onUse(function (api) {
   // this packages doesn't actually apply these styles; they need to be
   // `@import`ed from some non-import less file.  The accounts-ui packages does
   // that for you, or you can do it in your app.
-  api.use('less');
-  api.addFiles('login_buttons.import.less');
+  // api.use('less');
+  // api.addFiles('login_buttons.import.less');
 });
 
 Package.onTest(function (api) {
