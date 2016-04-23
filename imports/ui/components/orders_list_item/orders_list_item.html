@@ -1,0 +1,17 @@
+<template name="orders_list_item">
+    <div class="list-group">
+        <a class="list-group-item">
+            <h4>{{ _id }}</h4>
+            <p class="list-group-item-text">
+                <ul>
+                    <li>{{usermail owner }}</li>
+                    <ul>
+                        {{#each items }}
+                            <li>{{ id }}</li>
+                        {{/each}}
+                    </ul>
+                </ul>
+            </p>
+        </a>
+    </div>
+</template>
