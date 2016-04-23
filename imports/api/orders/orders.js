@@ -1,5 +1,4 @@
 import { Meteor } from 'meteor/meteor';
-import Items from './../items/items';
 
 class OrdersCollection extends Mongo.Collection {
     constructor() {
@@ -21,6 +20,16 @@ class OrdersCollection extends Mongo.Collection {
 
     findOne(filter, callback) {
         return super.findOne(filter, callback);
+    }
+
+    orderUp(poolId, orderId) {
+        let CurrentPool = Pools.findOne({ _id: poolId });
+        let currentOrders = CurrentPool.orders;
+        let newOrder = {};
+        $.extend(newOrder, currentOrders[orderId]);
+        newOrder.owner = Meteor.userId();
+        currentOrders.push(newOrder);
+        Pools.update(CurrentPool._id, { $set: { orders: currentOrders } });
     }
 }
 

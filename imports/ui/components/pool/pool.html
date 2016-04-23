@@ -1,7 +1,7 @@
 <template name="pool">
     <div class="row">
         <div class="list-group col-xs-12 col-sm-8 col-sm-offset-2">
-            <h4>{{_id}}</h4>
+            <h4 id="pool_id">{{_id}}</h4>
             <div class="rbt">
                 <span class="badge">{{time}}</span>
             </div>
@@ -9,7 +9,12 @@
             {{#if orders}}
                 <ul>
                     {{# each orders }}
-                        <li>{{usermail owner}}</li>
+                        <li>
+                            {{usermail owner}}
+                            {{#if notOurOrder @index}}
+                                <button class="order_up" data-orderId="{{ @index }}">+</button>
+                            {{/if}}
+                        </li>
                         <ul>
                             {{# each items }}
                                 <li>{{ link }}</li>
