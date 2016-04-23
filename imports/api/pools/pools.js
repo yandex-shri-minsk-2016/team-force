@@ -10,24 +10,21 @@ class PoolsCollection extends Mongo.Collection {
         super(PoolsCollection.name);
     }
     
-    add(data, callback=null) {
-        //TODO: check data here
-        return super.insert(data, function(error, id) {
-            if (!error) {
-                data.orders.forEach((order) => {
-                    Orders.add({
-                        poolId: id,
-                        items: order.items,
-                        owner: Meteor.userId(),
-                        sum: 0
-                    });
+    add(data) {
+        return new Promise((resolve, reject) => {
+            try {
+                PoolsCollection.schema.validate(data);
+                super.insert(data, (error, id) => {
+                    error ? reject(error) : resolve(id);
                 });
+            } catch (e) {
+                reject(e);
             }
         });
     }
 
-    getCompanyPools(company) {
-        return this.find({ company: company });
+    getCompanyPools(companyId) {
+        return this.find({ companyId: companyId });
     }
 
     findOne(filter, callback) {
@@ -38,7 +35,21 @@ class PoolsCollection extends Mongo.Collection {
 
 PoolsCollection.name = 'Pools';
 PoolsCollection.schema = new SimpleSchema({
-    //TODO: Add schema
+    shop: {
+        type: String
+    },
+    time: {
+        type: Date
+    },
+    ownerId: {
+        type: String
+    },
+    status: {
+        type: String
+    },
+    companyId: {
+        type: String
+    }
 });
 
 export default new PoolsCollection();

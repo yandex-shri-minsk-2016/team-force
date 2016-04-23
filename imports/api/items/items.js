@@ -76,6 +76,11 @@ ItemsCollection.schema = new SimpleSchema({
         type: String,
         label: 'Type of the dish (e.g. large/small pizza) or weight',
         optional: true
+    },
+    img: {
+        type: String,
+        optional: true,
+        label: 'Link to the item image'
     }
 });
 
