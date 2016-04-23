@@ -1,9 +1,11 @@
-<template name="pools_list_item">
+<template name="poolsListItem">
     <div class="list-group">
-        <a href="{{pathFor 'pool' poolId=_id }}"  class="list-group-item">
+        <a href="{{#if isPending _id}} {{pathFor 'pool' poolId=_id }} {{/if}}" class="list-group-item">
             <h4>{{_id}}</h4>
             <div class="rbt">
-                <a href="{{pathFor 'pool_append' poolId=_id }}" class="btn btn-primary">Присоединиться</a>
+                {{#if isPending _id}}
+                  <a href="{{pathFor 'pool_append' poolId=_id }}" class="btn btn-primary">Присоединиться</a>
+                {{/if}}
                 <br>
                 <span class="badge">{{time}}</span>
             </div>

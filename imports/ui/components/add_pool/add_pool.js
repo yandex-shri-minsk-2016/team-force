@@ -12,7 +12,7 @@ Template.addPool.events({
         if (!inputTime || !inputProducts) {
             return;
         }
-        
+
         let products = [];
 
         inputProducts.split(',').forEach((product) => {
@@ -37,7 +37,10 @@ Template.addPool.events({
             company: Meteor.user().profile.company,
             orders: [newOrder],
             price: 0,
-            createdAt: new Date()
+            createdAt: new Date(),
+            
+            // pending -> summary -> closed
+            state: 'pending'
         };
 
         Pools.add(newPool);
