@@ -7,42 +7,28 @@ Template.addPool.events({
 
         const target = event.target;
         const inputTime = target.time.value;
-        const inputProducts = target.products.value;
 
-        if (!inputTime || !inputProducts) {
+        if (!inputTime) {
             return;
         }
-        
-        let products = [];
-
-        inputProducts.split(',').forEach((product) => {
-            let newItem = {
-                shop: 'wok.by',
-                link: product,
-                createdAt: new Date()
-            };
-            products.push(newItem);
-        });
-
-        let newOrder = {
-            owner: Meteor.userId(),
-            items: products,
-            sum: 0
-        };
 
         const newPool = {
-            shop: 'wok.by',
-            time: inputTime,
+            shop: '',
+            time: new Date(),
             ownerId: Meteor.userId(),
-            company: Meteor.user().profile.company,
-            orders: [newOrder],
-            price: 0,
-            createdAt: new Date()
+            companyId: Meteor.user().profile.company,
+            status: 'pending' //TODO: Move to constants
         };
 
-        Pools.add(newPool);
-
-        // @TODO: notify success create newPool
-        Router.go('/');
+        Pools.add(newPool)
+            .then((poolId) => {
+                // @TODO: notify success create newPool
+                Router.go(`/pool/${poolId}`);
+            })
+            .catch((e) => {
+                console.log(e);
+                
+                //TODO: Show error
+            });
     }
 });

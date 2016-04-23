@@ -2,6 +2,7 @@ import {Meteor} from 'meteor/meteor';
 import Pools from './../../../api/pools/pools';
 import Parser from './../../../../lib/parser';
 import Items from './../../../api/items/items';
+import Orders from './../../../api/orders/orders';
 
 let itemFields = [];
 let itemFieldsDep = new Tracker.Dependency();
@@ -77,39 +78,25 @@ Template.appendPool.events({
         };
 
         const poolId = Router.current().params.poolId;
-        const currentPool = Pools.findOne({ _id: poolId });
-        const currentOrders = currentPool.orders;
-        let currentUserOrderIndex = null;
-        currentOrders.forEach((order, index) => {
-            if (order.owner === Meteor.userId()) {
-                currentUserOrderIndex = index;
-            }
-        });
-
+        const userOrder = Orders.findOne({ poolId: poolId, userId: Meteor.userId() });
         Items.findOrInsert(newItem)
             .then((itemId) => {
-                if (!currentUserOrderIndex) {
-                    currentOrders.push({
-                        owner: Meteor.userId(),
-                        items: [{ id: itemId, count: 1 }]
+                if (!userOrder) {
+                    Orders.add({
+                        userId: Meteor.userId(),
+                        poolId,
+                        items: [{
+                            count: 1,
+                            id: itemId
+                        }]
                     });
                 } else {
-                    let exist = false;
-                    currentOrders[currentUserOrderIndex].items.forEach((item, index) => {
-                        if (item.id === itemId) {
-                            currentOrders[currentUserOrderIndex].items[index].count++;
-                            exist = true;
-                        }
-                    });
-                    if (!exist) {
-                        currentOrders[currentUserOrderIndex].items.push({ id: itemId, count: 1 });
-                    }
+                    Orders.update(userOrder._id, { $addToSet: { items: { count: 1, id: itemId } } });
                 }
 
                 itemFields = [];
                 itemFieldsDep.changed();
 
-                Pools.update(currentPool._id, { $set: { orders: currentOrders } });
                 Router.go('pool', { poolId: poolId });
             })
             .catch((e) => {
