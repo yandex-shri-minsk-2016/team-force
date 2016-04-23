@@ -3,12 +3,14 @@ import { ReactiveVar } from 'meteor/reactive-var';
 import PoolsCollection from './../imports/api/pools/pools';
 import OrdersCollection from './../imports/api/orders/orders';
 import ItemsCollection from './../imports/api/items/items';
+import CompanyCollection from './../imports/api/company/company';
 import Notifications from './../imports/api/notify/notify';
 import ParserClass from './../lib/parser';
 
 Pools = PoolsCollection;
 Orders = OrdersCollection;
 Items = ItemsCollection;
+Company = CompanyCollection;
 Parser = ParserClass;
 
 import './../imports/ui/components/add_pool/add_pool.html';
