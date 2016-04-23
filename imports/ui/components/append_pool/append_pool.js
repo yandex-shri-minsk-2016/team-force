@@ -68,15 +68,13 @@ Template.appendPool.events({
 
         const target = event.target;
 
-        let newItem = {};
-        for (let key in itemFields) {
-            newItem.title = target['form-elem-title'].value;
-            newItem.price = parseInt(target['form-elem-price'].value.split(' ').join('')); //FIXME string to int
-            newItem.description = target['form-elem-descr'].value;
-            newItem.weight = target['form-elem-weight'].value;
-            newItem.weight = target['form-elem-weight'].value;
-            newItem.link = target['item-link'].value;
-        }
+        let newItem = {
+            title: target['form-elem-title'].value,
+            price: parseInt(target['form-elem-price'].value.split(' ').join('')), //FIXME string to int
+            description: target['form-elem-descr'].value,
+            weight: target['form-elem-weight'].value,
+            link: target['item-link'].value
+        };
 
         const poolId = Router.current().params.poolId;
         const currentPool = Pools.findOne({ _id: poolId });
@@ -108,16 +106,15 @@ Template.appendPool.events({
                     }
                 }
 
+                itemFields = [];
+                itemFieldsDep.changed();
+
                 Pools.update(currentPool._id, { $set: { orders: currentOrders } });
                 Router.go('pool', { poolId: poolId });
             })
             .catch((e) => {
                 //TODO: Show notification
                 alert(e);
-            })
-            .finally(() => {
-                itemFields = [];
-                itemFieldsDep.changed();
             });
     }
 });

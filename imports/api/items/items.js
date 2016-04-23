@@ -8,13 +8,25 @@ class ItemsCollection extends Mongo.Collection {
         super(ItemsCollection.name);
     }
 
+    isValid(data) {
+        try {
+            ItemsCollection.schema.validate(data);
+        } catch (e) {
+            throw e;
+            return false;
+        }
+
+        return true;
+    }
+
     add(data) {
         return new Promise((resolve, reject) => {
             try {
-                ItemsCollection.schema.validate(data);
-                super.insert(data, (error, id) => {
-                    error ? reject(error) : resolve(id);
-                });
+                if (this.isValid(data)) {
+                    super.insert(data, (error, id) => {
+                        error ? reject(error) : resolve(id);
+                    });
+                }
             } catch (e) {
                 reject(e);
             }
@@ -24,12 +36,14 @@ class ItemsCollection extends Mongo.Collection {
     findOrInsert(data) {
         return new Promise((resolve, reject) => {
             try {
-                ItemsCollection.schema.validate(data);
-                let existentItem = super.findOne(data);
-                if (existentItem) {
-                    resolve(existentItem._id);
-                } else {
-                    resolve(this.add(data));
+                if (this.isValid(data)) {
+                    let existentItem = super.findOne(data);
+
+                    if (existentItem) {
+                        resolve(existentItem._id);
+                    } else {
+                        resolve(this.add(data));
+                    }
                 }
             } catch (e) {
                 reject(e);
