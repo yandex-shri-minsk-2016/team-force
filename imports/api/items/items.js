@@ -20,6 +20,22 @@ class ItemsCollection extends Mongo.Collection {
             }
         });
     }
+    
+    findOrInsert(data) {
+        return new Promise((resolve, reject) => {
+            try {
+                ItemsCollection.schema.validate(data);
+                let existentItem = super.findOne(data);
+                if (existentItem) {
+                    resolve(existentItem._id);
+                } else {
+                    resolve(this.add(data));
+                }
+            } catch (e) {
+                reject(e);
+            }
+        });
+    }
 }
 
 ItemsCollection.name = 'Items';

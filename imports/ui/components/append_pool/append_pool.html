@@ -4,14 +4,22 @@
         <div class="container">
             <div class="list-group col-xs-12 col-sm-8 col-sm-offset-2">
                 <form id="append_pool">
-                    <div class="form-group">
-                        <label class="control-label" for="products">Ссылки на продукты <small>(вводите через запятую)</small></label>
+                    <div class="form-group new-product-input-group">
+                        <label class="control-label" for="products">Ссылка на продукт</label>
                         <div class="controls">
-                            <textarea class="form-control" name="products"></textarea>
+                            <input class="form-control" name="item-link" id="new-product-input">
                         </div>
                     </div>
+                    {{#each itemFields}}
+                        <div class="form-group new-product-input-group">
+                            <label class="control-label" for="products">{{title}}</label>
+                            <div class="controls">
+                                <input name={{key}} class="form-control" value={{value}} id="new-product-input">
+                            </div>
+                        </div>
+                    {{/each}}
                     <div class="input-group">
-                        <button class="btn btn-success">Присоединиться</button>
+                        <button class="btn btn-success join-button disabled" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Загружаем">Присоединиться</button>
                     </div>
                 </form>
             </div>
