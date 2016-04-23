@@ -17,9 +17,20 @@ Template.pool.helpers({
         });
 
         return orders;
-    }
-    notOurOrder: function() {
-        return (this.owner != Meteor.userId());
+    },
+
+    notHaveOrder: () => {
+        let orders = Template.instance().data.orders;
+        for (let order of orders) {
+            if (order.owner == Meteor.userId())
+                return false;
+        }
+        
+        return true;
+    },
+
+    notOurOrder: (owner) => {
+        return (owner != Meteor.userId());
     }
 });
 
@@ -27,6 +38,6 @@ Template.pool.events({
     'click .order_up'(event) {
         poolId = Template.instance().data._id;
         orderId = event.currentTarget.getAttribute('data-orderId');
-        Orders.orderUp(poolId, orderId);
+        Orders.copyOrder(poolId, orderId);
     }
 });

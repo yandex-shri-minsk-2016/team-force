@@ -22,7 +22,7 @@ class OrdersCollection extends Mongo.Collection {
         return super.findOne(filter, callback);
     }
 
-    orderUp(poolId, orderId) {
+    copyOrder(poolId, orderId) {
         let CurrentPool = Pools.findOne({ _id: poolId });
         let currentOrders = CurrentPool.orders;
         let newOrder = {};
