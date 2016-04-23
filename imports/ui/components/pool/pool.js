@@ -22,7 +22,7 @@ Template.pool.helpers({
     notHaveOrder: () => {
         let orders = Template.instance().data.orders;
         for (let order of orders) {
-            if (order.owner == Meteor.userId())
+            if (order.owner === Meteor.userId())
                 return false;
         }
         
@@ -30,7 +30,7 @@ Template.pool.helpers({
     },
 
     notOurOrder: (owner) => {
-        return (owner != Meteor.userId());
+        return owner !== Meteor.userId();
     }
 });
 
