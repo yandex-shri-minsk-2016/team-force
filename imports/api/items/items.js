@@ -8,13 +8,43 @@ class ItemsCollection extends Mongo.Collection {
         super(ItemsCollection.name);
     }
 
+    isValid(data) {
+        try {
+            ItemsCollection.schema.validate(data);
+        } catch (e) {
+            throw e;
+            return false;
+        }
+
+        return true;
+    }
+
     add(data) {
         return new Promise((resolve, reject) => {
             try {
-                ItemsCollection.schema.validate(data);
-                super.insert(data, (error, id) => {
-                    error ? reject(error) : resolve(id);
-                });
+                if (this.isValid(data)) {
+                    super.insert(data, (error, id) => {
+                        error ? reject(error) : resolve(id);
+                    });
+                }
+            } catch (e) {
+                reject(e);
+            }
+        });
+    }
+    
+    findOrInsert(data) {
+        return new Promise((resolve, reject) => {
+            try {
+                if (this.isValid(data)) {
+                    let existentItem = super.findOne(data);
+
+                    if (existentItem) {
+                        resolve(existentItem._id);
+                    } else {
+                        resolve(this.add(data));
+                    }
+                }
             } catch (e) {
                 reject(e);
             }
@@ -46,6 +76,11 @@ ItemsCollection.schema = new SimpleSchema({
         type: String,
         label: 'Type of the dish (e.g. large/small pizza) or weight',
         optional: true
+    },
+    img: {
+        type: String,
+        optional: true,
+        label: 'Link to the item image'
     }
 });
 

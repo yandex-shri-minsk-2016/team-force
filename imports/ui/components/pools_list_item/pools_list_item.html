@@ -7,21 +7,6 @@
                 <br>
                 <span class="badge">{{time}}</span>
             </div>
-
-            <p class="list-group-item-text">
-            {{#if orders}}
-                <ul>
-                    {{# each orders }}
-                        <li>{{usermail owner }}</li>
-                        <ul>
-                            {{# each items }}
-                                <li>{{ link }}</li>
-                            {{/each}}
-                        </ul>
-                    {{/each}}
-                </ul>
-            {{/if}}
-            </p>
         </a>
     </div>
 </template>

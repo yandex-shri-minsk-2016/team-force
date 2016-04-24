@@ -302,6 +302,38 @@ Template._loginButtonsFormField.helpers({
   }
 });
 
+Template._loginButtonsFormField.events({
+  'keyup #login-company': function (event) {
+    let strCompany = event.target.value;
+    // @TODO autocompleting
+    let $loginCompany = $('#login-company');
+
+    $loginCompany
+      .tooltip('destroy')
+      .attr('data-toggle', 'tooltip')
+      .attr('data-placement', 'right')
+      .removeAttr('data-original-title');
+
+    if (Company.isExistCompany(strCompany)){
+      $loginCompany
+        .attr('title', 'Есть такая компания')
+        .parent()
+          .addClass('has-success')
+          .removeClass('has-error');
+    }else{
+      $loginCompany
+        .attr('title', 'Вы первый, компания будет создана')
+        .parent()
+          .removeClass('has-success')
+          .addClass('has-error');
+    }
+    $('[data-toggle="tooltip"]').tooltip('show');
+  },
+  'blur #login-company': function (event) {
+    $('[data-toggle="tooltip"]').tooltip('hide');
+  }
+
+});
 
 //
 // loginButtonsChangePassword template

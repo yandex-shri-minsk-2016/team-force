@@ -9,7 +9,7 @@ class OrdersCollection extends Mongo.Collection {
     add(data) {
         return new Promise((resolve, reject) => {
             try {
-                OrdersCollection.schema.validate(data);
+                //OrdersCollection.schema.validate(data);
                 super.insert(data, (error, id) => {
                     error ? reject(error) : resolve(error);
                 });
@@ -27,10 +27,13 @@ class OrdersCollection extends Mongo.Collection {
 OrdersCollection.name = 'Orders';
 OrdersCollection.schema = new SimpleSchema({
     poolId: {
-        type: Number
+        type: String
     },
     items: {
-        type: [Number]
+        type: [{
+            count: Number,
+            id: String
+        }]
     },
     userId: {
         type: String
