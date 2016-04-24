@@ -22,6 +22,8 @@ import './../imports/ui/components/pools_list/pools_list.html';
 import './../imports/ui/components/pools_list/pools_list.js';
 import './../imports/ui/components/pools_list_item/pools_list_item.html';
 import './../imports/ui/components/pools_list_item/pools_list_item.js';
+import './../imports/ui/components/orders_list_item/orders_list_item.html';
+import './../imports/ui/components/orders_list_item/orders_list_item.js';
 
 import './../imports/ui/components/pool/pool.html';
 import './../imports/ui/components/pool/pool.js';
