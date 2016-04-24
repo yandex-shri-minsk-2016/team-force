@@ -26,6 +26,9 @@ import './../imports/ui/components/pools_list_item/pools_list_item.js';
 import './../imports/ui/components/pool/pool.html';
 import './../imports/ui/components/pool/pool.js';
 
+import './../imports/ui/components/history/history.html';
+import './../imports/ui/components/history/history.js';
+
 import './../imports/ui/components/auth/auth.html';
 import './../imports/ui/components/auth/auth.js';
 
