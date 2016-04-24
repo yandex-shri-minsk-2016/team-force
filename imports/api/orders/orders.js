@@ -22,14 +22,14 @@ class OrdersCollection extends Mongo.Collection {
         return super.findOne(filter, callback);
     }
 
-    copyOrder(poolId, orderId) {
-        let CurrentPool = Pools.findOne({ _id: poolId });
-        let currentOrders = CurrentPool.orders;
+    copyOrder(poolId, orderIndex) {
+        const currentPool = Pools.findOne({ _id: poolId });
+        let currentOrders = currentPool.orders;
         let newOrder = {};
-        $.extend(newOrder, currentOrders[orderId]);
+        $.extend(newOrder, currentOrders[orderIndex]);
         newOrder.owner = Meteor.userId();
         currentOrders.push(newOrder);
-        Pools.update(CurrentPool._id, { $set: { orders: currentOrders } });
+        Pools.update(currentPool._id, { $set: { orders: currentOrders } });
     }
 }
 

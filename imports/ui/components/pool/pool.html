@@ -11,11 +11,11 @@
                     {{# each poolOrders }}
                         <li>
                             {{usermail owner}}
-                            {{#if notHaveOrder}}
-                                {{#if notOurOrder owner}}
-                                    <button class="order_up" data-orderId="{{ @index }}">+</button>
-                                {{/if}}
-                            {{/if}}
+                            {{#unless haveOrder}}
+                                {{#unless ourOrder owner}}
+                                    <button class="copy_order" data-index="{{ @index }}">+</button>
+                                {{/unless}}
+                            {{/unless}}
                         </li>
                         <ul>
                             {{# each items }}
