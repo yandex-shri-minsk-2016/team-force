@@ -105,7 +105,9 @@ Template.appendPool.events({
                             id: itemId
                         });
                     }
-                    Orders.update(userOrder._id,{$set:{items: userOrder.items}});
+                    Orders.update(userOrder._id,{
+                        $set:{items: userOrder.items}
+                    });
                 }
 
                 itemFields = [];
