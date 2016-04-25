@@ -1,0 +1,24 @@
+{
+  "eda.by": {
+    "minDelivery": "100000",
+    "costDelivery": "0",
+    "freeDelivery": "100000",
+    "fields": {
+      "title":  ".dishinfo > h2",
+      "weight": ".dishinfo > span",
+      "price":  ".dishinfo > b",
+      "descr":  ".summary"
+    }
+  },
+  "wok.by": {
+    "minDelivery": "100000",
+    "costDelivery": "50000",
+    "freeDelivery": "150000",
+    "fields": {
+      "title":  ".sldier_container h1.productTitle",
+      "weight": ".sldier_container .controls .checkbox",
+      "price":  ".sldier_container span.price",
+      "descr":  ".sldier_container span.productIntro"
+    }
+  }
+}
