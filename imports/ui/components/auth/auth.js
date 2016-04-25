@@ -1,8 +1,3 @@
-
-Accounts.onLogin(() => {
-    Router.go('/');
-});
-
 Template.logoutButton.events({
     'click #action-logout': () => {
         Meteor.logout(() => {
