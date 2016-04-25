@@ -1,0 +1,18 @@
+{
+  "eda.by": {
+    "fields": {
+      "title":  ".dishinfo > h2",
+      "weight": ".dishinfo > span",
+      "price":  ".dishinfo > b",
+      "descr":  ".summary"
+    }
+  },
+  "wok.by": {
+    "fields": {
+      "title":  ".sldier_container h1.productTitle",
+      "weight": ".sldier_container .controls .checkbox",
+      "price":  ".sldier_container span.price",
+      "descr":  ".sldier_container span.productIntro"
+    }
+  }
+}
