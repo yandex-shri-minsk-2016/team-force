@@ -81,7 +81,7 @@ Template.appendPool.events({
         const userOrder = Orders.findOne({ poolId: poolId, userId: Meteor.userId() });
         Items.findOrInsert(newItem)
             .then((itemId) => {
-                if (!userOrder) {
+                if(!userOrder) {
                     Orders.add({
                         userId: Meteor.userId(),
                         poolId,
@@ -90,7 +90,7 @@ Template.appendPool.events({
                             id: itemId
                         }]
                     });
-                } else {
+                }else {
                     let existInOrder = false;
 
                     userOrder.items.forEach((item, index) => {
@@ -99,15 +99,13 @@ Template.appendPool.events({
                             existInOrder = true;
                         }
                     });
-                    
                     if (!existInOrder) {
                         userOrder.items.push({
                             count: 1,
                             id: itemId
                         });
                     }
-
-                    Orders.update(userOrder._id, { $set: { items: userOrder.items } });
+                    Orders.update(userOrder._id,{$set:{items: userOrder.items}});
                 }
 
                 itemFields = [];
