@@ -3,6 +3,7 @@ import { ReactiveVar } from 'meteor/reactive-var';
 import PoolsCollection from './../imports/api/pools/pools';
 import OrdersCollection from './../imports/api/orders/orders';
 import ItemsCollection from './../imports/api/items/items';
+import FeedsCollection from './../imports/api/feeds/feeds';
 import CompanyCollection from './../imports/api/company/company';
 import Notifications from './../imports/api/notify/notify';
 import ParserClass from './../lib/parser';
@@ -10,6 +11,7 @@ import ParserClass from './../lib/parser';
 Pools = PoolsCollection;
 Orders = OrdersCollection;
 Items = ItemsCollection;
+Feeds = FeedsCollection;
 Company = CompanyCollection;
 Parser = ParserClass;
 
@@ -30,6 +32,8 @@ import './../imports/ui/components/pool/pool.js';
 
 import './../imports/ui/components/history/history.html';
 import './../imports/ui/components/history/history.js';
+import './../imports/ui/components/feeds/feeds.html';
+import './../imports/ui/components/feeds/feeds.js';
 
 import './../imports/ui/components/auth/auth.html';
 import './../imports/ui/components/auth/auth.js';
@@ -38,6 +42,8 @@ import './../imports/ui/components/notifications/notifications.html';
 import './../imports/ui/components/notifications/notifications.js';
 
 import './../imports/ui/components/header/header.html';
+import './../imports/ui/components/header/header.js';
+
 import './../imports/ui/components/footer/footer.html';
 
 import './../imports/ui/components/page403/page403.html';
