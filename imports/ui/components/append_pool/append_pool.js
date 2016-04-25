@@ -91,7 +91,23 @@ Template.appendPool.events({
                         }]
                     });
                 } else {
-                    Orders.update(userOrder._id, { $addToSet: { items: { count: 1, id: itemId } } });
+                    let existInOrder = false;
+
+                    userOrder.items.forEach((item, index) => {
+                        if (item.id === itemId) {
+                            userOrder.items[index].count++;
+                            existInOrder = true;
+                        }
+                    });
+                    
+                    if (!existInOrder) {
+                        userOrder.items.push({
+                            count: 1,
+                            id: itemId
+                        });
+                    }
+
+                    Orders.update(userOrder._id, { $set: { items: userOrder.items } });
                 }
 
                 itemFields = [];
