@@ -1,0 +1,20 @@
+<template name="feeds">
+    <div class="row">
+        <div class="list-group col-xs-12 col-sm-8 col-sm-offset-2">
+        {{#if feeds}}
+            {{#each feeds}}
+                {{> feed}}
+            {{/each}}
+        {{else}}
+            <li><span>Нет уведомлений</span></li>
+        {{/if}}
+        </div>
+    </div>
+</template>
+
+<template name="feed">
+    <!-- @TODO need design -->
+    <div class="list-group {{#unless seen }} alert alert-success {{/unless }}">
+        {{ created }}: {{ message }}
+    </div>
+</template>
