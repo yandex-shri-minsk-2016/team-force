@@ -1,20 +1,44 @@
 import {Meteor} from 'meteor/meteor';
 import Pools from './../../../api/pools/pools';
+import moment from 'moment';
+import shops from './../../../../lib/shops.json';
+
+const dateTimeFormat = 'DD/MM/YYYY HH:mm';
+
+Template.addPool.onRendered(function() {
+    this.$('#time').datetimepicker({
+        format: dateTimeFormat
+    });
+});
+
+Template.addPool.helpers({
+    shops: () => {
+        let result = [];
+        for (let name in shops) {
+            result.push({
+                name,
+                data: shops[name]
+            });
+        }
+
+        return result;
+    }
+});
 
 Template.addPool.events({
     'submit #add_pool': (event) => {
         event.preventDefault();
 
-        const target = event.target;
-        const inputTime = target.time.value;
+        const inputTime = moment(event.target.time.value, dateTimeFormat);
+        const shop = event.target.shop.value;
 
-        if (!inputTime) {
+        if (!inputTime.isValid() || !(shop in shops)) {
             return;
         }
 
         const newPool = {
-            shop: '',
-            time: new Date(),
+            shop: shop,
+            time: inputTime.toDate(),
             ownerId: Meteor.userId(),
             companyId: Meteor.user().profile.company,
             status: 'pending' //TODO: Move to constants
@@ -27,7 +51,7 @@ Template.addPool.events({
             })
             .catch((e) => {
                 console.log(e);
-                
+
                 //TODO: Show error
             });
     }
