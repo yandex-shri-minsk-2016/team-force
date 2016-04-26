@@ -1,25 +1,43 @@
 import {Meteor} from 'meteor/meteor';
 import Pools from './../../../api/pools/pools';
 import moment from 'moment';
+import shops from './../../../../lib/shops.json';
+
+const dateTimeFormat = 'DD/MM/YYYY HH:mm';
 
 Template.addPool.onRendered(function() {
     this.$('#time').datetimepicker({
-        format: 'DD/MM/YYYY HH:mm'
+        format: dateTimeFormat
     });
+});
+
+Template.addPool.helpers({
+    shops: () => {
+        let result = [];
+        for (let name in shops) {
+            result.push({
+                name,
+                data: shops[name]
+            });
+        }
+
+        return result;
+    }
 });
 
 Template.addPool.events({
     'submit #add_pool': (event) => {
         event.preventDefault();
 
-        const inputTime = moment(event.target.time.value, 'DD/MM/YYYY HH:mm');
+        const inputTime = moment(event.target.time.value, dateTimeFormat);
+        const shop = event.target.shop.value;
 
-        if (!inputTime) {
+        if (!inputTime.isValid() || !(shop in shops)) {
             return;
         }
 
         const newPool = {
-            shop: '',
+            shop: shop,
             time: inputTime.toDate(),
             ownerId: Meteor.userId(),
             companyId: Meteor.user().profile.company,
