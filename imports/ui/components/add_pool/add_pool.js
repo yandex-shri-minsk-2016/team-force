@@ -2,12 +2,11 @@ import {Meteor} from 'meteor/meteor';
 import Pools from './../../../api/pools/pools';
 import moment from 'moment';
 import shops from './../../../../lib/shops.json';
-
-const dateTimeFormat = 'DD/MM/YYYY HH:mm';
+import utils from './../../../../lib/utils';
 
 Template.addPool.onRendered(function() {
     this.$('#time').datetimepicker({
-        format: dateTimeFormat
+        format: utils.DATETIME_FORMAT
     });
 });
 
@@ -29,7 +28,7 @@ Template.addPool.events({
     'submit #add_pool': (event) => {
         event.preventDefault();
 
-        const inputTime = moment(event.target.time.value, dateTimeFormat);
+        const inputTime = moment(event.target.time.value, utils.DATETIME_FORMAT);
         const shop = event.target.shop.value;
 
         if (!inputTime.isValid() || !(shop in shops)) {
