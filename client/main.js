@@ -50,38 +50,3 @@ import './../imports/ui/components/page403/page403.html';
 import './../imports/ui/components/page404/page404.html';
 
 import './main.html';
-
-// @TODO: first data, remove from after Checkpoint2
-
-if (Meteor.user() && Pools.find().count() === 0) {
-
-    let products = [];
-
-    for (let i = 0; i < 5; i++) {
-        let newItem = {
-            shop: 'testshop' + i,
-            link: 'link' + i,
-            createdAt: new Date()
-        };
-        products.push(newItem);
-    }
-
-    let newOrder = {
-        owner: Meteor.userId(),
-        items: products,
-        sum: 0
-    };
-
-    let newPool = {
-        shop: 'testshop',
-        time: '00:00',
-        ownerId: Meteor.userId(),
-        company: Meteor.user().profile.company,
-        orders: [newOrder],
-        price: 0,
-        createdAt: new Date()
-    };
-
-    Pools.add(newPool);
-
-}

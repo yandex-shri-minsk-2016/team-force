@@ -20,6 +20,10 @@ class FeedsCollection extends Mongo.Collection {
         return true;
     }
 
+    /**
+     * @param data
+     * @returns {Promise} resolved с id добавленного элемента
+     */
     add(data) {
         return new Promise((resolve, reject) => {
             try {

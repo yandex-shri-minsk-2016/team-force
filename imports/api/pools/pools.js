@@ -26,11 +26,6 @@ class PoolsCollection extends Mongo.Collection {
     getCompanyPools(companyId) {
         return this.find({ companyId: companyId });
     }
-
-    findOne(filter, callback) {
-        //TODO: Attach items to the response from items collection
-        return super.findOne(filter, callback);
-    }
 }
 
 PoolsCollection.name = 'Pools';
