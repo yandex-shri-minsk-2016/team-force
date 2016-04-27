@@ -26,6 +26,59 @@ class PoolsCollection extends Mongo.Collection {
     getCompanyPools(companyId) {
         return this.find({ companyId: companyId });
     }
+
+    /**
+     * Добавляет item в заказ пользователя с userId в пулл с id === poolId
+     * @param {String} poolId
+     * @param {String} userId
+     * @param {Object} item
+     */
+    appendItemForUser(poolId, userId, item) {
+        return new Promise((resolve, reject) => {
+            if (!this.findOne({ _id: poolId })) {
+                reject('Pool not found');
+            }
+
+            const userOrder = Orders.findOne({ poolId: poolId, userId: userId });
+            return Items.findOrInsert(item)
+                .then((itemId) => {
+                    if (!userOrder) {
+                        Orders.add({
+                            userId: Meteor.userId(),
+                            poolId,
+                            items: [{
+                                count: 1,
+                                id: itemId
+                            }]
+                        });
+                    } else {
+                        let existInOrder = false;
+
+                        userOrder.items.forEach((item, index) => {
+                            if (item.id === itemId) {
+                                userOrder.items[index].count++;
+                                existInOrder = true;
+                            }
+                        });
+
+                        if (!existInOrder) {
+                            userOrder.items.push({
+                                count: 1,
+                                id: itemId
+                            });
+                        }
+
+                        Orders.update(userOrder._id, { $set: { items: userOrder.items } });
+                    }
+
+                    resolve();
+                })
+                .catch(e => {
+                    console.log(e);
+                    reject(e);
+                });
+        });
+    }
 }
 
 PoolsCollection.name = 'Pools';
