@@ -13,12 +13,15 @@ class CompanyCollection extends Mongo.Collection {
             CompanyCollection.schema.validate(data);
         } catch (e) {
             throw e;
-            return false;
         }
 
         return true;
     }
 
+    /**
+     * @param data
+     * @returns {Promise} resolved с id добавленного элемента
+     */
     add(data) {
         return new Promise((resolve, reject) => {
             try {
@@ -37,11 +40,16 @@ class CompanyCollection extends Mongo.Collection {
         });
     }
 
+    /**
+     * Находит и возвращает компанию по ее названию
+     * @param titleCompany название компании
+     * @returns {Cursor}
+     */
     getCompany(titleCompany) {
         let pattern = new RegExp(titleCompany, 'i');
         return super.find({ title: { $regex: pattern } });
     }
-
+    
     isExistCompany(titleCompany) {
         return !!super.findOne({ title: titleCompany });
     }

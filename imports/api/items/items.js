@@ -19,6 +19,10 @@ class ItemsCollection extends Mongo.Collection {
         return true;
     }
 
+    /**
+     * @param data
+     * @returns {Promise} resolved с id добавленного элемента
+     */
     add(data) {
         return new Promise((resolve, reject) => {
             try {
@@ -32,7 +36,13 @@ class ItemsCollection extends Mongo.Collection {
             }
         });
     }
-    
+
+    /**
+     * Проверяет, существует ли переданный элемент, и если да, то возвращает его id.
+     * Если элемент не существует, то создает запись в коллекции и возвращает ее id
+     * @param data
+     * @returns {Promise} resolved с id нужного элемента
+     */
     findOrInsert(data) {
         return new Promise((resolve, reject) => {
             try {
