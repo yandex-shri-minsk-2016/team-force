@@ -302,37 +302,38 @@ Template._loginButtonsFormField.helpers({
   }
 });
 
+Template._loginButtonsFormField.rendered = function () {
+
+  var companies = Company.getCompany().fetch().map(function (c) {
+    return c.title;
+  });
+
+  $('#login-company').typeahead({
+    source: companies,
+    minLength: 2,
+    items: 3
+  });
+
+};
+
 Template._loginButtonsFormField.events({
-  'keyup #login-company': function (event) {
+  'change #login-company': function (event) {
     let strCompany = event.target.value;
-    // @TODO autocompleting
     let $loginCompany = $('#login-company');
 
-    $loginCompany
-      .tooltip('destroy')
-      .attr('data-toggle', 'tooltip')
-      .attr('data-placement', 'right')
-      .removeAttr('data-original-title');
-
-    if (Company.isExistCompany(strCompany)){
+    if (Company.isExistCompany(strCompany)) {
       $loginCompany
-        .attr('title', 'Есть такая компания')
-        .parent()
+          .parent()
           .addClass('has-success')
           .removeClass('has-error');
-    }else{
+    } else {
       $loginCompany
-        .attr('title', 'Вы первый, компания будет создана')
-        .parent()
+          .parent()
           .removeClass('has-success')
           .addClass('has-error');
     }
-    $('[data-toggle="tooltip"]').tooltip('show');
-  },
-  'blur #login-company': function (event) {
-    $('[data-toggle="tooltip"]').tooltip('hide');
-  }
 
+  }
 });
 
 //
