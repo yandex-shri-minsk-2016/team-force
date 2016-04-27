@@ -12,7 +12,6 @@
     "continuation-local-storage": "^3.1.7",
     "encoding": "^0.1.12",
     "iconv-lite": "^0.4.13",
-    "jschardet": "^1.4.1",
     "meteor-node-stubs": "~0.2.0",
     "moment": "^2.13.0",
     "normalize-url": "^1.4.1",
