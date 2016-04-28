@@ -29,7 +29,7 @@ describe('PoolsCollection', () => {
             shop: 'test-03498340932',
             time: new Date(),
             ownerId: 'test',
-            status: 'test',
+            state: 'test',
             companyId: 'test'
         };
 
@@ -44,7 +44,7 @@ describe('PoolsCollection', () => {
             shop: 'test1',
             time: new Date(),
             ownerId: 'test',
-            status: 'test',
+            state: 'test',
             companyId: 'test'
         };
 
