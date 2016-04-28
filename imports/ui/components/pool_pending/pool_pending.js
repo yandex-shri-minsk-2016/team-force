@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import Items from './../../../api/items/items';
 import Orders from './../../../api/orders/orders';
 
-Template.pool.helpers({
+Template.poolPending.helpers({
     poolOrders: () => {
         let orders = [];
 

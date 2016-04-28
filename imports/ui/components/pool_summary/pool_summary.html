@@ -1,0 +1,30 @@
+<template name="poolSummary">
+    <div class="row">
+        <div class="list-group col-xs-12 col-sm-8 col-sm-offset-2">
+            <h4>{{_id}}</h4>
+            <h6>{{state}}</h6>
+            <div class="rbt">
+                <span class="badge">{{time}}</span>
+            </div>
+            <div class="list-group-item-text">
+            {{#if poolOrders}}
+                <ul>
+                    {{# each poolOrders }}
+                        <li>{{usermail owner}}</li>
+                        <ul>
+                            {{# each items }}
+                                <li>{{ item.title }} : {{ count }}</li>
+                            {{/each}}
+                        </ul>
+                    {{/each}}
+                </ul>
+            {{/if}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="list-group col-xs-12 col-sm-8 col-sm-offset-2">
+                <a href="{{pathFor 'pool_append' poolId=_id }}" class="btn btn-primary">Присоединиться</a>
+            </div>
+        </div>
+    </div>
+</template>
