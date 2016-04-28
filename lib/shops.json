@@ -3,6 +3,8 @@
     "minDelivery": "100000",
     "costDelivery": "0",
     "freeDelivery": "100000",
+    "encoding": "binary",
+    "charset": "cp1251",
     "fields": {
       "title":  ".dishinfo > h2",
       "weight": ".dishinfo > span",
@@ -14,11 +16,52 @@
     "minDelivery": "100000",
     "costDelivery": "50000",
     "freeDelivery": "150000",
+    "encoding": "utf8",
+    "charset": "utf8",
     "fields": {
       "title":  ".sldier_container h1.productTitle",
       "weight": ".sldier_container .controls .checkbox",
       "price":  ".sldier_container span.price",
       "descr":  ".sldier_container span.productIntro"
+    }
+  },
+  "just-eat.by": {
+    "minDelivery": "100000",
+    "costDelivery": "30000",
+    "freeDelivery": "200000",
+    "encoding": "utf8",
+    "charset": "utf8",
+    "fields": {
+      "title":  ".product-info h1",
+      "weight": ".product-info div.weight",
+      "price":  ".product-info div.price",
+      "descr":  ".product-info div.desc"
+    }
+  },
+  "edanada.by": {
+    "minDelivery": "100000",
+    "costDelivery": "30000",
+    "freeDelivery": "200000",
+    "encoding": "utf8",
+    "charset": "utf8",
+    "fields": {
+      "title":  ".product-info h1",
+      "weight": ".product-info div.weight",
+      "price":  ".product-info div.price",
+      "descr":  ".product-info #tab-description"
+    }
+  },
+  "eburger.by": {
+    "minDelivery": "180000",
+    "costDelivery": "0",
+    "freeDelivery": "180000",
+    "encoding": "utf8",
+    "charset": "utf8",
+    "fields": {
+      "title":  ".product-information .product_title",
+      "weight": ".product-information div.weight",
+      "price":  ".product-information .price .amount",
+      "descr":  ".product-information .short-description"
     }
   }
 }

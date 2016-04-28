@@ -2,6 +2,7 @@
  * Items collection
  **/
 import { Meteor } from 'meteor/meteor';
+import utils from '../../../lib/utils';
 
 class ItemsCollection extends Mongo.Collection {
     constructor() {
@@ -70,7 +71,7 @@ ItemsCollection.schema = new SimpleSchema({
     },
     link: {
         type: String,
-        regEx: /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
+        regEx: utils.VALID_URL
     },
     price: {
         type: Number,
