@@ -6,6 +6,11 @@ Get your food delivered right to your office or any place of your choice. Create
 
 ## Getting started
 
+We use [Meteor JavaScript App Platform](https://www.meteor.com/). You can get latest version by:
+```
+$ curl https://install.meteor.com/ | sh
+```
+
 Clone our repo and go to folder:
 ```
 $ git clone https://github.com/yandex-shri-minsk-2016/team-force
