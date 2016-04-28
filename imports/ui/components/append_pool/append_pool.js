@@ -78,45 +78,16 @@ Template.appendPool.events({
         };
 
         const poolId = Router.current().params.poolId;
-        const userOrder = Orders.findOne({ poolId: poolId, userId: Meteor.userId() });
-        Items.findOrInsert(newItem)
-            .then((itemId) => {
-                if (!userOrder) {
-                    Orders.add({
-                        userId: Meteor.userId(),
-                        poolId,
-                        items: [{
-                            count: 1,
-                            id: itemId
-                        }]
-                    });
-                } else {
-                    let existInOrder = false;
-
-                    userOrder.items.forEach((item, index) => {
-                        if (item.id === itemId) {
-                            userOrder.items[index].count++;
-                            existInOrder = true;
-                        }
-                    });
-                    
-                    if (!existInOrder) {
-                        userOrder.items.push({
-                            count: 1,
-                            id: itemId
-                        });
-                    }
-
-                    Orders.update(userOrder._id, { $set: { items: userOrder.items } });
-                }
-
+        
+        Pools.appendItemForUser(poolId, Meteor.userId(), newItem)
+            .then(() => {
                 itemFields = [];
                 itemFieldsDep.changed();
 
                 Router.go('pool', { poolId: poolId });
             })
-            .catch((e) => {
-                //TODO: Show notification
+            .catch(e => {
+                //TODO: Notify user
                 alert(e);
             });
     }
