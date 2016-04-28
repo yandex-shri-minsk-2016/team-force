@@ -9,7 +9,7 @@ class PoolsCollection extends Mongo.Collection {
     constructor() {
         super(PoolsCollection.name);
     }
-    
+
     add(data) {
         return new Promise((resolve, reject) => {
             try {
@@ -39,7 +39,7 @@ PoolsCollection.schema = new SimpleSchema({
     ownerId: {
         type: String
     },
-    status: {
+    state: {
         type: String
     },
     companyId: {

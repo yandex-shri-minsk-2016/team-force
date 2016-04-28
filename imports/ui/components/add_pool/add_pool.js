@@ -41,7 +41,7 @@ Template.addPool.events({
             time: inputTime.toDate(),
             ownerId: Meteor.userId(),
             companyId: Meteor.user().profile.company,
-            status: 'pending' //TODO: Move to constants
+            state: 'pending' //TODO: Move to constants
         };
 
         Pools.add(newPool)
