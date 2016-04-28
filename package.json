@@ -4,7 +4,8 @@
   "scripts": {
     "start": "meteor run",
     "lint": "jscs -c config.jscs.json client imports server lib",
-    "test": "meteor test --port=3100 --once --driver-package dispatch:mocha-phantomjs"
+    "test": "meteor test --port=3100 --once --driver-package dispatch:mocha-phantomjs",
+    "coverage": "COVERAGE=1 COVERAGE_VERBOSE=1 COVERAGE_APP_FOLDER=. meteor"
   },
   "dependencies": {
     "cheerio": "^0.20.0",
