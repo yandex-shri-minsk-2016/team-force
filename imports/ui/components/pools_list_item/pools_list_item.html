@@ -1,7 +1,7 @@
 <template name="pools_list_item">
     <div class="list-group">
         <a href="{{pathFor 'pool' poolId=_id }}"  class="list-group-item">
-            <h4>{{_id}}</h4>
+            <h4>{{_id}} - {{state}}</h4>
             <div class="rbt">
                 <a href="{{pathFor 'pool_append' poolId=_id }}" class="btn btn-primary">Присоединиться</a>
                 <br>

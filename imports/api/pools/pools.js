@@ -9,7 +9,7 @@ class PoolsCollection extends Mongo.Collection {
     constructor() {
         super(PoolsCollection.name);
     }
-    
+
     add(data) {
         return new Promise((resolve, reject) => {
             try {
