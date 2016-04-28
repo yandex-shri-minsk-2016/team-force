@@ -318,8 +318,8 @@ Template._loginButtonsFormField.rendered = function () {
 
 Template._loginButtonsFormField.events({
   'change #login-company': function (event) {
-    let strCompany = event.target.value;
-    let $loginCompany = $('#login-company');
+    const strCompany = event.target.value;
+    const $loginCompany = $('#login-company');
 
     if (Company.isExistCompany(strCompany)) {
       $loginCompany
