@@ -2,6 +2,7 @@
   * Pools collection
  **/
 import { Meteor } from 'meteor/meteor';
+import utils from './../../../lib/utils';
 import Items from './../items/items';
 import Orders from './../orders/orders';
 
@@ -13,6 +14,10 @@ class PoolsCollection extends Mongo.Collection {
     add(data) {
         return new Promise((resolve, reject) => {
             try {
+                if (!data.state) {
+                    data.state = utils.POOL_STATE.PENDING;
+                }
+
                 PoolsCollection.schema.validate(data);
                 super.insert(data, (error, id) => {
                     error ? reject(error) : resolve(id);
