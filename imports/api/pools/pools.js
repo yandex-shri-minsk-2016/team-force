@@ -71,7 +71,7 @@ class PoolsCollection extends Mongo.Collection {
                         Orders.update(userOrder._id, { $set: { items: userOrder.items } });
                     }
 
-                    resolve();
+                    resolve(itemId);
                 })
                 .catch(e => {
                     console.log(e);
