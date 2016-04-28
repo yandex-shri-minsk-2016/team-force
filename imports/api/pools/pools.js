@@ -92,7 +92,7 @@ PoolsCollection.schema = new SimpleSchema({
     ownerId: {
         type: String
     },
-    status: {
+    state: {
         type: String
     },
     companyId: {
