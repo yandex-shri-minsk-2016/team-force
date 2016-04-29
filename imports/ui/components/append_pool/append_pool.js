@@ -3,6 +3,7 @@ import Pools from './../../../api/pools/pools';
 import Parser from './../../../../lib/parser';
 import Items from './../../../api/items/items';
 import Orders from './../../../api/orders/orders';
+import utils from './../../../../lib/utils';
 
 let itemFields = [];
 let itemFieldsDep = new Tracker.Dependency();
@@ -71,36 +72,23 @@ Template.appendPool.events({
 
         let newItem = {
             title: target['form-elem-title'].value,
-            price: parseInt(target['form-elem-price'].value.split(' ').join('')), //FIXME string to int
+            price: utils.getPriceFromString(target['form-elem-price'].value),
             description: target['form-elem-descr'].value,
             weight: target['form-elem-weight'].value,
             link: target['item-link'].value
         };
 
         const poolId = Router.current().params.poolId;
-        const userOrder = Orders.findOne({ poolId: poolId, userId: Meteor.userId() });
-        Items.findOrInsert(newItem)
-            .then((itemId) => {
-                if (!userOrder) {
-                    Orders.add({
-                        userId: Meteor.userId(),
-                        poolId,
-                        items: [{
-                            count: 1,
-                            id: itemId
-                        }]
-                    });
-                } else {
-                    Orders.update(userOrder._id, { $addToSet: { items: { count: 1, id: itemId } } });
-                }
-
+        
+        Pools.appendItemForUser(poolId, Meteor.userId(), newItem)
+            .then(() => {
                 itemFields = [];
                 itemFieldsDep.changed();
 
                 Router.go('pool', { poolId: poolId });
             })
-            .catch((e) => {
-                //TODO: Show notification
+            .catch(e => {
+                //TODO: Notify user
                 alert(e);
             });
     }

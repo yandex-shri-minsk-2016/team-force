@@ -1,33 +1,60 @@
 import {Meteor} from 'meteor/meteor';
 import Pools from './../../../api/pools/pools';
+import moment from 'moment';
+import shops from './../../../../lib/shops.json';
+import utils from './../../../../lib/utils';
+
+Template.addPool.onRendered(function() {
+    this.$('#time').datetimepicker({
+        format: utils.DATETIME_FORMAT
+    });
+});
+
+Template.addPool.helpers({
+    shops: () => {
+        let result = [];
+        for (let name in shops) {
+            result.push({
+                name,
+                data: shops[name]
+            });
+        }
+
+        return result;
+    }
+});
 
 Template.addPool.events({
     'submit #add_pool': (event) => {
         event.preventDefault();
 
-        const target = event.target;
-        const inputTime = target.time.value;
+        const inputTime = moment(event.target.time.value, utils.DATETIME_FORMAT);
+        const shop = event.target.shop.value;
 
-        if (!inputTime) {
+        if (!inputTime.isValid() || !(shop in shops)) {
             return;
         }
 
         const newPool = {
-            shop: '',
-            time: new Date(),
+            shop: shop,
+            time: inputTime.toDate(),
             ownerId: Meteor.userId(),
-            companyId: Meteor.user().profile.company,
-            status: 'pending' //TODO: Move to constants
+            companyId: Meteor.user().profile.company
         };
 
         Pools.add(newPool)
             .then((poolId) => {
                 // @TODO: notify success create newPool
+                Meteor.call('addTask', {
+                    date: newPool.time,
+                    name: 'changePoolState',
+                    options: poolId
+                });
                 Router.go(`/pool/${poolId}`);
             })
             .catch((e) => {
                 console.log(e);
-                
+
                 //TODO: Show error
             });
     }

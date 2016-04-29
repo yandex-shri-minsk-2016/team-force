@@ -1,0 +1,11 @@
+fail_on_violations: true
+
+scss:
+  enabled: false
+
+javascript:
+  enabled: false
+
+jscs:
+  enabled: true
+  config_file: config.jscs.json

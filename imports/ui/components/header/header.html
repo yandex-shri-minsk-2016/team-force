@@ -17,6 +17,11 @@
                     <ul class="nav navbar-nav">
                         <li><a href="{{pathFor 'pool_add'}}">Добавить пулл</a></li>
                         <li><a href="{{pathFor 'history'}}">История</a></li>
+                        <li><a href="{{pathFor 'feeds'}}">Уведомления
+                            {{#if feedsUnseenCount }}
+                                <span class="badge badge-inverse">{{ feedsUnseenCount }}</span>
+                            {{/if}}
+                        </a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li>{{> logoutButton}}</li>

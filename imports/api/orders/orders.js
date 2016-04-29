@@ -9,7 +9,7 @@ class OrdersCollection extends Mongo.Collection {
     add(data) {
         return new Promise((resolve, reject) => {
             try {
-                //OrdersCollection.schema.validate(data);
+                OrdersCollection.schema.validate(data);
                 super.insert(data, (error, id) => {
                     error ? reject(error) : resolve(error);
                 });
@@ -18,11 +18,16 @@ class OrdersCollection extends Mongo.Collection {
             }
         });
     }
-
-    findOne(filter, callback) {
-        return super.findOne(filter, callback);
-    }
 }
+
+OrderItemSchema = new SimpleSchema({
+    count: {
+        type: Number
+    },
+    id: {
+        type: String
+    }
+});
 
 OrdersCollection.name = 'Orders';
 OrdersCollection.schema = new SimpleSchema({
@@ -30,10 +35,7 @@ OrdersCollection.schema = new SimpleSchema({
         type: String
     },
     items: {
-        type: [{
-            count: Number,
-            id: String
-        }]
+        type: [OrderItemSchema]
     },
     userId: {
         type: String

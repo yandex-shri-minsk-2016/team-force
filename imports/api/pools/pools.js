@@ -2,6 +2,7 @@
   * Pools collection
  **/
 import { Meteor } from 'meteor/meteor';
+import utils from './../../../lib/utils';
 import Items from './../items/items';
 import Orders from './../orders/orders';
 
@@ -13,6 +14,10 @@ class PoolsCollection extends Mongo.Collection {
     add(data) {
         return new Promise((resolve, reject) => {
             try {
+                if (!data.state) {
+                    data.state = utils.POOL_STATE.PENDING;
+                }
+
                 PoolsCollection.schema.validate(data);
                 super.insert(data, (error, id) => {
                     error ? reject(error) : resolve(id);
@@ -27,9 +32,57 @@ class PoolsCollection extends Mongo.Collection {
         return this.find({ companyId: companyId });
     }
 
-    findOne(filter, callback) {
-        //TODO: Attach items to the response from items collection
-        return super.findOne(filter, callback);
+    /**
+     * Добавляет item в заказ пользователя с userId в пулл с id === poolId
+     * @param {String} poolId
+     * @param {String} userId
+     * @param {Object} item
+     */
+    appendItemForUser(poolId, userId, item) {
+        return new Promise((resolve, reject) => {
+            if (!this.findOne({ _id: poolId })) {
+                reject('Pool not found');
+            }
+
+            const userOrder = Orders.findOne({ poolId: poolId, userId: userId });
+            return Items.findOrInsert(item)
+                .then((itemId) => {
+                    if (!userOrder) {
+                        Orders.add({
+                            userId: Meteor.userId(),
+                            poolId,
+                            items: [{
+                                count: 1,
+                                id: itemId
+                            }]
+                        });
+                    } else {
+                        let existInOrder = false;
+
+                        userOrder.items.forEach((item, index) => {
+                            if (item.id === itemId) {
+                                userOrder.items[index].count++;
+                                existInOrder = true;
+                            }
+                        });
+
+                        if (!existInOrder) {
+                            userOrder.items.push({
+                                count: 1,
+                                id: itemId
+                            });
+                        }
+
+                        Orders.update(userOrder._id, { $set: { items: userOrder.items } });
+                    }
+
+                    resolve(itemId);
+                })
+                .catch(e => {
+                    console.log(e);
+                    reject(e);
+                });
+        });
     }
 }
 
@@ -44,7 +97,7 @@ PoolsCollection.schema = new SimpleSchema({
     ownerId: {
         type: String
     },
-    status: {
+    state: {
         type: String
     },
     companyId: {

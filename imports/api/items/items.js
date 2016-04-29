@@ -2,6 +2,7 @@
  * Items collection
  **/
 import { Meteor } from 'meteor/meteor';
+import utils from '../../../lib/utils';
 
 class ItemsCollection extends Mongo.Collection {
     constructor() {
@@ -19,6 +20,10 @@ class ItemsCollection extends Mongo.Collection {
         return true;
     }
 
+    /**
+     * @param data
+     * @returns {Promise} resolved с id добавленного элемента
+     */
     add(data) {
         return new Promise((resolve, reject) => {
             try {
@@ -32,7 +37,13 @@ class ItemsCollection extends Mongo.Collection {
             }
         });
     }
-    
+
+    /**
+     * Проверяет, существует ли переданный элемент, и если да, то возвращает его id.
+     * Если элемент не существует, то создает запись в коллекции и возвращает ее id
+     * @param data
+     * @returns {Promise} resolved с id нужного элемента
+     */
     findOrInsert(data) {
         return new Promise((resolve, reject) => {
             try {
@@ -60,7 +71,7 @@ ItemsCollection.schema = new SimpleSchema({
     },
     link: {
         type: String,
-        regEx: /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
+        regEx: utils.VALID_URL
     },
     price: {
         type: Number,
