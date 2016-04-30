@@ -4,6 +4,7 @@ import Pools from './../imports/api/pools/pools';
 import Items from './../imports/api/items/items';
 import Feeds from './../imports/api/feeds/feeds';
 import Company from './../imports/api/company/company';
+import utils from './../lib/utils';
 
 Tasks = new Meteor.Collection('tasks');
 
@@ -25,8 +26,8 @@ Meteor.startup(() => {
 });
 
 const taskFunctions = {
-    changePoolState: (poolId) => {
-        Pools.update({ _id: poolId }, { $set: { state: 'summary' } });
+    setSummary: (data) => {
+        Pools.changePoolState(data.poolId, utils.POOL_STATE.SUMMARY);
     }
 };
 

@@ -47,8 +47,10 @@ Template.addPool.events({
                 // @TODO: notify success create newPool
                 Meteor.call('addTask', {
                     date: newPool.time,
-                    name: 'changePoolState',
-                    options: poolId
+                    name: 'setSummary',
+                    options: {
+                        poolId: poolId
+                    }
                 });
                 Router.go(`/pool/${poolId}`);
             })
