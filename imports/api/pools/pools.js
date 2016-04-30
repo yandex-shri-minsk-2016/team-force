@@ -59,6 +59,8 @@ class PoolsCollection extends Mongo.Collection {
                         userIds: [order.userId]
                     };
                 }
+
+                ItemsOrder[item.id] = localItem;
             });
         });
 
