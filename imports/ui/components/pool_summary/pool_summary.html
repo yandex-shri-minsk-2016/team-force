@@ -7,15 +7,10 @@
                 <span class="badge">{{time}}</span>
             </div>
             <div class="list-group-item-text">
-            {{#if poolOrders}}
+            {{#if poolItems}}
                 <ul>
-                    {{# each poolOrders }}
-                        <li>{{usermail owner}}</li>
-                        <ul>
-                            {{# each items }}
-                                <li>{{ item.title }} : {{ count }}</li>
-                            {{/each}}
-                        </ul>
+                    {{#each poolItems}}
+                        <li>{{data._id}}: {{count}} шт (для {{userIds}})</li>
                     {{/each}}
                 </ul>
             {{/if}}
@@ -23,7 +18,7 @@
         </div>
         <div class="row">
             <div class="list-group col-xs-12 col-sm-8 col-sm-offset-2">
-                <a href="{{pathFor 'pool_append' poolId=_id }}" class="btn btn-primary">Присоединиться</a>
+                <a href="{{pathFor 'pool_append' poolId=_id}}" class="btn btn-primary">Присоединиться</a>
             </div>
         </div>
     </div>

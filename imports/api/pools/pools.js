@@ -33,6 +33,54 @@ class PoolsCollection extends Mongo.Collection {
     }
 
     /**
+     * Возвращает объект сгруппированный по item
+     * @param {String} poolId
+     */
+    getGroupByItem(poolId) {
+        const PoolOrders = Orders.find({ poolId: poolId }).fetch();
+        let ItemsOrder = {};
+
+        PoolOrders.forEach(order => {
+            order.items.forEach(item => {
+
+                let localItem = ItemsOrder[item.id];
+
+                if (localItem) {
+                    localItem.userIds.push(order.userId);
+                    localItem = {
+                        poolId: poolId,
+                        count: localItem.count + item.count,
+                        userIds: localItem.userIds
+                    };
+                }else {
+                    localItem = {
+                        poolId: poolId,
+                        count: item.count,
+                        userIds: [order.userId]
+                    };
+                }
+
+                ItemsOrder[item.id] = localItem;
+            });
+        });
+
+        return ItemsOrder;
+    }
+
+    /**
+     * Возвращает объект сгруппированный по item
+     * @param {String} poolId
+     */
+    getGroupByItemWithData(poolId) {
+        let ItemsOrder = this.getGroupByItem(poolId);
+        for (let itemId in ItemsOrder) {
+            ItemsOrder[itemId].data = Items.findOne({ _id: itemId });
+        }
+
+        return ItemsOrder;
+    }
+
+    /**
      * Добавляет item в заказ пользователя с userId в пулл с id === poolId
      * @param {String} poolId
      * @param {String} userId
