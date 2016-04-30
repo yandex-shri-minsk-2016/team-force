@@ -10,7 +10,7 @@ class PoolsCollection extends Mongo.Collection {
     constructor() {
         super(PoolsCollection.name);
     }
-    
+
     add(data) {
         return new Promise((resolve, reject) => {
             try {
@@ -26,6 +26,10 @@ class PoolsCollection extends Mongo.Collection {
                 reject(e);
             }
         });
+    }
+
+    changePoolState(poolId, poolState) {
+        this.update({ _id: poolId }, { $set: { state: poolState } });
     }
 
     getCompanyPools(companyId) {
