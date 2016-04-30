@@ -43,15 +43,17 @@ class PoolsCollection extends Mongo.Collection {
         PoolOrders.forEach(order => {
             order.items.forEach(item => {
 
-                if (ItemsOrder[item.id]) {
-                    ItemsOrder[item.id].userIds.push(order.userId);
-                    ItemsOrder[item.id] = {
+                let localItem = ItemsOrder[item.id];
+
+                if (localItem) {
+                    localItem.userIds.push(order.userId);
+                    localItem = {
                         poolId: poolId,
-                        count: ItemsOrder[item.id].count + item.count,
-                        userIds: ItemsOrder[item.id].userIds
+                        count: localItem.count + item.count,
+                        userIds: localItem.userIds
                     };
                 }else {
-                    ItemsOrder[item.id] = {
+                    localItem = {
                         poolId: poolId,
                         count: item.count,
                         userIds: [order.userId]
@@ -69,7 +71,7 @@ class PoolsCollection extends Mongo.Collection {
      */
     getGroupByItemWithData(poolId) {
         let ItemsOrder = this.getGroupByItem(poolId);
-        for (itemId in ItemsOrder) {
+        for (let itemId in ItemsOrder) {
             ItemsOrder[itemId].data = Items.findOne({ _id: itemId });
         }
 
