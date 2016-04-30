@@ -33,3 +33,4 @@ aldeed:simple-schema
 mrt:bootstrap3-typeahead
 lmieulet:meteor-coverage
 percolate:synced-cron
+meteorhacks:ssr

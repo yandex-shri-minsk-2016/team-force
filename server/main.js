@@ -5,12 +5,18 @@ import Items from './../imports/api/items/items';
 import Feeds from './../imports/api/feeds/feeds';
 import Company from './../imports/api/company/company';
 import utils from './../lib/utils';
+import Email from './email';
 
 Tasks = new Meteor.Collection('tasks');
+SSR.compileTemplate('email', Assets.getText('email.html'));
 
 Meteor.methods({
     addTask: (task) => {
         return addTask(task);
+    },
+
+    sendEmail: (to, user, data, shopName) => {
+        return Email.send(to, SSR.render('email', { user, data, shopName }));
     }
 });
 
