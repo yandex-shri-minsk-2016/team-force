@@ -17,13 +17,13 @@ Template.poolSummary.events({
         Pools.changePoolState(pool._id, utils.POOL_STATE.ARCHIVED);
 
         const itemsToSent = utils.toArr(Pools.getGroupByItemWithData(pool._id));
-        let items = [];
-        itemsToSent.forEach((item) => {
-            items.push({
+
+        let items = itemsToSent.map((item) => {
+            return {
                 count: item.count,
                 link: item.data.link,
                 title: item.data.title
-            });
+            };
         });
 
         //@FIXME change

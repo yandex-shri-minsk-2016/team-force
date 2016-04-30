@@ -21,7 +21,6 @@ Meteor.methods({
 });
 
 Meteor.startup(() => {
-    //Meteor.call('sendEmail', 'sdgaykov@gmail.com', { phone: '+375-29-901-23-23', name: 'Александр' }, [], 'wok.by');
     Tasks.find().forEach((task) => {
         if (task.date <= new Date()) {
             taskFunctions[task.name](task.options);
