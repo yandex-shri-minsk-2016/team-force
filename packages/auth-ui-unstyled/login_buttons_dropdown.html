@@ -97,14 +97,14 @@
   {{#if inForgotPasswordFlow}}
     {{> _forgotPasswordForm}}
   {{else}}
-    <div class="login-form login-password-form">
+    <div class="login-form login-password-form gf-login">
       {{#each fields}}
         {{> _loginButtonsFormField}}
       {{/each}}
 
       {{> _loginButtonsMessages}}
 
-      <div class="btn btn-success" id="login-buttons-password">
+      <div class="btn btn-success gf-btn-success" id="login-buttons-password">
         {{#if inSignupFlow}}
           Регистрация
         {{else}}
@@ -116,13 +116,13 @@
       {{#if inLoginFlow}}
         {{#if showCreateAccountLink}}
           <li class="additional-link-container">
-            <a id="signup-link" class="additional-link">Регистрация</a>
+            <a id="signup-link" class="additional-link gf-additional-link">Регистрация</a>
           </li>
         {{/if}}
 
         {{#if showForgotPasswordLink}}
           <li class="additional-link-container">
-            <a id="forgot-password-link" class="additional-link">Забыл пароль</a>
+            <a id="forgot-password-link" class="additional-link gf-additional-link">Забыл пароль</a>
           </li>
         {{/if}}
       {{/if}}
@@ -157,7 +157,7 @@
 <template name="_loginButtonsBackToLoginLink">
   <ul class="nav nav-pills additional-link-container">
     <li>
-      <a id="back-to-login-link" class="additional-link">Войти</a>
+      <a id="back-to-login-link" class="additional-link gf-additional-link">Войти</a>
     </li>
   </ul>
 </template>
@@ -185,11 +185,8 @@ https://gist.github.com/968927
 <template name="_loginButtonsFormField">
   {{#if visible}}
     <div id="login-{{fieldName}}-label-and-input" class="form-group">
-        <label id="login-{{fieldName}}-label" for="login-{{fieldName}}">
-          {{fieldLabel}}
-        </label>
         <div class="controls">
-            <input id="login-{{fieldName}}" type="{{inputType}}" class="form-control" autocomplete="off"/>
+            <input id="login-{{fieldName}}" type="{{inputType}}" class="form-control" autocomplete="off" placeholder="{{fieldLabel}}" required/>
         </div>
     </div>
   {{/if}}

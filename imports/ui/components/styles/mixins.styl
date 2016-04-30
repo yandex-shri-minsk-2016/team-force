@@ -1,0 +1,30 @@
+gf-transition(transition)
+  -webkit-transition transition
+  -moz-transition transition
+  -ms-transition transition
+  -o-transition transition
+  transition transition
+
+gf-placeholder_style(weight, transition)
+  &::-webkit-input-placeholder
+    font-weight weight
+    gf-transition(transition)
+  &:-moz-placeholder
+    font-weight weight
+    gf-transition(transition)
+  &::-moz-placeholder
+    font-weight weight
+    gf-transition(transition)
+  &:-ms-input-placeholder
+    font-weight weight
+    gf-transition(transition)
+
+placeholder_font(value)
+  &::-webkit-input-placeholder
+    font-size:value
+  &:-moz-placeholder
+    font-size:value
+  &::-moz-placeholder
+    font-size:value
+  &:-ms-input-placeholder
+    font-size:value

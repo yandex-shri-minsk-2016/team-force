@@ -1,16 +1,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Team Force</title>
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Mono:400,100,300,500,700' rel='stylesheet' type='text/css'>
+  <title>GitFood</title>
 </head>
 <body>
 </body>
 
 <template name="layout">
-    {{> header}}
+    {{#if currentUser}}
+        {{> header}}
+    {{/if}}
     {{> notifications}}
     {{> yield}}
-    {{> footer}}
+    {{#if currentUser}}
+        {{> footer}}
+    {{/if}}
 </template>
 
 <template name="loading">

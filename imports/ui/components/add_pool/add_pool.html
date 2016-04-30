@@ -1,29 +1,27 @@
 <template name="addPool">
-    <div class="row">
-        <div class="container">
-            <div class="list-group col-xs-12 col-sm-8 col-sm-offset-2">
-                <form id="add_pool">
-                    <div class="form-group">
-                        <label class="control-label" for="time">Время заказа</label>
-                        <div class="input-group datetimepicker">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                            <input class="set-due-date form-control" name="time" id="time" placeholder="Введите удобное время" type="text"/>
+    <div class="container gf-add-pool">
+        <div class="list-group col-xs-12 col-sm-8 col-sm-offset-2">
+            <form id="add_pool">
+                <div class="form-group">
+                    <label class="control-label" for="time">Время заказа</label>
+                    <div class="input-group datetimepicker">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                        <input class="set-due-date form-control" name="time" id="time" placeholder="Введите удобное время" type="text"/>
+                    </div>
+                </div>
+                <div>
+                    <div class="control-group">
+                        <div class="controls">
+                            {{#each shops}}
+                                <input name="shop" type="radio" value="{{name}}"/>{{name}}<br>
+                            {{/each}}
                         </div>
                     </div>
-                    <div>
-                        <div class="control-group">
-                            <div class="controls">
-                                {{#each shops}}
-                                    <input name="shop" type="radio" value="{{name}}"/>{{name}}<br>
-                                {{/each}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="input-group">
-                        <button class="btn btn-success">Создать</button>
-                    </div>
-                </form>
-            </div>
+                </div>
+                <div class="input-group gf-btn-create">
+                    <button class="btn btn-success">Создать</button>
+                </div>
+            </form>
         </div>
     </div>
 </template>

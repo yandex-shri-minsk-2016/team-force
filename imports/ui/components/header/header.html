@@ -1,34 +1,36 @@
 <template name="header">
-    <header class="container">
-        <nav class="navbar navbar-default" role="navigation">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                            data-target="#navigation">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="{{pathFor 'index'}}">TeamForce</a>
+    <header class="container-fluid gf-header">
+        <div class="container">
+            <nav class="navbar navbar-default gf-navbar" role="navigation">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                data-target="#navigation">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="gf-brand" href="{{pathFor 'index'}}">GitFood</a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="navigation">
+                        {{#if currentUser}}
+                            <ul class="nav navbar-nav">
+                                <li><a class="gf-header_item" href="{{pathFor 'pool_add'}}">Добавить пулл</a></li>
+                                <li><a class="gf-header_item" href="{{pathFor 'history'}}">История</a></li>
+                                <li><a class="gf-header_item" href="{{pathFor 'feeds'}}">Уведомления
+                                    {{#if feedsUnseenCount }}
+                                        <span class="badge badge-inverse">{{ feedsUnseenCount }}</span>
+                                    {{/if}}
+                                </a></li>
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="gf-header_item">{{> logoutButton}}</li>
+                            </ul>
+                        {{/if}}
+                    </div>
                 </div>
-                <div class="collapse navbar-collapse" id="navigation">
-                    {{#if currentUser}}
-                    <ul class="nav navbar-nav">
-                        <li><a href="{{pathFor 'pool_add'}}">Добавить пулл</a></li>
-                        <li><a href="{{pathFor 'history'}}">История</a></li>
-                        <li><a href="{{pathFor 'feeds'}}">Уведомления
-                            {{#if feedsUnseenCount }}
-                                <span class="badge badge-inverse">{{ feedsUnseenCount }}</span>
-                            {{/if}}
-                        </a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>{{> logoutButton}}</li>
-                    </ul>
-                    {{/if}}
-                </div>
-            </div>
-        </nav>
+            </nav>
+        </div>
     </header>
 </template>
