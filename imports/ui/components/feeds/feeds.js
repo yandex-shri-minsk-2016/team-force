@@ -1,5 +1,3 @@
-import Feeds from './../../../api/feeds/feeds';
-
 Template.feeds.helpers({
     feeds: Feeds.find({ userId: Meteor.userId() })
 });

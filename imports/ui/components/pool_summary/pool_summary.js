@@ -1,8 +1,4 @@
-import { Meteor } from 'meteor/meteor';
-import Pools from './../../../api/pools/pools';
 import utils from './../../../../lib/utils';
-import Items from './../../../api/items/items';
-import Orders from './../../../api/orders/orders';
 import shops from './../../../../lib/shops.json';
 
 Template.poolSummary.helpers({

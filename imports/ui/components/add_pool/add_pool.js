@@ -1,5 +1,3 @@
-import {Meteor} from 'meteor/meteor';
-import Pools from './../../../api/pools/pools';
 import moment from 'moment';
 import shops from './../../../../lib/shops.json';
 import utils from './../../../../lib/utils';
