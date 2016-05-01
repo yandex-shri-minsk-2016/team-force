@@ -1,5 +1,3 @@
-import {Meteor} from 'meteor/meteor';
-import Pools from './../../../api/pools/pools';
 import moment from 'moment';
 import shops from './../../../../lib/shops.json';
 import utils from './../../../../lib/utils';
@@ -41,6 +39,8 @@ Template.addPool.events({
             ownerId: Meteor.userId(),
             companyId: Meteor.user().profile.company
         };
+
+        console.log(12312313213);
 
         Pools.add(newPool)
             .then((poolId) => {

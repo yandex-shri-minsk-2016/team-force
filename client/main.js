@@ -1,19 +1,8 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
-import PoolsCollection from './../imports/api/pools/pools';
-import OrdersCollection from './../imports/api/orders/orders';
-import ItemsCollection from './../imports/api/items/items';
-import FeedsCollection from './../imports/api/feeds/feeds';
-import CompanyCollection from './../imports/api/company/company';
-import Notifications from './../imports/api/notify/notify';
 import ParserClass from './../lib/parser';
 import Utils from './../lib/utils';
 
-Pools = PoolsCollection;
-Orders = OrdersCollection;
-Items = ItemsCollection;
-Feeds = FeedsCollection;
-Company = CompanyCollection;
 Parser = ParserClass;
 utils = Utils;
 

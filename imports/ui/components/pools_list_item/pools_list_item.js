@@ -1,1 +1,1 @@
-import { Meteor } from 'meteor/meteor';
+// pools_list_item.js

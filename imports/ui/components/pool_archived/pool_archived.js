@@ -1,7 +1,3 @@
-import { Meteor } from 'meteor/meteor';
-import Items from './../../../api/items/items';
-import Orders from './../../../api/orders/orders';
-
 Template.poolArchived.helpers({
     poolOrders: () => {
         let orders = [];
