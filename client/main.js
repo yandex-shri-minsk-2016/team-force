@@ -1,10 +1,15 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
+import { Accounts } from 'meteor/accounts-base';
 import ParserClass from './../lib/parser';
 import Utils from './../lib/utils';
 
 Parser = ParserClass;
 utils = Utils;
+
+Accounts.ui.config({
+    passwordSignupFields: 'USERNAME_AND_EMAIL'
+});
 
 import './../imports/ui/components/add_pool/add_pool.html';
 import './../imports/ui/components/add_pool/add_pool.js';
