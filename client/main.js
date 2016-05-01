@@ -3,6 +3,7 @@ import { ReactiveVar } from 'meteor/reactive-var';
 import { Accounts } from 'meteor/accounts-base';
 import ParserClass from './../lib/parser';
 import Utils from './../lib/utils';
+import moment from 'moment';
 
 Parser = ParserClass;
 utils = Utils;
@@ -50,3 +51,8 @@ import './../imports/ui/components/page403/page403.html';
 import './../imports/ui/components/page404/page404.html';
 
 import './main.html';
+
+Template.registerHelper('formatTime', (time, format) => {
+    return moment(time).format(format);
+});
+
