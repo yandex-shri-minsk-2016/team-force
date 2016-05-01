@@ -4,7 +4,8 @@ import utils from './../../../../lib/utils';
 
 Template.addPool.onRendered(function() {
     this.$('#time').datetimepicker({
-        format: utils.DATETIME_FORMAT
+        format: utils.DATETIME_FORMAT,
+        minDate: moment()
     });
 });
 
@@ -29,7 +30,8 @@ Template.addPool.events({
         const inputTime = moment(event.target.time.value, utils.DATETIME_FORMAT);
         const shop = event.target.shop.value;
 
-        if (!inputTime.isValid() || !(shop in shops)) {
+        //@TODO: add form validation
+        if (!inputTime.isValid() || inputTime.isBefore(moment()) || !(shop in shops)) {
             return;
         }
 
