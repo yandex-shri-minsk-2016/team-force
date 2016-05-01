@@ -40,8 +40,6 @@ Template.addPool.events({
             companyId: Meteor.user().profile.company
         };
 
-        console.log(12312313213);
-
         Pools.add(newPool)
             .then((poolId) => {
                 // @TODO: notify success create newPool
