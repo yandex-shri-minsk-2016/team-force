@@ -7,7 +7,9 @@
 </body>
 
 <template name="layout">
-    {{> header}}
+    {{#if currentUser}}
+        {{> header}}
+    {{/if}}
     {{> notifications}}
     {{> yield}}
     {{> footer}}
