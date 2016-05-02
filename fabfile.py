@@ -12,9 +12,7 @@ with open('deploy.json', 'r') as f:
 
 @task
 def deploy():
-    TRAVIS_BRANCH = os.environ.get('TRAVIS_BRANCH', 'None varible branch')
-
-    if TRAVIS_BRANCH == 'master':
+    if os.environ.get('TRAVIS_BRANCH', 'None varible branch') == 'master':
         env.settings = env.project_settings['stages']['stable']
     else:
         env.settings = env.project_settings['stages']['development']
