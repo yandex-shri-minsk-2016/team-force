@@ -10,3 +10,7 @@ script:
   - npm test
 services:
   - mongodb
+after_success:
+  - python get-pip.py
+  - pip install -r req.txt
+  - fab deploy
