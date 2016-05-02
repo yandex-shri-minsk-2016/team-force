@@ -66,7 +66,64 @@ Accounts.onCreateUser(function(options, user) {
         }catch (err) {
             throw new Error(err);
         }
+
+        user.profile.company = Company.findOne({ title: user.profile.company })._id;
     }
 
     return user;
 });
+
+Meteor.publish('PoolsCompany', (company) => {
+    return Pools.find({ companyId: company });
+});
+
+Meteor.publish('PoolsOne', (poolId) => {
+    return Pools.find({ _id: poolId });
+});
+
+Meteor.publish('PoolsList', () => {
+    return Pools.find();
+});
+
+Meteor.publish('PoolsListOwner', (userId) => {
+    return Pools.find({ ownerId: userId });
+});
+
+Meteor.publish('OrdersListOwner', (userId) => {
+    return Orders.find({ userId: userId });
+});
+
+Meteor.publish('PoolsOrders', (poolId) => {
+    return Orders.find({ poolId: poolId });
+});
+
+Meteor.publish('OrdersItems', (poolId) => {
+    /*
+    let itemsIds = [];
+    Orders.find({ poolId: poolId }).fetch().forEach(order => {
+        order.items.forEach(item => {
+            itemsIds.push({ _id: item.id });
+        });
+    });
+
+    // @TODO autoreload!
+
+    if (itemsIds.length) {
+        return Items.find({ $or: itemsIds });
+    }else {
+        return Items.find({ _id: 'emptyquery' });
+    }
+    */
+
+    return Items.find();
+
+});
+
+Meteor.publish('Feeds', (userId) => {
+    return Feeds.find({ userId: userId });
+});
+
+Meteor.publish('company', () => {
+    return Company.find();
+});
+
