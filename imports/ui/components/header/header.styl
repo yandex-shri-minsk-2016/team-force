@@ -1,1 +1,38 @@
-// header.styl
+.gf-header
+  background-color gf-orange
+  box-shadow 0 2px 5px rgba(0,0,0,0.1)
+  z-index 1
+  &_item
+    color white !important
+    gf-transition(.2s)
+    &:hover
+      opacity: .95
+
+.gf-navbar
+  background-color transparent
+  border none
+  margin-bottom 0
+  padding 10px 0
+
+.gf-brand
+  &:link, &:visited, &:hover, &:active
+    font-size 25px
+    font-weight 700
+    color white
+    float left
+    height 50px
+    padding 15px 15px
+    line-height 20px
+    text-decoration none
+    cursor pointer
+
+// @TODO: refactor this
+
+.navbar-default .navbar-toggle .icon-bar
+  background-color white
+
+.navbar-default .navbar-toggle
+  border-color white
+  gf-transition(.2s)
+  &:hover, &:focus
+    background-color: gf-green
