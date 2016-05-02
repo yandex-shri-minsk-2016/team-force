@@ -5,7 +5,7 @@
     "stable": {
       "name": "stable",
       "host": "107.170.16.192",
-      "user": "prod",
+      "user": "root",
       "vcs_branch": "master",
       "code_src_directory": "/home/prod/team-force",
       "restart_command": "supervisorctl restart teamforce_production"
@@ -13,7 +13,7 @@
     "development": {
       "name": "stage",
       "host": "107.170.16.192",
-      "user": "dev",
+      "user": "root",
       "vcs_branch": "dev",
       "code_src_directory": "/home/dev/team-force",
       "restart_command": "supervisorctl restart teamforce_dev"
