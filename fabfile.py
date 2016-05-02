@@ -14,6 +14,7 @@ with open('deploy.json', 'r') as f:
 def deploy():
     TARGET_BRANCH = os.environ.get('TARGET_BRANCH', 'None varible branch')
 
+    print os.environ
     print TARGET_BRANCH
     if TARGET_BRANCH == 'master':
         env.settings = env.project_settings['stages']['stable']

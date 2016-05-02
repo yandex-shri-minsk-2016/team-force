@@ -13,5 +13,4 @@ services:
   - mongodb
 after_success:
   - sudo apt-get install fabric
-  - pip install -r req.txt
   - fab deploy
