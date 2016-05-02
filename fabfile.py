@@ -49,23 +49,22 @@ def print_status(description):
     return print_status_decorator
 
 
-# @print_status('pulling git repository')
+@print_status('pulling git repository')
 def pull_repository():
     command = 'git pull {} {}'.format(
         env.project_settings.get('git_repository'),
         env.settings.get('vcs_branch')
     )
-
     print command
     run(command)
 
 
-# @print_status('installing requirements')
+@print_status('installing requirements')
 def install_requirements():
     run('npm i')
 
 
-# @print_status('restarting application')
+@print_status('restarting application')
 def restart_application():
     with settings(warn_only=True):
         restart_command = env.settings['restart_command']
