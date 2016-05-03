@@ -7,6 +7,7 @@ Template.poolArchived.helpers({
             orders.push(baseOrder);
             baseOrder.items.forEach((baseItem, itemIndex) => {
                 orders[index].items[itemIndex] = {
+                    id: baseItem.id,
                     count: baseItem.count,
                     item: Items.findOne({ _id: baseItem.id })
                 };
@@ -15,4 +16,8 @@ Template.poolArchived.helpers({
 
         return orders;
     }
+});
+
+Template.registerHelper('isPoolOwner', (poolId) => {
+    return Meteor.userId() === Pools.findOne({ _id:poolId }).ownerId;
 });

@@ -10,7 +10,7 @@
             {{#if poolOrders}}
                 <ul>
                     {{# each poolOrders }}
-                        <li>{{usermail owner}}</li>
+                        <li>{{usermail userId}}</li>
                         <ul>
                             {{# each items }}
                                 <li>{{ item.title }} : {{ count }}</li>
