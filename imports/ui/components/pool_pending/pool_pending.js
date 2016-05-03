@@ -24,7 +24,7 @@ Template.poolPending.helpers({
 Template.poolPending.events({
     'click .copy_order'(event) {
         let orderId = event.currentTarget.getAttribute('data-orderId');
-        Orders.copyOrder(orderId);
+        Orders.copyOrder(orderId, Meteor.userId());
     }
 
 });
