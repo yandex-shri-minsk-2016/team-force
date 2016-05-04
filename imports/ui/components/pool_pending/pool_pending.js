@@ -14,5 +14,17 @@ Template.poolPending.helpers({
         });
 
         return orders;
+    },
+
+    haveOrder: () => {
+        return Orders.findOne({ poolId: Template.instance().data._id, userId: Meteor.userId() });
     }
+});
+
+Template.poolPending.events({
+    'click .copy_order'(event) {
+        let orderId = event.currentTarget.getAttribute('data-orderId');
+        Orders.copyOrder(orderId, Meteor.userId());
+    }
+
 });

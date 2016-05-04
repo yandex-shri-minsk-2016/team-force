@@ -10,7 +10,10 @@
             {{#if poolOrders}}
                 <ul>
                     {{# each poolOrders }}
-                        <li>{{usermail owner}}</li>
+                        <li>{{usermail userId}}</li>
+                        {{#unless haveOrder}}
+                            <button class="copy_order" data-orderId="{{_id}}">+</button>
+                        {{/unless}}
                         <ul>
                             {{# each items }}
                                 <li>{{ item.title }} : {{ count }}</li>
