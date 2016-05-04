@@ -59,15 +59,24 @@ function addTask(task, id = Tasks.insert(task)) {
 }
 
 Accounts.onCreateUser(function(options, user) {
-    if (options.profile) {
-        user.profile = options.profile;
+    let profileEmpty = {
+        username: '',
+        phone:    '',
+        address:  '',
+        company:  ''
+    };
+
+    user.profile = profileEmpty;
+
+    if (options.profile.company) {
+        let companyTitle = options.profile.company;
         try {
-            Company.add({ title: options.profile.company });
+            Company.add({ title: companyTitle });
         }catch (err) {
             throw new Error(err);
         }
 
-        user.profile.company = Company.findOne({ title: user.profile.company })._id;
+        user.profile.company = Company.findOne({ title: companyTitle })._id;
     }
 
     return user;

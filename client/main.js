@@ -9,7 +9,7 @@ Parser = ParserClass;
 utils = Utils;
 
 Accounts.ui.config({
-    passwordSignupFields: 'USERNAME_AND_EMAIL'
+    passwordSignupFields: 'EMAIL_ONLY'
 });
 
 import './../imports/ui/components/common/common.js';
