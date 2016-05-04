@@ -47,6 +47,9 @@ import './../imports/ui/components/notifications/notifications.js';
 import './../imports/ui/components/header/header.html';
 import './../imports/ui/components/header/header.js';
 
+import './../imports/ui/components/profile/profile.html';
+import './../imports/ui/components/profile/profile.js';
+
 import './../imports/ui/components/footer/footer.html';
 
 import './../imports/ui/components/page403/page403.html';
