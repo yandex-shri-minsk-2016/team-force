@@ -26,9 +26,8 @@ Template.addPool.helpers({
 Template.addPool.events({
     'submit #add_pool': (event) => {
         event.preventDefault();
-
         const inputTime = moment(event.target.time.value, utils.DATETIME_FORMAT);
-        const shop = event.target.shop.value;
+        const shop = event.target.shop.value || [].slice.call(event.target.shop).filter(el => { return el.checked; })[0].value;
 
         //@TODO: add form validation
         if (!inputTime.isValid() || inputTime.isBefore(moment()) || !(shop in shops)) {
