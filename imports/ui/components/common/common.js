@@ -8,6 +8,10 @@ Template.registerHelper('defEqual', (v1, v2) => {
     return v1 == v2;
 });
 
+Template.registerHelper('moreOne', (count) => {
+    return count > 1;
+});
+
 Template.registerHelper('formatTime', (time, format) => {
     return moment(time).format(format);
 });
