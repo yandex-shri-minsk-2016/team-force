@@ -1,16 +1,43 @@
 <template name="poolSummary">
     <div class="row content-container">
         <div class="list-group col-xs-12 col-sm-8 col-sm-offset-2">
-            <h4>{{_id}}</h4>
-            <h6>{{state}}</h6>
-            <div class="rbt">
-                <span class="badge">{{time}}</span>
+            <div class="pool__header clearfix">
+                <div class="pool__header_title">
+                    {{shop}}
+                </div>
+                <div class="pool__header_posttitle">
+                    15:00 <!-- {{formatTime time 'HH:mm'}} @FIXme -->
+                </div>
+                <div class="pool__header_prices">
+                    1 000 000 руб <!-- getPoolPrice getPriceWithFormat @FIXme -->
+                </div>
             </div>
             <div class="list-group-item-text">
             {{#if poolItems}}
-                <ul>
-                    {{#each poolItems}}
-                        <li>{{data._id}}: {{count}} шт (для {{userIds}})</li>
+                <ul class="items">
+                    {{# each poolItems }}
+                        <li class="item item_pt">
+                            <span class="item__title">
+                                {{data.title}}
+                            </span>
+                            <span class="item__price">
+                                ({{data.price}}) <!-- getPriceWithFormat @FIXme -->
+                            </span>
+                            {{#if moreOne count}}
+                                <span class="item__count">
+                                    x{{count}}
+                                </span>
+                            {{/if}}
+                            {{#if userIds}}
+                            <ul class="users">
+                                {{#each userIds}}
+                                <li class="user">
+                                    {{usermail userId}}
+                                </li>
+                                {{/each}}
+                            </ul>
+                            {{/if}}
+                        </li>
                     {{/each}}
                 </ul>
             {{/if}}
