@@ -9,13 +9,8 @@
             <div class="list-group-item-text">
             {{#if poolOrders}}
                 <ul>
-                    {{# each poolOrders }}
-                        <li>{{usermail owner}}</li>
-                        <ul>
-                            {{# each items }}
-                                <li>{{ item.title }} : {{ count }}</li>
-                            {{/each}}
-                        </ul>
+                    {{#each poolOrders }}
+                        {{>ordersListItem}}
                     {{/each}}
                 </ul>
             {{/if}}

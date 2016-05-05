@@ -12,6 +12,8 @@ Accounts.ui.config({
     passwordSignupFields: 'USERNAME_AND_EMAIL'
 });
 
+import './../imports/ui/components/common/common.js';
+
 import './../imports/ui/components/add_pool/add_pool.html';
 import './../imports/ui/components/add_pool/add_pool.js';
 import './../imports/ui/components/append_pool/append_pool.html';
@@ -51,8 +53,3 @@ import './../imports/ui/components/page403/page403.html';
 import './../imports/ui/components/page404/page404.html';
 
 import './main.html';
-
-Template.registerHelper('formatTime', (time, format) => {
-    return moment(time).format(format);
-});
-

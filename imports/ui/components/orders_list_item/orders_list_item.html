@@ -1,13 +1,23 @@
-<template name="orders_list_item">
-    <div class="list-group">
+<template name="ordersListItem">
+    <div class="list-group alert {{#if isPaid }}alert-success{{else}}alert-danger{{/if}}">
         <a class="list-group-item">
             <h4>{{ _id }}</h4>
             <p class="list-group-item-text">
                 <ul>
-                    <li>{{usermail owner }}</li>
+                    <li>{{usermail userId }}
+                        {{#if isPoolOwner poolId }}
+                            {{#if isPaid }}
+                                <input class="js-ispaid" type="checkbox" checked="checked" />
+                            {{else}}
+                                <input class="js-ispaid" type="checkbox" />
+                            {{/if}}
+                        {{else}}
+                            not owner
+                        {{/if}}
+                    </li>
                     <ul>
                         {{#each items }}
-                            <li>{{ id }}</li>
+                            <li> {{ item.title }}: {{ count }}</li>
                         {{/each}}
                     </ul>
                 </ul>
