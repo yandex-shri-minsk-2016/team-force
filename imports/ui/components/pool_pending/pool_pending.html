@@ -1,71 +1,47 @@
+<template name="poolHeader">
+    <div class="pool__header clearfix">
+        <div class="pool__header_title">
+            {{shop}}
+        </div>
+        <div class="pool__header_posttitle">
+            15:00 <!-- {{formatTime time 'HH:mm'}} @FIXme -->
+        </div>
+        <div class="pool__header_prices">
+            1 000 000 руб <!-- getPoolPrice getPriceWithFormat @FIXme -->
+        </div>
+    </div>
+</template>
+
+<template name="appendPool">
+    <div class="list-group col-xs-12 col-sm-8 col-sm-offset-2">
+        <form id="append_pool">
+            <div class="form-group new-product-input-group">
+                <label class="control-label" for="products">Ссылка на продукт</label>
+                <div class="controls">
+                    <input class="form-control" name="item-link" id="new-product-input">
+                </div>
+            </div>
+            {{#each itemFields}}
+                <div class="form-group new-product-input-group">
+                    <label class="control-label" for="products">{{title}}</label>
+                    <div class="controls">
+                        <input name={{key}} class="form-control" value={{value}} id="new-product-input">
+                    </div>
+                </div>
+            {{/each}}
+            <div class="input-group">
+                <button class="btn btn-success join-button disabled" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Загружаем">Присоединиться</button>
+            </div>
+        </form>
+    </div>
+</template>
+
 <template name="poolPending">
     <div class="row content-container">
         <div class="list-group col-xs-12 col-sm-8 col-sm-offset-2">
-            <div class="pool__header clearfix">
-                <div class="pool__header_title">
-                {{shop}}
-                </div>
-                <div class="pool__header_posttitle">
-                    15:00 <!-- {{formatTime time 'HH:mm'}} @FIXme -->
-                </div>
-                <div class="pool__header_prices">
-                    1 000 000 руб <!-- getPoolPrice getPriceWithFormat @FIXme -->
-                </div>
-            </div>
-            <div class="list-group-item-text">
-            {{#if poolOrders}}
-                <ul class="orders">
-                    {{# each poolOrders }}
-                        <li class="order">
-                            <span class="order__username">
-                                {{usermail userId}}
-                            </span>
-                            <span class="order__price">
-                                150 000 руб <!-- getOrderPrice getPriceWithFormat @FIXme -->
-                            </span>
-                        </li>
-                        <ul class="items">
-                            {{# each items }}
-                                <li class="item">
-                                    <span class="item__title">
-                                        {{item.title}}
-                                    </span>
-                                    <span class="item__price">
-                                        ({{item.price}}) <!-- getPriceWithFormat @FIXme -->
-                                    </span>
-                                    {{#if moreOne count}}
-                                    <span class="item__count">
-                                        x{{count}}
-                                    </span>
-                                    {{/if}}
-                                </li>
-                            {{/each}}
-                        </ul>
-                    {{/each}}
-                </ul>
-            {{/if}}
-            </div>
+            {{>poolHeader}}
+            {{>ordersList}}
         </div>
-        <div class="list-group col-xs-12 col-sm-8 col-sm-offset-2">
-            <form id="append_pool">
-                <div class="form-group new-product-input-group">
-                    <label class="control-label" for="products">Ссылка на продукт</label>
-                    <div class="controls">
-                        <input class="form-control" name="item-link" id="new-product-input">
-                    </div>
-                </div>
-                {{#each itemFields}}
-                    <div class="form-group new-product-input-group">
-                        <label class="control-label" for="products">{{title}}</label>
-                        <div class="controls">
-                            <input name={{key}} class="form-control" value={{value}} id="new-product-input">
-                        </div>
-                    </div>
-                {{/each}}
-                <div class="input-group">
-                    <button class="btn btn-success join-button disabled" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Загружаем">Присоединиться</button>
-                </div>
-            </form>
-        </div>
+        {{>appendPool}}
     </div>
 </template>

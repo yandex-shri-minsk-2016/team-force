@@ -15,3 +15,11 @@ Template.registerHelper('moreOne', (count) => {
 Template.registerHelper('formatTime', (time, format) => {
     return moment(time).format(format);
 });
+
+Template.registerHelper('isPoolOwner', (poolId) => {
+    return Meteor.userId() === Pools.findOne({ _id:poolId }).ownerId;
+});
+
+Template.registerHelper('isPoolArchived', (poolId) => {
+    return utils.POOL_STATE.ARCHIVED === Pools.findOne({ _id:poolId }).state;
+});
