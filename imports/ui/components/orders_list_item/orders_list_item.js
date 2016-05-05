@@ -15,9 +15,7 @@ Template.ordersList.helpers({
 
         return orders;
     }
-})
-
-
+});
 
 Template.ordersListItem.events({
     'click .js-ispaid': () => {
