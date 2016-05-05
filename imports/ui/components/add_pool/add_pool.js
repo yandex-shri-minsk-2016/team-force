@@ -13,6 +13,7 @@ Template.addPool.helpers({
     userAddress: () => {
         return Meteor.user().profile.address;
     },
+
     shops: () => {
         let result = [];
         for (let name in shops) {
