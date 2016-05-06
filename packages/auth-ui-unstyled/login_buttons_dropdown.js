@@ -250,14 +250,6 @@ Template._loginButtonsLoggedOutPasswordService.helpers({
         visible: function () {
           return true;
         }},
-      {fieldName: 'phone', fieldLabel: 'Телефон', inputType: 'text',
-        visible: function () {
-          return true;
-        }},
-      {fieldName: 'address', fieldLabel: 'Адрес', inputType: 'text',
-        visible: function () {
-          return true;
-        }},
       {fieldName: 'password', fieldLabel: 'Пароль', inputType: 'password',
        visible: function () {
          return true;
@@ -467,22 +459,6 @@ var signup = function () {
       return;
     else
       options.email = email;
-  }
-
-  var address = trimmedElementValueById('login-address');
-  if (address !== null) {
-    if (!validateRequired(address))
-      return;
-    else
-      options.profile.address = address;
-  }
-
-  var phone = trimmedElementValueById('login-phone');
-  if (phone !== null) {
-    if (!validateRequired(phone))
-      return;
-    else
-      options.profile.phone = phone;
   }
 
   var company = trimmedElementValueById('login-company');
