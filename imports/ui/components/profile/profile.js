@@ -34,7 +34,7 @@ Template.profile.events({
             throwNotification('success', 'Сохранено');
         } catch (e) {
             console.log(e);
-            throwNotification('error', 'Возникла ошибка:(');
+            throwNotification('danger', 'Возникла ошибка:(');
         }
     }
 });
