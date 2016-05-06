@@ -1,16 +1,33 @@
 <template name="poolSummary">
     <div class="row content-container">
         <div class="list-group col-xs-12 col-sm-8 col-sm-offset-2">
-            <h4>{{_id}}</h4>
-            <h6>{{state}}</h6>
-            <div class="rbt">
-                <span class="badge">{{time}}</span>
-            </div>
+            {{>poolHeader}}
             <div class="list-group-item-text">
             {{#if poolItems}}
-                <ul>
-                    {{#each poolItems}}
-                        <li>{{data._id}}: {{count}} шт (для {{userIds}})</li>
+                <ul class="items">
+                    {{# each poolItems }}
+                        <li class="item item_pt">
+                            <span class="item__title">
+                                {{data.title}}
+                            </span>
+                            <span class="item__price">
+                                ({{data.price}}) <!-- getPriceWithFormat @FIXme -->
+                            </span>
+                            {{#if moreOne count}}
+                                <span class="item__count">
+                                    x{{count}}
+                                </span>
+                            {{/if}}
+                            {{#if userIds}}
+                            <ul class="users">
+                                {{#each userIds}}
+                                <li class="user">
+                                    {{usermail userId}}
+                                </li>
+                                {{/each}}
+                            </ul>
+                            {{/if}}
+                        </li>
                     {{/each}}
                 </ul>
             {{/if}}
@@ -18,7 +35,7 @@
         </div>
         <div class="row">
             <div class="list-group col-xs-12 col-sm-8 col-sm-offset-2">
-                <a href="{{pathFor 'pool' _id}}" class="btn btn-warning close-pool">Close</a>
+                <a href="{{pathFor 'pool' _id}}" class="btn btn-warning close-pool">Закрыть</a>
             </div>
         </div>
     </div>

@@ -1,27 +1,50 @@
-<template name="ordersListItem">
-    <div class="list-group alert {{#if isPaid }}alert-success{{else}}alert-danger{{/if}}">
-        <a class="list-group-item">
-            <h4>{{ _id }}</h4>
-            <p class="list-group-item-text">
-                <ul>
-                    <li>{{usermail userId }}
-                        {{#if isPoolOwner poolId }}
-                            {{#if isPaid }}
-                                <input class="js-ispaid" type="checkbox" checked="checked" />
-                            {{else}}
-                                <input class="js-ispaid" type="checkbox" />
-                            {{/if}}
-                        {{else}}
-                            not owner
-                        {{/if}}
-                    </li>
-                    <ul>
-                        {{#each items }}
-                            <li> {{ item.title }}: {{ count }}</li>
-                        {{/each}}
-                    </ul>
-                </ul>
-            </p>
-        </a>
+<template name="ordersList">
+    <div class="list-group-item-text">
+        {{#if poolOrders}}
+            <ul class="orders">
+                {{#each poolOrders }}
+                    {{>ordersListItem}}
+                {{/each}}
+            </ul>
+        {{/if}}
     </div>
+</template>
+
+<template name="ordersListItem">
+    <li class="order {{#if isPaid }}order_ispaid{{/if}}">
+        <span class="order__username">
+            {{usermail userId}}
+        </span>
+        <span class="order__price">
+            150 000 руб <!-- getOrderPrice getPriceWithFormat @FIXme -->
+        </span>
+        {{#if isPoolArchived poolId}}
+            {{#if isPoolOwner poolId }}
+                {{#if isPaid }}
+                    <input class="js-ispaid" type="checkbox" checked="checked" />
+                {{else}}
+                    <input class="js-ispaid" type="checkbox" />
+                {{/if}}
+            {{else}}
+            <!--not owner-->
+            {{/if}}
+        {{/if}}
+        <ul class="items">
+            {{# each items }}
+                <li class="item">
+                    <span class="item__title">
+                        {{item.title}}
+                    </span>
+                    <span class="item__price">
+                        ({{item.price}}) <!-- getPriceWithFormat @FIXme -->
+                    </span>
+                    {{#if moreOne count}}
+                        <span class="item__count">
+                            x{{count}}
+                        </span>
+                    {{/if}}
+                </li>
+            {{/each}}
+        </ul>
+    </li>
 </template>

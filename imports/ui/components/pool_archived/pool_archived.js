@@ -17,7 +17,3 @@ Template.poolArchived.helpers({
         return orders;
     }
 });
-
-Template.registerHelper('isPoolOwner', (poolId) => {
-    return Meteor.userId() === Pools.findOne({ _id:poolId }).ownerId;
-});
