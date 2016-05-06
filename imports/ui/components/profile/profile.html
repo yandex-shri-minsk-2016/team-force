@@ -1,0 +1,40 @@
+<template name="profile">
+    <div class="container clearfix content-container">
+        <form class="js-saveProfile">
+            <div class="form-group">
+                <label for="profileUsername">Имя</label>
+                {{#with profileUser}}
+                <input type="text" class="form-control" id="profileUsername" name="profileUsername" placeholder="Ваше имя" value="{{username}}">
+                {{/with}}
+                <small class="text-muted">Заполните, ведь к вам нужно как-то обратиться.</small>
+            </div>
+            <div class="form-group">
+                <label for="profilePhone">Телефон</label>
+                {{#with profileUser}}
+                <input type="text" class="form-control" id="profilePhone" name="profilePhone" placeholder="Ваш телефон" value="{{phone}}">
+                {{/with}}
+                <small class="text-muted">Вам перезвонят, чтобы уточнить данные заказа.</small>
+            </div>
+            <div class="form-group">
+                <label for="profileAddress">Адрес</label>
+                {{#with profileUser}}
+                <input type="text" class="form-control" id="profileAddress" name="profileAddress" placeholder="Ваш адрес" value="{{address}}">
+                {{/with}}
+                <small class="text-muted">Мы запомним этот адрес один раз и больше его не нужно будет вводить.</small>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="profileCompany">Компания</label>
+                {{#with profileUser}}
+                <input type="text" class="form-control" id="profileCompany" name="profileCompany" value="{{company}}">
+                {{/with}}
+            </div>
+
+            <div class="form-group">
+                <label for="profileEmail">Eпочта</label>
+                <input type="email" class="form-control" id="profileEmail" name="profileEmail" value="{{emailUser}}">
+            </div>
+            <input type="submit" class="btn btn-primary" value="Сохранить" />
+        </form>
+    </div>
+</template>

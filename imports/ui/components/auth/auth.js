@@ -1,5 +1,5 @@
 Template.logoutButton.events({
-    'click #action-logout': () => {
+    'click .js-logout': () => {
         Meteor.logout(() => {
             Router.go('/login');
         });

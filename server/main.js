@@ -62,7 +62,7 @@ Accounts.onCreateUser(function(options, user) {
     if (options.profile) {
         user.profile = options.profile;
         try {
-            Company.add({ title: user.profile.company });
+            Company.add({ title: options.profile.company });
         }catch (err) {
             throw new Error(err);
         }

@@ -1,3 +1,7 @@
+<template name="profileButton">
+    <a href="{{pathFor 'profile'}}">{{usermail currentUser._id}}</a>
+</template>
+
 <template name="logoutButton">
-    <a href="#" id="action-logout">Выйти</a>
+    <a href="#" class="js-logout">Выйти</a>
 </template>
