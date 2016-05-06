@@ -22,9 +22,9 @@ Template.poolSummary.events({
             };
         });
 
-        //@FIXME change
-        const email = shops[pool.shop].email || '---';
-
-        Meteor.call('sendEmail', email, { phone: '+375-29-901-23-23', name: 'Александр' }, items, pool.shop);
+        const email = shops[pool.shop].email;
+        if (email) {
+            Meteor.call('sendEmail', email, { phone: Meteor.user().profile.phone, name: Meteor.user().profile.username }, items, pool.shop);
+        }
     }
 });
