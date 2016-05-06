@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 Template.registerHelper('usermail', (userId) => {
     // let u = Meteor.users.findOne({ _id: userId });
     // @TODO fix quality code

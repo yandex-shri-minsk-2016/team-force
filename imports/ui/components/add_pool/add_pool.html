@@ -3,24 +3,53 @@
         <div class="container">
             <div class="list-group col-xs-12 col-sm-8 col-sm-offset-2">
                 <form id="add_pool">
-                    <div class="form-group">
-                        <label class="control-label" for="time">Время заказа</label>
-                        <div class="input-group datetimepicker">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                            <input class="set-due-date form-control" name="time" id="time" placeholder="Введите удобное время" type="text"/>
-                        </div>
+                    <div class="addPool__header">
+                        Новый заказ
                     </div>
-                    <div>
-                        <div class="control-group">
-                            <div class="controls">
-                                {{#each shops}}
-                                    <input name="shop" type="radio" value="{{name}}"/>{{name}}<br>
-                                {{/each}}
+                    <div class="addPool__body">
+                        <div class="form-group">
+                            <label class="control-label">Служба доставки</label>
+                            <div class="input-group">
+                                <div class="controls shopChoices">
+                                    {{#each shops}}
+                                        <span class="shopChoice">
+
+                                            <input class="shopChoice__val"
+                                                   id="shop{{@index}}"
+                                                   name="shop"
+                                                   type="radio"
+                                                   value="{{name}}"/>
+
+                                            <label class="shopChoice__img"
+                                                   for="shop{{@index}}"
+                                                   style="background-image:url('/img/{{name}}.png')">
+                                                {{name}}
+                                            </label>
+
+                                        </span>
+                                    {{/each}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="time">Время заказа</label>
+                            <div class="input-group datetimepicker">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                <input class="set-due-date form-control" name="time" id="time" placeholder="Введите удобное время" type="text"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="address">Адрес доставки</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                <input class="form-control" name="address" id="address" type="text" value="{{userAddress}}"/>
                             </div>
                         </div>
                     </div>
-                    <div class="input-group">
-                        <button class="btn btn-success">Создать</button>
+                    <div class="addPool__submit">
+                        <div class="input-group">
+                            <button class="btn btn-success">Добавить</button>
+                        </div>
                     </div>
                 </form>
             </div>

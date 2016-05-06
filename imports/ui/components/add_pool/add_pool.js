@@ -10,6 +10,10 @@ Template.addPool.onRendered(function() {
 });
 
 Template.addPool.helpers({
+    userAddress: () => {
+        return Meteor.user().profile.address;
+    },
+
     shops: () => {
         let result = [];
         for (let name in shops) {
@@ -28,6 +32,7 @@ Template.addPool.events({
         event.preventDefault();
         const inputTime = moment(event.target.time.value, utils.DATETIME_FORMAT);
         const shop = event.target.shop.value || [].slice.call(event.target.shop).filter(el => { return el.checked; })[0].value;
+        const address = event.target.address.value;
 
         //@TODO: add form validation
         if (!inputTime.isValid() || inputTime.isBefore(moment()) || !(shop in shops)) {
@@ -36,6 +41,7 @@ Template.addPool.events({
 
         const newPool = {
             shop: shop,
+            address: address,
             time: inputTime.toDate(),
             ownerId: Meteor.userId(),
             companyId: Meteor.user().profile.company
