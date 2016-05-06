@@ -4,14 +4,14 @@ import utils from './../../../../lib/utils';
 let itemFields = [];
 let itemFieldsDep = new Tracker.Dependency();
 
-Template.poolPending.helpers({
+Template.appendPool.helpers({
     itemFields: () => {
         itemFieldsDep.depend();
         return itemFields;
     }
 });
 
-Template.poolPending.events({
+Template.appendPool.events({
     'paste #new-product-input': (event) => {
         const errorClass = 'has-error';
 
