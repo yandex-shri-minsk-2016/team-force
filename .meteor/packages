@@ -19,7 +19,6 @@ ecmascript              # Enable ECMAScript2015+ syntax in app code
 
 insecure                # Allow all DB writes from clients (for prototyping)
 accounts-password
-stylus
 tsega:bootstrap3-datetimepicker
 twbs:bootstrap
 auth-ui
@@ -33,3 +32,4 @@ mrt:bootstrap3-typeahead
 lmieulet:meteor-coverage
 percolate:synced-cron
 meteorhacks:ssr
+mquandalle:stylus
