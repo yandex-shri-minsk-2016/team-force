@@ -1,15 +1,39 @@
-// auth.styl
-
-// @TODO: delete all
-
 .login-form
-  width: 300px
-  margin: 0 auto
+  width: 380px
+  margin: 5em auto
   box-sizing: border-box
-  padding: 20px 20px 5px
+  padding: 40px 50px
+  background color_gray-light
+
+.btn-teamforce
+  color #fff
+  font-size 20px
+  background-color: color_primary
+  border-color color_primary
 
 #login-buttons
   display block
+  .control
+    &__input
+      background none
+      border none
+      outline none
+      padding 1em 1em 1em 3em
+      display block
+      width 100%
+      border-bottom 1px solid color_gray
+    &.has-success
+      >input
+        border-bottom 1px solid green
+    &.has-error
+      >input
+        border-bottom 1px solid red
+    #login-email
+      background url('/img/i-email.png') 0.5em center no-repeat
+    #login-company
+      background url('/img/i-company.png') 0.5em center no-repeat
+    #login-password
+      background url('/img/i-password.png') 0.5em center no-repeat
 
 #login-buttons-password, #login-buttons-forgot-password
   margin: 15px 0 10px
@@ -17,10 +41,12 @@
 
 .additional-link-container
   display: inline-block
-  &:first-child
-    float: left
-  &:last-child
-    float: right
+  width 100%
+  cursor pointer
+  text-align center
+  font-size 18px
+
+// @TODO: delete all
 
 .header-email
   position: absolute
