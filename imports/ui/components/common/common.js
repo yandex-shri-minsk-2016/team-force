@@ -31,7 +31,7 @@ Template.registerHelper('getPriceWithFormat', (price) => {
 });
 
 Template.registerHelper('getOrderPrice', (orderId) => {
-    return utils.getPriceWithFormat(Pools.getOrderPrice(orderId));
+    return utils.getPriceWithFormat(Orders.getOrderPrice(orderId));
 });
 
 Template.registerHelper('getOrderIsPaidPrice', (orderId, isPaid) => {
