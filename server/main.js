@@ -86,6 +86,11 @@ Meteor.publish('PoolsCompany', (company) => {
     return Pools.find({ companyId: company });
 });
 
+Meteor.publish('OrdersCompany', (company) => {
+    // @FIXME company related
+    return Orders.find();
+});
+
 Meteor.publish('PoolsOne', (poolId) => {
     return Pools.find({ _id: poolId });
 });

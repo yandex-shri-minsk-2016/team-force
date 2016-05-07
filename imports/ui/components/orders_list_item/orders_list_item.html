@@ -16,7 +16,7 @@
             {{usermail userId}}
         </span>
         <span class="order__price">
-            150 000 руб <!-- getOrderPrice getPriceWithFormat @FIXme -->
+            {{getOrderPrice _id}}
         </span>
         {{#if isPoolArchived poolId}}
             {{#if isPoolOwner poolId }}
@@ -36,7 +36,7 @@
                         {{item.title}}
                     </span>
                     <span class="item__price">
-                        ({{item.price}}) <!-- getPriceWithFormat @FIXme -->
+                        ({{getPriceWithFormat item.price}})
                     </span>
                     {{#if moreOne count}}
                         <span class="item__count">

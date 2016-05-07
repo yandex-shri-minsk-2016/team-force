@@ -2,7 +2,7 @@
     <a href="{{pathFor 'pool' poolId=_id }}" class="list-group-item pools-list-item">
         <span class="pools-list-item__time">{{formatTime time 'HH:mm'}}</span>
         <span class="pools-list-item__shop">{{shop}}</span>
-        <span class="pools-list-item__owner">Алексей Иванов</span>
-        <span class="pools-list-item__money">120 000</span>
+        <span class="pools-list-item__owner">{{usermail ownerId}}</span>
+        <span class="pools-list-item__money">{{getPoolPrice _id}}</span>
     </a>
 </template>
