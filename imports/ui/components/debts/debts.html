@@ -1,0 +1,51 @@
+<template name="debts">
+    <div class="container clearfix content-container">
+        <div class="row">
+            <div class="list-group col-xs-12 col-sm-8 col-sm-offset-2">
+                {{#each debtsOrders}}
+                    {{>debtsListItem}}
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</template>
+
+
+<template name="debtsListItem">
+    <li class="order {{#if isPaid }}order_ispaid{{/if}}">
+        <span class="order__username">
+            Кому: {{usermail poolOwnerId}}
+        </span>
+        <span class="order__price">
+            Сколько: {{getOrderPrice _id}}
+        </span>
+        {{#if isPoolArchived poolId}}
+            {{#if isPoolOwner poolId }}
+                {{#if isPaid }}
+                    <input class="js-ispaid" type="checkbox" checked="checked" />
+                {{else}}
+                    <input class="js-ispaid" type="checkbox" />
+                {{/if}}
+            {{else}}
+                <!--not owner-->
+            {{/if}}
+        {{/if}}
+        <ul class="items">
+            {{# each items }}
+                <li class="item">
+                    <span class="item__title">
+                        {{item.title}}
+                    </span>
+                    <span class="item__price">
+                        ({{getPriceWithFormat item.price}})
+                    </span>
+                    {{#if moreOne count}}
+                        <span class="item__count">
+                            x{{count}}
+                        </span>
+                    {{/if}}
+                </li>
+            {{/each}}
+        </ul>
+    </li>
+</template>
