@@ -1,9 +1,12 @@
 import moment from 'moment';
 
 Template.registerHelper('usermail', (userId) => {
-    // let u = Meteor.users.findOne({ _id: userId });
-    // @TODO fix quality code
-    return 'email for: ' + userId;
+    let user = Meteor.users.findOne({ _id: userId });
+    if (user.profile.username) {
+        return user.profile.username;
+    }
+
+    return user.emails[0].address;
 });
 
 Template.registerHelper('defEqual', (v1, v2) => {
