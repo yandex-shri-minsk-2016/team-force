@@ -209,56 +209,52 @@ Template._loginButtonsLoggedOutAllServices.helpers({
 Template._loginButtonsLoggedOutPasswordService.helpers({
   fields: function () {
     var loginFields = [
-      {fieldName: 'username-or-email', fieldLabel: 'Username or Email',
+      {fieldName: 'username-or-email', fieldLabel: 'Имя или Епочта',
        visible: function () {
          return _.contains(
            ["USERNAME_AND_EMAIL", "USERNAME_AND_OPTIONAL_EMAIL"],
            passwordSignupFields());
        }},
-      {fieldName: 'username', fieldLabel: 'Username',
+      {fieldName: 'username', fieldLabel: 'Имя',
        visible: function () {
          return passwordSignupFields() === "USERNAME_ONLY";
        }},
-      {fieldName: 'email', fieldLabel: 'Email', inputType: 'email',
+      {fieldName: 'email', fieldLabel: 'Епочта', inputType: 'email',
        visible: function () {
          return passwordSignupFields() === "EMAIL_ONLY";
        }},
-      {fieldName: 'password', fieldLabel: 'Password', inputType: 'password',
+      {fieldName: 'password', fieldLabel: 'Пароль', inputType: 'password',
        visible: function () {
          return true;
        }}
     ];
 
     var signupFields = [
-      {fieldName: 'username', fieldLabel: 'Username',
+      {fieldName: 'username', fieldLabel: 'Имя',
        visible: function () {
          return _.contains(
            ["USERNAME_AND_EMAIL", "USERNAME_AND_OPTIONAL_EMAIL", "USERNAME_ONLY"],
            passwordSignupFields());
        }},
-      {fieldName: 'email', fieldLabel: 'Email', inputType: 'email',
+      {fieldName: 'email', fieldLabel: 'Епочта', inputType: 'email',
        visible: function () {
          return _.contains(
            ["USERNAME_AND_EMAIL", "EMAIL_ONLY"],
            passwordSignupFields());
        }},
-      {fieldName: 'email', fieldLabel: 'Email (optional)', inputType: 'email',
+      {fieldName: 'email', fieldLabel: 'Епочта (не обязательно)', inputType: 'email',
        visible: function () {
          return passwordSignupFields() === "USERNAME_AND_OPTIONAL_EMAIL";
        }},
-      {fieldName: 'company', fieldLabel: 'Company', inputType: 'text',
+      {fieldName: 'company', fieldLabel: 'Компания', inputType: 'text',
         visible: function () {
           return true;
         }},
-      {fieldName: 'address', fieldLabel: 'Address', inputType: 'text',
-        visible: function () {
-          return true;
-        }},
-      {fieldName: 'password', fieldLabel: 'Password', inputType: 'password',
+      {fieldName: 'password', fieldLabel: 'Пароль', inputType: 'password',
        visible: function () {
          return true;
        }},
-      {fieldName: 'password-again', fieldLabel: 'Password (again)',
+      {fieldName: 'password-again', fieldLabel: 'Пароль (повторить)',
        inputType: 'password',
        visible: function () {
          // No need to make users double-enter their password if
@@ -353,15 +349,15 @@ Template._loginButtonsChangePassword.events({
 Template._loginButtonsChangePassword.helpers({
   fields: function () {
     return [
-      {fieldName: 'old-password', fieldLabel: 'Current Password', inputType: 'password',
+      {fieldName: 'old-password', fieldLabel: 'Текущий пароль', inputType: 'password',
        visible: function () {
          return true;
        }},
-      {fieldName: 'password', fieldLabel: 'New Password', inputType: 'password',
+      {fieldName: 'password', fieldLabel: 'Новый пароль', inputType: 'password',
        visible: function () {
          return true;
        }},
-      {fieldName: 'password-again', fieldLabel: 'New Password (again)',
+      {fieldName: 'password-again', fieldLabel: 'Новый пароль (ещё раз)',
        inputType: 'password',
        visible: function () {
          // No need to make users double-enter their password if
@@ -463,14 +459,6 @@ var signup = function () {
       return;
     else
       options.email = email;
-  }
-
-  var address = trimmedElementValueById('login-address');
-  if (address !== null) {
-    if (!validateRequired(address))
-      return;
-    else
-      options.profile.address = address;
   }
 
   var company = trimmedElementValueById('login-company');

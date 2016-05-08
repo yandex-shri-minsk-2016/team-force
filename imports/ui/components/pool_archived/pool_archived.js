@@ -1,7 +1,3 @@
-import { Meteor } from 'meteor/meteor';
-import Items from './../../../api/items/items';
-import Orders from './../../../api/orders/orders';
-
 Template.poolArchived.helpers({
     poolOrders: () => {
         let orders = [];
@@ -11,6 +7,7 @@ Template.poolArchived.helpers({
             orders.push(baseOrder);
             baseOrder.items.forEach((baseItem, itemIndex) => {
                 orders[index].items[itemIndex] = {
+                    id: baseItem.id,
                     count: baseItem.count,
                     item: Items.findOne({ _id: baseItem.id })
                 };

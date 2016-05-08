@@ -1,2 +1,14 @@
 .list-group
-  padding: 0
+  padding 0
+  &__date
+    font-size 22px
+    padding-left 1em
+    color color_default
+
+  &__pools
+    &_pending
+      border 1px solid transparent
+    &_summary
+      border 1px solid color_primary
+    &_archived
+      opacity 0.5

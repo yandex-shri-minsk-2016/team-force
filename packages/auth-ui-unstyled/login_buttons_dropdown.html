@@ -104,7 +104,7 @@
 
       {{> _loginButtonsMessages}}
 
-      <div class="btn btn-success" id="login-buttons-password">
+      <div class="btn btn-teamforce" id="login-buttons-password">
         {{#if inSignupFlow}}
           Регистрация
         {{else}}
@@ -119,12 +119,13 @@
             <a id="signup-link" class="additional-link">Регистрация</a>
           </li>
         {{/if}}
-
+        <!--
         {{#if showForgotPasswordLink}}
           <li class="additional-link-container">
             <a id="forgot-password-link" class="additional-link">Забыл пароль</a>
           </li>
         {{/if}}
+        -->
       {{/if}}
 
       {{#if inSignupFlow}}
@@ -136,11 +137,11 @@
 </template>
 
 <template name="_forgotPasswordForm">
-  <div class="login-form form-group">
+  <div class="login-form">
     <div id="forgot-password-email-label-and-input"> {{! XXX we should probably use loginButtonsFormField }}
       <label id="forgot-password-email-label" for="forgot-password-email">Email</label>
-      <div class="controls">
-        <input id="forgot-password-email" type="email" class="form-control"/>
+      <div class="control">
+        <input id="forgot-password-email" type="email" class="control__input"/>
       </div>
     </div>
 
@@ -155,8 +156,8 @@
 </template>
 
 <template name="_loginButtonsBackToLoginLink">
-  <ul class="nav nav-pills additional-link-container">
-    <li>
+  <ul class="nav nav-pills">
+    <li class="additional-link-container">
       <a id="back-to-login-link" class="additional-link">Войти</a>
     </li>
   </ul>
@@ -185,11 +186,8 @@ https://gist.github.com/968927
 <template name="_loginButtonsFormField">
   {{#if visible}}
     <div id="login-{{fieldName}}-label-and-input" class="form-group">
-        <label id="login-{{fieldName}}-label" for="login-{{fieldName}}">
-          {{fieldLabel}}
-        </label>
-        <div class="controls">
-            <input id="login-{{fieldName}}" type="{{inputType}}" class="form-control" autocomplete="off"/>
+        <div class="control">
+            <input id="login-{{fieldName}}" type="{{inputType}}" placeholder="{{fieldLabel}}" class="control__input" autocomplete="off"/>
         </div>
     </div>
   {{/if}}

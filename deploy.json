@@ -1,0 +1,22 @@
+{
+  "project_name": "teamforce",
+  "git_repository": "origin",
+  "stages": {
+    "stable": {
+      "name": "stable",
+      "host": "107.170.16.192",
+      "user": "root",
+      "vcs_branch": "master",
+      "code_src_directory": "/home/prod/team-force",
+      "restart_command": "supervisorctl restart teamforce_production && service nginx restart"
+    },
+    "development": {
+      "name": "stage",
+      "host": "107.170.16.192",
+      "user": "root",
+      "vcs_branch": "dev",
+      "code_src_directory": "/home/dev/team-force",
+      "restart_command": "supervisorctl restart teamforce_dev && service nginx restart"
+    }
+  }
+}

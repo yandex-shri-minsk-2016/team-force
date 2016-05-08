@@ -1,1 +1,22 @@
-// header.styl
+.header
+  .navbar
+    height height_header
+    background-color color_primary
+    box-shadow 0 0 4px rgba(0, 0, 0, .14), 0 4px 8px rgba(0, 0, 0, .28)
+
+    .icon-bar
+      background white
+
+    .navbar-brand
+      color color_default
+      font-weight 500
+      font-size 2em
+
+    .navbar-collapse
+      background-color color_primary
+      box-shadow none
+
+      li > a
+        color white
+        &:hover,&:focus
+          background-color color_primary

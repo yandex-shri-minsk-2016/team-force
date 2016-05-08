@@ -1,16 +1,19 @@
-import {Meteor} from 'meteor/meteor';
-import Pools from './../../../api/pools/pools';
 import moment from 'moment';
 import shops from './../../../../lib/shops.json';
 import utils from './../../../../lib/utils';
 
 Template.addPool.onRendered(function() {
     this.$('#time').datetimepicker({
-        format: utils.DATETIME_FORMAT
+        format: utils.DATETIME_FORMAT,
+        minDate: moment()
     });
 });
 
 Template.addPool.helpers({
+    userAddress: () => {
+        return Meteor.user().profile.address;
+    },
+
     shops: () => {
         let result = [];
         for (let name in shops) {
@@ -27,16 +30,18 @@ Template.addPool.helpers({
 Template.addPool.events({
     'submit #add_pool': (event) => {
         event.preventDefault();
-
         const inputTime = moment(event.target.time.value, utils.DATETIME_FORMAT);
-        const shop = event.target.shop.value;
+        const shop = event.target.shop.value || [].slice.call(event.target.shop).filter(el => { return el.checked; })[0].value;
+        const address = event.target.address.value;
 
-        if (!inputTime.isValid() || !(shop in shops)) {
+        //@TODO: add form validation
+        if (!inputTime.isValid() || inputTime.isBefore(moment()) || !(shop in shops)) {
             return;
         }
 
         const newPool = {
             shop: shop,
+            address: address,
             time: inputTime.toDate(),
             ownerId: Meteor.userId(),
             companyId: Meteor.user().profile.company
@@ -47,8 +52,10 @@ Template.addPool.events({
                 // @TODO: notify success create newPool
                 Meteor.call('addTask', {
                     date: newPool.time,
-                    name: 'changePoolState',
-                    options: poolId
+                    name: 'setSummary',
+                    options: {
+                        poolId: poolId
+                    }
                 });
                 Router.go(`/pool/${poolId}`);
             })

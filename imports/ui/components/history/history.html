@@ -1,38 +1,11 @@
 <template name="history">
-    <div class="container clearfix">
-        <ul class="nav nav-pills" role="tablist">
-            <li role="presentation" class="active">
-                <a href="#pools" aria-controls="pools" role="tab" data-toggle="tab">
-                    Созданные пулы
-                </a>
-            </li>
-            <li role="presentation">
-                <a href="#debts" aria-controls="debts" role="tab" data-toggle="tab">
-                    Долги
-                </a>
-            </li>
-        </ul>
-
-        <div class="tab-content">
-            <div role="tabpanel" class="tab-pane active" id="pools">
-                <div class="row">
-                    <div class="list-group col-xs-12 col-sm-8 col-sm-offset-2">
-                        {{#each pools}}
-                            {{> pools_list_item}}
-                        {{/each}}
-                    </div>
-                </div>
-            </div>
-            <div role="tabpanel" class="tab-pane" id="debts">
-                <div class="row">
-                    <div class="list-group col-xs-12 col-sm-8 col-sm-offset-2">
-                        {{#each orders}}
-                            {{> orders_list_item}}
-                        {{/each}}
-                    </div>
-                </div>
+    <div class="container clearfix content-container">
+        <div class="row">
+            <div class="list-group col-xs-12 col-sm-8 col-sm-offset-2">
+                {{#each pools}}
+                    {{>poolsListItem}}
+                {{/each}}
             </div>
         </div>
     </div>
-
 </template>

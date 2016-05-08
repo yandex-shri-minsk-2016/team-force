@@ -13,6 +13,7 @@
     }
   },
   "wok.by": {
+    "email": "gitfood@ya.ru",
     "minDelivery": "100000",
     "costDelivery": "50000",
     "freeDelivery": "150000",

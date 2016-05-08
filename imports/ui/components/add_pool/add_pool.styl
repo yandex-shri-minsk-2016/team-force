@@ -1,1 +1,52 @@
-// add_pool.styl
+.addPool
+  &__header
+    color color_blue
+    font-size 48px
+    margin-bottom 1em
+    text-align center
+  &__body
+    .control-label
+      display block
+      text-align center
+      color color_default
+      font-size 22px
+      font-weight normal
+  &__submit
+    padding-top 3em
+    >div
+      width 100%
+      text-align center
+    button
+      margin 0 auto
+      width 220px
+
+.shopChoices
+  text-align center
+
+.shopChoice
+  display inline-block
+  vertical-align top
+  width 31%
+  margin 2% 0
+  &__img
+    cursor pointer
+    background-size cover
+    background-repeat no-repeat
+    display block
+    width 205px
+    height 144px
+    margin 3px
+    opacity 0.8
+    color: transparent
+    transition: opacity .2s
+    &:hover
+      opacity 1
+  input
+    margin 0
+    padding 0
+    appearance none
+    &:active +.shopChoice__img
+      opacity 0.9
+    &:checked +.shopChoice__img
+      opacity 1
+      border 3px solid color_light_blue

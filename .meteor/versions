@@ -4,7 +4,6 @@ aldeed:simple-schema@1.5.3
 allow-deny@1.0.4
 auth-ui@1.1.8
 auth-ui-unstyled@1.1.11
-autopublish@1.0.7
 autoupdate@1.2.9
 babel-compiler@6.6.4
 babel-runtime@0.1.8
@@ -61,6 +60,7 @@ mdg:validation-error@0.2.0
 meteor@1.1.14
 meteor-base@1.0.4
 meteorhacks:picker@1.0.3
+meteorhacks:ssr@2.2.0
 minifier-css@1.1.11
 minifier-js@1.1.11
 minimongo@1.0.16
@@ -71,6 +71,7 @@ modules-runtime@0.6.3
 momentjs:moment@2.8.4
 mongo@1.1.7
 mongo-id@1.0.4
+mquandalle:stylus@1.1.1
 mrt:bootstrap3-typeahead@3.0.3
 npm-bcrypt@0.8.5
 npm-mongo@1.4.43
@@ -95,7 +96,6 @@ spacebars-compiler@1.0.11
 srp@1.0.8
 standard-minifier-css@1.0.6
 standard-minifier-js@1.0.6
-stylus@2.511.5
 templating@1.1.9
 templating-tools@1.0.4
 tracker@1.0.13

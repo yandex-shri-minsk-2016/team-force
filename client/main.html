@@ -7,10 +7,16 @@
 </body>
 
 <template name="layout">
-    {{> header}}
+    <div class="{{#if currentUser}}logined{{else}}unlogined{{/if}}">
+    {{#if currentUser}}
+        {{>header}}
+    {{/if}}
     {{> notifications}}
     {{> yield}}
-    {{> footer}}
+    {{#if currentUser}}
+        {{> footer}}
+    {{/if}}
+    </div>
 </template>
 
 <template name="loading">
@@ -19,45 +25,50 @@
 
 <template name="appPools">
      <!--@TODO appPools-->
-    {{> poolsList}}
+    {{>poolsList}}
 </template>
 
 <template name="appLogin">
      <!--@TODO appLogin-->
-    {{> loginButtons}}
+    {{>loginButtons}}
 </template>
 
 <template name="appPoolPending">
      <!--@TODO appPool-->
-    {{> poolPending}}
+    {{>poolPending}}
 </template>
 
 <template name="appPoolSummary">
     <!--@TODO appPool-->
-    {{> poolSummary}}
+    {{>poolSummary}}
 </template>
 
 <template name="appPoolArchived">
     <!--@TODO appPool-->
-    {{> poolArchived}}
+    {{>poolArchived}}
 </template>
 
 <template name="appPoolAdd">
      <!--@TODO appPoolAdd-->
-    {{> addPool}}
-</template>
-
-<template name="appPoolAppend">
-     <!--@TODO appPoolEdit-->
-    {{> appendPool}}
+    {{>addPool}}
 </template>
 
 <template name="appHistory">
     <!--@TODO appHistory-->
-    {{> history}}
+    {{>history}}
+</template>
+
+<template name="appDebts">
+    <!--@TODO appDebts-->
+    {{>debts}}
 </template>
 
 <template name="appFeeds">
     <!--@TODO appFeeds-->
-    {{> feeds}}
+    {{>feeds}}
+</template>
+
+<template name="appProfile">
+    <!--@TODO appFeeds-->
+    {{>profile}}
 </template>

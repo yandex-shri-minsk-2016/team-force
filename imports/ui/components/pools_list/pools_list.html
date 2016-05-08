@@ -1,8 +1,15 @@
 <template name="poolsList">
-    <div class="row">
+    <div class="row content-container">
         <div class="list-group col-xs-12 col-sm-8 col-sm-offset-2">
-            {{#each pools}}
-                {{> pools_list_item}}
+            {{#each poolsWithDates}}
+                <div class="list-group__date clearfix">
+                    {{date}}
+                </div>
+                <div class="list-group__pools clearfix">
+                {{#each pools}}
+                    {{> poolsListItem}}
+                {{/each}}
+                </div>
             {{/each}}
         </div>
     </div>

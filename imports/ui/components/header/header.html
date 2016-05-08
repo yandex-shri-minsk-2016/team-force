@@ -1,6 +1,6 @@
 <template name="header">
-    <header class="container">
-        <nav class="navbar navbar-default" role="navigation">
+    <header class="header">
+        <nav class="navbar navbar-fixed-top" role="navigation">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
@@ -10,13 +10,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="{{pathFor 'index'}}">TeamForce</a>
+                    <a class="navbar-brand" href="{{pathFor 'index'}}">Yandex</a>
                 </div>
                 <div class="collapse navbar-collapse" id="navigation">
                     {{#if currentUser}}
                     <ul class="nav navbar-nav">
                         <li><a href="{{pathFor 'pool_add'}}">Добавить пулл</a></li>
-                        <li><a href="{{pathFor 'history'}}">История</a></li>
+                        <li><a href="{{pathFor 'history'}}">Созданные пулы</a></li>
+                        <li><a href="{{pathFor 'debts'}}">Долги</a></li>
                         <li><a href="{{pathFor 'feeds'}}">Уведомления
                             {{#if feedsUnseenCount }}
                                 <span class="badge badge-inverse">{{ feedsUnseenCount }}</span>
@@ -24,7 +25,9 @@
                         </a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li>{{> logoutButton}}</li>
+
+                        <li>{{>profileButton}}</li>
+                        <li>{{>logoutButton}}</li>
                     </ul>
                     {{/if}}
                 </div>

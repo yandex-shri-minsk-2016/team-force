@@ -1,26 +1,21 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
-import PoolsCollection from './../imports/api/pools/pools';
-import OrdersCollection from './../imports/api/orders/orders';
-import ItemsCollection from './../imports/api/items/items';
-import FeedsCollection from './../imports/api/feeds/feeds';
-import CompanyCollection from './../imports/api/company/company';
-import Notifications from './../imports/api/notify/notify';
+import { Accounts } from 'meteor/accounts-base';
 import ParserClass from './../lib/parser';
 import Utils from './../lib/utils';
+import moment from 'moment';
 
-Pools = PoolsCollection;
-Orders = OrdersCollection;
-Items = ItemsCollection;
-Feeds = FeedsCollection;
-Company = CompanyCollection;
 Parser = ParserClass;
 utils = Utils;
 
+Accounts.ui.config({
+    passwordSignupFields: 'EMAIL_ONLY'
+});
+
+import './../imports/ui/components/common/common.js';
+
 import './../imports/ui/components/add_pool/add_pool.html';
 import './../imports/ui/components/add_pool/add_pool.js';
-import './../imports/ui/components/append_pool/append_pool.html';
-import './../imports/ui/components/append_pool/append_pool.js';
 
 import './../imports/ui/components/pools_list/pools_list.html';
 import './../imports/ui/components/pools_list/pools_list.js';
@@ -38,6 +33,8 @@ import './../imports/ui/components/pool_archived/pool_archived.js';
 
 import './../imports/ui/components/history/history.html';
 import './../imports/ui/components/history/history.js';
+import './../imports/ui/components/debts/debts.html';
+import './../imports/ui/components/debts/debts.js';
 import './../imports/ui/components/feeds/feeds.html';
 import './../imports/ui/components/feeds/feeds.js';
 
@@ -49,6 +46,9 @@ import './../imports/ui/components/notifications/notifications.js';
 
 import './../imports/ui/components/header/header.html';
 import './../imports/ui/components/header/header.js';
+
+import './../imports/ui/components/profile/profile.html';
+import './../imports/ui/components/profile/profile.js';
 
 import './../imports/ui/components/footer/footer.html';
 

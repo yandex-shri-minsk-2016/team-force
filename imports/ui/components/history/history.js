@@ -1,8 +1,10 @@
-import { Meteor } from 'meteor/meteor';
-import Pools from './../../../api/pools/pools';
-import Orders from './../../../api/orders/orders';
-
 Template.history.helpers({
-    pools: Pools.find({ ownerId: Meteor.userId() }),
-    orders: Orders.find({ userId: Meteor.userId() })
+    pools: () => {
+        return Pools.find({ ownerId: Meteor.userId() }).fetch().map((pool) => {
+            pool.poolPrice  = utils.getPriceWithFormat(Pools.getPoolPrice(pool._id));
+            pool.userCount = Orders.find({ poolId:pool._id }).count();
+
+            return pool;
+        });
+    }
 });

@@ -1,15 +1,17 @@
 import { Accounts } from 'meteor/accounts-base';
-import { Meteor } from 'meteor/meteor';
-import Pools from './../imports/api/pools/pools';
-import Items from './../imports/api/items/items';
-import Feeds from './../imports/api/feeds/feeds';
-import Company from './../imports/api/company/company';
+import utils from './../lib/utils';
+import Email from './email';
 
 Tasks = new Meteor.Collection('tasks');
+SSR.compileTemplate('email', Assets.getText('email.html'));
 
 Meteor.methods({
     addTask: (task) => {
         return addTask(task);
+    },
+
+    sendEmail: (to, user, data, shopName) => {
+        return Email.send(to, SSR.render('email', { user, data, shopName }));
     }
 });
 
@@ -25,8 +27,8 @@ Meteor.startup(() => {
 });
 
 const taskFunctions = {
-    changePoolState: (poolId) => {
-        Pools.update({ _id: poolId }, { $set: { state: 'summary' } });
+    setSummary: (data) => {
+        Pools.changePoolState(data.poolId, utils.POOL_STATE.SUMMARY);
     }
 };
 
@@ -54,17 +56,100 @@ function addTask(task, id = Tasks.insert(task)) {
             }
         });
     }
-};
+}
 
 Accounts.onCreateUser(function(options, user) {
-    if (options.profile) {
-        user.profile = options.profile;
+    let profileEmpty = {
+        username: '',
+        phone:    '',
+        address:  '',
+        company:  ''
+    };
+
+    user.profile = profileEmpty;
+
+    if (options.profile.company) {
+        let companyTitle = options.profile.company;
         try {
-            Company.add({ title: user.profile.company });
+            Company.add({ title: companyTitle });
         }catch (err) {
             throw new Error(err);
         }
+
+        user.profile.company = Company.findOne({ title: companyTitle })._id;
     }
 
     return user;
+});
+
+Meteor.publish('PoolsCompany', (company) => {
+    return Pools.find({ companyId: company });
+});
+
+Meteor.publish('OrdersCompany', (company) => {
+    // @FIXME company related
+    return Orders.find();
+});
+
+Meteor.publish('PoolsOne', (poolId) => {
+    return Pools.find({ _id: poolId });
+});
+
+Meteor.publish('PoolsList', () => {
+    return Pools.find();
+});
+
+Meteor.publish('PoolsListOwner', (userId) => {
+    return Pools.find({ ownerId: userId });
+});
+
+Meteor.publish('OrdersListOwner', (userId) => {
+    return Orders.find({ userId: userId });
+});
+
+Meteor.publish('PoolsOrders', (poolId) => {
+    return Orders.find({ poolId: poolId });
+});
+
+Meteor.publish('OrdersItems', (poolId) => {
+    /*
+    let itemsIds = [];
+    Orders.find({ poolId: poolId }).fetch().forEach(order => {
+        order.items.forEach(item => {
+            itemsIds.push({ _id: item.id });
+        });
+    });
+
+    // @TODO autoreload!
+
+    if (itemsIds.length) {
+        return Items.find({ $or: itemsIds });
+    }else {
+        return Items.find({ _id: 'emptyquery' });
+    }
+    */
+
+    return Items.find();
+
+});
+
+Meteor.publish('Feeds', (userId) => {
+    return Feeds.find({ userId: userId });
+});
+
+Meteor.publish('company', () => {
+    return Company.find();
+});
+
+Meteor.publish('usersData', function() {
+    if (this.userId) {
+        return Meteor.users.find({}, {
+            fields: {
+                emails: 1,
+                profile: 1
+            }
+        });
+    } else {
+        this.ready();
+    }
 });

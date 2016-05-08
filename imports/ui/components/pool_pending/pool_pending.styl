@@ -1,1 +1,38 @@
 // pool_pending.styl
+
+.pool__header
+  line-height 53px
+  border-bottom 1px solid color_default
+  &_title
+    float left
+    font-size 36px
+    padding-right 40px
+    color color_default
+  &_posttitle
+    float left
+    font-size 24px
+    color #3193C6
+  &_prices
+    float right
+    font-size 25px
+    color color_magic-green
+
+.items
+  list-style none
+
+.item
+  text-indent 10px
+  background ('/public/dot.png') left no-repeat // @TODOfix me upload dot.png
+  &__title
+    color #393939
+    font-size 18px
+  &__price
+    color #393939
+    font-size 18px
+  &__count
+    color color_gray
+    font-size 18px
+
+// @FIXme classname
+.new-product-hide-input-group
+  display none

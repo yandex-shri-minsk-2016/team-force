@@ -1,12 +1,9 @@
-<template name="pools_list_item">
-    <div class="list-group">
-        <a href="{{pathFor 'pool' poolId=_id }}"  class="list-group-item">
-            <h4>{{_id}}</h4>
-            <div class="rbt">
-                <a href="{{pathFor 'pool_append' poolId=_id }}" class="btn btn-primary">Присоединиться</a>
-                <br>
-                <span class="badge">{{time}}</span>
-            </div>
-        </a>
-    </div>
+<template name="poolsListItem">
+    <a href="{{pathFor 'pool' poolId=_id }}" class="list-group__pools_{{state}} list-group-item pools-list-item">
+        <span class="pools-list-item__time">{{formatTime time 'HH:mm'}}</span><!--
+     --><span class="pools-list-item__shop">{{shop}}</span><!--
+     --><span class="pools-list-item__owner">{{usermail ownerId}}</span><!--
+     --><span class="pools-list-item__money">{{poolPrice}}</span><!--
+     --><span class="pools-list-item__users"> <i class="glyphicon glyphicon-user"></i> {{userCount}}</span>
+    </a>
 </template>
