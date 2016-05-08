@@ -7,12 +7,16 @@
 </body>
 
 <template name="layout">
+    <div class="{{#if currentUser}}logined{{else}}unlogined{{/if}}">
     {{#if currentUser}}
         {{>header}}
     {{/if}}
-    {{>notifications}}
-    {{>yield}}
-    {{>footer}}
+    {{> notifications}}
+    {{> yield}}
+    {{#if currentUser}}
+        {{> footer}}
+    {{/if}}
+    </div>
 </template>
 
 <template name="loading">
