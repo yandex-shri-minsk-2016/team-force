@@ -13,20 +13,20 @@ Template.appendPool.helpers({
 
 Template.appendPool.events({
     'keyup .new-product-dynamic-input-group input': (event) => {
-        let isEmpty = [];
+        let emptyFields = [];
         const joinButton = $('.join-button');
         const hideGroup = $('.new-product-hide-input-group');
 
         $('.new-product-dynamic-input-group input').each((input, element) => {
-            isEmpty.push(!!$(element).val());
+            emptyFields.push(!!$(element).val());
         });
 
-        if (isEmpty.reduce((result, current) => { return result && current; })) {
-            hideGroup.show();
-            joinButton.removeClass('disabled');
-        }else {
+        if (!emptyFields.reduce((result, current) => { return result && current; })) {
             hideGroup.hide();
             joinButton.addClass('disabled');
+        }else {
+            hideGroup.show();
+            joinButton.removeClass('disabled');
         }
     },
 
