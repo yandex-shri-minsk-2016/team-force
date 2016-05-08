@@ -33,6 +33,8 @@ import './../imports/ui/components/pool_archived/pool_archived.js';
 
 import './../imports/ui/components/history/history.html';
 import './../imports/ui/components/history/history.js';
+import './../imports/ui/components/debts/debts.html';
+import './../imports/ui/components/debts/debts.js';
 import './../imports/ui/components/feeds/feeds.html';
 import './../imports/ui/components/feeds/feeds.js';
 

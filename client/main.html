@@ -8,11 +8,11 @@
 
 <template name="layout">
     {{#if currentUser}}
-        {{> header}}
+        {{>header}}
     {{/if}}
-    {{> notifications}}
-    {{> yield}}
-    {{> footer}}
+    {{>notifications}}
+    {{>yield}}
+    {{>footer}}
 </template>
 
 <template name="loading">
@@ -21,42 +21,47 @@
 
 <template name="appPools">
      <!--@TODO appPools-->
-    {{> poolsList}}
+    {{>poolsList}}
 </template>
 
 <template name="appLogin">
      <!--@TODO appLogin-->
-    {{> loginButtons}}
+    {{>loginButtons}}
 </template>
 
 <template name="appPoolPending">
      <!--@TODO appPool-->
-    {{> poolPending}}
+    {{>poolPending}}
 </template>
 
 <template name="appPoolSummary">
     <!--@TODO appPool-->
-    {{> poolSummary}}
+    {{>poolSummary}}
 </template>
 
 <template name="appPoolArchived">
     <!--@TODO appPool-->
-    {{> poolArchived}}
+    {{>poolArchived}}
 </template>
 
 <template name="appPoolAdd">
      <!--@TODO appPoolAdd-->
-    {{> addPool}}
+    {{>addPool}}
 </template>
 
 <template name="appHistory">
     <!--@TODO appHistory-->
-    {{> history}}
+    {{>history}}
+</template>
+
+<template name="appDebts">
+    <!--@TODO appDebts-->
+    {{>debts}}
 </template>
 
 <template name="appFeeds">
     <!--@TODO appFeeds-->
-    {{> feeds}}
+    {{>feeds}}
 </template>
 
 <template name="appProfile">

@@ -1,8 +1,9 @@
 <template name="poolsListItem">
-    <a href="{{pathFor 'pool' poolId=_id }}" class="list-group-item pools-list-item">
-        <span class="pools-list-item__time">{{formatTime time 'HH:mm'}}</span>
-        <span class="pools-list-item__shop">{{shop}}</span>
-        <span class="pools-list-item__owner">{{usermail ownerId}}</span>
-        <span class="pools-list-item__money">{{getPoolPrice _id}}</span>
+    <a href="{{pathFor 'pool' poolId=_id }}" class="list-group__pools_{{state}} list-group-item pools-list-item">
+        <span class="pools-list-item__time">{{formatTime time 'HH:mm'}}</span><!--
+     --><span class="pools-list-item__shop">{{shop}}</span><!--
+     --><span class="pools-list-item__owner">{{usermail ownerId}}</span><!--
+     --><span class="pools-list-item__money">{{poolPrice}}</span><!--
+     --><span class="pools-list-item__users"> <i class="glyphicon glyphicon-user"></i> {{userCount}}</span>
     </a>
 </template>
