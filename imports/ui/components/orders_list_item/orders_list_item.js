@@ -17,9 +17,20 @@ Template.ordersList.helpers({
     }
 });
 
+Template.ordersListItem.helpers({
+    haveOrder: (poolId) => {
+        return Orders.findOne({ poolId: poolId, userId: Meteor.userId() });
+    }
+});
+
 Template.ordersListItem.events({
     'click .js-ispaid': () => {
         let order = Orders.findOne(Template.instance().data._id);
         Orders.update(order._id, { $set: { isPaid: !order.isPaid } });
+    },
+
+    'click .copy_order'(event) {
+        let orderId = event.currentTarget.getAttribute('data-orderId');
+        Orders.copyOrder(orderId, Meteor.userId());
     }
 });
