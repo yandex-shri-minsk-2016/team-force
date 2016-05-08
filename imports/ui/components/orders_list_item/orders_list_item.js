@@ -29,7 +29,7 @@ Template.ordersListItem.events({
         Orders.update(order._id, { $set: { isPaid: !order.isPaid } });
     },
 
-    'click .copy_order'(event) {
+    'click .copy_order': (event) => {
         let orderId = event.currentTarget.getAttribute('data-orderId');
         Orders.copyOrder(orderId, Meteor.userId());
     }
