@@ -16,21 +16,27 @@
     <div class="list-group col-xs-12 col-sm-8 col-sm-offset-2">
         <form id="append_pool">
             <div class="form-group new-product-input-group">
-                <label class="control-label" for="products">Ссылка на продукт</label>
-                <div class="controls">
-                    <input class="form-control" name="item-link" id="new-product-input">
+                <div class="input-group input-group-lg">
+                    <input class="form-control" name="item-link" id="new-product-input" type="text"
+                           placeholder="Чтобы присоединиться, введите ссылку на товар с {{shop}}">
+                    <span class="input-group-btn">
+                        <button class="btn btn-success js-new-product" type="button">или Добавить вручную</button>
+                    </span>
                 </div>
             </div>
             {{#each itemFields}}
-                <div class="form-group new-product-input-group">
-                    <label class="control-label" for="products">{{title}}</label>
-                    <div class="controls">
-                        <input name={{key}} class="form-control" value={{value}} id="new-product-input">
-                    </div>
+                <div class="form-group new-product-input-group new-product-dynamic-input-group col-xs-6 col-md-4 col-sm-4 col-lg-4">
+                    <label class="control-label" for="new-product-{{key}}">{{title}}</label>
+                    <input name="{{key}}" class="form-control" value="{{value}}" type="text" id="new-product-{{key}}">
                 </div>
             {{/each}}
-            <div class="input-group">
-                <button class="btn btn-success join-button disabled" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Загружаем">Присоединиться</button>
+            <div class="form-group new-product-input-group new-product-hide-input-group col-xs-6 col-md-4 col-sm-4 col-lg-4">
+                <label class="control-label" for="new-product-count">Количество</label>
+                <input name="new-product-count" class="form-control" min="1" value="1" type="number" id="new-product-count">
+            </div>
+            <div class="form-group new-product-input-group new-product-hide-input-group col-xs-6 col-md-4 col-sm-4 col-lg-4">
+                <label class="control-label">&nbsp;</label>
+                <input class="btn btn-success join-button disabled form-control" type="submit" value="Присоединиться">
             </div>
         </form>
     </div>
