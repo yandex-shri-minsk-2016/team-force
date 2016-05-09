@@ -23,7 +23,6 @@ Template.appendPool.events({
 
         if (!emptyFields.reduce((result, current) => { return result && current; })) {
             hideGroup.hide();
-            joinButton.addClass('disabled');
         }else {
             hideGroup.show();
             joinButton.removeClass('disabled');
@@ -31,34 +30,30 @@ Template.appendPool.events({
     },
 
     'click .js-new-product': (event) => {
-        let result = {
-            title: '',
-            weight:'',
-            price: '',
-            descr: ''
+        const hideGroup  = $('.new-product-hide-input-group');
+        const joinButton = $('.join-button');
+        const addButton  = $('.js-new-product');
+        const inputGroup = $('.new-product-input-group');
+        const labels = {
+            title: 'Название',
+            weight:'Вес',
+            price: 'Цена',
+            descr: 'Описание'
         };
 
-        for (let item in result) {
-            let title = item;
-            switch (item) {
-                case 'title':
-                    title = 'Название';
-                    break;
-                case 'weight':
-                    title = 'Вес';
-                    break;
-                case 'price':
-                    title = 'Цена';
-                    break;
-                case 'descr':
-                    title = 'Описание';
-                    break;
-            }
+        itemFields = [];
+        hideGroup.hide();
+        joinButton.addClass('disabled');
+        addButton.toggleClass('active');
+        inputGroup.removeClass(errorClass);
 
-            itemFields.push({
-                title,
-                value: result[item],
-                key: `form-elem-${item}`
+        if (addButton.hasClass('active')) {
+            itemFields = Object.keys(labels).map(label => {
+                return {
+                    title: labels[label],
+                    value: '',
+                    key: `form-elem-${label}`
+                };
             });
         }
 
@@ -67,67 +62,61 @@ Template.appendPool.events({
 
     'paste #new-product-input': (event) => {
         const errorClass = 'has-error';
-
-        const inputGroup = $('.new-product-input-group');
+        const pool = Pools.findOne(Template.instance().data._id);
         const inputValue = event.originalEvent.clipboardData.getData('text');
+        const inputGroup = $('.new-product-input-group');
         const joinButton = $('.join-button');
-        const hideGroup = $('.new-product-hide-input-group');
+        const hideGroup  = $('.new-product-hide-input-group');
+        const labels = {
+            title: 'Название',
+            weight:'Вес',
+            price: 'Цена',
+            descr: 'Описание'
+        };
 
+        itemFields = [];
+        itemFieldsDep.changed();
         hideGroup.hide();
-        joinButton.val('Загружаем...').parent().show();
-        joinButton.addClass('disabled');
+        joinButton.addClass('disabled').val('Загружаем...').parent().show();
+        inputGroup.removeClass(errorClass);
 
-        if (inputGroup.hasClass(errorClass)) {
-            inputGroup.removeClass(errorClass);
-        }
-
-        Parser(inputValue).parse()
+        Parser(inputValue, pool.shop).parse()
             .then((result) => {
-                for (let item in result) {
-                    let title = item;
-                    switch (item) {
-                        case 'title':
-                            title = 'Название';
-                            break;
-                        case 'weight':
-                            title = 'Вес';
-                            break;
-                        case 'price':
-                            title = 'Цена';
-                            break;
-                        case 'descr':
-                            title = 'Описание';
-                            break;
-                    }
 
-                    itemFields.push({
-                        title,
-                        value: result[item],
-                        key: `form-elem-${item}`
-                    });
-                }
-
+                itemFields = Object.keys(result).map(field => {
+                    return {
+                        title: labels[field],
+                        value: result[field],
+                        key: `form-elem-${field}`
+                    };
+                });
                 itemFieldsDep.changed();
+
+                hideGroup.show();
+                joinButton.val('Присоединиться').removeClass('disabled');
             })
             .catch((error) => {
+                hideGroup.hide();
                 inputGroup.addClass(errorClass);
-            })
-            .finally(() => {
-                hideGroup.show();
-                joinButton.val('Присоединиться');
-                joinButton.removeClass('disabled');
+                console.log(error); // @TODO notify
             });
     },
 
     'submit #append_pool': (event) => {
         event.preventDefault();
-
+        const pool = Pools.findOne(Template.instance().data._id);
+        const poolId = pool._id;
         const target = event.target;
         const joinButton = $('.join-button');
+        const addButton = $('.js-new-product');
         const hideGroup = $('.new-product-hide-input-group');
         const productInput = $('#new-product-input');
 
-        let newItem = {
+        if (!productInput.val()) {
+            productInput.val(pool.shop); // to manually add
+        }
+
+        const newItem = {
             title: target['form-elem-title'].value,
             price: utils.getPriceFromString(target['form-elem-price'].value),
             description: target['form-elem-descr'].value,
@@ -135,23 +124,20 @@ Template.appendPool.events({
             link: target['item-link'].value
         };
 
-        const poolId = Router.current().params.poolId;
-
         Pools.appendItemForUser(poolId, Meteor.userId(), newItem)
             .then(() => {
                 itemFields = [];
                 itemFieldsDep.changed();
 
                 joinButton.val('Присоединиться');
-                joinButton.addClass('disabled');
+                addButton.removeClass('active');
                 productInput.val('');
                 hideGroup.hide();
 
                 Router.go('pool', { poolId: poolId });
             })
-            .catch(e => {
-                //TODO: Notify user
-                alert(e);
+            .catch(error => {
+                alert(error); //TODO: Notify user
             });
     }
 });
