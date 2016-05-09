@@ -1,40 +1,52 @@
 <template name="profile">
     <div class="container clearfix content-container">
         <form class="js-saveProfile">
-            <div class="form-group">
-                <label for="profileUsername">Имя</label>
-                {{#with profileUser}}
-                <input type="text" class="form-control" id="profileUsername" name="profileUsername" placeholder="Ваше имя" value="{{username}}">
-                {{/with}}
-                <small class="text-muted">Заполните, ведь к вам нужно как-то обратиться.</small>
+            <div class="profile-name form-group col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                <div class="input-group">
+                    <label for="profileUsername" class="input-group-addon"><i class="glyphicon glyphicon-user"></i></label>
+                    {{#with profileUser}}
+                        <input type="text" class="form-control" id="profileUsername" name="profileUsername" placeholder="Ваше имя" value="{{username}}">
+                    {{/with}}
+                </div>
+                <small class="text-muted">Как к вам обратиться?</small>
             </div>
-            <div class="form-group">
-                <label for="profilePhone">Телефон</label>
-                {{#with profileUser}}
-                <input type="text" class="form-control" id="profilePhone" name="profilePhone" placeholder="Ваш телефон" value="{{phone}}">
-                {{/with}}
-                <small class="text-muted">Вам перезвонят, чтобы уточнить данные заказа.</small>
+            <div class="profile-phone form-group col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                <div class="input-group">
+                    <label for="profilePhone" class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></label>
+                    {{#with profileUser}}
+                        <input type="text" class="form-control" id="profilePhone" name="profilePhone" placeholder="Ваш телефон" value="{{phone}}">
+                    {{/with}}
+                </div>
+                <small class="text-muted">Вам перезвонят по поводу заказа.</small>
             </div>
-            <div class="form-group">
-                <label for="profileAddress">Адрес</label>
-                {{#with profileUser}}
-                <input type="text" class="form-control" id="profileAddress" name="profileAddress" placeholder="Ваш адрес" value="{{address}}">
-                {{/with}}
-                <small class="text-muted">Мы запомним этот адрес один раз и больше его не нужно будет вводить.</small>
+            <div class="profile-email form-group col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                <div class="input-group">
+                    <div class="input-group-addon"></div>
+                    <input type="email" class="form-control" id="profileEmail" name="profileEmail" value="{{emailUser}}">
+                </div>
+                <small class="text-muted">Исключительно для важных оповещений!</small>
             </div>
-            <br>
-            <div class="form-group">
-                <label for="profileCompany">Компания</label>
-                {{#with profileUser}}
-                <input type="text" class="form-control" id="profileCompany" name="profileCompany" value="{{company}}">
-                {{/with}}
+            <div class="profile-company form-group col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                <div class="input-group">
+                    <div class="input-group-addon"></div>
+                    {{#with profileUser}}
+                        <input type="text" class="form-control" id="profileCompany" name="profileCompany" value="{{company}}">
+                    {{/with}}
+                </div>
+                <small class="text-muted">Где вы работаете?</small>
             </div>
-
-            <div class="form-group">
-                <label for="profileEmail">Eпочта</label>
-                <input type="email" class="form-control" id="profileEmail" name="profileEmail" value="{{emailUser}}">
+            <div class="profile-address form-group col-xs-12 col-sm-10 col-md-10 col-lg-10">
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></div>
+                    {{#with profileUser}}
+                        <input type="text" class="form-control" id="profileAddress" name="profileAddress" placeholder="Ваш адрес" value="{{address}}">
+                    {{/with}}
+                </div>
+                <small class="text-muted">Мы запомним ваш адрес один раз и больше его не нужно будет вводить.</small>
             </div>
-            <input type="submit" class="btn btn-primary" value="Сохранить" />
+            <div class="form-group col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                <input type="submit" class="btn btn-success form-control" value="Сохранить" />
+            </div>
         </form>
     </div>
 </template>

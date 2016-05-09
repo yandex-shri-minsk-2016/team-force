@@ -19,7 +19,7 @@
             {{getOrderPrice _id}}
         </span>
         {{#unless haveOrder poolId}}
-            <button class="copy_order" data-orderId="{{_id}}">+</button>
+            <span class="order__copy-order glyphicon glyphicon-duplicate" data-orderId="{{_id}}"></span>
         {{/unless}}
         {{#if isPoolArchived poolId}}
             {{#if isPoolOwner poolId }}
