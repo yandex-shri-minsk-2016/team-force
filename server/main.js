@@ -5,6 +5,12 @@ import Email from './email';
 Tasks = new Meteor.Collection('tasks');
 SSR.compileTemplate('email', Assets.getText('email.html'));
 
+Date.prototype.dayOfYear = function() {
+    var newDate = new Date(this);
+    newDate.setMonth(0, 0);
+    return Math.round((this - newDate) / 8.64e7);
+};
+
 Meteor.methods({
     addTask: (task) => {
         return addTask(task);
@@ -97,6 +103,43 @@ Meteor.publish('PoolsOne', (poolId) => {
 
 Meteor.publish('PoolsList', () => {
     return Pools.find();
+});
+
+Meteor.publish('PoolsCompanyByDate', function(company) {
+    ReactiveAggregate(this, Pools, [
+        {
+            $match: {
+                companyId: company
+            }
+        },
+        {
+            $project: {
+                _id: 1,
+                shop: 1,
+                address: 1,
+                time: 1,
+                ownerId: 1,
+                state: 1,
+                companyId: 1,
+                dayOfYear: {
+                    $dayOfYear: '$time'
+                }
+            }
+        },
+        {
+            $match: {
+                dayOfYear: {
+                    $gte: new Date().dayOfYear()
+                }
+            }
+        },
+        {
+            $sort: {
+                dayOfYear: 1,
+                time: 1
+            }
+        }
+    ]);
 });
 
 Meteor.publish('PoolsListOwner', (userId) => {

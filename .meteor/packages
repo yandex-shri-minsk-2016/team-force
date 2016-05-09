@@ -33,3 +33,5 @@ lmieulet:meteor-coverage
 percolate:synced-cron
 meteorhacks:ssr
 mquandalle:stylus
+meteorhacks:aggregate
+jcbernack:reactive-aggregate
