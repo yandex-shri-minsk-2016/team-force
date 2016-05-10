@@ -1,12 +1,15 @@
 <template name="debts">
     <div class="container clearfix content-container">
         <div class="row">
-            <div class="list-group col-xs-12 col-sm-8 col-sm-offset-2">
                 {{#each debtsOrders}}
                     {{>debtsListItem}}
                 {{/each}}
-            </div>
         </div>
+        {{#if hasMore}}
+            <div class="row">
+                <a class="load-more" href="/debts/{{nextPath}}">Загрузить ещё</a>
+            </div>
+        {{/if}}
     </div>
 </template>
 

@@ -1,11 +1,14 @@
 <template name="history">
     <div class="container clearfix content-container">
         <div class="row">
-            <div class="list-group col-xs-12 col-sm-8 col-sm-offset-2">
-                {{#each pools}}
-                    {{>poolsListItem}}
-                {{/each}}
-            </div>
+            {{#each pools}}
+                {{>poolsListItem}}
+            {{/each}}
         </div>
+        {{#if hasMore}}
+            <div class="row">
+                <a class="load-more" href="/history/{{nextPath}}">Загрузить ещё</a>
+            </div>
+        {{/if}}
     </div>
 </template>
