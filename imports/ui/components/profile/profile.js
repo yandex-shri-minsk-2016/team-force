@@ -1,5 +1,3 @@
-import urlApi from 'url';
-
 Template.profile.helpers({
     profileUser: () => {
         let profile = Meteor.user().profile;
@@ -35,9 +33,10 @@ Template.profile.events({
             Meteor.users.update({ _id:userId }, { $set: { profile: profile } });
             throwNotification('success', 'Сохранено');
 
-            const link = urlApi.parse(Router.current().url);
-            if (link.query) {
-                Router.go(link.query);
+            let nextUrl = Session.get('nextUrl');
+            if (nextUrl) {
+                delete Session.keys.nextUrl;
+                Router.go(nextUrl);
             }
 
         } catch (e) {
