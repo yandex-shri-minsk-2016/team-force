@@ -1,3 +1,5 @@
+import urlApi from 'url';
+
 Template.profile.helpers({
     profileUser: () => {
         let profile = Meteor.user().profile;
@@ -28,10 +30,16 @@ Template.profile.events({
         };
 
         try {
-            let userId = Meteor.user()._id;
+            const userId = Meteor.user()._id;
             Meteor.users.update({ _id:userId }, { $set: { emails: [{ address: email }] } });
             Meteor.users.update({ _id:userId }, { $set: { profile: profile } });
             throwNotification('success', 'Сохранено');
+
+            const link = urlApi.parse(Router.current().url);
+            if (link.query) {
+                Router.go(link.query);
+            }
+
         } catch (e) {
             console.log(e);
             throwNotification('danger', 'Возникла ошибка:(');
