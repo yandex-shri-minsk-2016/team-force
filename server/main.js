@@ -5,6 +5,16 @@ import Email from './email';
 Tasks = new Meteor.Collection('tasks');
 SSR.compileTemplate('email', Assets.getText('email.html'));
 
+let settings = {
+    sentry: {
+        server: ''
+    }
+};
+
+try {
+    settings = require('../settings.json');
+} catch (e) {}
+
 Meteor.methods({
     addTask: (task) => {
         return addTask(task);
@@ -24,6 +34,13 @@ Meteor.startup(() => {
         }
     });
     SyncedCron.start();
+
+    RavenLogger.initialize({
+        server: settings.sentry.server
+    }, {
+        trackUser: true
+    });
+
 });
 
 const taskFunctions = {
