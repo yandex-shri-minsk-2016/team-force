@@ -1,6 +1,6 @@
 Template.poolsList.helpers({
     poolsWithDates: () => {
-        const PoolsCompanyWithPrice = Pools.getCompanyPools(Meteor.user().profile.company).fetch().map((pool) => {
+        const PoolsCompanyWithPrice = Pools.getCompanyPools(Meteor.user().profile.company).fetch().map(pool => {
             pool.poolPrice = utils.getPriceWithFormat(Pools.getPoolPrice(pool._id));
             pool.userCount = Orders.find({ poolId: pool._id }).count();
             return pool;
@@ -16,7 +16,7 @@ Template.poolsList.helpers({
             }
         });
 
-        return Object.keys(PoolsWithDates).map((date) => {
+        return Object.keys(PoolsWithDates).map(date => {
             return {
                 date: date,
                 pools: PoolsWithDates[date]

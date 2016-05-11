@@ -49,13 +49,10 @@ Template.registerHelper('getPoolIsPaidPrice', (poolId, isPaid) => {
     return utils.getPriceWithFormat(Pools.getPoolIsPaidPrice(poolId, isPaid));
 });
 
-Template.registerHelper('dateByDayOfYear', (dayOfYear) => {
-    const currentDayOfYear = moment(new Date()).format('DDD');
-
-    if (dayOfYear === currentDayOfYear) {
+Template.registerHelper('dateByDayOfYear', dayOfYear => {
+    if (dayOfYear === moment(new Date()).format('DDD')) {
         return 'Сегодня';
-    }else {
-        return moment(dayOfYear, 'DDD').format('DD.MM.YYYY');
     }
 
+    return moment(dayOfYear, 'DDD').format('DD.MM.YYYY');
 });
