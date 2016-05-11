@@ -22,9 +22,12 @@ Template.poolSummary.events({
             };
         });
 
-        const email = shops[pool.shop].email;
+        const email = utils.getShopMail(pool.shop);
         if (email) {
             Meteor.call('sendEmail', email, { phone: Meteor.user().profile.phone, name: Meteor.user().profile.username }, items, pool.shop);
+            throwNotification('success', 'Сообщение в магазин отправлено, ожидайте.');
+        }else {
+            throwNotification('success', 'Время собирать долги.');
         }
     }
 });

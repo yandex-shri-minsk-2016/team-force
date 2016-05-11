@@ -27,10 +27,16 @@ Template.ordersListItem.events({
     'click .js-ispaid': () => {
         let order = Orders.findOne(Template.instance().data._id);
         Orders.update(order._id, { $set: { isPaid: !order.isPaid } });
+        if (order.isPaid) {
+            throwNotification('warning', 'Вам снова должны:)');
+        }else {
+            throwNotification('success', 'Долг снят.');
+        }
     },
 
     'click .order__copy-order': (event) => {
         let orderId = event.currentTarget.getAttribute('data-orderId');
         Orders.copyOrder(orderId, Meteor.userId());
+        throwNotification('warning', 'Вы скопировали пулл.');
     }
 });

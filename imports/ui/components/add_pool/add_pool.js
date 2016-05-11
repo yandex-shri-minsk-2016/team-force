@@ -35,12 +35,12 @@ Template.addPool.events({
         const shop = $('input[name="shop"]:checked').val();
 
         if (!shop) {
-            throwNotification('danger', 'Возникла ошибка, выберите магазин');
+            throwNotification('danger', 'Выберите магазин');
             return;
         }
 
         if (!inputTime.isValid() || inputTime.isBefore(moment()) || !(shop in shops)) {
-            throwNotification('danger', 'Возникла ошибка, указано недопустимое время');
+            throwNotification('danger', 'Указано недопустимое время');
             return;
         }
 
