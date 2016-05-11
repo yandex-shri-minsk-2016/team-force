@@ -33,7 +33,7 @@ Template.profile.events({
             Meteor.users.update({ _id:userId }, { $set: { profile: profile } });
             throwNotification('success', 'Сохранено');
 
-            let nextUrl = Session.get('nextUrl');
+            const nextUrl = Session.get('nextUrl');
             if (nextUrl) {
                 delete Session.keys.nextUrl;
                 Router.go(nextUrl);
