@@ -33,3 +33,4 @@ lmieulet:meteor-coverage
 percolate:synced-cron
 meteorhacks:ssr
 mquandalle:stylus
+deepwell:raven

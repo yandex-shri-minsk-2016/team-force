@@ -8,6 +8,16 @@ import moment from 'moment';
 Parser = ParserClass;
 utils = Utils;
 
+let settings = {
+    sentry: {
+        client: ''
+    }
+};
+
+try {
+    settings = require('../settings.json');
+} catch (e) {}
+
 Accounts.ui.config({
     passwordSignupFields: 'EMAIL_ONLY'
 });
@@ -56,3 +66,11 @@ import './../imports/ui/components/page403/page403.html';
 import './../imports/ui/components/page404/page404.html';
 
 import './main.html';
+
+Meteor.startup(() => {
+    RavenLogger.initialize({
+        client: settings.sentry.client
+    }, {
+        trackUser: true
+    });
+});
