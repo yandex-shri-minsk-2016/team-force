@@ -98,7 +98,6 @@ Template.appendPool.events({
             .catch(error => {
                 hideGroup.hide();
                 inputGroup.addClass(errorClass);
-                console.log(error);
                 throwNotification('danger', error.toString());
             });
     },
