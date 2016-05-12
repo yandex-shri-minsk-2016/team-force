@@ -1,3 +1,5 @@
+import utils from '../../../../lib/utils';
+
 Template.debts.helpers({
     debtsOrders: () => {
         let orders = [];
@@ -18,5 +20,15 @@ Template.debts.helpers({
             });
 
         return orders;
+    }
+});
+
+Template.debtsHeader.helpers({
+    allOrdersPrice: () => {
+        return utils.getPriceWithFormat(Orders.getOrderPriceForUser(Meteor.userId()))
+    },
+
+    paidOrdersPrice: () => {
+        return utils.getPriceWithFormat(Orders.getOrderIsPaidPriceForUser(Meteor.userId(), true));
     }
 });

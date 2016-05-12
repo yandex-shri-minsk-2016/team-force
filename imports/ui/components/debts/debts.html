@@ -1,5 +1,6 @@
 <template name="debts">
     <div class="container clearfix content-container">
+        {{>debtsHeader}}
         <div class="row">
                 {{#each debtsOrders}}
                     {{>debtsListItem}}
@@ -13,6 +14,13 @@
     </div>
 </template>
 
+<template name="debtsHeader">
+    <div class="debts__header clearfix">
+        {{#if allOrdersPrice}}
+            {{paidOrdersPrice}} из {{allOrdersPrice}}
+        {{/if}}
+    </div>
+</template>
 
 <template name="debtsListItem">
     <li class="order {{#if isPaid }}order_ispaid{{/if}}">
