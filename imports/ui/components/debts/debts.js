@@ -2,7 +2,7 @@ Template.debts.helpers({
     debtsOrders: () => {
         let orders = [];
 
-        Orders.find({ userId: Meteor.userId() }).fetch()
+        Orders.find({}, { limit:Template.instance().data.ordersLimit }).fetch()
             .forEach((baseOrder, index) => {
                 orders.push(baseOrder);
 
