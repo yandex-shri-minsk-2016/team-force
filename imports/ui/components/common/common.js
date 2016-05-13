@@ -9,6 +9,10 @@ Template.registerHelper('usermail', userId => {
     return user.emails[0].address;
 });
 
+Template.registerHelper('avatarUser', (userId, size) => {
+    return utils.getAvatar(userId, size);
+});
+
 Template.registerHelper('defEqual', (v1, v2) => {
     return v1 == v2;
 });
