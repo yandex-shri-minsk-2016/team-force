@@ -21,6 +21,10 @@ Template.registerHelper('formatTime', (time, format) => {
     return moment(time).format(format);
 });
 
+Template.registerHelper('isOrderOwner', (orderId) => {
+    return Meteor.userId() === Orders.findOne({ _id:orderId }).userId;
+});
+
 Template.registerHelper('isPoolOwner', (poolId) => {
     return Meteor.userId() === Pools.findOne({ _id:poolId }).ownerId;
 });
