@@ -36,3 +36,4 @@ mquandalle:stylus
 meteorhacks:aggregate
 jcbernack:reactive-aggregate
 percolate:paginated-subscription
+session
