@@ -10,23 +10,31 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="{{pathFor 'index'}}">Yandex</a>
+                    <a class="navbar-brand" href="{{pathFor 'index'}}">Gitfood</a>
                 </div>
                 <div class="collapse navbar-collapse" id="navigation">
                     {{#if currentUser}}
                     <ul class="nav navbar-nav">
                         <li><a href="{{pathFor 'pool_add'}}">Добавить пулл</a></li>
-                        <li><a href="{{pathFor 'history'}}">Созданные пулы</a></li>
-                        <li><a href="{{pathFor 'debts'}}">Долги
-                            {{#if paidOrdersPrice}}
-                                <span class="badge">{{paidOrdersPrice}}</span>
-                            {{/if}}
-                            </a></li>
-                        <li><a href="{{pathFor 'feeds'}}">Уведомления
+                        {{#if isAlreadyCreatedPool}}
+                            <li><a href="{{pathFor 'history'}}">Созданные пуллы</a></li>
+                        {{/if}}
+                        {{#if isAlreadyDebts}}
+                            <li>
+                                <a href="{{pathFor 'debts'}}">Долги
+                                {{#if paidOrdersPrice}}
+                                    <span class="badge">{{paidOrdersPrice}}</span>
+                                {{/if}}
+                                </a>
+                            </li>
+                        {{/if}}
+                        {{#if isHaveFeeds}}
+                            <li><a href="{{pathFor 'feeds'}}">Уведомления
                             {{#if feedsUnseenCount }}
                                 <span class="badge badge-inverse">{{ feedsUnseenCount }}</span>
                             {{/if}}
                         </a></li>
+                        {{/if}}
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li>{{>profileButton}}</li>

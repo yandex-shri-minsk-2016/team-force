@@ -7,5 +7,18 @@ Template.header.helpers({
 
     paidOrdersPrice: () => {
         return utils.getPriceWithFormat(Orders.getOrderIsPaidPriceForUser(Meteor.userId(), false));
+    },
+
+    isHaveFeeds: () => {
+        return Feeds.find({ userId: Meteor.userId() }).count() > 0;
+    },
+    
+    isAlreadyCreatedPool: () => {
+        return Pools.find({ ownerId:Meteor.userId() }).count() > 0;
+    },
+
+    isAlreadyDebts: () => {
+        return Orders.getOrderPriceForUser(Meteor.userId()) > 0;
     }
+
 });
