@@ -95,10 +95,10 @@ Template.appendPool.events({
                 hideGroup.show();
                 joinButton.val('Присоединиться').removeClass('disabled');
             })
-            .catch((error) => {
+            .catch(error => {
                 hideGroup.hide();
                 inputGroup.addClass(errorClass);
-                console.log(error); // @TODO notify
+                throwNotification('danger', error.toString());
             });
     },
 
