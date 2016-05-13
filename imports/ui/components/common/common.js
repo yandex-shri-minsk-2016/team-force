@@ -55,6 +55,7 @@ Template.registerHelper('dateByDayOfYear', dayOfYear => {
     }
 
     return moment(dayOfYear, 'DDD').format('DD.MM.YYYY');
+});
 
 Template.registerHelper('getShopMail', (poolId) => {
     return utils.getShopMail(Pools.findOne(poolId).shop);
