@@ -15,9 +15,9 @@
                 <div class="collapse navbar-collapse" id="navigation">
                     {{#if currentUser}}
                     <ul class="nav navbar-nav">
-                        <li><a href="{{pathFor 'pool_add'}}">Добавить пулл</a></li>
+                        <li><a class="{{isActiveRoute 'pool_add'}}" href="{{pathFor 'pool_add'}}">Добавить пулл</a></li>
                         {{#if isAlreadyCreatedPool}}
-                            <li><a href="{{pathFor 'history'}}">Созданные пуллы</a></li>
+                            <li><a class="{{isActiveRoute 'history'}}" href="{{pathFor 'history'}}">Созданные пуллы</a></li>
                         {{/if}}
                         {{#if isAlreadyDebts}}
                             <li>
@@ -29,7 +29,7 @@
                             </li>
                         {{/if}}
                         {{#if isHaveFeeds}}
-                            <li><a href="{{pathFor 'feeds'}}">Уведомления
+                            <li><a class="{{isActiveRoute 'feeds'}}" href="{{pathFor 'feeds'}}">Уведомления
                             {{#if feedsUnseenCount }}
                                 <span class="badge badge-inverse">{{ feedsUnseenCount }}</span>
                             {{/if}}

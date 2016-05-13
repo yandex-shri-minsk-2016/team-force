@@ -1,5 +1,5 @@
 <template name="profileButton">
-    <a href="{{pathFor 'profile'}}">
+    <a class="{{isActiveRoute 'profile'}}" href="{{pathFor 'profile'}}">
         <img class="avatar" src="{{avatarUser currentUser._id 16}}" width="16" height="16" alt="avatar user">
         {{usermail currentUser._id}}
     </a>
