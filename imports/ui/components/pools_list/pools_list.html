@@ -7,8 +7,14 @@
                 </div>
                 <div class="list-group__pools clearfix">
                 {{#each pools}}
-                    {{> poolsListItem}}
+                    {{>poolsListItem}}
                 {{/each}}
+                </div>
+            {{else}}
+                <div class="blankslate blankslate_spacious blankslate_large">
+                    <h2><i class="glyphicon glyphicon-list"></i></h2>
+                    <h3>Нет пуллов в ближайшее время.</h3>
+                    <p>Но вы можете <a href="{{pathFor 'pool_add'}}">создать новый</a>, это очень просто.</p>
                 </div>
             {{/each}}
         </div>
