@@ -29,7 +29,11 @@ Template.registerHelper('isPoolArchived', (poolId) => {
     return utils.POOL_STATE.ARCHIVED === Pools.findOne({ _id:poolId }).state;
 });
 
-Template.registerHelper('getPriceWithFormat', (price) => {
+Template.registerHelper('isPoolPending', poolId => {
+    return utils.POOL_STATE.PENDING === Pools.findOne({ _id: poolId }).state;
+});
+
+Template.registerHelper('getPriceWithFormat', price => {
     return utils.getPriceWithFormat(price);
 });
 

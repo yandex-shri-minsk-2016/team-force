@@ -18,9 +18,11 @@
         <span class="order__price">
             {{getOrderPrice _id}}
         </span>
-        {{#unless haveOrder poolId}}
-            <span class="order__copy-order glyphicon glyphicon-duplicate" data-orderId="{{_id}}"></span>
-        {{/unless}}
+        {{#if isPoolPending poolId}}
+            {{#unless haveOrder poolId}}
+                <span class="order__copy-order glyphicon glyphicon-duplicate" data-orderId="{{_id}}"></span>
+            {{/unless}}
+        {{/if}}
         {{#if isPoolArchived poolId}}
             {{#if isPoolOwner poolId }}
                 {{#if isPaid }}
