@@ -5,6 +5,12 @@ import Email from './email';
 Tasks = new Meteor.Collection('tasks');
 SSR.compileTemplate('email', Assets.getText('email.html'));
 
+Date.prototype.dayOfYear = function() {
+    let newDate = new Date(this);
+    newDate.setMonth(0, 0);
+    return Math.round((this - newDate) / 8.64e7);
+};
+
 Meteor.methods({
     addTask: (task) => {
         return addTask(task);
@@ -86,12 +92,12 @@ Meteor.publish('PoolsCompany', (company) => {
     return Pools.find({ companyId: company });
 });
 
-Meteor.publish('OrdersCompany', (company) => {
+Meteor.publish('OrdersCompany', company => {
     // @FIXME company related
     return Orders.find();
 });
 
-Meteor.publish('PoolsOne', (poolId) => {
+Meteor.publish('PoolsOne', poolId => {
     return Pools.find({ _id: poolId });
 });
 
@@ -99,19 +105,56 @@ Meteor.publish('PoolsList', () => {
     return Pools.find();
 });
 
-Meteor.publish('PoolsListOwner', (userId) => {
+Meteor.publish('PoolsCompanyByDate', function(company) {
+    ReactiveAggregate(this, Pools, [
+        {
+            $match: {
+                companyId: company
+            }
+        },
+        {
+            $project: {
+                _id: 1,
+                shop: 1,
+                address: 1,
+                time: 1,
+                ownerId: 1,
+                state: 1,
+                companyId: 1,
+                dayOfYear: {
+                    $dayOfYear: '$time'
+                }
+            }
+        },
+        {
+            $match: {
+                dayOfYear: {
+                    $gte: new Date().dayOfYear()
+                }
+            }
+        },
+        {
+            $sort: {
+                dayOfYear: 1,
+                time: 1
+            }
+        }
+    ]);
+});
+
+Meteor.publish('PoolsListOwner', userId => {
     return Pools.find({ ownerId: userId });
 });
 
-Meteor.publish('OrdersListOwner', (userId) => {
+Meteor.publish('OrdersListOwner', userId => {
     return Orders.find({ userId: userId });
 });
 
-Meteor.publish('PoolsOrders', (poolId) => {
+Meteor.publish('PoolsOrders', poolId => {
     return Orders.find({ poolId: poolId });
 });
 
-Meteor.publish('OrdersItems', (poolId) => {
+Meteor.publish('OrdersItems', () => {
     /*
     let itemsIds = [];
     Orders.find({ poolId: poolId }).fetch().forEach(order => {
@@ -133,7 +176,7 @@ Meteor.publish('OrdersItems', (poolId) => {
 
 });
 
-Meteor.publish('Feeds', (userId) => {
+Meteor.publish('Feeds', userId => {
     return Feeds.find({ userId: userId });
 });
 
@@ -145,6 +188,7 @@ Meteor.publish('usersData', function() {
     if (this.userId) {
         return Meteor.users.find({}, {
             fields: {
+                _id: 1,
                 emails: 1,
                 profile: 1
             }

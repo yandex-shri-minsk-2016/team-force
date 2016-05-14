@@ -6,10 +6,15 @@
   background color_gray-light
 
 .btn-teamforce
-  color #fff
-  font-size 20px
-  background-color color_primary
-  border-color color_primary
+  font-size 18px
+  background-color color_orange
+  border-color color_orange
+  transition: .3s
+  &:hover,
+  &:active
+    background-color  color_primary
+    border-color color_primary
+
 
 #login-buttons
   display block
@@ -27,7 +32,7 @@
         border-bottom 1px solid green
     &.has-error
       >input
-        border-bottom 1px solid red
+        border-bottom 1px solid color_orange
     #login-email
       background url('/img/i-email.png') 0.5em center no-repeat
     #login-company

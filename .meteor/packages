@@ -33,3 +33,10 @@ lmieulet:meteor-coverage
 percolate:synced-cron
 meteorhacks:ssr
 mquandalle:stylus
+meteorhacks:aggregate
+jcbernack:reactive-aggregate
+percolate:paginated-subscription
+session
+momentjs:moment
+rzymek:moment-locale-ru
+zimme:active-route

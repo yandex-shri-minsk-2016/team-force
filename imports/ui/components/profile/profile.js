@@ -28,10 +28,17 @@ Template.profile.events({
         };
 
         try {
-            let userId = Meteor.user()._id;
+            const userId = Meteor.user()._id;
             Meteor.users.update({ _id:userId }, { $set: { emails: [{ address: email }] } });
             Meteor.users.update({ _id:userId }, { $set: { profile: profile } });
             throwNotification('success', 'Сохранено');
+
+            const nextUrl = Session.get('nextUrl');
+            if (nextUrl) {
+                delete Session.keys.nextUrl;
+                Router.go(nextUrl);
+            }
+
         } catch (e) {
             console.log(e);
             throwNotification('danger', 'Возникла ошибка:(');

@@ -1,11 +1,11 @@
 .header
   .navbar
     height height_header
-    background-color color_primary
+    background-color white
     box-shadow 0 0 4px rgba(0, 0, 0, .14), 0 4px 8px rgba(0, 0, 0, .28)
 
     .icon-bar
-      background white
+      background #3498db
 
     .navbar-brand
       color color_default
@@ -13,10 +13,16 @@
       font-size 2em
 
     .navbar-collapse
-      background-color color_primary
       box-shadow none
+      background white
+      border-bottom 1px solid color_gray
 
       li > a
-        color white
-        &:hover,&:focus
-          background-color color_primary
+        font-size 16px
+        color #000
+        &:hover,
+        &:active,
+        &.active
+          background-color color_gray-light
+        .badge
+          line-height 0.8

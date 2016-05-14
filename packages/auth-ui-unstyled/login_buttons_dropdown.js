@@ -97,8 +97,7 @@ Template._loginButtonsLoggedOutDropdown.events({
     else
       document.getElementById('login-email').value = usernameOrEmail;
 
-    if (password !== null)
-      document.getElementById('login-password').value = password;
+    document.getElementById('login-company').value = '';
 
     // Force redrawing the `login-dropdown-list` element because of
     // a bizarre Chrome bug in which part of the DIV is not redrawn

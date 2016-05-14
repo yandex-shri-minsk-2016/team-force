@@ -1,15 +1,29 @@
 <template name="debts">
     <div class="container clearfix content-container">
+        {{>debtsHeader}}
         <div class="row">
-            <div class="list-group col-xs-12 col-sm-8 col-sm-offset-2">
-                {{#each debtsOrders}}
-                    {{>debtsListItem}}
-                {{/each}}
-            </div>
+            {{#each debtsOrders}}
+                {{>debtsListItem}}
+            {{/each}}
         </div>
+        {{#if hasMore}}
+            <div class="row">
+                <a class="load-more" href="/debts/{{nextPath}}">Загрузить ещё</a>
+            </div>
+        {{/if}}
     </div>
 </template>
 
+<template name="debtsHeader">
+    <div class="debts__header clearfix">
+        {{#if paidOrdersPrice}}
+            <div class="debts__header_paid">Долг: {{paidOrdersPrice}}</div>
+        {{/if}}
+        {{#if allOrdersPrice}}
+            <div class="debts__header_allprice">{{allOrdersPrice}}</div>
+        {{/if}}
+    </div>
+</template>
 
 <template name="debtsListItem">
     <li class="order {{#if isPaid }}order_ispaid{{/if}}">

@@ -31,11 +31,16 @@ Template.addPool.events({
     'submit #add_pool': (event) => {
         event.preventDefault();
         const inputTime = moment(event.target.time.value, utils.DATETIME_FORMAT);
-        const shop = event.target.shop.value || [].slice.call(event.target.shop).filter(el => { return el.checked; })[0].value;
         const address = event.target.address.value;
+        const shop = $('input[name="shop"]:checked').val();
 
-        //@TODO: add form validation
+        if (!shop) {
+            throwNotification('danger', 'Выберите магазин');
+            return;
+        }
+
         if (!inputTime.isValid() || inputTime.isBefore(moment()) || !(shop in shops)) {
+            throwNotification('danger', 'Указано недопустимое время');
             return;
         }
 
@@ -49,7 +54,6 @@ Template.addPool.events({
 
         Pools.add(newPool)
             .then((poolId) => {
-                // @TODO: notify success create newPool
                 Meteor.call('addTask', {
                     date: newPool.time,
                     name: 'setSummary',
@@ -57,12 +61,12 @@ Template.addPool.events({
                         poolId: poolId
                     }
                 });
+                throwNotification('success', 'Вы создали пулл, наполняйте.');
                 Router.go(`/pool/${poolId}`);
             })
-            .catch((e) => {
-                console.log(e);
-
-                //TODO: Show error
+            .catch((error) => {
+                console.log(error);
+                throwNotification('danger', 'Возникла ошибка, попробуйте ещё раз');
             });
     }
 });

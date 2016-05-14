@@ -18,19 +18,23 @@
         <span class="order__price">
             {{getOrderPrice _id}}
         </span>
-        {{#unless haveOrder poolId}}
-            <button class="copy_order" data-orderId="{{_id}}">+</button>
-        {{/unless}}
+        {{#if isPoolPending poolId}}
+            {{#unless haveOrder poolId}}
+                <span class="order__copy-order glyphicon glyphicon-duplicate" data-orderId="{{_id}}"></span>
+            {{/unless}}
+        {{/if}}
         {{#if isPoolArchived poolId}}
-            {{#if isPoolOwner poolId }}
-                {{#if isPaid }}
-                    <input class="js-ispaid" type="checkbox" checked="checked" />
+            {{#unless isOrderOwner _id}}
+                {{#if isPoolOwner poolId }}
+                    {{#if isPaid }}
+                        <input class="js-ispaid" type="checkbox" checked="checked" />
+                    {{else}}
+                        <input class="js-ispaid" type="checkbox" />
+                    {{/if}}
                 {{else}}
-                    <input class="js-ispaid" type="checkbox" />
+                <!--not owner-->
                 {{/if}}
-            {{else}}
-            <!--not owner-->
-            {{/if}}
+            {{/unless}}
         {{/if}}
         <ul class="items">
             {{# each items }}

@@ -1,9 +1,26 @@
 .list-group
   padding 0
   &__date
-    font-size 22px
-    padding-left 1em
+    font-size 16px
+    padding 1em 0 0
     color color_default
+    margin-bottom 1em
+
+  &__add-button
+    background red
+    color white
+    box-shadow 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0, 0, 0, .28)
+    box-sizing content-box
+    cursor pointer
+    width 60px
+    height 60px
+    border-radius 30px
+    text-align center
+    font-size 40px
+    line-height 60px
+    position fixed
+    bottom 40px
+    right 40px
 
   &__pools
     &_pending
@@ -12,3 +29,12 @@
       border 1px solid color_primary
     &_archived
       opacity 0.5
+
+.blankslate
+  position relative
+  padding 100px 60px 120px
+  text-align center
+  background-color color_gray-light
+  border 1px solid color_gray
+  border-radius 3px
+  box-shadow inset 0 0 10px rgba(0,0,0,0.05)

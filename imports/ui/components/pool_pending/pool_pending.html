@@ -4,9 +4,21 @@
             {{shop}}
         </div>
         <div class="pool__header_posttitle">
-            15:00 <!-- {{formatTime time 'HH:mm'}} @FIXme -->
+            <span class="pool__header_date">
+                {{formatTime time 'DD.MM.YYYY'}}
+            </span>
+            <span class="pool__header_time">
+                {{formatTime time 'HH:mm'}}
+            </span>
+            <span class="pool__header_timer">
+                <span class="timer"></span>
+            </span>
         </div>
         <div class="pool__header_prices">
+            {{#if isPoolArchived _id}}
+                Собрано: {{getPoolIsPaidPrice _id true}}
+                из
+            {{/if}}
             {{getPoolPrice _id}}
         </div>
     </div>
@@ -15,7 +27,7 @@
 <template name="appendPool">
     <div class="list-group col-xs-12 col-sm-8 col-sm-offset-2">
         <form id="append_pool">
-            <div class="form-group new-product-input-group">
+            <div class="form-group new-product-input-group new-product-input-group--major col-xs-12">
                 <div class="input-group input-group-lg">
                     <input class="form-control" name="item-link" id="new-product-input" type="text"
                            placeholder="Чтобы присоединиться, введите ссылку на товар с {{shop}}">
@@ -25,16 +37,16 @@
                 </div>
             </div>
             {{#each itemFields}}
-                <div class="form-group new-product-input-group new-product-dynamic-input-group col-xs-6 col-md-4 col-sm-4 col-lg-4">
+                <div class="form-group new-product-input-group new-product-dynamic-input-group col-xs-12 col-sm-4">
                     <label class="control-label" for="new-product-{{key}}">{{title}}</label>
                     <input name="{{key}}" class="form-control" value="{{value}}" type="text" id="new-product-{{key}}">
                 </div>
             {{/each}}
-            <div class="form-group new-product-input-group new-product-hide-input-group col-xs-6 col-md-4 col-sm-4 col-lg-4">
+            <div class="form-group new-product-input-group new-product-hide-input-group col-xs-12 col-sm-4">
                 <label class="control-label" for="new-product-count">Количество</label>
                 <input name="new-product-count" class="form-control" min="1" value="1" type="number" id="new-product-count">
             </div>
-            <div class="form-group new-product-input-group new-product-hide-input-group col-xs-6 col-md-4 col-sm-4 col-lg-4">
+            <div class="form-group new-product-input-group new-product-hide-input-group col-xs-12 col-sm-4">
                 <label class="control-label">&nbsp;</label>
                 <input class="btn btn-success join-button disabled form-control" type="submit" value="Присоединиться">
             </div>
@@ -43,7 +55,7 @@
 </template>
 
 <template name="poolPending">
-    <div class="row content-container">
+    <div class="content-container">
         <div class="list-group col-xs-12 col-sm-8 col-sm-offset-2">
             {{>poolHeader}}
             {{>ordersList}}

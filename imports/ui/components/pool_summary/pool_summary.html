@@ -35,7 +35,12 @@
         </div>
         <div class="row">
             <div class="list-group col-xs-12 col-sm-8 col-sm-offset-2">
-                <a href="{{pathFor 'pool' _id}}" class="btn btn-warning close-pool">Закрыть</a>
+                {{#if getShopMail _id}}
+                    <a href="{{pathFor 'pool' _id}}" class="btn btn-success close-pool">Отправить заказ на {{getShopMail _id}}</a> и собрать долги
+                {{else}}
+                    <p>У данного магазина отсутствует автозаказ, необходимо заполнить корзину {{shop}}.</p>
+                    <a href="{{pathFor 'pool' _id}}" class="btn btn-warning close-pool">Закрыть пулл</a> и собрать долги
+                {{/if}}
             </div>
         </div>
     </div>

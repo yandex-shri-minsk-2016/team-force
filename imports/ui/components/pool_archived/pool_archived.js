@@ -1,3 +1,6 @@
+import moment from 'moment';
+import 'moment/locale/ru';
+
 Template.poolArchived.helpers({
     poolOrders: () => {
         let orders = [];
@@ -17,3 +20,8 @@ Template.poolArchived.helpers({
         return orders;
     }
 });
+
+Template.poolHeader.rendered = function() {
+    const time = Pools.findOne(Template.instance().data._id).time;
+    $('.timer').text(moment(time).fromNow());
+};
