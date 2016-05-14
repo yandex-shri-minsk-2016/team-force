@@ -49,6 +49,10 @@ Template.registerHelper('getPoolIsPaidPrice', (poolId, isPaid) => {
     return utils.getPriceWithFormat(Pools.getPoolIsPaidPrice(poolId, isPaid));
 });
 
+Template.registerHelper('getUserDebts', (poolId, isPaid) => {
+    return utils.getPriceWithFormat(Pools.getPoolIsPaidPrice(poolId, isPaid));
+});
+
 Template.registerHelper('dateByDayOfYear', dayOfYear => {
     if (dayOfYear === moment(new Date()).format('DDD')) {
         return 'Сегодня';

@@ -7,6 +7,10 @@
             15:00 <!-- {{formatTime time 'HH:mm'}} @FIXme -->
         </div>
         <div class="pool__header_prices">
+            {{#if isPoolArchived _id}}
+                Собрано: {{getPoolIsPaidPrice _id true}}
+                из
+            {{/if}}
             {{getPoolPrice _id}}
         </div>
     </div>

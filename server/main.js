@@ -154,7 +154,7 @@ Meteor.publish('PoolsOrders', poolId => {
     return Orders.find({ poolId: poolId });
 });
 
-Meteor.publish('OrdersItems', poolId => {
+Meteor.publish('OrdersItems', () => {
     /*
     let itemsIds = [];
     Orders.find({ poolId: poolId }).fetch().forEach(order => {
