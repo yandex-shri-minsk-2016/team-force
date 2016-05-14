@@ -24,15 +24,17 @@
             {{/unless}}
         {{/if}}
         {{#if isPoolArchived poolId}}
-            {{#if isPoolOwner poolId }}
-                {{#if isPaid }}
-                    <input class="js-ispaid" type="checkbox" checked="checked" />
+            {{#unless isOrderOwner _id}}
+                {{#if isPoolOwner poolId }}
+                    {{#if isPaid }}
+                        <input class="js-ispaid" type="checkbox" checked="checked" />
+                    {{else}}
+                        <input class="js-ispaid" type="checkbox" />
+                    {{/if}}
                 {{else}}
-                    <input class="js-ispaid" type="checkbox" />
+                <!--not owner-->
                 {{/if}}
-            {{else}}
-            <!--not owner-->
-            {{/if}}
+            {{/unless}}
         {{/if}}
         <ul class="items">
             {{# each items }}

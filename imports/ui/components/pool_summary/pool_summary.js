@@ -12,6 +12,9 @@ Template.poolSummary.events({
         const pool = Pools.findOne({ _id: Template.instance().data._id });
         Pools.changePoolState(pool._id, utils.POOL_STATE.ARCHIVED);
 
+        const ownerOrder = Orders.findOne({ poolId: pool._id, userId: Meteor.userId() });
+        Orders.update(ownerOrder._id, { $set: { isPaid: true } });
+
         const itemsToSent = utils.toArr(Pools.getGroupByItemWithData(pool._id));
 
         let items = itemsToSent.map((item) => {

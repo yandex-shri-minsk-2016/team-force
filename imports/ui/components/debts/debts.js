@@ -2,7 +2,12 @@ import utils from '../../../../lib/utils';
 
 Template.debts.helpers({
     debtsOrders: () => {
-        return Orders.find({}, { limit:Template.instance().data.ordersLimit }).fetch()
+        let orders = [];
+        const userPoolIds = Pools.find({ ownerId: Meteor.userId() }, { _id: 1 })
+            .fetch().map((obj) => { return obj._id; });
+
+        return Orders.find({ poolId: { $nin: userPoolIds } }, { limit:Template.instance().data.ordersLimit })
+            .fetch()
             .map(order => {
                 order.poolOwnerId = Pools.findOne(order.poolId).ownerId;
                 order.items.map(item => {
@@ -30,4 +35,3 @@ Template.debtsListItem.events({
         Orders.update(order._id, { $set: { isPaid: !order.isPaid } });
     }
 });
-
