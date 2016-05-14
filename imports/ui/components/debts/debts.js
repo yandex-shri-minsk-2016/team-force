@@ -4,8 +4,8 @@ Template.debts.helpers({
     debtsOrders: () => {
         let orders = [];
         const userPoolIds = Pools.find({ ownerId: Meteor.userId() }, { _id: 1 })
-            .fetch().map(function(obj) { return obj._id; });
-        
+            .fetch().map((obj) => { return obj._id; });
+
         return Orders.find({ poolId: { $nin: userPoolIds } }, { limit:Template.instance().data.ordersLimit })
             .fetch()
             .map(order => {
