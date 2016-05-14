@@ -2,7 +2,7 @@
   &__header
     color color_blue
     font-size 48px
-    margin-bottom 1em
+    margin-bottom .3em
     text-align center
   &__body
     .control-label
@@ -11,6 +11,10 @@
       color color_default
       font-size 22px
       font-weight normal
+  &__shops
+    background-color #fff
+    padding-top 1em
+    margin-bottom 3em
   &__submit
     padding-top 3em
     >div
@@ -22,6 +26,9 @@
 
 .shopChoices
   text-align center
+  display flex
+  flex-flow row wrap
+  justify-content center
 
 .shopChoice
   display inline-block
@@ -30,13 +37,13 @@
   margin 2% 0
   &__img
     cursor pointer
-    background-size cover
+    background-size contain
     background-repeat no-repeat
     display block
     width 205px
     height 144px
     margin 3px
-    opacity 0.8
+    opacity 0.6
     color: transparent
     transition: opacity .2s
     &:hover
