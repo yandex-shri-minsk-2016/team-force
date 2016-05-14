@@ -111,6 +111,7 @@ Template.appendPool.events({
         const addButton = $('.js-new-product');
         const hideGroup = $('.new-product-hide-input-group');
         const productInput = $('#new-product-input');
+        const productCount = parseInt($('#new-product-count').val());
 
         if (!productInput.val()) {
             productInput.val(pool.shop); // to manually add
@@ -124,7 +125,7 @@ Template.appendPool.events({
             link: target['item-link'].value
         };
 
-        Pools.appendItemForUser(poolId, Meteor.userId(), newItem)
+        Pools.appendItemForUser(poolId, Meteor.userId(), newItem, productCount)
             .then(() => {
                 itemFields = [];
                 itemFieldsDep.changed();
