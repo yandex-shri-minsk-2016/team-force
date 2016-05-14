@@ -13,7 +13,7 @@
     }
   },
   "wok.by": {
-    "email": "gitfood@ya.ru",
+    "email": "gitfooddemo@gmail.com",
     "minDelivery": "100000",
     "costDelivery": "50000",
     "freeDelivery": "150000",
@@ -27,6 +27,7 @@
     }
   },
   "just-eat.by": {
+    "email": "gitfooddemo@gmail.com",
     "minDelivery": "100000",
     "costDelivery": "30000",
     "freeDelivery": "200000",
