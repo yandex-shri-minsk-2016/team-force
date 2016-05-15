@@ -8,7 +8,13 @@
                     {{# each poolItems }}
                         <li class="item item_pt">
                             <span class="item__title">
-                                {{data.title}}
+                                {{#with data}}
+                                    {{#if link}}
+                                        <a href="{{link}}" target="_blank">{{title}}</a>
+                                    {{else}}
+                                        {{title}}
+                                    {{/if}}
+                                {{/with}}
                             </span>
                             <span class="item__price">
                                 ({{getPriceWithFormat data.price}})
