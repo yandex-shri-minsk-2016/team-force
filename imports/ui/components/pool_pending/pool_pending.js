@@ -1,5 +1,6 @@
 import Parser from './../../../../lib/parser';
 import utils from './../../../../lib/utils';
+import normalizeUrl from 'normalize-url';
 
 let itemFields = [];
 let itemFieldsDep = new Tracker.Dependency();
@@ -30,6 +31,7 @@ Template.appendPool.events({
     },
 
     'click .js-new-product': (event) => {
+        const errorClass = 'has-error';
         const hideGroup  = $('.new-product-hide-input-group');
         const joinButton = $('.join-button');
         const addButton  = $('.js-new-product');
@@ -114,7 +116,7 @@ Template.appendPool.events({
         const productCount = parseInt($('#new-product-count').val());
 
         if (!productInput.val()) {
-            productInput.val(pool.shop); // to manually add
+            productInput.val(normalizeUrl(pool.shop)); // to manually add
         }
 
         const newItem = {
