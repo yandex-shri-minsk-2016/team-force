@@ -62,6 +62,23 @@ Template.appendPool.events({
         itemFieldsDep.changed();
     },
 
+    'keyup #new-shop-input': (event) => {
+        const inputValue = $('#new-shop-input').val();
+        Pools.update(Template.instance().data._id, { $set: { shop: normalizeUrl(inputValue) } });
+    },
+
+    'paste #new-shop-input': (event) => {
+        const inputValue = event.originalEvent.clipboardData.getData('text');
+        if (utils.validUrl(inputValue)) {
+            const shopUrl = normalizeUrl(inputValue);
+            Pools.update(Template.instance().data._id, { $set: { shop: shopUrl } });
+            throwNotification('success', `Название магазина изменено на ${shopUrl}`);
+        }else {
+            throwNotification('danger', 'Неправильный адрес магазина');
+        }
+
+    },
+
     'paste #new-product-input': (event) => {
         const errorClass = 'has-error';
         const pool = Pools.findOne(Template.instance().data._id);

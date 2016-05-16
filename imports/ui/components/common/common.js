@@ -76,3 +76,11 @@ Template.registerHelper('dateByDayOfYear', dayOfYear => {
 Template.registerHelper('getShopMail', poolId => {
     return utils.getShopMail(Pools.findOne(poolId).shop);
 });
+
+Template.registerHelper('isExistShop', poolId => {
+    return utils.isExistShop(poolId);
+});
+
+Template.registerHelper('noUntitled', shop => {
+    return (shop === 'Untitled') ? false : shop;
+});

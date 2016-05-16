@@ -65,5 +65,14 @@
       "price":  ".product-information .price .amount",
       "descr":  ".product-information .short-description"
     }
+  },
+  "Untitled": {
+    "minDelivery": 0,
+    "costDelivery": 0,
+    "freeDelivery": 0,
+    "encoding": "",
+    "charset": "",
+    "fields": {
+    }
   }
 }
