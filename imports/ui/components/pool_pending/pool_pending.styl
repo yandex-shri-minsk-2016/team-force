@@ -35,11 +35,17 @@
   text-indent 10px
   background ('/public/dot.png') left no-repeat // @TODOfix me upload dot.png
   &__title
-    color #393939
+    color color_default
     font-size 18px
+    a
+      text-decoration: none
+      border-bottom 1px solid transparent
+      &:hover,
+      &:active
+        border-bottom 1px solid color_default
   &__price
-    color #393939
-    font-size 18px
+    color color_default
+    font-size 16px
   &__count
     color color_gray
     font-size 18px
