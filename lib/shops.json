@@ -1,8 +1,8 @@
 {
   "eda.by": {
-    "minDelivery": "100000",
-    "costDelivery": "0",
-    "freeDelivery": "100000",
+    "minDelivery": 100000,
+    "costDelivery": 0,
+    "freeDelivery": 100000,
     "encoding": "binary",
     "charset": "cp1251",
     "fields": {
@@ -14,9 +14,9 @@
   },
   "wok.by": {
     "email": "gitfooddemo@gmail.com",
-    "minDelivery": "100000",
-    "costDelivery": "50000",
-    "freeDelivery": "150000",
+    "minDelivery": 100000,
+    "costDelivery": 50000,
+    "freeDelivery": 150000,
     "encoding": "utf8",
     "charset": "utf8",
     "fields": {
@@ -28,9 +28,9 @@
   },
   "just-eat.by": {
     "email": "gitfooddemo@gmail.com",
-    "minDelivery": "100000",
-    "costDelivery": "30000",
-    "freeDelivery": "200000",
+    "minDelivery": 100000,
+    "costDelivery": 30000,
+    "freeDelivery": 200000,
     "encoding": "utf8",
     "charset": "utf8",
     "fields": {
@@ -41,9 +41,9 @@
     }
   },
   "edanada.by": {
-    "minDelivery": "100000",
-    "costDelivery": "30000",
-    "freeDelivery": "200000",
+    "minDelivery": 100000,
+    "costDelivery": 30000,
+    "freeDelivery": 200000,
     "encoding": "utf8",
     "charset": "utf8",
     "fields": {
@@ -54,9 +54,9 @@
     }
   },
   "eburger.by": {
-    "minDelivery": "180000",
-    "costDelivery": "0",
-    "freeDelivery": "180000",
+    "minDelivery": 180000,
+    "costDelivery": 0,
+    "freeDelivery": 180000,
     "encoding": "utf8",
     "charset": "utf8",
     "fields": {
