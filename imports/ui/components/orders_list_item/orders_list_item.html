@@ -13,6 +13,7 @@
 <template name="ordersListItem">
     <li class="order {{#if isPaid }}order_ispaid{{/if}}">
         <span class="order__username">
+            <img class="avatar" src="{{avatarUser userId 32}}" width="32" height="32" alt="avatar user">
             {{usermail userId}}
         </span>
         <span class="order__price">
