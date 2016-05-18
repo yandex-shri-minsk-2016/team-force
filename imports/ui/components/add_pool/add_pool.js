@@ -1,4 +1,5 @@
 import moment from 'moment';
+import 'moment/locale/ru';
 import shops from './../../../../lib/shops.json';
 import utils from './../../../../lib/utils';
 
@@ -12,6 +13,7 @@ Template.addPool.helpers({
         for (let name in shops) {
             result.push({
                 name,
+                address: shops[name].address,
                 data: shops[name]
             });
         }
@@ -24,8 +26,9 @@ Template.addPool.events({
     'submit #add_pool': (event) => {
         event.preventDefault();
         const inputTime = moment(event.target.time.value, utils.DATETIME_FORMAT);
-        const address = event.target.address.value;
-        const shop = $('input[name="shop"]:checked').val();
+        const address   = event.target.address.value;
+        const distance  = parseInt(event.target.distance.value);
+        const shop      = $('input[name="shop"]:checked').val();
 
         if (!shop) {
             throwNotification('danger', 'Выберите магазин');
@@ -40,6 +43,7 @@ Template.addPool.events({
         const newPool = {
             shop: shop,
             address: address,
+            distance: distance,
             time: inputTime.toDate(),
             ownerId: Meteor.userId(),
             companyId: Meteor.user().profile.company
@@ -64,9 +68,7 @@ Template.addPool.events({
     },
 
     'change input[name="shop"]': (event) => {
-        // myMap._startPoint =
-        console.log(myMap);
-        console.log(event);
+        myMap._startPoint = $(event.target).data('address');
         createRoute();
     }
 });
@@ -106,16 +108,13 @@ Template.addPool.rendered = () => {
         });
     });
 
-    $address.on('change', function(event) {
-        console.log($(this).val());
-    });
-
-    let myMap;
     ymaps.ready(() => {
         myMap = new ymaps.Map('map', {
             center: [0, 0],
-            zoom: 0
+            zoom: 0,
+            controls: []
         });
+        myMap.behaviors.disable(['drag', 'rightMouseButtonMagnifier']);
     });
 
     createRoute = () => {
@@ -123,18 +122,36 @@ Template.addPool.rendered = () => {
             myMap.geoObjects.remove(myMap._route);
         }
 
-        console.log(myMap._startPoint, myMap._finishPoint);
+        const $mapDelivery = $('#mapDelivery');
+        const $distance    = $('#distance');
+
+        myMap._finishPoint = $('#address').val();
 
         if (myMap._startPoint && myMap._finishPoint) {
 
             ymaps.route([myMap._startPoint, myMap._finishPoint])
                 .then((router) => {
-                    let distance = router.getLength();
                     myMap._route = router.getPaths();
                     myMap._route.options.set({ strokeWidth: 6, strokeColor: '#16a085', opacity: 0.6 });
                     myMap.geoObjects.add(myMap._route);
                     myMap.setBounds(myMap.geoObjects.getBounds());
-                }, myMap);
+
+                    const distance     = router.getLength();
+                    const timeDelivery = Math.round(distance / utils.MEAN_SPEED);
+                    let tNow      = parseInt(moment(new Date()).format('X'));
+
+                    let tDelivery = moment(tNow + timeDelivery, 'X');
+
+                    $mapDelivery.html(`Приблизительное время доставки ${moment(tDelivery).fromNow()}`);
+                    $distance.val(distance);
+
+                }, myMap)
+                .catch(e => {
+                    console.log(e);
+                });
+        }else {
+            $mapDelivery.html('');
+            $distance.val('');
         }
     };
 

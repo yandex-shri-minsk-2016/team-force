@@ -7,6 +7,7 @@ import moment from 'moment';
 
 Parser = ParserClass;
 utils = Utils;
+myMap = {};
 
 Accounts.ui.config({
     passwordSignupFields: 'EMAIL_ONLY'

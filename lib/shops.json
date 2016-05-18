@@ -5,6 +5,7 @@
     "freeDelivery": 100000,
     "encoding": "binary",
     "charset": "cp1251",
+    "address": "220004, г. Минск, Ул. Кальварийская 17, пом. 5А",
     "fields": {
       "title":  ".dishinfo > h2",
       "weight": ".dishinfo > span",
@@ -19,6 +20,7 @@
     "freeDelivery": 150000,
     "encoding": "utf8",
     "charset": "utf8",
+    "address": "220035, Республика Беларусь, г.Минск, ул. Игнатенко, 2-106",
     "fields": {
       "title":  ".sldier_container h1.productTitle",
       "weight": ".sldier_container .controls .checkbox",
