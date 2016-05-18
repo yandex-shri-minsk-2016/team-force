@@ -70,7 +70,12 @@ Template.addPool.events({
     'change input[name="shop"]': (event) => {
         myMap._startPoint = $(event.target).data('address');
         createRoute();
+    },
+
+    'change #address': (event) => {
+        createRoute();
     }
+
 });
 
 Template.addPool.rendered = () => {
