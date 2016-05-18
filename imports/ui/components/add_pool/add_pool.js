@@ -139,7 +139,6 @@ Template.addPool.rendered = () => {
                     const distance     = router.getLength();
                     const timeDelivery = Math.round(distance / utils.MEAN_SPEED);
                     let tNow      = parseInt(moment(new Date()).format('X'));
-
                     let tDelivery = moment(tNow + timeDelivery, 'X');
 
                     $mapDelivery.html(`Приблизительное время доставки ${moment(tDelivery).fromNow()}`);
