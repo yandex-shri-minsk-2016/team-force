@@ -10,7 +10,7 @@
                 <div class="input-group input-group-lg">
                     <label for="profileUsername" class="input-group-addon"><i class="glyphicon glyphicon-user"></i></label>
                     {{#with profileUser}}
-                        <input type="text" class="form-control" id="profileUsername" name="profileUsername" placeholder="Ваше имя" value="{{username}}">
+                        <input type="text" class="form-control" id="profileUsername" name="profileUsername" placeholder="Ваше имя" value="{{username}}" autocomplete="off">
                     {{/with}}
                 </div>
                 <small class="text-muted">Как к вам обратиться?</small>
@@ -19,7 +19,7 @@
                 <div class="input-group input-group-lg">
                     <label for="profilePhone" class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></label>
                     {{#with profileUser}}
-                        <input type="text" class="form-control" id="profilePhone" name="profilePhone" placeholder="Ваш телефон" value="{{phone}}">
+                        <input type="text" class="form-control" id="profilePhone" name="profilePhone" placeholder="Ваш телефон" value="{{phone}}" autocomplete="off">
                     {{/with}}
                 </div>
                 <small class="text-muted">Вам перезвонят по поводу заказа.</small>
@@ -27,7 +27,7 @@
             <div class="profile-email form-group col-xs-12 col-sm-4 col-md-4 col-lg-4">
                 <div class="input-group input-group-lg">
                     <div class="input-group-addon"></div>
-                    <input type="email" class="form-control" id="profileEmail" name="profileEmail" value="{{emailUser}}">
+                    <input type="email" class="form-control" id="profileEmail" name="profileEmail" value="{{emailUser}}" autocomplete="off">
                 </div>
                 <small class="text-muted">Исключительно для важных оповещений!</small>
             </div>
@@ -35,7 +35,7 @@
                 <div class="input-group input-group-lg">
                     <div class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></div>
                     {{#with profileUser}}
-                        <input type="text" class="form-control" id="profileAddress" name="profileAddress" placeholder="Ваш адрес" value="{{address}}">
+                        <input type="text" class="form-control" id="profileAddress" name="profileAddress" placeholder="Ваш адрес" value="{{address}}" autocomplete="off">
                     {{/with}}
                 </div>
                 <small class="text-muted">Мы запомним ваш адрес один раз и больше его не нужно будет вводить.</small>
@@ -44,7 +44,7 @@
                 <div class="input-group input-group-lg">
                     <div class="input-group-addon"></div>
                     {{#with profileUser}}
-                        <input type="text" class="form-control" id="profileCompany" name="profileCompany" value="{{company}}">
+                        <input type="text" class="form-control" id="profileCompany" name="profileCompany" value="{{company}}" autocomplete="off">
                     {{/with}}
                 </div>
                 <small class="text-muted">Где вы работаете?</small>
