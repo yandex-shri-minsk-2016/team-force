@@ -9,25 +9,24 @@ Template.addPool.helpers({
     },
 
     shops: () => {
-        let result = [];
-        for (let name in shops) {
-            result.push({
+        return Object.keys(shops).map((name) => {
+            const shop = shops[name];
+            return {
                 name,
-                address: shops[name].address,
-                data: shops[name]
-            });
-        }
-
-        return result;
+                address: shop.address,
+                data: shop
+            };
+        });
     }
 });
 
 Template.addPool.events({
     'submit #add_pool': (event) => {
         event.preventDefault();
-        const inputTime = moment(event.target.time.value, utils.DATETIME_FORMAT);
-        const address   = event.target.address.value;
-        const distance  = parseInt(event.target.distance.value);
+        const target    = event.target;
+        const inputTime = moment(target.time.value, utils.DATETIME_FORMAT);
+        const address   = target.address.value;
+        const distance  = parseInt(target.distance.value);
         const shop      = $('input[name="shop"]:checked').val();
 
         if (!shop) {

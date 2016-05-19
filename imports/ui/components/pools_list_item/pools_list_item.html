@@ -1,7 +1,7 @@
 <template name="poolsListItem">
     <a href="{{pathFor 'pool' poolId=_id }}"
        class="list-group__pools_{{state}} list-group-item pools-list-item clearfix">
-        <span class="pools-list-item__time col-xs-3 col-sm-3">{{formatTime time 'HH:mm'}}<small>{{formatTimeDiff timeDelivery 'HH:mm'}}</small></span><!--
+        <span class="pools-list-item__time col-xs-3 col-sm-3">{{formatTime time 'HH:mm'}}<small>{{formatTimeDiff timeDelivery}}</small></span><!--
      --><span class="pools-list-item__shop col-xs-3 col-sm-2">{{shop}}</span><!--
      --><span class="pools-list-item__owner col-xs-6 col-sm-4">
         <img class="avatar" src="{{avatarUser ownerId 24}}" width="24" height="24" alt="avatar user">

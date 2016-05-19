@@ -25,7 +25,7 @@ Template.registerHelper('formatTime', (time, format) => {
     return moment(time).format(format);
 });
 
-Template.registerHelper('formatTimeDiff', (tDiff, format) => {
+Template.registerHelper('formatTimeDiff', (tDiff) => {
     return (tDiff > 0) ? `(+${moment(tDiff, 'X').diff(0, 'minutes')} минут)` : '';
 });
 
