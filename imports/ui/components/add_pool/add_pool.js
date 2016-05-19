@@ -58,6 +58,12 @@ Template.addPool.events({
                     }
                 });
                 throwNotification('success', 'Вы создали пулл, наполняйте.');
+
+                Feeds.add({
+                    userId:Meteor.userId(),
+                    message:`${Meteor.user().profile.username} создал пулл`
+                });
+
                 Router.go(`/pool/${poolId}`);
             })
             .catch((error) => {

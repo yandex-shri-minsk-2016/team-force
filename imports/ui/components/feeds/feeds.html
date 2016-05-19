@@ -15,6 +15,6 @@
 <template name="feed">
     <!-- @TODO need design -->
     <div class="list-group {{#unless seen }} alert alert-success {{/unless }}">
-        {{ created }}: {{ message }}
+        <span class="glyphicon glyphicon-{{type}}" aria-hidden="true"></span> {{formatTime created 'MMM Do YY'}}: {{ message }}
     </div>
 </template>
