@@ -145,7 +145,7 @@ Template.appendPool.events({
         };
 
         Pools.appendItemForUser(poolId, Meteor.userId(), newItem, productCount)
-            .then(() => {
+            .then((itemId) => {
                 itemFields = [];
                 itemFieldsDep.changed();
 
@@ -153,6 +153,12 @@ Template.appendPool.events({
                 addButton.removeClass('active');
                 productInput.val('');
                 hideGroup.hide();
+
+                Feeds.addToPool(poolId, {
+                    userId: Meteor.userId(),
+                    type:   'level-up',
+                    message:` добавил в #pool{${poolId}}, #item{${itemId}} на сумму ${newItem.price * productCount}`
+                });
 
                 Router.go('pool', { poolId: poolId });
             })

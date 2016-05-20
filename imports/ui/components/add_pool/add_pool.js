@@ -60,11 +60,11 @@ Template.addPool.events({
                 throwNotification('success', 'Вы создали пулл, наполняйте.');
 
                 Feeds.add({
-                    userId:Meteor.userId(),
-                    message:`${Meteor.user().profile.username} создал пулл`
+                    userId: Meteor.userId(),
+                    message:` создал #pool{${poolId}}`
                 });
 
-                Router.go(`/pool/${poolId}`);
+                Router.go('pool', { poolId: poolId });
             })
             .catch((error) => {
                 console.log(error);

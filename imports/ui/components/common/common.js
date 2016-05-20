@@ -1,12 +1,7 @@
 import moment from 'moment';
 
 Template.registerHelper('usermail', userId => {
-    let user = Meteor.users.findOne({ _id: userId });
-    if (user.profile.username) {
-        return user.profile.username;
-    }
-
-    return user.emails[0].address;
+    return utils.getUsermail(userId);
 });
 
 Template.registerHelper('avatarUser', (userId, size) => {
@@ -87,4 +82,13 @@ Template.registerHelper('isExistShop', poolId => {
 
 Template.registerHelper('noUntitled', shop => {
     return (shop === 'Untitled') ? false : shop;
+});
+
+Template.registerHelper('feedActor', userId => {
+    return (userId === Meteor.userId()) ? 'Я' : utils.getUsermail(userId);
+});
+
+Template.registerHelper('feedMessage', msg => {
+    // @TODO: обработать сообщение, вставить ссылки pool/item
+    return msg;
 });
