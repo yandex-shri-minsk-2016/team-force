@@ -1,5 +1,5 @@
 Template.feeds.helpers({
-    feeds: Feeds.find()
+    feeds: Feeds.find({ ownerId:Meteor.userId() })
 });
 
 Template.feed.events({

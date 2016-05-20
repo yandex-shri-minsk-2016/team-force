@@ -26,7 +26,7 @@ Template.addPool.events({
         const target    = event.target;
         const inputTime = moment(target.time.value, utils.DATETIME_FORMAT);
         const address   = target.address.value;
-        const distance  = parseInt(target.distance.value);
+        const distance  = parseInt(target.distance.value) || 0;
         const shop      = $('input[name="shop"]:checked').val();
 
         if (!shop) {
@@ -59,8 +59,11 @@ Template.addPool.events({
                 });
                 throwNotification('success', 'Вы создали пулл, наполняйте.');
 
-                Feeds.add({
+                Feeds.notifyEveryoneInCompany({
                     userId: Meteor.userId(),
+                    ownerId: Meteor.userId(),
+                    companyId: Meteor.user().profile.company,
+                    type: 'plus',
                     message:` создал #pool{${poolId}}`
                 });
 

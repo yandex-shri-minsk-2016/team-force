@@ -156,6 +156,7 @@ Template.appendPool.events({
 
                 Feeds.notifyEveryoneInPool(poolId, {
                     userId: Meteor.userId(),
+                    ownerId: Meteor.userId(),
                     companyId: Meteor.user().profile.company,
                     type:   'level-up',
                     message:` добавил в #pool{${poolId}}, #item{${itemId}} на сумму ${utils.getPriceWithFormat(newItem.price * productCount)}`
