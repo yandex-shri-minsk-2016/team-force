@@ -45,3 +45,33 @@ Template.profile.events({
         }
     }
 });
+
+Template.profile.rendered = () => {
+    const $profileAddress = $('#profileAddress');
+
+    $profileAddress.typeahead({
+        source: [],
+        minLength: 2,
+        items: 8,
+        matcher: () => { return true; }
+    });
+
+    $profileAddress.on('paste keyup', function(event) {
+        ymaps.geocode(event.target.value, {
+            results: 8
+        }).then((result) => {
+            let resultAddress = [];
+
+            for (var i = 0; i < 8; i++) {
+                const item = result.geoObjects.get(i);
+                if (item) {
+                    resultAddress.push(item.properties.getAll().text);
+                }
+            }
+
+            $(this).data('typeahead').source = resultAddress;
+        }).catch(e => {
+            console.log(e);
+        });
+    });
+};

@@ -118,6 +118,7 @@ Meteor.publish('PoolsCompanyByDate', function(company) {
                 shop: 1,
                 address: 1,
                 time: 1,
+                distance: 1,
                 ownerId: 1,
                 state: 1,
                 companyId: 1,

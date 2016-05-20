@@ -25,6 +25,10 @@ Template.registerHelper('formatTime', (time, format) => {
     return moment(time).format(format);
 });
 
+Template.registerHelper('formatTimeDiff', (tDiff) => {
+    return (tDiff > 0) ? `(+${moment(tDiff, 'X').diff(0, 'minutes')} минут)` : '';
+});
+
 Template.registerHelper('isOrderOwner', orderId => {
     return Meteor.userId() === Orders.findOne({ _id: orderId }).userId;
 });

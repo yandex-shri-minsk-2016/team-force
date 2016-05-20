@@ -18,6 +18,7 @@
                                                    id="shop{{@index}}"
                                                    name="shop"
                                                    type="radio"
+                                                   data-address="{{address}}"
                                                    value="{{name}}"/>
 
                                             <label class="shopChoice__img"
@@ -45,6 +46,11 @@
                                 <input required class="form-control" name="address" id="address" type="text" value="{{userAddress}}"/>
                             </div>
                         </div>
+                    </div>
+                    <div class="clearfix">
+                        <div id="map"></div>
+                        <div id="mapDelivery"></div>
+                        <input type="hidden" id="distance" name="distance">
                     </div>
                     <div class="addPool__submit">
                         <div class="input-group">

@@ -141,7 +141,7 @@ Template.appendPool.events({
             price: utils.getPriceFromString(target['form-elem-price'].value),
             description: target['form-elem-descr'].value,
             weight: target['form-elem-weight'].value,
-            link: target['item-link'].value
+            link: normalizeUrl(target['item-link'].value)
         };
 
         Pools.appendItemForUser(poolId, Meteor.userId(), newItem, productCount)

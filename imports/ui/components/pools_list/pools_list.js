@@ -1,8 +1,13 @@
 Template.poolsList.helpers({
     poolsWithDates: () => {
         const PoolsCompanyWithPrice = Pools.getCompanyPools(Meteor.user().profile.company).fetch().map(pool => {
-            pool.poolPrice = utils.getPriceWithFormat(Pools.getPoolPrice(pool._id));
+            const poolPrice = Pools.getPoolPrice(pool._id);
+            pool.poolPrice = utils.getPriceWithFormat(poolPrice);
             pool.userCount = Orders.find({ poolId: pool._id }).count();
+
+            const tDelivery = pool.distance / utils.MEAN_SPEED;
+            const tCooking  = poolPrice > 0 ? utils.MEAN_TCOOK * Math.pow(Math.log(poolPrice) / Math.log(utils.MEAN_PRICE), 4) : 0;
+            pool.timeDelivery = (tDelivery + tCooking) ? (tDelivery + tCooking) : 0;
             return pool;
         });
 
