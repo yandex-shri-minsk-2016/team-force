@@ -1,5 +1,5 @@
 Template.feeds.helpers({
-    feeds: Feeds.find({ userId: Meteor.userId() })
+    feeds: Feeds.find()
 });
 
 Template.feed.events({

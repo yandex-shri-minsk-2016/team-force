@@ -15,6 +15,24 @@
 <template name="feed">
     <!-- @TODO need design -->
     <div class="list-group {{#unless seen }} alert alert-success {{/unless }}">
-        <span class="glyphicon glyphicon-{{type}}" aria-hidden="true"></span> {{formatTime created 'MMM Do YY'}}: {{feedActor userId}} {{feedMessage message }}
+        <div class="feed clearfix">
+            <div class="feed__logo">
+                <span class="glyphicon glyphicon-{{type}}" aria-hidden="true"></span>
+            </div>
+            <div class="feed__body">
+                <div class="feed__time clearfix">
+                    {{timeFromNow created}}
+                </div>
+                <div class="feed__msg">
+                    <span>
+                        <img class="avatar" src="{{avatarUser userId 24}}" width="24" height="24" alt="avatar user">
+                        {{feedActor userId}}
+                    </span>
+                    <span>
+                        {{feedMessage message }}
+                    </span>
+                </div>
+            </div>
+        </div>
     </div>
 </template>

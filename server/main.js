@@ -177,8 +177,8 @@ Meteor.publish('OrdersItems', () => {
 
 });
 
-Meteor.publish('Feeds', userId => {
-    return Feeds.find({ userId: userId });
+Meteor.publish('Feeds', companyId => {
+    return Feeds.find({ companyId: companyId });
 });
 
 Meteor.publish('company', () => {

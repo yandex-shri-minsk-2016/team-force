@@ -154,10 +154,11 @@ Template.appendPool.events({
                 productInput.val('');
                 hideGroup.hide();
 
-                Feeds.addToPool(poolId, {
+                Feeds.notifyEveryoneInPool(poolId, {
                     userId: Meteor.userId(),
+                    companyId: Meteor.user().profile.company,
                     type:   'level-up',
-                    message:` добавил в #pool{${poolId}}, #item{${itemId}} на сумму ${newItem.price * productCount}`
+                    message:` добавил в #pool{${poolId}}, #item{${itemId}} на сумму ${utils.getPriceWithFormat(newItem.price * productCount)}`
                 });
 
                 Router.go('pool', { poolId: poolId });
