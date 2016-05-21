@@ -10,14 +10,28 @@ Template.poolSummary.helpers({
 Template.poolSummary.events({
     'click .close-pool': () => {
         const pool = Pools.findOne({ _id: Template.instance().data._id });
-        Pools.changePoolState(pool._id, utils.POOL_STATE.ARCHIVED);
+        Pools.changePoolState(pool._id, utils.POOL_STATE.ARCHIVED)
+            .then(poolId => {
+                if (poolId) {
+                    const pool = Pools.findOne(poolId);
+                    const user = Meteor.users.findOne(pool.ownerId);
+
+                    Feeds.notifyEveryoneInPool(pool._id, {
+                        userId:   user._id,
+                        ownerId:  user._id,
+                        companyId:user.profile.company,
+                        type:     'ok-sign',
+                        message:  ` сделал заказ на ${pool.shop} (#pool{${pool._id}}) общей стоимостью ${utils.getPriceWithFormat(Pools.getPoolPrice(pool._id))}`
+                    });
+                }
+            });
 
         const ownerOrder = Orders.findOne({ poolId: pool._id, userId: Meteor.userId() });
         Orders.update(ownerOrder._id, { $set: { isPaid: true } });
 
         const itemsToSent = utils.toArr(Pools.getGroupByItemWithData(pool._id));
 
-        let items = itemsToSent.map((item) => {
+        const items = itemsToSent.map((item) => {
             return {
                 count: item.count,
                 link: item.data.link,

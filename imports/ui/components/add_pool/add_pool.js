@@ -63,7 +63,7 @@ Template.addPool.events({
                     userId: Meteor.userId(),
                     ownerId: Meteor.userId(),
                     companyId: Meteor.user().profile.company,
-                    type: 'plus',
+                    type: 'plus-sign',
                     message:` создал #pool{${poolId}}`
                 });
 
