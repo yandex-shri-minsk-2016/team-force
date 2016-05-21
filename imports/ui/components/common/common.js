@@ -93,6 +93,16 @@ Template.registerHelper('feedActor', userId => {
 });
 
 Template.registerHelper('feedMessage', msg => {
-    // @TODO: обработать сообщение, вставить ссылки pool/item
-    return msg;
+    return new Handlebars.SafeString(msg
+            .replace(/#pool{\w+}/g, (poolId) => {
+                poolId = poolId.replace('#pool{', '').replace('}', '');
+                const pool = Pools.findOne(poolId);
+                return `<a href='/pool/${pool._id}'>пулл в ${moment(pool.time).format(utils.TIMEDATE_FORMAT)} из ${pool.shop}</a>`;
+            })
+            .replace(/#item{\w+}/g, (itemId) => {
+                itemId = itemId.replace('#item{', '').replace('}', '');
+                const item = Items.findOne(itemId);
+                return `<a href='${item.link}' title='${item.description}' target="_blank">${item.title}</a>`;
+            })
+    );
 });
