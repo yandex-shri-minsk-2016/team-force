@@ -1,14 +1,21 @@
 <template name="feeds">
-    <div class="row content-container">
-        <div class="list-group col-xs-12 col-sm-8 col-sm-offset-2">
-        {{#if feeds}}
-            {{#each feeds}}
-                {{> feed}}
-            {{/each}}
-        {{else}}
-            <li><span>Нет уведомлений</span></li>
-        {{/if}}
+    <div class="content-container">
+        <div class="row">
+            <div class="list-group col-xs-12 col-sm-8 col-sm-offset-2">
+            {{#if feeds}}
+                {{#each feeds}}
+                    {{> feed}}
+                {{/each}}
+            {{else}}
+                <li><span>Нет уведомлений</span></li>
+            {{/if}}
+            </div>
         </div>
+        {{#if hasMore}}
+            <div class="row">
+                <a class="load-more" href="/feeds/{{nextPath}}">Загрузить ещё</a>
+            </div>
+        {{/if}}
     </div>
 </template>
 
