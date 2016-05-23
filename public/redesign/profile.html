@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700,300italic&subset=latin,cyrillic-ext,cyrillic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="octicons/octicons.css">
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <title>Profile</title>
+</head>
+<body>
+    <header class="gf-header">
+        <a class="gf-logo" href="pullslist.html">Gitfood</a>
+        <div class="gf-menu gf-actions-menu">
+            <a class="gf-menu__item gf-actions-menu__item" href="addpull.html">Добавить пул</a>
+            <a class="gf-menu__item gf-actions-menu__item" href="pullslist.html">Созданные пулы</a>
+            <a class="gf-menu__item gf-actions-menu__item" href="debts.html">
+                <span>Долги</span>
+                <span class="gf-badge">10 000 руб</span>
+            </a>
+        </div>
+        <div class="gf-menu gf-user-menu">
+            <a class="gf-menu__item" href="profile.html">
+                <div class="gf-user-img gf-menu__user-img" style="background-image: url('images/abott@adorable.io.png') "></div>
+                <span>Username</span>
+            </a>
+            <a class="gf-menu__item" href="login.html">Выйти</a>
+        </div>
+    </header>
+   <content>
+      <form action="" class="gf-form gf-container gf-profile">
+         <div class="gf-user-img gf-profile__user-img">
+             <img src="images/abott@adorable.io.png" alt=""/>
+         </div>
+         <div class="gf-form__half pr10">
+           <div class="gf-form__input-wrap">
+               <span class="gf-form__input-title">Как к вам обратиться?</span>
+               <input class="gf-form__input" type="text" placeholder="Ваше имя"/>
+               <span class="octicon octicon-octoface"></span>
+           </div>
+           <div class="gf-form__input-wrap">
+               <span class="gf-form__input-title">Вам перезвонят по поводу заказа.</span>
+               <input class="gf-form__input" type="text" placeholder="Ваш телефон"/>
+               <span class="octicon octicon-device-mobile"></span>
+           </div>
+         </div>
+         <div class="gf-form__half pl10">
+             <div class="gf-form__input-wrap">
+                 <span class="gf-form__input-title">Исключительно для важных оповещений!</span>
+                 <input class="gf-form__input" type="text" placeholder="Ваш емэйл"/>
+                 <span class="octicon octicon-mail"></span>
+             </div>
+             <div class="gf-form__input-wrap">
+                 <span class="gf-form__input-title">Где вы работаете?</span>
+                 <input class="gf-form__input" type="text" placeholder="Компания"/>
+                 <span class="octicon octicon-globe"></span>
+             </div>
+         </div>
+         <span class="gf-form__input-title">Мы запомним ваш адрес один раз и больше его не нужно будет вводить.</span>
+         <div class="rel">
+             <input class="gf-form__input" type="text" placeholder="Ваш адрес"/>
+                 <span class="octicon octicon-home"></span>
+             </div>
+             <div class="gf-button-wrap">
+                 <button class="gf-button gf-button--blue gf-profile_submit">Сохранить</button>
+             </div>
+         </form>
+   </content>
+   <footer class="gf-footer">
+       <span class="gf-footer_text">&copy;TeamForce 2016</span>
+   </footer>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700,300italic&subset=latin,cyrillic-ext,cyrillic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="octicons/octicons.css">
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <title>Add pull</title>
+</head>
+<body>
+<header class="gf-header">
+    <a class="gf-logo" href="pullslist.html">Gitfood</a>
+    <div class="gf-menu gf-actions-menu">
+        <a class="gf-menu__item gf-actions-menu__item" href="addpull.html">Добавить пул</a>
+        <a class="gf-menu__item gf-actions-menu__item" href="pullslist.html">Созданные пулы</a>
+        <a class="gf-menu__item gf-actions-menu__item" href="debts.html">
+            <span>Долги</span>
+            <span class="gf-badge">10 000 руб</span></a>
+    </div>
+    <div class="gf-menu gf-user-menu">
+        <a class="gf-menu__item" href="profile.html">
+            <div class="gf-user-img gf-menu__user-img" style="background-image: url('images/abott@adorable.io.png') "></div>
+            <span>Username</span>
+        </a>
+        <a class="gf-menu__item" href="login.html">Выйти</a>
+    </div>
+</header>
+   <content>
+           <form class="gf-form gf-container gf-add-pull">
+               <span class="gf-add-pull_title">Выберите службу доставки</span>
+               <div class="gf-add-pull__shop-list">
+                   <a class="gf-add-pull_shop" href="" style="background-image: url('images/eburger.by.png')"></a>
+                   <a class="gf-add-pull_shop" href="images/eda.by.png" style="background-image: url('images/eda.by.png')"></a>
+                   <a class="gf-add-pull_shop" href="images/edanada.by.png" style="background-image: url('images/edanada.by.png')"></a>
+                   <a class="gf-add-pull_shop" href="images/just-eat.by.png" style="background-image: url('images/just-eat.by.png')"></a>
+                   <a class="gf-add-pull_shop" href="images/wok.by.png" style="background-image: url('images/wok.by.png')"></a>
+               </div>
+              <div class="clearfix mt30">
+                  <div class="gf-form__half pr10">
+                      <div class="gf-form__input-wrap">
+                          <span class="gf-form__input-title">Выберите время заказа</span>
+                          <input class="gf-form__input" type="text" placeholder=""/>
+                          <span class="octicon octicon-watch"></span>
+                      </div>
+                  </div>
+                  <div class="gf-form__half pl10">
+                      <div class="gf-form__input-wrap">
+                          <span class="gf-form__input-title">Адрес доставки</span>
+                          <input class="gf-form__input" type="text" placeholder=""/>
+                          <span class="octicon octicon-home"></span>
+                      </div>
+                  </div>
+              </div>
+               <div class="gf-button-wrap">
+                   <a href="newpull.html" class="gf-button gf-button--blue gf-profile_submit">Сохранить</a>
+               </div>
+           </form>
+   </content>
+    <footer class="gf-footer">
+        <span class="gf-footer_text">&copy;TeamForce 2016</span>
+    </footer>
+</body>
+</html>

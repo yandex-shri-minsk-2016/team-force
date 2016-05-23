@@ -1,0 +1,720 @@
+@charset "UTF-8";
+@font-face {
+  font-family: 'octicons';
+  src: font-url("octicons.eot?#iefix") format("embedded-opentype"), font-url("octicons.woff") format("woff"), font-url("octicons.ttf") format("truetype"), font-url("octicons.svg#octicons") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+.octicon, .mega-octicon {
+  font: normal normal normal 16px/1 octicons;
+  display: inline-block;
+  text-decoration: none;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+.mega-octicon {
+  font-size: 32px; }
+
+.octicon-alert:before {
+  content: '\f02d'; }
+
+/* яАн */
+.octicon-arrow-down:before {
+  content: '\f03f'; }
+
+/* яА┐ */
+.octicon-arrow-left:before {
+  content: '\f040'; }
+
+/* яБА */
+.octicon-arrow-right:before {
+  content: '\f03e'; }
+
+/* яА╛ */
+.octicon-arrow-small-down:before {
+  content: '\f0a0'; }
+
+/* яВа */
+.octicon-arrow-small-left:before {
+  content: '\f0a1'; }
+
+/* яВб */
+.octicon-arrow-small-right:before {
+  content: '\f071'; }
+
+/* яБ▒ */
+.octicon-arrow-small-up:before {
+  content: '\f09f'; }
+
+/* яВЯ */
+.octicon-arrow-up:before {
+  content: '\f03d'; }
+
+/* яА╜ */
+.octicon-microscope:before,
+.octicon-beaker:before {
+  content: '\f0dd'; }
+
+/* яГЭ */
+.octicon-bell:before {
+  content: '\f0de'; }
+
+/* яГЮ */
+.octicon-bold:before {
+  content: '\f0e2'; }
+
+/* яГв */
+.octicon-book:before {
+  content: '\f007'; }
+
+/* яАЗ */
+.octicon-bookmark:before {
+  content: '\f07b'; }
+
+/* яБ╗ */
+.octicon-briefcase:before {
+  content: '\f0d3'; }
+
+/* яГУ */
+.octicon-broadcast:before {
+  content: '\f048'; }
+
+/* яБИ */
+.octicon-browser:before {
+  content: '\f0c5'; }
+
+/* яГЕ */
+.octicon-bug:before {
+  content: '\f091'; }
+
+/* яВС */
+.octicon-calendar:before {
+  content: '\f068'; }
+
+/* яБи */
+.octicon-check:before {
+  content: '\f03a'; }
+
+/* яА║ */
+.octicon-checklist:before {
+  content: '\f076'; }
+
+/* яБ╢ */
+.octicon-chevron-down:before {
+  content: '\f0a3'; }
+
+/* яВг */
+.octicon-chevron-left:before {
+  content: '\f0a4'; }
+
+/* яВд */
+.octicon-chevron-right:before {
+  content: '\f078'; }
+
+/* яБ╕ */
+.octicon-chevron-up:before {
+  content: '\f0a2'; }
+
+/* яВв */
+.octicon-circle-slash:before {
+  content: '\f084'; }
+
+/* яВД */
+.octicon-circuit-board:before {
+  content: '\f0d6'; }
+
+/* яГЦ */
+.octicon-clippy:before {
+  content: '\f035'; }
+
+/* яА╡ */
+.octicon-clock:before {
+  content: '\f046'; }
+
+/* яБЖ */
+.octicon-cloud-download:before {
+  content: '\f00b'; }
+
+/* яАЛ */
+.octicon-cloud-upload:before {
+  content: '\f00c'; }
+
+/* яАМ */
+.octicon-code:before {
+  content: '\f05f'; }
+
+/* яБЯ */
+.octicon-comment-add:before,
+.octicon-comment:before {
+  content: '\f02b'; }
+
+/* яАл */
+.octicon-comment-discussion:before {
+  content: '\f04f'; }
+
+/* яБП */
+.octicon-credit-card:before {
+  content: '\f045'; }
+
+/* яБЕ */
+.octicon-dash:before {
+  content: '\f0ca'; }
+
+/* яГК */
+.octicon-dashboard:before {
+  content: '\f07d'; }
+
+/* яБ╜ */
+.octicon-database:before {
+  content: '\f096'; }
+
+/* яВЦ */
+.octicon-clone:before,
+.octicon-desktop-download:before {
+  content: '\f0dc'; }
+
+/* яГЬ */
+.octicon-device-camera:before {
+  content: '\f056'; }
+
+/* яБЦ */
+.octicon-device-camera-video:before {
+  content: '\f057'; }
+
+/* яБЧ */
+.octicon-device-desktop:before {
+  content: '\f27c'; }
+
+/* яЙ╝ */
+.octicon-device-mobile:before {
+  content: '\f038'; }
+
+/* яА╕ */
+.octicon-diff:before {
+  content: '\f04d'; }
+
+/* яБН */
+.octicon-diff-added:before {
+  content: '\f06b'; }
+
+/* яБл */
+.octicon-diff-ignored:before {
+  content: '\f099'; }
+
+/* яВЩ */
+.octicon-diff-modified:before {
+  content: '\f06d'; }
+
+/* яБн */
+.octicon-diff-removed:before {
+  content: '\f06c'; }
+
+/* яБм */
+.octicon-diff-renamed:before {
+  content: '\f06e'; }
+
+/* яБо */
+.octicon-ellipsis:before {
+  content: '\f09a'; }
+
+/* яВЪ */
+.octicon-eye-unwatch:before,
+.octicon-eye-watch:before,
+.octicon-eye:before {
+  content: '\f04e'; }
+
+/* яБО */
+.octicon-file-binary:before {
+  content: '\f094'; }
+
+/* яВФ */
+.octicon-file-code:before {
+  content: '\f010'; }
+
+/* яАР */
+.octicon-file-directory:before {
+  content: '\f016'; }
+
+/* яАЦ */
+.octicon-file-media:before {
+  content: '\f012'; }
+
+/* яАТ */
+.octicon-file-pdf:before {
+  content: '\f014'; }
+
+/* яАФ */
+.octicon-file-submodule:before {
+  content: '\f017'; }
+
+/* яАЧ */
+.octicon-file-symlink-directory:before {
+  content: '\f0b1'; }
+
+/* яВ▒ */
+.octicon-file-symlink-file:before {
+  content: '\f0b0'; }
+
+/* яВ░ */
+.octicon-file-text:before {
+  content: '\f011'; }
+
+/* яАС */
+.octicon-file-zip:before {
+  content: '\f013'; }
+
+/* яАУ */
+.octicon-flame:before {
+  content: '\f0d2'; }
+
+/* яГТ */
+.octicon-fold:before {
+  content: '\f0cc'; }
+
+/* яГМ */
+.octicon-gear:before {
+  content: '\f02f'; }
+
+/* яАп */
+.octicon-gift:before {
+  content: '\f042'; }
+
+/* яБВ */
+.octicon-gist:before {
+  content: '\f00e'; }
+
+/* яАО */
+.octicon-gist-secret:before {
+  content: '\f08c'; }
+
+/* яВМ */
+.octicon-git-branch-create:before,
+.octicon-git-branch-delete:before,
+.octicon-git-branch:before {
+  content: '\f020'; }
+
+/* яАа */
+.octicon-git-commit:before {
+  content: '\f01f'; }
+
+/* яАЯ */
+.octicon-git-compare:before {
+  content: '\f0ac'; }
+
+/* яВм */
+.octicon-git-merge:before {
+  content: '\f023'; }
+
+/* яАг */
+.octicon-git-pull-request-abandoned:before,
+.octicon-git-pull-request:before {
+  content: '\f009'; }
+
+/* яАЙ */
+.octicon-globe:before {
+  content: '\f0b6'; }
+
+/* яВ╢ */
+.octicon-graph:before {
+  content: '\f043'; }
+
+/* яБГ */
+.octicon-heart:before {
+  content: '\2665'; }
+
+/* тЩе */
+.octicon-history:before {
+  content: '\f07e'; }
+
+/* яБ╛ */
+.octicon-home:before {
+  content: '\f08d'; }
+
+/* яВН */
+.octicon-horizontal-rule:before {
+  content: '\f070'; }
+
+/* яБ░ */
+.octicon-hubot:before {
+  content: '\f09d'; }
+
+/* яВЭ */
+.octicon-inbox:before {
+  content: '\f0cf'; }
+
+/* яГП */
+.octicon-info:before {
+  content: '\f059'; }
+
+/* яБЩ */
+.octicon-issue-closed:before {
+  content: '\f028'; }
+
+/* яАи */
+.octicon-issue-opened:before {
+  content: '\f026'; }
+
+/* яАж */
+.octicon-issue-reopened:before {
+  content: '\f027'; }
+
+/* яАз */
+.octicon-italic:before {
+  content: '\f0e4'; }
+
+/* яГд */
+.octicon-jersey:before {
+  content: '\f019'; }
+
+/* яАЩ */
+.octicon-key:before {
+  content: '\f049'; }
+
+/* яБЙ */
+.octicon-keyboard:before {
+  content: '\f00d'; }
+
+/* яАН */
+.octicon-law:before {
+  content: '\f0d8'; }
+
+/* яГШ */
+.octicon-light-bulb:before {
+  content: '\f000'; }
+
+/* яАА */
+.octicon-link:before {
+  content: '\f05c'; }
+
+/* яБЬ */
+.octicon-link-external:before {
+  content: '\f07f'; }
+
+/* яБ┐ */
+.octicon-list-ordered:before {
+  content: '\f062'; }
+
+/* яБв */
+.octicon-list-unordered:before {
+  content: '\f061'; }
+
+/* яБб */
+.octicon-location:before {
+  content: '\f060'; }
+
+/* яБа */
+.octicon-gist-private:before,
+.octicon-mirror-private:before,
+.octicon-git-fork-private:before,
+.octicon-lock:before {
+  content: '\f06a'; }
+
+/* яБк */
+.octicon-logo-gist:before {
+  content: '\f0ad'; }
+
+/* яВн */
+.octicon-logo-github:before {
+  content: '\f092'; }
+
+/* яВТ */
+.octicon-mail:before {
+  content: '\f03b'; }
+
+/* яА╗ */
+.octicon-mail-read:before {
+  content: '\f03c'; }
+
+/* яА╝ */
+.octicon-mail-reply:before {
+  content: '\f051'; }
+
+/* яБС */
+.octicon-mark-github:before {
+  content: '\f00a'; }
+
+/* яАК */
+.octicon-markdown:before {
+  content: '\f0c9'; }
+
+/* яГЙ */
+.octicon-megaphone:before {
+  content: '\f077'; }
+
+/* яБ╖ */
+.octicon-mention:before {
+  content: '\f0be'; }
+
+/* яВ╛ */
+.octicon-milestone:before {
+  content: '\f075'; }
+
+/* яБ╡ */
+.octicon-mirror-public:before,
+.octicon-mirror:before {
+  content: '\f024'; }
+
+/* яАд */
+.octicon-mortar-board:before {
+  content: '\f0d7'; }
+
+/* яГЧ */
+.octicon-mute:before {
+  content: '\f080'; }
+
+/* яВА */
+.octicon-no-newline:before {
+  content: '\f09c'; }
+
+/* яВЬ */
+.octicon-octoface:before {
+  content: '\f008'; }
+
+/* яАИ */
+.octicon-organization:before {
+  content: '\f037'; }
+
+/* яА╖ */
+.octicon-package:before {
+  content: '\f0c4'; }
+
+/* яГД */
+.octicon-paintcan:before {
+  content: '\f0d1'; }
+
+/* яГС */
+.octicon-pencil:before {
+  content: '\f058'; }
+
+/* яБШ */
+.octicon-person-add:before,
+.octicon-person-follow:before,
+.octicon-person:before {
+  content: '\f018'; }
+
+/* яАШ */
+.octicon-pin:before {
+  content: '\f041'; }
+
+/* яББ */
+.octicon-plug:before {
+  content: '\f0d4'; }
+
+/* яГФ */
+.octicon-repo-create:before,
+.octicon-gist-new:before,
+.octicon-file-directory-create:before,
+.octicon-file-add:before,
+.octicon-plus:before {
+  content: '\f05d'; }
+
+/* яБЭ */
+.octicon-primitive-dot:before {
+  content: '\f052'; }
+
+/* яБТ */
+.octicon-primitive-square:before {
+  content: '\f053'; }
+
+/* яБУ */
+.octicon-pulse:before {
+  content: '\f085'; }
+
+/* яВЕ */
+.octicon-question:before {
+  content: '\f02c'; }
+
+/* яАм */
+.octicon-quote:before {
+  content: '\f063'; }
+
+/* яБг */
+.octicon-radio-tower:before {
+  content: '\f030'; }
+
+/* яА░ */
+.octicon-repo-delete:before,
+.octicon-repo:before {
+  content: '\f001'; }
+
+/* яАБ */
+.octicon-repo-clone:before {
+  content: '\f04c'; }
+
+/* яБМ */
+.octicon-repo-force-push:before {
+  content: '\f04a'; }
+
+/* яБК */
+.octicon-gist-fork:before,
+.octicon-repo-forked:before {
+  content: '\f002'; }
+
+/* яАВ */
+.octicon-repo-pull:before {
+  content: '\f006'; }
+
+/* яАЖ */
+.octicon-repo-push:before {
+  content: '\f005'; }
+
+/* яАЕ */
+.octicon-rocket:before {
+  content: '\f033'; }
+
+/* яА│ */
+.octicon-rss:before {
+  content: '\f034'; }
+
+/* яА┤ */
+.octicon-ruby:before {
+  content: '\f047'; }
+
+/* яБЗ */
+.octicon-search-save:before,
+.octicon-search:before {
+  content: '\f02e'; }
+
+/* яАо */
+.octicon-server:before {
+  content: '\f097'; }
+
+/* яВЧ */
+.octicon-settings:before {
+  content: '\f07c'; }
+
+/* яБ╝ */
+.octicon-shield:before {
+  content: '\f0e1'; }
+
+/* яГб */
+.octicon-log-in:before,
+.octicon-sign-in:before {
+  content: '\f036'; }
+
+/* яА╢ */
+.octicon-log-out:before,
+.octicon-sign-out:before {
+  content: '\f032'; }
+
+/* яА▓ */
+.octicon-smiley:before {
+  content: '\f0e7'; }
+
+/* яГз */
+.octicon-squirrel:before {
+  content: '\f0b2'; }
+
+/* яВ▓ */
+.octicon-star-add:before,
+.octicon-star-delete:before,
+.octicon-star:before {
+  content: '\f02a'; }
+
+/* яАк */
+.octicon-stop:before {
+  content: '\f08f'; }
+
+/* яВП */
+.octicon-repo-sync:before,
+.octicon-sync:before {
+  content: '\f087'; }
+
+/* яВЗ */
+.octicon-tag-remove:before,
+.octicon-tag-add:before,
+.octicon-tag:before {
+  content: '\f015'; }
+
+/* яАХ */
+.octicon-tasklist:before {
+  content: '\f0e5'; }
+
+/* яГе */
+.octicon-telescope:before {
+  content: '\f088'; }
+
+/* яВИ */
+.octicon-terminal:before {
+  content: '\f0c8'; }
+
+/* яГИ */
+.octicon-text-size:before {
+  content: '\f0e3'; }
+
+/* яГг */
+.octicon-three-bars:before {
+  content: '\f05e'; }
+
+/* яБЮ */
+.octicon-thumbsdown:before {
+  content: '\f0db'; }
+
+/* яГЫ */
+.octicon-thumbsup:before {
+  content: '\f0da'; }
+
+/* яГЪ */
+.octicon-tools:before {
+  content: '\f031'; }
+
+/* яА▒ */
+.octicon-trashcan:before {
+  content: '\f0d0'; }
+
+/* яГР */
+.octicon-triangle-down:before {
+  content: '\f05b'; }
+
+/* яБЫ */
+.octicon-triangle-left:before {
+  content: '\f044'; }
+
+/* яБД */
+.octicon-triangle-right:before {
+  content: '\f05a'; }
+
+/* яБЪ */
+.octicon-triangle-up:before {
+  content: '\f0aa'; }
+
+/* яВк */
+.octicon-unfold:before {
+  content: '\f039'; }
+
+/* яА╣ */
+.octicon-unmute:before {
+  content: '\f0ba'; }
+
+/* яВ║ */
+.octicon-unverified:before {
+  content: '\f0e8'; }
+
+/* яГи */
+.octicon-verified:before {
+  content: '\f0e6'; }
+
+/* яГж */
+.octicon-versions:before {
+  content: '\f064'; }
+
+/* яБд */
+.octicon-watch:before {
+  content: '\f0e0'; }
+
+/* яГа */
+.octicon-remove-close:before,
+.octicon-x:before {
+  content: '\f081'; }
+
+/* яВБ */
+.octicon-zap:before {
+  content: '\26A1'; }
+
+/* тЪб */
+
+/*# sourceMappingURL=sprockets-octicons.css.map */
