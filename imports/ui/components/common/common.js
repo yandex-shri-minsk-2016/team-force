@@ -25,7 +25,7 @@ Template.registerHelper('timeFromNow', (time) => {
 });
 
 Template.registerHelper('formatTimeDiff', (tDiff) => {
-    return (tDiff > 0) ? `(+${moment(tDiff, 'X').diff(0, 'minutes')} минут)` : '';
+    return (tDiff > 0) ? `(+${moment(tDiff, 'X').diff(0, 'minutes')} мин)` : '';
 });
 
 Template.registerHelper('isOrderOwner', orderId => {
