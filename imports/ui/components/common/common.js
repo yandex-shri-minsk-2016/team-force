@@ -1,12 +1,7 @@
 import moment from 'moment';
 
 Template.registerHelper('usermail', userId => {
-    let user = Meteor.users.findOne({ _id: userId });
-    if (user.profile.username) {
-        return user.profile.username;
-    }
-
-    return user.emails[0].address;
+    return utils.getUsermail(userId);
 });
 
 Template.registerHelper('avatarUser', (userId, size) => {
@@ -23,6 +18,10 @@ Template.registerHelper('moreOne', count => {
 
 Template.registerHelper('formatTime', (time, format) => {
     return moment(time).format(format);
+});
+
+Template.registerHelper('timeFromNow', (time) => {
+    return moment(time).fromNow();
 });
 
 Template.registerHelper('formatTimeDiff', (tDiff) => {
@@ -87,4 +86,23 @@ Template.registerHelper('isExistShop', poolId => {
 
 Template.registerHelper('noUntitled', shop => {
     return (shop === 'Untitled') ? false : shop;
+});
+
+Template.registerHelper('feedActor', userId => {
+    return (userId === Meteor.userId()) ? 'Я' : utils.getUsermail(userId);
+});
+
+Template.registerHelper('feedMessage', msg => {
+    return new Handlebars.SafeString(msg
+            .replace(/#pool{\w+}/g, (poolId) => {
+                poolId = poolId.replace('#pool{', '').replace('}', '');
+                const pool = Pools.findOne(poolId);
+                return `<a href='/pool/${pool._id}'>пулл в ${moment(pool.time).format(utils.TIMEDATE_FORMAT)} из ${pool.shop}</a>`;
+            })
+            .replace(/#item{\w+}/g, (itemId) => {
+                itemId = itemId.replace('#item{', '').replace('}', '');
+                const item = Items.findOne(itemId);
+                return `<a href='${item.link}' title='${item.description}' target="_blank">${item.title}</a>`;
+            })
+    );
 });

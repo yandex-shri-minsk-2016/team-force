@@ -145,7 +145,7 @@ Template.appendPool.events({
         };
 
         Pools.appendItemForUser(poolId, Meteor.userId(), newItem, productCount)
-            .then(() => {
+            .then((itemId) => {
                 itemFields = [];
                 itemFieldsDep.changed();
 
@@ -153,6 +153,14 @@ Template.appendPool.events({
                 addButton.removeClass('active');
                 productInput.val('');
                 hideGroup.hide();
+
+                Feeds.notifyEveryoneInPool(poolId, {
+                    userId: Meteor.userId(),
+                    ownerId: Meteor.userId(),
+                    companyId: Meteor.user().profile.company,
+                    type:   'cutlery',
+                    message:` добавил в #pool{${poolId}}, #item{${itemId}} на сумму ${utils.getPriceWithFormat(newItem.price * productCount)}`
+                });
 
                 Router.go('pool', { poolId: poolId });
             })

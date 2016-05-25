@@ -34,7 +34,21 @@ Meteor.startup(() => {
 
 const taskFunctions = {
     setSummary: (data) => {
-        Pools.changePoolState(data.poolId, utils.POOL_STATE.SUMMARY);
+        Pools.changePoolState(data.poolId, utils.POOL_STATE.SUMMARY)
+            .then(poolId => {
+                if (poolId) {
+                    const pool = Pools.findOne(poolId);
+                    const user = Meteor.users.findOne(pool.ownerId);
+
+                    Feeds.notifyEveryoneInPool(pool._id, {
+                        userId:   user._id,
+                        ownerId:  user._id,
+                        companyId:user.profile.company,
+                        type:     'remove-sign',
+                        message:  ` сменил статус #pool{${pool._id}} на 'предзаказ'.`
+                    }, false);
+                }
+            });
     }
 };
 
@@ -65,14 +79,12 @@ function addTask(task, id = Tasks.insert(task)) {
 }
 
 Accounts.onCreateUser(function(options, user) {
-    let profileEmpty = {
+    user.profile = {
         username: '',
         phone:    '',
         address:  '',
         company:  ''
     };
-
-    user.profile = profileEmpty;
 
     if (options.profile.company) {
         let companyTitle = options.profile.company;
@@ -177,8 +189,8 @@ Meteor.publish('OrdersItems', () => {
 
 });
 
-Meteor.publish('Feeds', userId => {
-    return Feeds.find({ userId: userId });
+Meteor.publish('Feeds', companyId => {
+    return Feeds.find({ companyId: companyId }, { sort: { created: -1 } });
 });
 
 Meteor.publish('company', () => {
