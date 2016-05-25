@@ -33,7 +33,17 @@ Meteor.methods({
                 item.description = item.descr;
                 item.link = url;
                 delete item.descr;
-                Pools.appendItemForUser(poolId, userId, item);
+                return Pools.appendItemForUser(poolId, userId, item).then((itemId) => {
+                    const item = Items.findOne(itemId);
+                    const user = Meteor.users.findOne(userId);
+                    Feeds.notifyEveryoneInPool(poolId, {
+                        userId:    user._id,
+                        ownerId:   user._id,
+                        companyId: user.profile.company,
+                        type:      'cutlery',
+                        message:   ` добавил в #pool{${poolId}}, #item{${itemId}} на сумму ${utils.getPriceWithFormat(item.price)}`
+                    });
+                });
             });
     },
 
