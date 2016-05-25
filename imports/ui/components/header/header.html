@@ -15,13 +15,13 @@
                 <div class="collapse navbar-collapse" id="navigation">
                     {{#if currentUser}}
                     <ul class="nav navbar-nav">
-                        <li><a class="{{isActiveRoute 'pool_add'}}" href="{{pathFor 'pool_add'}}">Добавить пулл</a></li>
+                        <li><a class="{{isActiveRoute 'pool_add'}} header__item header__item--upper" href="{{pathFor 'pool_add'}}">Добавить пулл</a></li>
                         {{#if isAlreadyCreatedPool}}
-                            <li><a class="{{isActiveRoute 'history'}}" href="{{pathFor 'history'}}">Созданные пуллы</a></li>
+                            <li><a class="{{isActiveRoute 'history'}}  header__item header__item--upper" href="{{pathFor 'history'}}">Созданные пуллы</a></li>
                         {{/if}}
                         {{#if isAlreadyDebts}}
                             <li>
-                                <a href="{{pathFor 'debts'}}">Долги
+                                <a href="{{pathFor 'debts'}}" class="header__item header__item--upper"><span>Долги</span>
                                 {{#if paidOrdersPrice}}
                                     <span class="badge">{{paidOrdersPrice}}</span>
                                 {{/if}}
@@ -29,9 +29,9 @@
                             </li>
                         {{/if}}
                         {{#if isHaveFeeds}}
-                            <li><a class="{{isActiveRoute 'feeds'}}" href="{{pathFor 'feeds'}}">Уведомления
+                            <li><a class="{{isActiveRoute 'feeds'}} header__item header__item--upper" href="{{pathFor 'feeds'}}"><span>Уведомления</span>
                             {{#if feedsUnseenCount }}
-                                <span class="badge badge-inverse">{{ feedsUnseenCount }}</span>
+                                <span class="badge">{{ feedsUnseenCount }}</span>
                             {{/if}}
                         </a></li>
                         {{/if}}

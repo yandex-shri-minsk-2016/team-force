@@ -12,9 +12,9 @@
                 </div>
             {{else}}
                 <div class="blankslate blankslate_spacious blankslate_large">
-                    <h2><i class="glyphicon glyphicon-list"></i></h2>
+                    <h2><span class="octicon octicon-circuit-board"></span></h2>
                     <h3>Нет пуллов в ближайшее время.</h3>
-                    <p>Но вы можете <a href="{{pathFor 'pool_add'}}">создать новый</a>, это очень просто.</p>
+                    <p>Но вы можете <a class="link" href="{{pathFor 'pool_add'}}">создать новый</a>, это очень просто.</p>
                 </div>
             {{/each}}
             <div class="list-group__add-button visible-xs">+</div>

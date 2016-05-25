@@ -1,20 +1,226 @@
-.input-group-addon
-  font-size 15px
+//.input-group-addon
+//  font-size 15px
+//
+//for field in 'email' 'company'
+//  .profile-{field}
+//    .input-group
+//      width 100%
+//      .input-group-addon
+//        background url('/img/i-' + field + '-dark.png') center no-repeat, #eee
+//        background-size 15px
+//        width 50px
+//
+//.profile
+//  &-avatar
+//    text-align center
+//  &-submit
+//    margin 0 auto
+//    width 230px
+//    >input
+//      height 3em
 
-for field in 'email' 'company'
-  .profile-{field}
-    .input-group
-      width 100%
-      .input-group-addon
-        background url('/img/i-' + field + '-dark.png') center no-repeat, #eee
-        background-size 15px
-        width 50px
 
-.profile
-  &-avatar
-    text-align center
-  &-submit
-    margin 0 auto
-    width 230px
-    >input
-      height 3em
+.gf-
+  &user-img
+    width: 30px;
+    height: 30px;
+    -webkit-border-radius: 48%;
+    -moz-border-radius: 48%;
+    border-radius: 48%;
+    overflow: hidden;
+    margin-right: 10px;
+    @extend .box-shadow;
+    vertical-align: -16%;
+    background-size: contain;
+  &form
+    border: 1px solid #D7D7D7;
+    background-color: color_white;
+    padding: 20px;
+    margin: 0 auto;
+    border-radius: 3px;
+    @extend .box-shadow;
+    opacity: .9;
+    &__half
+      width: 50%;
+      float: left;
+      box-sizing: border-box;
+      vertical-align: top;
+    &__input-wrap
+      margin: 20px 0 25px;
+      position: relative;
+    &__input-title
+      margin-bottom: 10px;
+      display: inline-block;
+      font-size: 15px;
+      color: color_black;
+      opacity: .95;
+    &__input
+      width: 100%;
+      height: 35px;
+      padding: 0 10px 0 37px;
+      box-sizing: border-box;
+      border: 0;
+      border-bottom: 1px solid $green;
+      font-size: 16px;
+      font-weight: 100;
+      letter-spacing: .3px;
+      -webkit-transition: .3s;
+      -moz-transition: .3s;
+      -ms-transition: .3s;
+      -o-transition: .3s;
+      transition: .3s;
+      background-color: #E5E5E5;
+      -webkit-border-radius: 0;
+      -moz-border-radius: 0;
+      border-radius: 0;
+      &:focus
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        border-bottom: 1px solid $green;
+        background-color: #DFDFDF;
+        &+span
+          color: $green;
+      &--green
+        &:focus
+          background-color: #E8ECDA;
+          border-bottom: 1px solid darken(color_green, 10%);
+          &+span
+            color: darken(color_green, 10%);
+      &--blue
+        @include placeholder
+          color: color_blue
+        &:focus
+          background-color: #DBEEFB;
+          border-bottom: 1px solid darken(color_blue, 10%);
+          &+span
+            color: darken(color_blue, 10%);
+    .octicon
+      position: absolute;
+      bottom: 8px;
+      font-size: 20px;
+      left: 10px;
+      color: #AAAAAA;
+      opacity: .7;
+      -webkit-transition: .3s;
+      -moz-transition: .3s;
+      -ms-transition: .3s;
+      -o-transition: .3s;
+      transition: .3s;
+    &_checkbox
+      -webkit-appearance: checkbox;
+      box-sizing: border-box;
+      height: 20px;
+      width: 20px;
+      margin-top: 0;
+      margin-right: -20px;
+      margin-bottom: -20px;
+      margin-left: 0;
+      cursor: pointer;
+      &:before
+        width: 20px;
+        height: 20px;
+        background: color_white;
+        border: 1px solid #A5A5A5;
+        content: '';
+        border-radius: 3px;
+        position: absolute;
+      &:after
+        position: absolute;
+        content: '';
+        width: 11px;
+        height: 6px;
+        top: 5px;
+        left: 4px;
+        opacity: 0;
+        background: transparent;
+        border: 1px solid #457EA2;
+        border-width: 3px;
+        border-top: none;
+        border-right: none;
+        border-radius: 1px;
+        -webkit-transform: rotate(-50deg);
+      &:checked:after
+        opacity: 1;
+      &--green:after
+        border: 1px solid darken(color_green, 5%);
+        border-width: 3px;
+        border-top: none;
+        border-right: none;
+        border-radius: 1px;
+      &--blue:after
+        border: 1px solid darken(color_blue, 5%);
+        border-width: 3px;
+        border-top: none;
+        border-right: none;
+        border-radius: 1px;
+  &button
+    width: 100%;
+    height: 50px;
+    border: none;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    border-radius: 3px;
+    color: #282828;
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    -ms-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+    display: inline-block;
+    line-height: 50px;
+    &:hover
+      cursor: pointer;
+      @extend .box-shadow;
+    &:focus
+      outline: none;
+    &--green
+      background-color: color_green;
+      border: 1px solid color_green;
+      &:hover
+        background-color: darken(color_green, 5%);
+        border: 1px dashed darken(color_green, 10%);
+        @extend .box-shadow;
+    &--blue
+      background-color: color_blue;
+      border: 1px solid color_blue;
+      &:hover
+        background-color: darken(color_blue, 5%);
+        border: 1px dashed darken(color_blue, 10%);
+        @extend .box-shadow;
+  &profile
+    &__user-img
+      width: 150px
+      height: 150px
+      -webkit-border-radius: 47%
+      -moz-border-radius: 47%
+      border-radius: 47%
+      overflow: hidden
+      margin: 0 auto 20px
+      img
+        width: 100%
+    &_submit
+      width: 200px
+      margin: 0 auto
+      display: block
+      margin-top: 25px
+
+.pr10
+  padding-right 10px
+
+.pl10
+  padding-left 10px
+
+.addpull
+  margin-top 40px
+
+.mb30
+  margin-bottom 30px
+
+.mt30
+  margin-top 30px
+
+.button-wrap
+  margin: 15px 0 0
+  text-align: center
+

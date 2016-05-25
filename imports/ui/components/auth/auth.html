@@ -1,10 +1,10 @@
 <template name="profileButton">
-    <a class="{{isActiveRoute 'profile'}}" href="{{pathFor 'profile'}}">
+    <a class="{{isActiveRoute 'profile'}} header__item" href="{{pathFor 'profile'}}">
         <img class="avatar" src="{{avatarUser currentUser._id 16}}" width="16" height="16" alt="avatar user">
         {{usermail currentUser._id}}
     </a>
 </template>
 
 <template name="logoutButton">
-    <a href="#" class="js-logout">Выйти</a>
+    <a href="#" class="js-logout header__item">Выйти</a>
 </template>

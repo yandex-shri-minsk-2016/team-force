@@ -1,18 +1,68 @@
 <template name="addPool">
-    <div class="row content-container">
-        <div class="container">
-            <div class="list-group col-xs-12 col-sm-8 col-sm-offset-2">
-                <form id="add_pool">
-                    <div class="addPool__header">
-                        Новый заказ
-                    </div>
-                    <div class="addPool__body">
-                        <div class="form-group addPool__shops">
-                            <label class="control-label">Выберите службу доставки:</label>
-                            <div class="input-group">
-                                <div class="controls shopChoices">
-                                    {{#each shops}}
-                                        <span class="shopChoice">
+    <div class=" content-container">
+            <!--<div class="list-group col-xs-12 col-sm-8 col-sm-offset-2">-->
+                <!--<form id="add_pool">-->
+                    <!--<div class="addPool__header">-->
+                        <!--Новый заказ-->
+                    <!--</div>-->
+                    <!--<div class="addPool__body">-->
+                        <!--<div class="form-group addPool__shops">-->
+                            <!--<label class="control-label">Выберите службу доставки:</label>-->
+                            <!--<div class="input-group">-->
+                                <!--<div class="controls shopChoices">-->
+                                    <!--{{#each shops}}-->
+                                        <!--<span class="shopChoice">-->
+
+                                            <!--<input class="shopChoice__val"-->
+                                                   <!--id="shop{{@index}}"-->
+                                                   <!--name="shop"-->
+                                                   <!--type="radio"-->
+                                                   <!--data-address="{{address}}"-->
+                                                   <!--value="{{name}}"/>-->
+
+                                            <!--<label class="shopChoice__img"-->
+                                                   <!--for="shop{{@index}}"-->
+                                                   <!--style="background-image:url('/img/{{name}}.png')">-->
+                                                <!--{{name}}-->
+                                            <!--</label>-->
+
+                                        <!--</span>-->
+                                    <!--{{/each}}-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="form-group">-->
+                            <!--<label class="control-label" for="time">Время заказа</label>-->
+                            <!--<div class="input-group input-group-lg datetimepicker">-->
+                                <!--<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>-->
+                                <!--<input required class="set-due-date form-control" name="time" id="time" placeholder="Введите удобное время" type="text"/>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="form-group">-->
+                            <!--<label class="control-label" for="address">Адрес доставки</label>-->
+                            <!--<div class="input-group input-group-lg">-->
+                                <!--<span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>-->
+                                <!--<input required class="form-control" name="address" id="address" type="text" value="{{userAddress}}"/>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="clearfix">-->
+                        <!--<div id="map"></div>-->
+                        <!--<div id="mapDelivery"></div>-->
+                        <!--<input type="hidden" id="distance" name="distance">-->
+                    <!--</div>-->
+                    <!--<div class="addPool__submit">-->
+                        <!--<div class="input-group">-->
+                            <!--<button class="btn btn-success">Добавить</button>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</form>-->
+
+                <form id="add_pool" class="gf-form gf-container gf-add-pull">
+                    <span class="gf-add-pull_title">Выберите службу доставки</span>
+                    <div class="controls shopChoices gf-add-pull__shop-list">
+                        {{#each shops}}
+                            <span class="shopChoice gf-add-pull_shop">
 
                                             <input class="shopChoice__val"
                                                    id="shop{{@index}}"
@@ -26,24 +76,22 @@
                                                    style="background-image:url('/img/{{name}}.png')">
                                                 {{name}}
                                             </label>
-
                                         </span>
-                                    {{/each}}
-                                </div>
+                        {{/each}}
+                    </div>
+                    <div class="clearfix mt30">
+                        <div class="gf-form__half pr10">
+                            <div class="gf-form__input-wrap datetimepicker">
+                                <span class="gf-form__input-title">Выберите время заказа</span>
+                                <input required class="set-due-date form-control gf-form__input" name="time" id="time" placeholder="Введите удобное время" type="text"/>
+                                <span class="octicon octicon-watch"></span>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="control-label" for="time">Время заказа</label>
-                            <div class="input-group input-group-lg datetimepicker">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                                <input required class="set-due-date form-control" name="time" id="time" placeholder="Введите удобное время" type="text"/>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label" for="address">Адрес доставки</label>
-                            <div class="input-group input-group-lg">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                                <input required class="form-control" name="address" id="address" type="text" value="{{userAddress}}"/>
+                        <div class="gf-form__half pl10">
+                            <div class="gf-form__input-wrap">
+                                <span class="gf-form__input-title">Адрес доставки</span>
+                                <input required class="form-control gf-form__input" name="address" id="address" type="text" value="{{userAddress}}"/>
+                                <span class="octicon octicon-home"></span>
                             </div>
                         </div>
                     </div>
@@ -52,13 +100,13 @@
                         <div id="mapDelivery"></div>
                         <input type="hidden" id="distance" name="distance">
                     </div>
-                    <div class="addPool__submit">
+                    <div class="addPool__submit gf-button-wrap">
                         <div class="input-group">
-                            <button class="btn btn-success">Добавить</button>
+                            <button class="gf-button gf-button--blue gf-profile_submit">Добавить</button>
                         </div>
                     </div>
                 </form>
-            </div>
-        </div>
+
+            <!--</div>-->
     </div>
 </template>
