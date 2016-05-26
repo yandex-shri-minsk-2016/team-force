@@ -41,3 +41,5 @@ momentjs:moment
 rzymek:moment-locale-ru
 zimme:active-route
 manuelschoebel:wait-on-lib
+d3js:d3
+mrt:external-file-loader
