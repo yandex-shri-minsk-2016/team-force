@@ -38,15 +38,16 @@ Template.user.onRendered(function() {
     heatmap.init({
         itemSelector: '#heatmap',
         domain: 'month',
-        subDomain: 'x_day',
+        subDomain: 'day',
         data: objData,
         tooltip: true,
         cellSize: 20,
-        cellPadding: 5,
-        domainGutter: 20,
-        range: 4,
+        cellPadding: 4,
+        cellRadius: 2,
+        range: 6,
         domainDynamicDimension: false,
         subDomainTextFormat: '%d',
+        start: new Date(moment().subtract(5, 'months').format()),
         legend: [20, 40, 60, 80],
         domainLabelFormat: (date) => {
             moment.lang('ru');
