@@ -22,7 +22,7 @@ Meteor.methods({
         return Email.send(to, SSR.render('email', { user, data, shopName }));
     },
 
-    whoiam: () => {
+    whoami: () => {
         return Meteor.user();
     },
 
@@ -33,17 +33,18 @@ Meteor.methods({
                 item.description = item.descr;
                 item.link = url;
                 delete item.descr;
-                return Pools.appendItemForUser(poolId, userId, item).then((itemId) => {
-                    const item = Items.findOne(itemId);
-                    const user = Meteor.users.findOne(userId);
-                    Feeds.notifyEveryoneInPool(poolId, {
-                        userId:    user._id,
-                        ownerId:   user._id,
-                        companyId: user.profile.company,
-                        type:      'cutlery',
-                        message:   ` добавил в #pool{${poolId}}, #item{${itemId}} на сумму ${utils.getPriceWithFormat(item.price)}`
+                return Pools.appendItemForUser(poolId, userId, item)
+                    .then(itemId => {
+                        const item = Items.findOne(itemId);
+                        const user = Meteor.users.findOne(userId);
+                        Feeds.notifyEveryoneInPool(poolId, {
+                            userId:    user._id,
+                            ownerId:   user._id,
+                            companyId: user.profile.company,
+                            type:      'cutlery',
+                            message:   ` добавил в #pool{${poolId}}, #item{${itemId}} на сумму ${utils.getPriceWithFormat(item.price)}`
+                        });
                     });
-                });
             });
     },
 
@@ -114,7 +115,7 @@ Meteor.methods({
                 PoolsCompanyWithPrice.forEach(pool => {
                     if (!PoolsWithDates[pool.dayOfYear]) {
                         PoolsWithDates[pool.dayOfYear] = [pool];
-                    }else {
+                    } else {
                         PoolsWithDates[pool.dayOfYear].push(pool);
                     }
                 });
