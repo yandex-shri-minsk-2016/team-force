@@ -16,7 +16,7 @@ Template.appendPool.events({
     'keyup .new-product-dynamic-input-group input': (event) => {
         let emptyFields = [];
         const joinButton = $('.join-button');
-        const hideGroup = $('.new-product-hide-input-group');
+        const hideGroup = $('.gf-hide');
 
         $('.new-product-dynamic-input-group input').each((input, element) => {
             emptyFields.push(!!$(element).val());
@@ -32,17 +32,16 @@ Template.appendPool.events({
 
     'click .js-new-product': (event) => {
         const errorClass = 'has-error';
-        const hideGroup  = $('.new-product-hide-input-group');
+        const hideGroup  = $('.gf-hide');
         const joinButton = $('.join-button');
         const addButton  = $('.js-new-product');
         const inputGroup = $('.new-product-input-group');
-        const labels = {
-            title: 'Название',
-            weight:'Вес',
-            price: 'Цена',
-            descr: 'Описание'
-        };
-
+    const labels = {
+        title: ['Название', 'book'],
+        weight:['Вес', 'law'],
+        price: ['Цена', 'pin'],
+        descr: ['Описание', 'repo']
+    };
         itemFields = [];
         hideGroup.hide();
         joinButton.addClass('disabled');
@@ -52,9 +51,11 @@ Template.appendPool.events({
         if (addButton.hasClass('active')) {
             itemFields = Object.keys(labels).map(label => {
                 return {
-                    title: labels[label],
+                    title: labels[label[0].join().split(',')[0]],
+                    octo: labels[label[0].join().split(',')[1]],
                     value: '',
                     key: `form-elem-${label}`
+
                 };
             });
         }
@@ -85,13 +86,14 @@ Template.appendPool.events({
         const inputValue = event.originalEvent.clipboardData.getData('text');
         const inputGroup = $('.new-product-input-group');
         const joinButton = $('.join-button');
-        const hideGroup  = $('.new-product-hide-input-group');
-        const labels = {
-            title: 'Название',
-            weight:'Вес',
-            price: 'Цена',
-            descr: 'Описание'
-        };
+        const hideGroup  = $('.gf-hide');
+
+    const labels = {
+        title: ['Название', 'book'],
+        weight:['Вес', 'law'],
+        price: ['Цена', 'pin'],
+        descr: ['Описание', 'repo']
+    };
 
         itemFields = [];
         itemFieldsDep.changed();
@@ -104,7 +106,8 @@ Template.appendPool.events({
 
                 itemFields = Object.keys(result).map(field => {
                     return {
-                        title: labels[field],
+                        title: labels[field].join().split(',')[0],
+                        octo: labels[field].join().split(',')[1],
                         value: result[field],
                         key: `form-elem-${field}`
                     };
@@ -128,7 +131,7 @@ Template.appendPool.events({
         const target = event.target;
         const joinButton = $('.join-button');
         const addButton = $('.js-new-product');
-        const hideGroup = $('.new-product-hide-input-group');
+        const hideGroup = $('.gf-hide');
         const productInput = $('#new-product-input');
         const productCount = parseInt($('#new-product-count').val());
 

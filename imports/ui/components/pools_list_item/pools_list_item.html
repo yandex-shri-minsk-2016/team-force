@@ -1,13 +1,12 @@
 <template name="poolsListItem">
-    <a href="{{pathFor 'pool' poolId=_id }}"
-       class="list-group__pools_{{state}} list-group-item pools-list-item clearfix">
-        <span class="pools-list-item__time col-xs-3 col-sm-3">{{formatTime time 'HH:mm'}}<small>{{formatTimeDiff timeDelivery}}</small></span><!--
-     --><span class="pools-list-item__shop col-xs-3 col-sm-2">{{shop}}</span><!--
-     --><span class="pools-list-item__owner col-xs-6 col-sm-4">
-        <img class="avatar" src="{{avatarUser ownerId 24}}" width="24" height="24" alt="avatar user">
-        {{usermail ownerId}}
-        </span><!--
-     --><span class="pools-list-item__money col-xs-6 col-sm-2">{{poolPrice}}</span><!--
-     --><span class="pools-list-item__users col-xs-6 col-sm-1"> <i class="glyphicon glyphicon-user"></i>&nbsp;{{userCount}}</span>
+    <a href="{{pathFor 'pool' poolId=_id }}" class="gf-pull__{{state}} list-group-item gf-pull__block clearfix">
+        <span class="gf-pulls_time"><span>{{formatTime time 'HH:mm'}}</span><small class="gf-pulls_time-left">{{formatTimeDiff timeDelivery}}</small></span>
+        <span class="gf-pulls_shop">{{shop}}</span>
+    <span class="gf-pulls__author">
+        <img class="gf-user-img gf-pulls_author_img" src="{{avatarUser ownerId 24}}" width="24" height="24" alt="avatar user">
+       <span class="gf-pulls__author_name">{{usermail ownerId}}</span>
+        </span>
+     <span class="gf-pulls_price">{{poolPrice}}</span>
+     <span class="gf-pulls_users"> <span class="octicon octicon-octoface"></span>&nbsp;{{userCount}}</span>
     </a>
 </template>

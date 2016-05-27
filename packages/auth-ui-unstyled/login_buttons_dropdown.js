@@ -218,11 +218,11 @@ Template._loginButtonsLoggedOutPasswordService.helpers({
        visible: function () {
          return passwordSignupFields() === "USERNAME_ONLY";
        }},
-      {fieldName: 'email', fieldLabel: 'Епочта', inputType: 'email',
+      {fieldName: 'email', fieldLabel: 'Епочта', inputType: 'email', octoName: 'mail', octoColor: 'green',
        visible: function () {
          return passwordSignupFields() === "EMAIL_ONLY";
        }},
-      {fieldName: 'password', fieldLabel: 'Пароль', inputType: 'password',
+      {fieldName: 'password', fieldLabel: 'Пароль', inputType: 'password', octoName: 'key', octoColor: 'green',
        visible: function () {
          return true;
        }}
@@ -235,7 +235,7 @@ Template._loginButtonsLoggedOutPasswordService.helpers({
            ["USERNAME_AND_EMAIL", "USERNAME_AND_OPTIONAL_EMAIL", "USERNAME_ONLY"],
            passwordSignupFields());
        }},
-      {fieldName: 'email', fieldLabel: 'Епочта', inputType: 'email',
+      {fieldName: 'email', fieldLabel: 'Епочта', inputType: 'email', octoName: 'mail', octoColor: 'blue',
        visible: function () {
          return _.contains(
            ["USERNAME_AND_EMAIL", "EMAIL_ONLY"],
@@ -245,11 +245,11 @@ Template._loginButtonsLoggedOutPasswordService.helpers({
        visible: function () {
          return passwordSignupFields() === "USERNAME_AND_OPTIONAL_EMAIL";
        }},
-      {fieldName: 'company', fieldLabel: 'Компания', inputType: 'text',
+      {fieldName: 'company', fieldLabel: 'Компания', inputType: 'text', octoName: 'globe', octoColor: 'blue',
         visible: function () {
           return true;
         }},
-      {fieldName: 'password', fieldLabel: 'Пароль', inputType: 'password',
+      {fieldName: 'password', fieldLabel: 'Пароль', inputType: 'password', octoName: 'key', octoColor: 'blue',
        visible: function () {
          return true;
        }},

@@ -1,75 +1,59 @@
-.login-form
-  width 380px
-  margin 5em auto
-  box-sizing border-box
-  padding 40px 50px
-  background color_gray-light
-
-.btn-teamforce
-  font-size 18px
-  background-color color_orange
-  border-color color_orange
-  transition: .3s
-  &:hover,
-  &:active
-    background-color  color_primary
-    border-color color_primary
-
-
-#login-buttons
-  display block
-  .control
-    &__input
-      background none
-      border none
-      outline none
-      padding 1em 1em 1em 3em
-      display block
-      width 100%
-      border-bottom 1px solid color_gray
-    &.has-success
-      >input
-        border-bottom 1px solid green
-    &.has-error
-      >input
-        border-bottom 1px solid color_orange
-    #login-email
-      background url('/img/i-email.png') 0.5em center no-repeat
-    #login-company
-      background url('/img/i-company.png') 0.5em center no-repeat
-    #login-password
-      background url('/img/i-password.png') 0.5em center no-repeat
-
 #login-buttons-password, #login-buttons-forgot-password
-  margin 15px 0 10px
+  margin 5px 0 0
   width 100%
 
 .additional-link-container
   display inline-block
   width 100%
-  cursor pointer
   text-align center
   font-size 18px
 
-// @TODO delete all
 
-.header-email
-  position absolute
-  top 0
-  right 20px
-  font-size 18px
-  z-index 100
-  a
-    color white
-    line-height 70px
-
-#login-dropdown-list
+#login-email-label-and-input,
+#login-password-label-and-input
+  margin 20px 0
   position relative
-  top auto
-  left initial
 
-.accounts-dialog
-  width auto
-  margin 0 auto
-  border none
-  box-shadow none
+.additional-link
+  float right
+  margin-top 15px
+  font-size 14px
+  font-weight 500
+  color #4D7FA0
+  letter-spacing .1px
+  text-decoration none
+  cursor: pointer
+  transition: .3s
+
+#back-to-login-link,
+#signup-link
+  padding 0
+
+#login-company-label-and-input
+  position relative
+
+.login-password-form
+  animation fadeIn .5s ease
+
+.gf-
+  &popup
+    width: 300px;
+    margin: 15vh auto 0;
+    padding: 17px 30px 20px 30px;
+    background: color_white;
+    border-radius: 2px;
+    position: relative;
+    opacity: .98;
+    box-sizing: content-box;
+    &_logo
+      position: absolute;
+      top: 74px;
+      right: -85px;
+      font-size: 32px;
+      color: #FFF;
+      opacity: .6;
+      text-transform: none;
+      font-weight: 100;
+      transform: rotate(90deg);
+  &user-name
+    vertical-align: top

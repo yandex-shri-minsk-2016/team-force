@@ -1,7 +1,6 @@
 <template name="feeds">
     <div class="content-container">
-        <div class="row">
-            <div class="list-group col-xs-12 col-sm-8 col-sm-offset-2">
+            <div class="gf-container gf-pulls">
             {{#if feeds}}
                 {{#each feeds}}
                     {{> feed}}
@@ -10,7 +9,6 @@
                 <li><span>Нет уведомлений</span></li>
             {{/if}}
             </div>
-        </div>
         {{#if hasMore}}
             <div class="row">
                 <a class="load-more" href="/feeds/{{nextPath}}">Загрузить ещё</a>
@@ -31,7 +29,7 @@
                 </div>
                 <div class="feed__msg">
                     <span>
-                        <img class="avatar" src="{{avatarUser userId 24}}" width="24" height="24" alt="avatar user">
+                        <img class="gf-user-img" src="{{avatarUser userId 24}}" width="24" height="24" alt="avatar user">
                         {{feedActor userId}}
                     </span>
                     <span>

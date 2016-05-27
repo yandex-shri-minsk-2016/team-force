@@ -1,76 +1,65 @@
 <template name="poolHeader">
-    <div class="pool__header clearfix">
-        <div class="pool__header_title">
-            {{shop}}
-        </div>
-        <div class="pool__header_posttitle">
-            <span class="pool__header_date">
-                {{formatTime time 'DD.MM.YYYY'}}
-            </span>
-            <span class="pool__header_time">
-                {{formatTime time 'HH:mm'}}
-            </span>
-            <span class="pool__header_timer">
-                <span class="timer"></span>
-            </span>
-        </div>
-        <div class="pool__header_prices">
-            {{#if isPoolArchived _id}}
-                Собрано: {{getPoolIsPaidPrice _id true}}
-                из
-            {{/if}}
-            {{getPoolPrice _id}}
-        </div>
+    <div class="gf-pull__header clearfix">
+         <span class="gf-pull__header_shop-name">{{shop}}</span>
+         <span class="gf-pull__header_date">{{formatTime time 'DD.MM.YYYY'}}</span>
+         <span class="gf-pull__header_time">{{formatTime time 'HH:mm'}}</span>
+         <span class="gf-pull__header_interval">
+             <span class="timer"></span>
+         </span>
+         <span class="gf-pull__header_price">
+               {{#if isPoolArchived _id}} Собрано: {{getPoolIsPaidPrice _id true}} из {{/if}} {{getPoolPrice _id}}
+         </span>
     </div>
 </template>
 
 <template name="appendPool">
-    <div class="list-group col-xs-12 col-sm-8 col-sm-offset-2">
-        <form id="append_pool">
-            <div class="form-group new-product-input-group new-product-input-group--major col-xs-12">
+        <form class="gf-form gf-pull__form" id="append_pool">
                 {{#if isExistShop _id}}
-                <div class="input-group input-group-lg">
-                    <input class="form-control" name="item-link" id="new-product-input" type="text"
-                           placeholder="Чтобы присоединиться, введите ссылку на товар с {{shop}}">
-                    <span class="input-group-btn">
-                        <button class="btn btn-success js-new-product" type="button">или Добавить вручную</button>
-                    </span>
+                <div class="gf-form__input-wrap">
+                    <span class="gf-form__input-title">Чтобы присоединиться, скопируйте в это поле ссылку на товар</span>
+                   <button class="gf-button gf-button--blue gf-pull_add js-new-product">или Добавьте вручную</button>
+                   <input class="gf-form__input" name="item-link" id="new-product-input" type="text" placeholder="Чтобы присоединиться, введите ссылку на товар с {{shop}}">
+                   <span class="octicon octicon-git-pull-request"></span>
                 </div>
                 {{else}}
-                <div class="input-group input-group-lg">
-                    <input class="form-control" name="item-link" id="new-shop-input" type="text"
-                           placeholder="Ввести ссылку на магазин" value="{{noUntitled shop}}">
-                    <span class="input-group-btn">
-                    <button class="btn btn-success js-new-product" type="button">и Добавить товары вручную</button>
-                </span>
+                <div class="gf-form__input-wrap">
+                    <span class="gf-form__input-title">Чтобы присоединиться, скопируйте в это поле ссылку на товар</span>
+                    <button class="gf-button gf-button--blue gf-pull_add js-new-product">и Добавить товары вручную</button>
+                    <input class="gf-form__input" name="item-link" id="new-shop-input" type="text" placeholder="Ввести ссылку на магазин" value="{{noUntitled shop}}">
+                    <span class="octicon octicon-git-pull-request"></span>
                 </div>
                 {{/if}}
-
-            </div>
-            {{#each itemFields}}
-                <div class="form-group new-product-input-group new-product-dynamic-input-group col-xs-12 col-sm-4">
-                    <label class="control-label" for="new-product-{{key}}">{{title}}</label>
-                    <input name="{{key}}" class="form-control" value="{{value}}" type="text" id="new-product-{{key}}">
-                </div>
+                <div class="gf-flex-wrap">
+                {{#each itemFields}}
+                    <div class="gf-form__32p">
+                        <div class="gf-form__input-wrap gf-form__input-wrap--small">
+                            <label class="gf-form__input-title" for="new-product-{{key}}">{{title}}</label>
+                            <input name="{{key}}" class="gf-form__input" value="{{value}}" type="text" id="new-product-{{key}}" placeholder=""/>
+                            <span class="octicon octicon-{{octo}}"></span>
+                        </div>
+                    </div>
             {{/each}}
-            <div class="form-group new-product-input-group new-product-hide-input-group col-xs-12 col-sm-4">
-                <label class="control-label" for="new-product-count">Количество</label>
-                <input name="new-product-count" class="form-control" min="1" value="1" type="number" id="new-product-count">
-            </div>
-            <div class="form-group new-product-input-group new-product-hide-input-group col-xs-12 col-sm-4">
-                <label class="control-label">&nbsp;</label>
-                <input class="btn btn-success join-button disabled form-control" type="submit" value="Присоединиться">
+                <div class="gf-form__32p gf-hide">
+                    <div class="gf-form__input-wrap gf-form__input-wrap--small">
+                        <label class="gf-form__input-title" for="new-product-count">Количество</label>
+                        <input name="new-product-count" class="gf-form__input" min="1" value="1" type="number" id="new-product-count" placeholder=""/>
+                        <span class="octicon octicon-list-ordered"></span>
+                    </div>
+                </div>
+                <div class="gf-form__input-wrap gf-form__input-wrap--small gf-pull__wrap-btn gf-hide">
+                    <input class="gf-button gf-button--green gf-pull_btn-add join-button disabled" type="submit" value="Присоединиться"/>
+                </div>
             </div>
         </form>
-    </div>
 </template>
 
 <template name="poolPending">
     <div class="content-container">
-        <div class="list-group col-xs-12 col-sm-8 col-sm-offset-2">
+        <div class="gf-pull">
             {{>poolHeader}}
             {{>ordersList}}
+            {{>appendPool}}
         </div>
-        {{>appendPool}}
+
     </div>
 </template>

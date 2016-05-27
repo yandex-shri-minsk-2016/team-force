@@ -1,28 +1,114 @@
-.header
-  .navbar
-    height height_header
-    background-color white
-    box-shadow 0 0 4px rgba(0, 0, 0, .14), 0 4px 8px rgba(0, 0, 0, .28)
-
+.gf-
+  &header
+    &__item
+      padding 0 15px
+      color color_dark
+      height 100%
+      display inline-block
+      text-transform lowercase
+      font-size 15px
+      font-weight 100
+      line-height 50px
+      transition .3s
+      text-decoration none
+      &.active
+        background transparent
+        font-family 'robotomedium', "robotoregular", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, sans-serif
+        font-weight 500
+        text-decoration underline
+        color color_gray-mid
+      &:hover, &:focus
+        background-color darken(color_main, 8%) !important
+        color color_gray-mid
+        outline none
+        .gf-user-img
+          border-color darken(color_main, 10%)
+      &--upper
+        letter-spacing 1px
+        text-transform uppercase
+        font-size 14px
+        padding-left 20px
+        padding-right 20px
+        vertical-align top
+    .navbar
+      height 50px
+      background-color #C6C5B9
+      padding 0 20px
+      box-shadow 2px 2px 7px rgba(85,85,85,0.2)
+      border-bottom 1px solid #bfbeb1
     .icon-bar
-      background #3498db
-
+      background color_black
+      opacity .8
     .navbar-brand
-      color color_default
-      font-weight 500
-      font-size 2em
+      color color_black
+      font-size 27px
+      font-weight 700
+      margin-right 30px
+      opacity .7
+      height 100%
+      vertical-align top
+      line-height 50px
+      letter-spacing 2px
+      padding 0
+  &user-img
+    width 30px
+    height 30px
+    border-radius 48%
+    overflow hidden
+    margin-right 10px
+    vertical-align -16%
+    background-size contain
+    border: 1px solid darken(color_main, 2%)
+  &badge
+    background #FEFEFE
+    border-radius 19px
+    font-size 11px
+    padding 4px 6px
+    font-weight 500
+    color color_black
+    letter-spacing 0
+    margin-left 5px
+    opacity .7
+    vertical-align initial
+    @extend .box-shadow
 
-    .navbar-collapse
-      box-shadow none
-      background white
-      border-bottom 1px solid color_gray
+.navbar-nav > li > a
+  line-height 50px
+  padding-top: 0
+  padding-bottom: 0
 
-      li > a
-        font-size 16px
-        color #000
-        &:hover,
-        &:active,
-        &.active
-          background-color color_gray-light
-        .badge
-          line-height 0.8
+@media (min-width: width_sm and max-width 1000px)
+  .navbar-nav > li > a
+    font-size 11px
+    padding 0 7px
+    letter-spacing 0
+
+@media (max-width: (width_sm - 1px))
+  .nav.navbar-nav
+    background-color color_main
+    margin: 0 -15px
+  .navbar-collapse.collapse.in
+    background-color: color_main
+  .navbar.navbar-fixed-top
+    padding 0
+    margin 0
+  .navbar-brand
+    margin-left 15px
+  .navbar-nav > li > a
+    text-align right
+    height: 45px
+    line-height: 40px
+    vertical-align: top
+    padding-right: 25px
+    text-transform: uppercase
+  .gf-menu__user-img
+
+    margin-right: 5px
+  .gf-header .navbar-brand
+    margin-right: 5px
+  .gf-header__item
+    font-size: 13px
+  .navbar .navbar-fixed-top
+    box-shadow: 3px 3px 3px rgba(80,80,80,0.07)
+    border-bottom 1px solid #bfbeb1
+  

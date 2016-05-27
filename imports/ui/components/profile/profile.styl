@@ -1,20 +1,18 @@
-.input-group-addon
-  font-size 15px
-
-for field in 'email' 'company'
-  .profile-{field}
-    .input-group
+.gf-
+  &profile
+    animation fadeIn .5s
+    &__user-img-wrap
+      width 150px
+      height 150px
+      border-radius 47%
+      overflow hidden
+      margin 0 auto 20px
+      border-width 2px
+      box-shadow 5px 5px 13px #ddd
+    &_img
       width 100%
-      .input-group-addon
-        background url('/img/i-' + field + '-dark.png') center no-repeat, #eee
-        background-size 15px
-        width 50px
-
-.profile
-  &-avatar
-    text-align center
-  &-submit
-    margin 0 auto
-    width 230px
-    >input
-      height 3em
+    &_submit
+      width 200px
+      margin 0 auto
+      display block
+      margin-top 25px
