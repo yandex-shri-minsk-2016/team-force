@@ -1,81 +1,21 @@
 <template name="profile">
     <div class="container clearfix content-container">
-        <!--<form class="js-saveProfile">-->
-        <!--<div class="profile-avatar form-group col-xs-12 col-sm-2 col-md-2 col-lg-2">-->
-                <!--<p><img class="avatar" src="{{avatarUser currentUser._id 128}}" width="128" height="128" alt="avatar user"></p>-->
-                <!--<p class="text-muted">Похож?</p>-->
-        <!--</div>-->
-        <!--<div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">-->
-            <!--<div class="profile-name form-group col-xs-12 col-sm-4 col-md-4 col-lg-4">-->
-                <!--<div class="input-group input-group-lg">-->
-                    <!--<label for="profileUsername" class="input-group-addon"><i class="glyphicon glyphicon-user"></i></label>-->
-                    <!--{{#with profileUser}}-->
-                        <!--<input type="text" class="form-control" id="profileUsername" name="profileUsername" placeholder="Ваше имя" value="{{username}}" autocomplete="off">-->
-                    <!--{{/with}}-->
-                <!--</div>-->
-                <!--<small class="text-muted">Как к вам обратиться?</small>-->
-            <!--</div>-->
-            <!--<div class="profile-phone form-group col-xs-12 col-sm-4 col-md-4 col-lg-4">-->
-                <!--<div class="input-group input-group-lg">-->
-                    <!--<label for="profilePhone" class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></label>-->
-                    <!--{{#with profileUser}}-->
-                        <!--<input type="text" class="form-control" id="profilePhone" name="profilePhone" placeholder="Ваш телефон" value="{{phone}}" autocomplete="off">-->
-                    <!--{{/with}}-->
-                <!--</div>-->
-                <!--<small class="text-muted">Вам перезвонят по поводу заказа.</small>-->
-            <!--</div>-->
-            <!--<div class="profile-email form-group col-xs-12 col-sm-4 col-md-4 col-lg-4">-->
-                <!--<div class="input-group input-group-lg">-->
-                    <!--<div class="input-group-addon"></div>-->
-                    <!--<input type="email" class="form-control" id="profileEmail" name="profileEmail" value="{{emailUser}}" autocomplete="off">-->
-                <!--</div>-->
-                <!--<small class="text-muted">Исключительно для важных оповещений!</small>-->
-            <!--</div>-->
-            <!--<div class="profile-address form-group col-xs-12 col-sm-8 col-md-8 col-lg-8">-->
-                <!--<div class="input-group input-group-lg">-->
-                    <!--<div class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></div>-->
-                    <!--{{#with profileUser}}-->
-                        <!--<input type="text" class="form-control" id="profileAddress" name="profileAddress" placeholder="Ваш адрес" value="{{address}}" autocomplete="off">-->
-                    <!--{{/with}}-->
-                <!--</div>-->
-                <!--<small class="text-muted">Мы запомним ваш адрес один раз и больше его не нужно будет вводить.</small>-->
-            <!--</div>-->
-            <!--<div class="profile-company form-group col-xs-12 col-sm-4 col-md-4 col-lg-4">-->
-                <!--<div class="input-group input-group-lg">-->
-                    <!--<div class="input-group-addon"></div>-->
-                    <!--{{#with profileUser}}-->
-                        <!--<input type="text" class="form-control" id="profileCompany" name="profileCompany" value="{{company}}" autocomplete="off">-->
-                    <!--{{/with}}-->
-                <!--</div>-->
-                <!--<small class="text-muted">Где вы работаете?</small>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--<div class="profile-submit form-group clearfix">-->
-            <!--<input type="submit" class="btn btn-success form-control" value="Сохранить" />-->
-        <!--</div>-->
-        <!--</form>-->
-
-
-
-
-
         <form action="" class="js-saveProfile gf-form gf-container gf-profile">
-            <div class="gf-user-img gf-profile__user-img">
-                <img src="{{avatarUser currentUser._id 128}}" alt=""/>
-                <p class="text-muted">Похож?</p>
+            <div class="gf-user-img gf-profile__user-img-wrap">
+                <img class="gf-profile_img" src="{{avatarUser currentUser._id 128}}" alt=""/>
             </div>
             <div class="gf-form__half pr10">
                 <div class="gf-form__input-wrap">
                     <span class="gf-form__input-title">Как к вам обратиться?</span>
                     {{#with profileUser}}
-                        <input type="text" class="form-control gf-form__input" id="profileUsername" name="profileUsername" placeholder="Ваше имя" value="{{username}}" autocomplete="off">
+                        <input type="text" class="gf-form__input" id="profileUsername" name="profileUsername" placeholder="Ваше имя" value="{{username}}" autocomplete="off">
                     {{/with}}
                     <span class="octicon octicon-octoface"></span>
                 </div>
                 <div class="gf-form__input-wrap">
-                    <span class="gf-form__input-title">Вам перезвонят по поводу заказа.</span>
+                    <span class="gf-form__input-title">Вам перезвонят по поводу заказа</span>
                     {{#with profileUser}}
-                        <input type="text" class="form-control gf-form__input" id="profilePhone" name="profilePhone" placeholder="Ваш телефон" value="{{phone}}" autocomplete="off">
+                        <input type="text" class="gf-form__input" id="profilePhone" name="profilePhone" placeholder="Телефон" value="{{phone}}" autocomplete="off">
                     {{/with}}
                     <span class="octicon octicon-device-mobile"></span>
                 </div>
@@ -83,21 +23,21 @@
             <div class="gf-form__half pl10">
                 <div class="gf-form__input-wrap">
                     <span class="gf-form__input-title">Исключительно для важных оповещений!</span>
-                    <input type="email" class="form-control gf-form__input" id="profileEmail" name="profileEmail" value="{{emailUser}}" autocomplete="off">
+                    <input type="email" class="gf-form__input" id="profileEmail" name="profileEmail" value="{{emailUser}}" autocomplete="off" placeholder="Электронная поочта">
                     <span class="octicon octicon-mail"></span>
                 </div>
                 <div class="gf-form__input-wrap">
                     <span class="gf-form__input-title">Где вы работаете?</span>
                     {{#with profileUser}}
-                        <input type="text" class="form-control gf-form__input" id="profileCompany" name="profileCompany" value="{{company}}" autocomplete="off">
+                        <input type="text" class="gf-form__input" id="profileCompany" name="profileCompany" value="{{company}}" autocomplete="off" placeholder="Название компании">
                     {{/with}}
                     <span class="octicon octicon-globe"></span>
                 </div>
             </div>
-            <span class="gf-form__input-title">Мы запомним ваш адрес один раз и больше его не нужно будет вводить.</span>
+            <span class="gf-form__input-title">Мы запомним ваш адрес один раз, и больше его не нужно будет вводить</span>
             <div class="rel">
                 {{#with profileUser}}
-                    <input type="text" class="form-control gf-form__input" id="profileAddress" name="profileAddress" placeholder="Ваш адрес" value="{{address}}" autocomplete="off">
+                    <input type="text" class="gf-form__input" id="profileAddress" name="profileAddress" placeholder="Ваш адрес" value="{{address}}" autocomplete="off">
                 {{/with}}
                 <span class="octicon octicon-home"></span>
             </div>
@@ -105,6 +45,5 @@
                 <input type="submit" class="gf-button gf-button--blue gf-profile_submit" value="Сохранить" />
             </div>
         </form>
-
     </div>
 </template>

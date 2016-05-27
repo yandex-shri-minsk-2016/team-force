@@ -1,7 +1,7 @@
 <template name="ordersList">
-    <div class="list-group-item-text">
+    <div class="gf-pull__body">
         {{#if poolOrders}}
-            <ul class="orders">
+            <ul class="gf-items">
                 {{#each poolOrders }}
                     {{>ordersListItem}}
                 {{/each}}
@@ -11,17 +11,20 @@
 </template>
 
 <template name="ordersListItem">
-    <li class="order {{#if isPaid }}order_ispaid{{/if}}">
-        <span class="order__username">
-            <img class="avatar" src="{{avatarUser userId 32}}" width="32" height="32" alt="avatar user">
+    <li class="gf-items__owner {{#if isPaid }}order_ispaid{{/if}}">
+        <span class="gf-items__owner_name">
+            <div class="gf-items__owner_img-wrap">
+                <img class="gf-items__owner_img" src="{{avatarUser userId 32}}" width="32" height="32" alt="avatar user">
+            </div>
             {{usermail userId}}
         </span>
-        <span class="order__price">
+
+        <span class="gf-items__owner_price">
             {{getOrderPrice _id}}
         </span>
         {{#if isPoolPending poolId}}
             {{#unless haveOrder poolId}}
-                <span class="order__copy-order glyphicon glyphicon-duplicate" data-orderId="{{_id}}"></span>
+                <span class="items_copy-order octicon octicon-repo-force-push" data-orderId="{{_id}}"></span>
             {{/unless}}
         {{/if}}
         {{#if isPoolArchived poolId}}
@@ -37,23 +40,23 @@
                 {{/if}}
             {{/unless}}
         {{/if}}
-        <ul class="items">
+        <ul class="gf-items__wrap">
             {{# each items }}
-                <li class="item">
-                    <span class="item__title">
+                <li class="gf-item">
+                    <span class="gf-item_name">
                         {{#with item}}
                         {{#if link}}
-                            <a href="{{link}}" target="_blank" title="{{description}}">{{title}}</a>
+                            <a class="gf-item_link" href="{{link}}" target="_blank" title="{{description}}">{{title}}</a>
                         {{else}}
                             {{title}}
                         {{/if}}
                         {{/with}}
                     </span>
-                    <span class="item__price">
+                    <span class="gf-item_price">
                         ({{getPriceWithFormat item.price}})
                     </span>
                     {{#if moreOne count}}
-                        <span class="item__count">
+                        <span class="gf-item_quantity">
                             x{{count}}
                         </span>
                     {{/if}}

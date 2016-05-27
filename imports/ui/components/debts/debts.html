@@ -1,5 +1,6 @@
 <template name="debts">
     <div class="container clearfix content-container">
+        <div class="gf-container gf-form gf-debts">
         {{>debtsHeader}}
         <div class="row">
             {{#each debtsOrders}}
@@ -19,16 +20,18 @@
                 <a class="load-more" href="/debts/{{nextPath}}">Загрузить ещё</a>
             </div>
         {{/if}}
+            </div>
     </div>
 </template>
 
 <template name="debtsHeader">
-    <div class="debts__header clearfix">
+
+    <div class="gf-pull__header clearfix">
         {{#if paidOrdersPrice}}
-            <div class="debts__header_paid">Долг: {{paidOrdersPrice}}</div>
+            <div class="gf-pull__header_price gf-debts__header">Долг: {{paidOrdersPrice}}</div>
         {{/if}}
         {{#if allOrdersPrice}}
-            <div class="debts__header_allprice">{{allOrdersPrice}}</div>
+            <div class="gf-debts__header_allprice">{{allOrdersPrice}}</div>
         {{/if}}
     </div>
 </template>
@@ -40,8 +43,8 @@
             <img class="avatar" src="{{avatarUser poolOwnerId 24}}" width="24" height="24" alt="avatar user">
             {{usermail poolOwnerId}}
         </span>
-        <span class="order__price">
-            Сколько {{getOrderPrice _id}}
+        <span class="gf-order_price">
+            Сколько: {{getOrderPrice _id}}
         </span>
         <ul class="items">
             {{# each items }}

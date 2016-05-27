@@ -1,22 +1,28 @@
 @import './variables.styl'
 
+@keyframes fadeIn
+  from
+    opacity 0
+  to
+    opacity 1
+
 html,
 body
-  font-family "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, sans-serif
+  font-family "robotoregular", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, sans-serif
   -webkit-font-smoothing antialiased
   -moz-osx-font-smoothing grayscale
-  //font-family: 'Roboto', sans-serif;
   letter-spacing .3px
   margin 0
   min-height 100%
   height 100%
   display flex
   flex-direction column
-  background-color #E0E0E0
+  background-color color_bg
 
 
 .content-container
   padding-top 80px
+  animation fadeIn .5s
 
 .unlogined
   height 100%
@@ -30,6 +36,9 @@ body
   height 4em
   line-height 4em
   margin 1em 0
+  font-size 14px
+  color darken(color_blue, 20%)
+  transition .3s
   &:hover
     text-decoration none
     background rgba(0, 0, 0, 0.1)
@@ -43,11 +52,6 @@ body
   &:after
     clear both
 
-.avatar
-  border-radius 100%
-  display inline-block
-  line-height 0
-
 .btn
   padding 0.7em 1em
   border-radius 6px
@@ -58,13 +62,244 @@ input
   outline none
   box-shadow none
 
-.link
-  color #5e943d
-  font-weight 400
-  &:hover
-    color #5e943d
-    cursor pointer
-    text-decoration underline
-
 .box-shadow
-  box-shadow 7px 7px 0 rgba(85, 85, 85, 0.025)
+  box-shadow 2px 2px 7px rgba(85,85,85,0.1)
+
+.gf-
+  &loading
+    position absolute
+    margin auto
+    top 0
+    right 0
+    bottom 0
+    left 0
+    width 200px
+    text-align center
+    height 100px
+    border-radius 3px
+    font-size 20px
+    color color_black
+
+  &form
+    border 1px solid #D7D7D7
+    background-color color_white
+    padding 20px
+    margin 0 auto
+    border-radius 3px
+    @extend .box-shadow
+    opacity .9
+    &__32p
+      width 32%
+    &__half
+      width 50%
+      float left
+      box-sizing border-box
+      vertical-align top
+    &__input-wrap
+      margin 20px 0 25px
+      position relative
+      &--small
+        margin 10px 0 15px
+    &__input-title
+      margin-bottom 10px
+      display inline-block
+      font-size 15px
+      color color_black
+      opacity .95
+    &__input
+      width 100%
+      height 35px
+      padding 0 10px 0 37px
+      box-sizing border-box
+      border 0
+      font-size 16px
+      font-weight 100
+      letter-spacing .3px
+      transition .3s
+      background-color #E5E5E5
+      border-radius 0
+      box-shadow none
+      border-bottom 1px solid color_input-border
+      &:focus
+        border-top-left-radius 3px
+        border-top-right-radius 3px
+        border-bottom 1px solid color_input-border--active
+        background-color color_input-bg--active
+        &+span
+          color color_blue-dark
+      &--green
+        &:focus
+          background-color #E8ECDA
+          border-bottom 1px solid darken(color_green, 10%)
+          &+span
+            color darken(color_green, 10%)
+      &--blue
+        &:focus
+          background-color #DBEEFB
+          border-bottom 1px solid darken(color_blue, 10%)
+          &+span
+            color darken(color_blue, 10%)
+    .octicon
+      position absolute
+      bottom 8px
+      font-size 20px
+      left 10px
+      color #AAAAAA
+      opacity .7
+      transition .3s
+    &_checkbox
+      -webkit-appearance checkbox
+      box-sizing border-box
+      height 20px
+      width 20px
+      margin-top 0
+      margin-right -20px
+      margin-bottom -20px
+      margin-left 0
+      cursor pointer
+      &:before
+        width 20px
+        height 20px
+        background color_white
+        border 1px solid #A5A5A5
+        content ''
+        border-radius 3px
+        position absolute
+      &:after
+        position absolute
+        content ''
+        width 11px
+        height 6px
+        top 5px
+        left 4px
+        opacity 0
+        background transparent
+        border 1px solid #457EA2
+        border-width 3px
+        border-top none
+        border-right none
+        border-radius 1px
+        -webkit-transform rotate(-50deg)
+      &:checked:after
+        opacity 1
+      &--green:after
+        border 1px solid darken(color_green, 5%)
+        border-width 3px
+        border-top none
+        border-right none
+        border-radius 1px
+      &--blue:after
+        border 1px solid darken(color_blue, 5%)
+        border-width 3px
+        border-top none
+        border-right none
+        border-radius 1px
+  &button
+    width 100%
+    height 50px
+    border none
+    font-size 15px
+    text-transform uppercase
+    letter-spacing 0.4px
+    border-radius 3px
+    color color_black
+    transition .3s
+    display inline-block
+    line-height 48px
+    text-align center
+    &:hover
+      cursor pointer
+      @extend .box-shadow
+    &:focus
+      outline none
+    &--green
+      background-color color_green
+      border 1px solid color_green
+      &:hover
+        background-color darken(color_green, 5%)
+        border 1px dashed darken(color_green, 10%)
+        @extend .box-shadow
+    &--blue
+      background-color color_blue
+      border 1px solid color_blue
+      &:hover
+        background-color darken(color_blue, 5%)
+        border 1px dashed darken(color_blue, 10%)
+        @extend .box-shadow
+    &link
+      color darken(color_main_green, 5%)
+      font-weight 400
+      &:hover
+        text-decoration underline
+  &button-wrap
+    text-align center
+    margin 15px 0 5px
+  &container
+    max-width 1000px
+    display block
+    margin 0 auto 50px
+    border-radius 3px
+    opacity .9
+  &flex-wrap
+    display flex
+    justify-content space-between
+    flex-flow row wrap
+  &link
+    color #5e943d
+    font-weight 400
+    &:hover
+      color #5e943d
+      cursor pointer
+      text-decoration underline
+  &left-text
+    float left
+    margin-top 15px
+    font-size 14px
+    letter-spacing .1px
+
+
+// some atomic styles
+
+.rel
+  position relative
+
+
+.pr10
+  padding-right 10px
+
+.pl10
+  padding-left 10px
+
+.addpull
+  margin-top 40px
+
+.mb30
+  margin-bottom 30px
+
+.mt30
+  margin-top 30px
+
+.mt10
+  margin-top 10px
+
+.alert
+  margin -10px 0 5px
+  padding 5px
+
+@media all and (max-width: (width_sm - 1px))
+  .content-container
+    padding-top 50px
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  .gf-container, .gf-pull
+    animation fadeIn .5s
+    height calc(100vh - 50px)
+  .gf-form__32p
+    width 100%
+  .gf-pull__wrap-btn
+    margin-top 20px
+    width 100%
+  .gf-pull_btn-add
+    width 100%
+    height 50px

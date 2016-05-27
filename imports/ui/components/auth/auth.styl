@@ -44,35 +44,24 @@
   display block
   .control
     &.has-success
-      >input
-        border-bottom 1px solid green
+      >input+span
+        color green
     &.has-error
-      >input
-        border-bottom 1px solid color_orange
+      >input+span
+       color color_orange
 
 
 #login-buttons-password, #login-buttons-forgot-password
-  margin 15px 0 10px
+  margin 5px 0 0
   width 100%
 
 .additional-link-container
   display inline-block
   width 100%
-  cursor pointer
   text-align center
   font-size 18px
 
 // @TODO delete all
-
-.header-email
-  position absolute
-  top 0
-  right 20px
-  font-size 18px
-  z-index 100
-  a
-    color white
-    line-height 70px
 
 #login-dropdown-list
   position relative
@@ -87,7 +76,7 @@
 
 #login-email-label-and-input,
 #login-password-label-and-input
-  margin 20px 0 25px
+  margin 20px 0
   position relative
 
 .btn-teamforce
@@ -98,7 +87,7 @@
   text-transform uppercase
   letter-spacing 0.4px
   border-radius 3px
-  color #282828
+  color color_black
   -webkit-transition .3s
   -moz-transition .3s
   -ms-transition .3s
@@ -108,29 +97,29 @@
   line-height 50px
   padding 0
 
-.login-form-create-account
-  .control__input
-    &:focus
-      background-color #DBEEFB
-      border-bottom 1px solid #72a5c5
-  .btn-teamforce
-    background-color #96BCD4
-    border 1px solid #96BCD4
-    &:hover
-      background-color #84b0cd
-      border 1px dashed #72a5c5
-
-.login-form-sign-in
-  .control__input
-    &:focus
-      background-color #E8ECDA
-      border-bottom 1px solid #93ab3e
-  .btn-teamforce
-    background-color #ACC359
-    border 1px solid #ACC359
-    &:hover
-      background-color #a3bc46
-      border 1px dashed #93ab3e
+//.login-form-create-account
+//  .control__input
+//    &:focus
+//      background-color #DBEEFB
+//      border-bottom 1px solid #72a5c5
+//  .btn-teamforce
+//    background-color #96BCD4
+//    border 1px solid #96BCD4
+//    &:hover
+//      background-color #84b0cd
+//      border 1px dashed #72a5c5
+//
+//.login-form-sign-in
+//  .control__input
+//    &:focus
+//      background-color #E8ECDA
+//      border-bottom 1px solid #93ab3e
+//  .btn-teamforce
+//    background-color #ACC359
+//    border 1px solid #ACC359
+//    &:hover
+//      background-color #a3bc46
+//      border 1px dashed #93ab3e
 
 .additional-link
   float right
@@ -140,6 +129,12 @@
   color #4D7FA0
   letter-spacing .1px
   text-decoration none
+  cursor: pointer
+  -webkit-transition: .3s
+  -moz-transition: .3s
+  -ms-transition: .3s
+  -o-transition: .3s
+  transition: .3s
 
 #back-to-login-link,
 #signup-link
@@ -147,3 +142,29 @@
 
 #login-company-label-and-input
   position relative
+
+.login-password-form
+  animation fadeIn .5s ease
+
+.gf-
+  &popup
+    width: 300px;
+    margin: 15vh auto 0;
+    padding: 17px 30px 20px 30px;
+    background: color_white;
+    border-radius: 2px;
+    position: relative;
+    opacity: .98;
+    box-sizing: content-box;
+    &_logo
+      position: absolute;
+      top: 74px;
+      right: -85px;
+      font-size: 32px;
+      color: #FFF;
+      opacity: .6;
+      text-transform: none;
+      font-weight: 100;
+      transform: rotate(90deg);
+  &user-name
+    vertical-align: top

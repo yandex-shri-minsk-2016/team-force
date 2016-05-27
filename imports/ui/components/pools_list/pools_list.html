@@ -1,23 +1,23 @@
 <template name="poolsList">
     <div class="content-container">
-        <div class="list-group col-xs-12 col-sm-8 col-sm-offset-2">
+        <div class="gf-container gf-pulls">
             {{#each poolsWithDates}}
-                <div class="list-group__date clearfix">
+                <div class="gf-pulls_date clearfix">
                     {{dateByDayOfYear date}}
                 </div>
-                <div class="list-group__pools clearfix">
+                <div class="gf-pulls_group clearfix">
                 {{#each pools}}
                     {{>poolsListItem}}
                 {{/each}}
                 </div>
             {{else}}
-                <div class="blankslate blankslate_spacious blankslate_large">
-                    <h2><span class="octicon octicon-circuit-board"></span></h2>
-                    <h3>Нет пуллов в ближайшее время.</h3>
-                    <p>Но вы можете <a class="link" href="{{pathFor 'pool_add'}}">создать новый</a>, это очень просто.</p>
+                <div class="gf-no-pulls">
+                    <span class="octicon octicon-circuit-board"></span>
+                    <span class="gf-no-pulls_text gf-no-pulls_text--big">Нет пуллов в ближайшее время.</span>
+                    <p class="gf-no-pulls_text">Но вы можете <a class="gf-link" href="{{pathFor 'pool_add'}}">создать новый</a>, это очень просто.</p>
                 </div>
             {{/each}}
-            <div class="list-group__add-button visible-xs">+</div>
+            <a class="list-group__add-button visible-xs" href="{{pathFor 'pool_add'}}">+</a>
         </div>
     </div>
 </template>

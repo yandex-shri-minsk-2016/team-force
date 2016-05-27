@@ -1,5 +1,5 @@
 <template name="header">
-    <header class="header">
+    <header class="gf-header">
         <nav class="navbar navbar-fixed-top" role="navigation">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -15,23 +15,23 @@
                 <div class="collapse navbar-collapse" id="navigation">
                     {{#if currentUser}}
                     <ul class="nav navbar-nav">
-                        <li><a class="{{isActiveRoute 'pool_add'}} header__item header__item--upper" href="{{pathFor 'pool_add'}}">Добавить пулл</a></li>
+                        <li><a class="{{isActiveRoute 'pool_add'}} gf-header__item gf-header__item--upper" href="{{pathFor 'pool_add'}}">Добавить пулл</a></li>
                         {{#if isAlreadyCreatedPool}}
-                            <li><a class="{{isActiveRoute 'history'}}  header__item header__item--upper" href="{{pathFor 'history'}}">Созданные пуллы</a></li>
+                            <li><a class="{{isActiveRoute 'history'}}  gf-header__item gf-header__item--upper" href="{{pathFor 'history'}}">Созданные пуллы</a></li>
                         {{/if}}
                         {{#if isAlreadyDebts}}
                             <li>
-                                <a href="{{pathFor 'debts'}}" class="header__item header__item--upper"><span>Долги</span>
+                                <a href="{{pathFor 'debts'}}" class="gf-header__item gf-header__item--upper"><span>Долги</span>
                                 {{#if paidOrdersPrice}}
-                                    <span class="badge">{{paidOrdersPrice}}</span>
+                                    <span class="gf-badge">{{paidOrdersPrice}}</span>
                                 {{/if}}
                                 </a>
                             </li>
                         {{/if}}
                         {{#if isHaveFeeds}}
-                            <li><a class="{{isActiveRoute 'feeds'}} header__item header__item--upper" href="{{pathFor 'feeds'}}"><span>Уведомления</span>
+                            <li><a class="{{isActiveRoute 'feeds'}} gf-header__item gf-header__item--upper" href="{{pathFor 'feeds'}}"><span>Уведомления</span>
                             {{#if feedsUnseenCount }}
-                                <span class="badge">{{ feedsUnseenCount }}</span>
+                                <span class="gf-badge">{{ feedsUnseenCount }}</span>
                             {{/if}}
                         </a></li>
                         {{/if}}

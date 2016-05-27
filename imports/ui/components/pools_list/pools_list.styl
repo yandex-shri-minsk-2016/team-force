@@ -7,20 +7,25 @@
     margin-bottom 1em
 
   &__add-button
-    background red
-    color white
-    box-shadow 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0, 0, 0, .28)
+    background color_main_green
+    opacity: .6
+    box-shadow: 0 0 4px rgba(0,0,0,0.14), 2px 4px 9px rgba(80,80,80,0.15);
     box-sizing content-box
     cursor pointer
-    width 60px
-    height 60px
-    border-radius 30px
-    text-align center
-    font-size 40px
-    line-height 60px
-    position fixed
-    bottom 40px
-    right 40px
+    width: 12vw;
+    height: 12vw;
+    text-align: center;
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    border-radius: 50%;
+    line-height: 11.5vw;
+    color: lighten(color_main, 25%)
+    font-size: 9vw;
+    &:hover,
+    &:focus
+      text-decoration: none
+      color: lighten(color_main, 25%)
 
   &__pools
     &_pending
@@ -30,12 +35,28 @@
     &_archived
       opacity 0.5
 
-.blankslate
-  position relative
-  padding 100px 60px 120px
-  text-align center
+.gf-
+  &no-pulls
+    text-align center
+    &_text
+      font-weight 100
+      color color_black
+      display block
+      font-size 17px
+      &--big
+        font-size 25px
+        margin-top 10px
+        margin-bottom 3px
+        font-weight 100
 
 .octicon-circuit-board
-  color #69A644
-  opacity .7
+  color color_main_green
   font-size 32px
+  opacity: .6
+
+@media all and (max-width: (width_sm - 1px))
+  .octicon-circuit-board
+    font-size: 64px;
+  .gf-
+    &no-pulls
+      margin-top: 45vw

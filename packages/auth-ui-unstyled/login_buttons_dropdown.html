@@ -97,25 +97,26 @@
   {{#if inForgotPasswordFlow}}
     {{> _forgotPasswordForm}}
   {{else}}
-    <div class="login-form login-password-form">
-      {{#each fields}}
+    <div class="gf-form gf-popup login-password-form">
+        <div class="gf-popup_logo">GitFood</div>
+        {{#each fields}}
         {{> _loginButtonsFormField}}
       {{/each}}
 
       {{> _loginButtonsMessages}}
 
-      <div class="btn btn-teamforce" id="login-buttons-password">
+
         {{#if inSignupFlow}}
-          Регистрация
+        <div class="gf-button gf-button--blue" id="login-buttons-password">Регистрация</div>
         {{else}}
-          Войти
+          <div class="gf-button gf-button--green" id="login-buttons-password">Войти</div>
         {{/if}}
-      </div>
-    
+
       <ul class="nav nav-pills">
       {{#if inLoginFlow}}
         {{#if showCreateAccountLink}}
           <li class="additional-link-container">
+            <span class="gf-left-text">Нет учетной записи?</span>
             <a id="signup-link" class="additional-link">Регистрация</a>
           </li>
         {{/if}}
@@ -137,7 +138,7 @@
 </template>
 
 <template name="_forgotPasswordForm">
-  <div class="login-form">
+  <div class="gf-form gf-popup">
     <div id="forgot-password-email-label-and-input"> {{! XXX we should probably use loginButtonsFormField }}
       <label id="forgot-password-email-label" for="forgot-password-email">Email</label>
       <div class="control">
@@ -158,6 +159,7 @@
 <template name="_loginButtonsBackToLoginLink">
   <ul class="nav nav-pills">
     <li class="additional-link-container">
+      <span class="gf-left-text">Уже есть учетная запись?</span>
       <a id="back-to-login-link" class="additional-link">Войти</a>
     </li>
   </ul>
@@ -187,8 +189,8 @@ https://gist.github.com/968927
   {{#if visible}}
     <div id="login-{{fieldName}}-label-and-input" class="form-group">
         <div class="control">
-            <input id="login-{{fieldName}}" type="{{inputType}}" placeholder="{{fieldLabel}}" class="control__input" autocomplete="off"/>
-            <span class="octicon octicon-key login-octicon"></span>
+            <input id="login-{{fieldName}}" type="{{inputType}}" placeholder="{{fieldLabel}}" class="gf-form__input gf-form__input--{{octoColor}}" autocomplete="off"/>
+            <span class="octicon octicon-{{octoName}} login-octicon"></span>
         </div>
     </div>
   {{/if}}
