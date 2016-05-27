@@ -9,7 +9,7 @@
   &__add-button
     background red
     color white
-    box-shadow 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0, 0, 0, .28)
+    box-shadow 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28)
     box-sizing content-box
     cursor pointer
     width 60px
@@ -17,10 +17,14 @@
     border-radius 30px
     text-align center
     font-size 40px
-    line-height 60px
+    line-height 50px
     position fixed
     bottom 40px
     right 40px
+    &:hover
+      color #fff
+      text-decoration: none
+      box-shadow 1px 1px 4px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.4)
 
   &__pools
     &_pending
