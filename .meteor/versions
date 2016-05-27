@@ -18,6 +18,7 @@ caching-html-compiler@1.0.6
 callback-hook@1.0.8
 check@1.2.1
 coffeescript@1.0.17
+d3js:d3@3.5.8
 ddp@1.2.5
 ddp-client@1.2.7
 ddp-common@1.2.5
@@ -57,6 +58,7 @@ livedata@1.0.18
 lmieulet:meteor-coverage@0.3.0
 localstorage@1.0.9
 logging@1.0.12
+manuelschoebel:wait-on-lib@0.3.0
 mdg:validation-error@0.2.0
 meteor@1.1.14
 meteor-base@1.0.4
@@ -77,6 +79,7 @@ mongo-id@1.0.4
 mongo-livedata@1.0.12
 mquandalle:stylus@1.1.1
 mrt:bootstrap3-typeahead@3.0.3
+mrt:external-file-loader@0.1.4
 npm-bcrypt@0.8.5
 npm-mongo@1.4.43
 observe-sequence@1.0.11

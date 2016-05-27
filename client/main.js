@@ -7,6 +7,7 @@ import moment from 'moment';
 
 Parser = ParserClass;
 utils = Utils;
+myMap = {};
 
 Accounts.ui.config({
     passwordSignupFields: 'EMAIL_ONLY'
@@ -49,6 +50,9 @@ import './../imports/ui/components/header/header.js';
 
 import './../imports/ui/components/profile/profile.html';
 import './../imports/ui/components/profile/profile.js';
+
+import './../imports/ui/components/user/user.html';
+import './../imports/ui/components/user/user.js';
 
 import './../imports/ui/components/footer/footer.html';
 

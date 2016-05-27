@@ -1,5 +1,6 @@
 import Parser from './../../../../lib/parser';
 import utils from './../../../../lib/utils';
+import normalizeUrl from 'normalize-url';
 
 let itemFields = [];
 let itemFieldsDep = new Tracker.Dependency();
@@ -30,6 +31,7 @@ Template.appendPool.events({
     },
 
     'click .js-new-product': (event) => {
+        const errorClass = 'has-error';
         const hideGroup  = $('.new-product-hide-input-group');
         const joinButton = $('.join-button');
         const addButton  = $('.js-new-product');
@@ -58,6 +60,23 @@ Template.appendPool.events({
         }
 
         itemFieldsDep.changed();
+    },
+
+    'keyup #new-shop-input': (event) => {
+        const inputValue = $('#new-shop-input').val();
+        Pools.update(Template.instance().data._id, { $set: { shop: normalizeUrl(inputValue) } });
+    },
+
+    'paste #new-shop-input': (event) => {
+        const inputValue = event.originalEvent.clipboardData.getData('text');
+        if (utils.validUrl(inputValue)) {
+            const shopUrl = normalizeUrl(inputValue);
+            Pools.update(Template.instance().data._id, { $set: { shop: shopUrl } });
+            throwNotification('success', `Название магазина изменено на ${shopUrl}`);
+        }else {
+            throwNotification('danger', 'Неправильный адрес магазина');
+        }
+
     },
 
     'paste #new-product-input': (event) => {
@@ -114,7 +133,7 @@ Template.appendPool.events({
         const productCount = parseInt($('#new-product-count').val());
 
         if (!productInput.val()) {
-            productInput.val(pool.shop); // to manually add
+            productInput.val(normalizeUrl(pool.shop)); // to manually add
         }
 
         const newItem = {
@@ -122,11 +141,11 @@ Template.appendPool.events({
             price: utils.getPriceFromString(target['form-elem-price'].value),
             description: target['form-elem-descr'].value,
             weight: target['form-elem-weight'].value,
-            link: target['item-link'].value
+            link: normalizeUrl(target['item-link'].value)
         };
 
         Pools.appendItemForUser(poolId, Meteor.userId(), newItem, productCount)
-            .then(() => {
+            .then((itemId) => {
                 itemFields = [];
                 itemFieldsDep.changed();
 
@@ -134,6 +153,14 @@ Template.appendPool.events({
                 addButton.removeClass('active');
                 productInput.val('');
                 hideGroup.hide();
+
+                Feeds.notifyEveryoneInPool(poolId, {
+                    userId: Meteor.userId(),
+                    ownerId: Meteor.userId(),
+                    companyId: Meteor.user().profile.company,
+                    type:   'cutlery',
+                    message:` добавил в #pool{${poolId}}, #item{${itemId}} на сумму ${utils.getPriceWithFormat(newItem.price * productCount)}`
+                });
 
                 Router.go('pool', { poolId: poolId });
             })

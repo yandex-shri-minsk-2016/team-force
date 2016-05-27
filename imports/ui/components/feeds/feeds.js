@@ -1,5 +1,7 @@
 Template.feeds.helpers({
-    feeds: Feeds.find({ userId: Meteor.userId() })
+    feeds: () => {
+        return Feeds.find({ ownerId: Meteor.userId() }, { sort: { created: -1 }, limit: Template.instance().data.feedsLimit });
+    }
 });
 
 Template.feed.events({

@@ -2,7 +2,7 @@ import utils from '../../../../lib/utils';
 
 Template.header.helpers({
     feedsUnseenCount: () => {
-        return Feeds.find({ userId: Meteor.userId(), seen: false }).count();
+        return Feeds.find({ ownerId: Meteor.userId(), seen: false }).count();
     },
 
     paidOrdersPrice: () => {
@@ -10,7 +10,7 @@ Template.header.helpers({
     },
 
     isHaveFeeds: () => {
-        return Feeds.find({ userId: Meteor.userId() }).count() > 0;
+        return Feeds.find({ ownerId: Meteor.userId() }).count() > 0;
     },
     
     isAlreadyCreatedPool: () => {
