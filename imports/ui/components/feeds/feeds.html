@@ -32,7 +32,7 @@
                 <div class="feed__msg">
                     <span>
                         <img class="avatar" src="{{avatarUser userId 24}}" width="24" height="24" alt="avatar user">
-                        {{feedActor userId}}
+                        <a href="{{pathFor 'user' userId}}">{{feedActor userId}}</a>
                     </span>
                     <span>
                         {{feedMessage message }}
