@@ -3,7 +3,15 @@
         {{>debtsHeader}}
         <div class="row">
             {{#each debtsOrders}}
-                {{>debtsListItem}}
+                {{#if isNoSelfDebt}}
+                    {{>debtsListItem}}
+                {{/if}}
+            {{else}}
+                <div class="blankslate blankslate_spacious blankslate_large">
+                    <h2><i class="glyphicon glyphicon-piggy-bank"></i></h2>
+                    <h3>У вас нет долгов.</h3>
+                    <p>Все ваши должники находятся в <a href="{{pathFor 'history'}}">соответствующих пулах</a></p>
+                </div>
             {{/each}}
         </div>
         {{#if hasMore}}
@@ -28,22 +36,13 @@
 <template name="debtsListItem">
     <li class="order {{#if isPaid }}order_ispaid{{/if}}">
         <span class="order__username">
-            Кому: {{usermail poolOwnerId}}
+            Кому
+            <img class="avatar" src="{{avatarUser poolOwnerId 24}}" width="24" height="24" alt="avatar user">
+            {{usermail poolOwnerId}}
         </span>
         <span class="order__price">
-            Сколько: {{getOrderPrice _id}}
+            Сколько {{getOrderPrice _id}}
         </span>
-        {{#if isPoolArchived poolId}}
-            {{#if isPoolOwner poolId }}
-                {{#if isPaid }}
-                    <input class="js-ispaid" type="checkbox" checked="checked" />
-                {{else}}
-                    <input class="js-ispaid" type="checkbox" />
-                {{/if}}
-            {{else}}
-                <!--not owner-->
-            {{/if}}
-        {{/if}}
         <ul class="items">
             {{# each items }}
                 <li class="item">
