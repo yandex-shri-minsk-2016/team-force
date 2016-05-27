@@ -1,59 +1,52 @@
-<template name="profile">
+<template name="user">
     <div class="container clearfix content-container">
-        <form class="js-saveProfile">
         <div class="profile-avatar form-group col-xs-12 col-sm-2 col-md-2 col-lg-2">
                 <p><img class="avatar" src="{{avatarUser currentUser._id 128}}" width="128" height="128" alt="avatar user"></p>
                 <p class="text-muted">Похож?</p>
-                <p class="text-muted"><a href="/user/{{currentUser._id}}">Как видят меня другие?</a></p>
+                {{#if isIam}}
+                    <p class="text-muted"><a href="{{pathFor 'profile'}}">Редактировать</a></p>
+                {{/if}}
         </div>
         <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
             <div class="profile-name form-group col-xs-12 col-sm-4 col-md-4 col-lg-4">
                 <div class="input-group input-group-lg">
                     <label for="profileUsername" class="input-group-addon"><i class="glyphicon glyphicon-user"></i></label>
                     {{#with profileUser}}
-                        <input type="text" class="form-control" id="profileUsername" name="profileUsername" placeholder="Ваше имя" value="{{username}}" autocomplete="off">
+                        <p class="user__field">{{username}}</p>
                     {{/with}}
                 </div>
-                <small class="text-muted">Как к вам обратиться?</small>
             </div>
             <div class="profile-phone form-group col-xs-12 col-sm-4 col-md-4 col-lg-4">
                 <div class="input-group input-group-lg">
                     <label for="profilePhone" class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></label>
                     {{#with profileUser}}
-                        <input type="text" class="form-control" id="profilePhone" name="profilePhone" placeholder="Ваш телефон" value="{{phone}}" autocomplete="off">
+                    <p class="user__field">{{phone}}</p>
                     {{/with}}
                 </div>
-                <small class="text-muted">Вам перезвонят по поводу заказа.</small>
             </div>
             <div class="profile-email form-group col-xs-12 col-sm-4 col-md-4 col-lg-4">
                 <div class="input-group input-group-lg">
                     <div class="input-group-addon"></div>
-                    <input type="email" class="form-control" id="profileEmail" name="profileEmail" value="{{emailUser}}" autocomplete="off">
+                    <p class="user__field">{{emailUser}}</p>
                 </div>
-                <small class="text-muted">Исключительно для важных оповещений!</small>
             </div>
             <div class="profile-address form-group col-xs-12 col-sm-8 col-md-8 col-lg-8">
                 <div class="input-group input-group-lg">
                     <div class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></div>
                     {{#with profileUser}}
-                        <input type="text" class="form-control" id="profileAddress" name="profileAddress" placeholder="Ваш адрес" value="{{address}}" autocomplete="off">
+                    <p class="user__field">{{address}}</p>
                     {{/with}}
                 </div>
-                <small class="text-muted">Мы запомним ваш адрес один раз и больше его не нужно будет вводить.</small>
             </div>
             <div class="profile-company form-group col-xs-12 col-sm-4 col-md-4 col-lg-4">
                 <div class="input-group input-group-lg">
                     <div class="input-group-addon"></div>
                     {{#with profileUser}}
-                        <input type="text" class="form-control" id="profileCompany" name="profileCompany" value="{{company}}" autocomplete="off">
+                    <p class="user__field">{{company}}</p>
                     {{/with}}
                 </div>
-                <small class="text-muted">Где вы работаете?</small>
             </div>
+            <div id="heatmap" class="col-sm-12"></div>
         </div>
-        <div class="profile-submit form-group clearfix">
-            <input type="submit" class="btn btn-success form-control" value="Сохранить" />
-        </div>
-        </form>
     </div>
 </template>

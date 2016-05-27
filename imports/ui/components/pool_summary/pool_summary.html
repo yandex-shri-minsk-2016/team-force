@@ -28,7 +28,7 @@
                             <ul class="users">
                                 {{#each userIds}}
                                 <li class="user">
-                                    {{usermail userId}}
+                                    <a href="{{pathFor 'user' userId}}">{{usermail userId}}</a>
                                 </li>
                                 {{/each}}
                             </ul>
