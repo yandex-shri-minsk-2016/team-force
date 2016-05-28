@@ -1,6 +1,6 @@
 <template name="feeds">
-    <div class="content-container">
-            <div class="gf-container gf-pulls">
+    <div class="container content-container">
+            <div class="gf-form">
             {{#if feeds}}
                 {{#each feeds}}
                     {{> feed}}
@@ -10,7 +10,7 @@
             {{/if}}
             </div>
         {{#if hasMore}}
-            <div class="row">
+            <div class="">
                 <a class="load-more" href="/feeds/{{nextPath}}">Загрузить ещё</a>
             </div>
         {{/if}}
@@ -19,17 +19,17 @@
 
 <template name="feed">
     <div class="list-group {{#unless seen}} alert alert-success {{/unless}}">
-        <div class="feed clearfix">
-            <div class="feed__logo">
+        <div class="gf-feed clearfix">
+            <div class="gf-feed__logo">
                 <span class="glyphicon glyphicon-{{type}}" aria-hidden="true"></span>
             </div>
-            <div class="feed__body">
-                <div class="feed__time clearfix">
+            <div class="gf-feed__body">
+                <div class="gf-feed__time clearfix">
                     {{timeFromNow created}}
                 </div>
-                <div class="feed__msg">
+                <div class="gf-feed__msg">
                     <span>
-                        <img class="gf-user-img" src="{{avatarUser userId 24}}" width="24" height="24" alt="avatar user">
+                        <img class="gf-user-img gf-feed_img" src="{{avatarUser userId 24}}" width="24" height="24" alt="avatar user">
                         {{feedActor userId}}
                     </span>
                     <span>

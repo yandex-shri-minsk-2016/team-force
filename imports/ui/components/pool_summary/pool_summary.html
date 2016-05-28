@@ -1,22 +1,21 @@
 <template name="poolSummary">
-    <div class="row content-container">
-        <div class="list-group col-xs-12 col-sm-8 col-sm-offset-2">
+    <div class="container clearfix content-container">
+        <div class="gf-shadow">
             {{>poolHeader}}
-            <div class="list-group-item-text">
+            <div class="gf-items">
             {{#if poolItems}}
-                <ul class="items">
                     {{# each poolItems }}
-                        <li class="item item_pt">
-                            <span class="item__title">
+                        <li class="gf-items__owner">
+                            <span class="gf-items__owner_name">
                                 {{#with data}}
                                     {{#if link}}
-                                        <a href="{{link}}" target="_blank" title="{{description}}">{{title}}</a>
+                                        <a class="gf-link-dark" href="{{link}}" target="_blank" title="{{description}}">{{title}}</a>
                                     {{else}}
                                         {{title}}
                                     {{/if}}
                                 {{/with}}
                             </span>
-                            <span class="item__price">
+                            <span class="gf-items__owner_price">
                                 ({{getPriceWithFormat data.price}})
                             </span>
                             {{#if moreOne count}}
@@ -25,27 +24,24 @@
                                 </span>
                             {{/if}}
                             {{#if userIds}}
-                            <ul class="users">
                                 {{#each userIds}}
-                                <li class="user">
+                                <div class="gf-user">
                                     {{usermail userId}}
-                                </li>
+                                </div>
                                 {{/each}}
-                            </ul>
                             {{/if}}
                         </li>
                     {{/each}}
-                </ul>
             {{/if}}
             </div>
         </div>
         <div class="row">
-            <div class="list-group col-xs-12 col-sm-8 col-sm-offset-2">
+            <div class="container gf-summary">
                 {{#if getShopMail _id}}
-                    <a href="{{pathFor 'pool' _id}}" class="btn btn-success close-pool">Отправить заказ на {{getShopMail _id}}</a> и собрать долги
+                    <a href="{{pathFor 'pool' _id}}" class="gf-button gf-button--blue gf-send">Отправить заказ<span class="hidden-xs"> на {{getShopMail _id}}</span></a><span class="gf-get-debts"> и собрать <a class="gf-link" href="/debts">долги</a></span>
                 {{else}}
                     <p>У данного магазина отсутствует автозаказ, необходимо заполнить корзину {{shop}}.</p>
-                    <a href="{{pathFor 'pool' _id}}" class="btn btn-warning close-pool">Закрыть пулл</a> и собрать долги
+                    <a href="{{pathFor 'pool' _id}}" class="btn btn-warning close-pool">Закрыть пулл</a> и собрать <a class="gf-link" href="/debts">долги</a>
                 {{/if}}
             </div>
         </div>

@@ -2,19 +2,19 @@
     <div class="container clearfix content-container">
         <div class="gf-container gf-form gf-debts">
         {{>debtsHeader}}
-        <div class="row">
             {{#each debtsOrders}}
                 {{#if isNoSelfDebt}}
                     {{>debtsListItem}}
                 {{/if}}
             {{else}}
-                <div class="blankslate blankslate_spacious blankslate_large">
-                    <h2><i class="glyphicon glyphicon-piggy-bank"></i></h2>
-                    <h3>У вас нет долгов.</h3>
-                    <p>Все ваши должники находятся в <a href="{{pathFor 'history'}}">соответствующих пулах</a></p>
+                <div class="gf-items__owner">
+                    <div class="gf-center">
+                        <i class="glyphicon glyphicon-piggy-bank"></i>
+                        <span class="gf-debts_title">У вас нет долгов.</span>
+                    </div>
+                    <div class="gf-debts__info">Все ваши должники находятся в <a class="gf-link-dark" href="{{pathFor 'history'}}">соответствующих пулах</a></div>
                 </div>
             {{/each}}
-        </div>
         {{#if hasMore}}
             <div class="row">
                 <a class="load-more" href="/debts/{{nextPath}}">Загрузить ещё</a>

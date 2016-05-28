@@ -1,6 +1,5 @@
 <template name="poolsList">
-    <div class="content-container">
-        <div class="gf-container gf-pulls">
+    <div class="container clearfix content-container">
             {{#each poolsWithDates}}
                 <div class="gf-pulls_date clearfix">
                     {{dateByDayOfYear date}}
@@ -18,6 +17,5 @@
                 </div>
             {{/each}}
             <a class="list-group__add-button visible-xs" href="{{pathFor 'pool_add'}}">+</a>
-        </div>
     </div>
 </template>

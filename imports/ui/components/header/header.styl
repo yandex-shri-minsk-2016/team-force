@@ -1,9 +1,26 @@
 .gf-
   &header
+    &_logo
+      color color_black
+      font-size 27px
+      font-weight 700
+      margin-right 15px
+      opacity .7
+      height 100%
+      vertical-align top
+      line-height 50px
+      letter-spacing 2px
+      padding 0
+      &:visited,
+      &:hover,
+      &:active
+        text-decoration: none
+        color color_black
+        outline: none
     &__item
       padding 0 15px
-      color color_dark
-      height 100%
+      color color_black
+      height height_header
       display inline-block
       text-transform lowercase
       font-size 15px
@@ -11,18 +28,26 @@
       line-height 50px
       transition .3s
       text-decoration none
+      opacity: .9
       &.active
         background transparent
         font-family 'robotomedium', "robotoregular", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, sans-serif
         font-weight 500
         text-decoration underline
         color color_gray-mid
-      &:hover, &:focus
+      &:hover,
+      &:focus
         background-color darken(color_main, 8%) !important
-        color color_gray-mid
+        color color_black
+        opacity 1
         outline none
         .gf-user-img
           border-color darken(color_main, 10%)
+      .octicon
+        font-size 20px
+        color color_black
+        vertical-align middle
+        opacity: .7
       &--upper
         letter-spacing 1px
         text-transform uppercase
@@ -32,24 +57,13 @@
         vertical-align top
     .navbar
       height 50px
-      background-color #C6C5B9
+      background-color color_main
       padding 0 20px
       box-shadow 2px 2px 7px rgba(85,85,85,0.2)
-      border-bottom 1px solid #bfbeb1
+      border-bottom 1px solid darken(color_main, 20%)
     .icon-bar
       background color_black
       opacity .8
-    .navbar-brand
-      color color_black
-      font-size 27px
-      font-weight 700
-      margin-right 30px
-      opacity .7
-      height 100%
-      vertical-align top
-      line-height 50px
-      letter-spacing 2px
-      padding 0
   &user-img
     width 30px
     height 30px
@@ -58,18 +72,18 @@
     margin-right 10px
     vertical-align -16%
     background-size contain
-    border: 1px solid darken(color_main, 2%)
   &badge
-    background #FEFEFE
+    background color_white
     border-radius 19px
     font-size 11px
-    padding 4px 6px
+    padding 1px 6px
     font-weight 500
     color color_black
     letter-spacing 0
     margin-left 5px
     opacity .7
-    vertical-align initial
+    vertical-align top
+    border-bottom 1px solid darken(color_main, 25%)
     @extend .box-shadow
 
 .navbar-nav > li > a
@@ -102,13 +116,20 @@
     padding-right: 25px
     text-transform: uppercase
   .gf-menu__user-img
-
-    margin-right: 5px
-  .gf-header .navbar-brand
-    margin-right: 5px
+    margin-right 5px
+  .gf-header_logo
+    margin-left 25px
   .gf-header__item
-    font-size: 13px
+    font-size 13px
   .navbar .navbar-fixed-top
-    box-shadow: 3px 3px 3px rgba(80,80,80,0.07)
+    box-shadow 3px 3px 3px rgba(80,80,80,0.07)
     border-bottom 1px solid #bfbeb1
-  
+
+@media all and (max-width 1000px)
+  .gf-user-name
+    display none
+  .gf-menu__user-img
+    margin-right 0
+  .nav > li > a
+    padding-left: 10px
+    padding-right: 10px
