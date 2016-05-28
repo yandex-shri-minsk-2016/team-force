@@ -1,14 +1,14 @@
 <template name="history">
     <div class="container clearfix content-container">
-        <div class="row">
+        <!--<div class="gf-form">-->
             {{#each pools}}
                 {{>poolsListItem}}
             {{/each}}
-        </div>
+        <!--</div>-->
         {{#if hasMore}}
-            <div class="row">
+            <!--<div class="gf-form">-->
                 <a class="load-more" href="/history/{{nextPath}}">Загрузить ещё</a>
-            </div>
+            <!--</div>-->
         {{/if}}
     </div>
 </template>

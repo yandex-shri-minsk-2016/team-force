@@ -1,15 +1,15 @@
 <template name="poolHeader">
-    <div class="gf-pull__header clearfix">
-         <span class="gf-pull__header_shop-name">{{shop}}</span>
-         <span class="gf-pull__header_date">{{formatTime time 'DD.MM.YYYY'}}</span>
-         <span class="gf-pull__header_time">{{formatTime time 'HH:mm'}}</span>
+        <div class="gf-pull__header clearfix">
+            <span class="gf-pull__header_shop-name">{{shop}}</span>
+            <span class="gf-pull__header_date">{{formatTime time 'DD.MM.YYYY'}}</span>
+            <span class="gf-pull__header_time">{{formatTime time 'HH:mm'}}</span>
          <span class="gf-pull__header_interval">
              <span class="timer"></span>
          </span>
          <span class="gf-pull__header_price">
                {{#if isPoolArchived _id}} Собрано: {{getPoolIsPaidPrice _id true}} из {{/if}} {{getPoolPrice _id}}
          </span>
-    </div>
+        </div>
 </template>
 
 <template name="appendPool">
@@ -54,12 +54,13 @@
 </template>
 
 <template name="poolPending">
-    <div class="content-container">
-        <div class="gf-pull">
+    <div class="container clearfix content-container">
+        <div class="gf-shadow">
             {{>poolHeader}}
             {{>ordersList}}
+        </div>
+        <div class="gf-shadow">
             {{>appendPool}}
         </div>
-
     </div>
 </template>

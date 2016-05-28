@@ -1,47 +1,48 @@
 <template name="header">
     <header class="gf-header">
         <nav class="navbar navbar-fixed-top" role="navigation">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                            data-target="#navigation">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="{{pathFor 'index'}}">Gitfood</a>
-                </div>
-                <div class="collapse navbar-collapse" id="navigation">
-                    {{#if currentUser}}
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="gf-header_logo" href="{{pathFor 'index'}}">Gitfood</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navigation">
+                {{#if currentUser}}
                     <ul class="nav navbar-nav">
-                        <li><a class="{{isActiveRoute 'pool_add'}} gf-header__item gf-header__item--upper" href="{{pathFor 'pool_add'}}">Добавить пулл</a></li>
+                        <li><a class="{{isActiveRoute 'pool_add'}} gf-header__item gf-header__item--upper"
+                               href="{{pathFor 'pool_add'}}">Добавить пул</a></li>
                         {{#if isAlreadyCreatedPool}}
-                            <li><a class="{{isActiveRoute 'history'}}  gf-header__item gf-header__item--upper" href="{{pathFor 'history'}}">Созданные пуллы</a></li>
+                            <li><a class="{{isActiveRoute 'history'}}  gf-header__item gf-header__item--upper"
+                                   href="{{pathFor 'history'}}">Созданные пулы</a></li>
                         {{/if}}
                         {{#if isAlreadyDebts}}
                             <li>
-                                <a href="{{pathFor 'debts'}}" class="gf-header__item gf-header__item--upper"><span>Долги</span>
-                                {{#if paidOrdersPrice}}
-                                    <span class="gf-badge">{{paidOrdersPrice}}</span>
-                                {{/if}}
+                                <a href="{{pathFor 'debts'}}"
+                                   class="gf-header__item gf-header__item--upper"><span>Долги</span>
+                                    {{#if paidOrdersPrice}}
+                                        <span class="gf-badge">{{paidOrdersPrice}}</span>
+                                    {{/if}}
                                 </a>
                             </li>
                         {{/if}}
                         {{#if isHaveFeeds}}
-                            <li><a class="{{isActiveRoute 'feeds'}} gf-header__item gf-header__item--upper" href="{{pathFor 'feeds'}}"><span>Уведомления</span>
-                            {{#if feedsUnseenCount }}
-                                <span class="gf-badge">{{ feedsUnseenCount }}</span>
-                            {{/if}}
-                        </a></li>
+                            <li><a class="{{isActiveRoute 'feeds'}} gf-header__item gf-header__item--upper"
+                                   href="{{pathFor 'feeds'}}"><span>Новости</span>
+                                {{#if feedsUnseenCount }}
+                                    <span class="gf-badge">{{ feedsUnseenCount }}</span>
+                                {{/if}}
+                            </a></li>
                         {{/if}}
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li>{{>profileButton}}</li>
                         <li>{{>logoutButton}}</li>
                     </ul>
-                    {{/if}}
-                </div>
+                {{/if}}
             </div>
         </nav>
     </header>

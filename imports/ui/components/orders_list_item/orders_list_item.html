@@ -1,5 +1,4 @@
 <template name="ordersList">
-    <div class="gf-pull__body">
         {{#if poolOrders}}
             <ul class="gf-items">
                 {{#each poolOrders }}
@@ -7,7 +6,6 @@
                 {{/each}}
             </ul>
         {{/if}}
-    </div>
 </template>
 
 <template name="ordersListItem">
@@ -40,9 +38,9 @@
                 {{/if}}
             {{/unless}}
         {{/if}}
-        <ul class="gf-items__wrap">
+        <div class="gf-items__wrap">
             {{# each items }}
-                <li class="gf-item">
+                <div class="gf-item">
                     <span class="gf-item_name">
                         {{#with item}}
                         {{#if link}}
@@ -60,8 +58,8 @@
                             x{{count}}
                         </span>
                     {{/if}}
-                </li>
+                </div>
             {{/each}}
-        </ul>
+        </div>
     </li>
 </template>

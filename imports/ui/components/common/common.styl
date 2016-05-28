@@ -63,9 +63,16 @@ input
   box-shadow none
 
 .box-shadow
-  box-shadow 2px 2px 7px rgba(85,85,85,0.1)
+  box-shadow: 3px 2px 3px rgba(0,0,0,0.1);
 
 .gf-
+  &shadow
+    @extend .box-shadow
+  &link-dark
+    color: color_default
+    text-decoration: underline
+  &center
+    text-align: center
   &loading
     position absolute
     margin auto
@@ -79,15 +86,14 @@ input
     border-radius 3px
     font-size 20px
     color color_black
-
   &form
-    border 1px solid #D7D7D7
-    background-color color_white
     padding 20px
     margin 0 auto
     border-radius 3px
-    @extend .box-shadow
     opacity .9
+    border 1px solid color_main_border
+    background-color color_white
+    @extend .box-shadow
     &__32p
       width 32%
     &__half
@@ -207,8 +213,11 @@ input
     display inline-block
     line-height 48px
     text-align center
+    text-decoration: none
     &:hover
       cursor pointer
+      text-decoration: none
+      color color_black
       @extend .box-shadow
     &:focus
       outline none
@@ -235,11 +244,14 @@ input
     text-align center
     margin 15px 0 5px
   &container
-    max-width 1000px
-    display block
-    margin 0 auto 50px
-    border-radius 3px
+    //padding 20px
+    margin 0 auto
+    //border-radius 3px
     opacity .9
+    //border 1px solid #D7D7D7
+    //background-color color_white
+    //@extend .box-shadow
+    animation fadeIn .5s
   &flex-wrap
     display flex
     justify-content space-between
