@@ -1,5 +1,6 @@
 import { Accounts } from 'meteor/accounts-base';
 import utils from './../lib/utils';
+import AutoOrder from './order';
 import Email from './email';
 
 Tasks = new Meteor.Collection('tasks');
@@ -18,6 +19,10 @@ Meteor.methods({
 
     sendEmail: (to, user, data, shopName) => {
         return Email.send(to, SSR.render('email', { user, data, shopName }));
+    },
+    
+    autoOrder: (to, user, data) => {
+        return AutoOrder.order(to, user, data)
     }
 });
 

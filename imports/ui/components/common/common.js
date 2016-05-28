@@ -76,3 +76,7 @@ Template.registerHelper('dateByDayOfYear', dayOfYear => {
 Template.registerHelper('getShopMail', poolId => {
     return utils.getShopMail(Pools.findOne(poolId).shop);
 });
+
+Template.registerHelper('hasAutoOrder', poolId => {
+    return utils.hasShopAutoOrder(Pools.findOne(poolId).shop);
+});

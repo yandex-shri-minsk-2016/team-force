@@ -24,7 +24,8 @@
       "weight": ".sldier_container .controls .checkbox",
       "price":  ".sldier_container span.price",
       "descr":  ".sldier_container span.productIntro"
-    }
+    },
+    "auto": true
   },
   "just-eat.by": {
     "email": "gitfooddemo@gmail.com",

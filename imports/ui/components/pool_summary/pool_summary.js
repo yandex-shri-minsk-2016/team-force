@@ -10,10 +10,10 @@ Template.poolSummary.helpers({
 Template.poolSummary.events({
     'click .close-pool': () => {
         const pool = Pools.findOne({ _id: Template.instance().data._id });
-        Pools.changePoolState(pool._id, utils.POOL_STATE.ARCHIVED);
-
+        // Pools.changePoolState(pool._id, utils.POOL_STATE.ARCHIVED);
+        //
         const ownerOrder = Orders.findOne({ poolId: pool._id, userId: Meteor.userId() });
-        Orders.update(ownerOrder._id, { $set: { isPaid: true } });
+        // Orders.update(ownerOrder._id, { $set: { isPaid: true } });
 
         const itemsToSent = utils.toArr(Pools.getGroupByItemWithData(pool._id));
 
@@ -26,10 +26,20 @@ Template.poolSummary.events({
         });
 
         const email = utils.getShopMail(pool.shop);
-        if (email) {
+        const auto = utils.hasShopAutoOrder(pool.shop);
+        if (auto) {
+            const user = {
+                phone: Meteor.user().profile.phone,
+                name: Meteor.user().profile.username,
+                address: Meteor.user().profile.address,
+                email: Meteor.user().emails[0].address
+            };
+            Meteor.call('autoOrder', pool.shop, user, items);
+            throwNotification('success', 'Заказ отправлен в магазин, ожидайте.')
+        } else if (email) {
             Meteor.call('sendEmail', email, { phone: Meteor.user().profile.phone, name: Meteor.user().profile.username }, items, pool.shop);
             throwNotification('success', 'Сообщение в магазин отправлено, ожидайте.');
-        }else {
+        } else {
             throwNotification('success', 'Время собирать долги.');
         }
     }
